@@ -51,10 +51,10 @@ function MyTabs() {
         name="New"
         component={TempComponent}
         options={{
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ size }) => (
             <MaterialCommunityIcons
-              name="plus-circle-outline"
-              color={color}
+              name="plus-circle"
+              color="#e91e63"
               size={size * 2}
             />
           ),
@@ -98,8 +98,7 @@ function MyTabs() {
           tabBarLabel: 'Updates',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="chat" color={color} size={size} />
-          ),
-          tabBarBadge: 3
+          )
         }}
       />
       <Tab.Screen
