@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Text } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import HomeStack from '../screens/Home';
 import SellerProfileStack from '../screens/Profile/SellerProfile';
 
 const TempComponent = () => (
@@ -22,7 +23,7 @@ function BottomTabsNav() {
     >
       <Tab.Screen
         name="Feed"
-        component={TempComponent}
+        component={HomeStack}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
