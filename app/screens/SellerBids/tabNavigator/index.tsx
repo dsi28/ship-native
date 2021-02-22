@@ -8,10 +8,10 @@ function SellerBidsTabs() {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: 'turquoise',
+        activeTintColor: '#e91e63',
         inactiveTintColor: 'lightgray',
         labelStyle: { fontSize: 17, fontWeight: 'bold' },
-        indicatorStyle: { backgroundColor: 'turquoise' },
+        indicatorStyle: { backgroundColor: '#e91e63' },
         style: { backgroundColor: 'white' }
       }}
     >

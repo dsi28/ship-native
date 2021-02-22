@@ -41,7 +41,7 @@ const PictureUploadComponent: React.FC<PictureUploadProps> = ({
       icon={imageShown ? 'minus-circle' : 'plus-circle'}
       size={30}
       style={styles.iconToggle}
-      color="turquoise"
+      color="#e91e63"
       onPress={() => {
         console.log('press plus outline');
         if (imageIndex) {
