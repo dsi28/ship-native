@@ -11,11 +11,13 @@ const styles = StyleSheet.create({
 
   cardItemContainer: {
     padding: 15,
-    margin: 10,
+    margin: 5,
     flexDirection: 'column',
-    borderColor: 'black',
-    borderWidth: 2,
-    borderRadius: 10
+    // borderColor: 'black',
+    // borderWidth: 2,
+    borderRadius: 10,
+    // elevation: 5
+    backgroundColor: 'white'
   },
   bottomRow: {
     flexDirection: 'row',
@@ -58,7 +60,6 @@ const styles = StyleSheet.create({
   },
   buttonDeclineText: {
     fontSize: 18,
-    color: 'red',
     fontWeight: 'bold',
     alignSelf: 'center',
     textTransform: 'uppercase'
@@ -75,8 +76,9 @@ const styles = StyleSheet.create({
   cardDetailsView: {
     flexDirection: 'column',
     marginLeft: 5,
-    flex: 2
-    // backgroundColor: 'red'
+    // flex: 2,
+    justifyContent: 'space-between',
+    flex: 1
   },
 
   // reusable styles:
