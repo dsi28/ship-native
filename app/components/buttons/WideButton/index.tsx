@@ -20,7 +20,7 @@ const WideButton: React.FC<WideButtonProps> = ({
     style={{
       ...styles.pressableNext,
       ...{
-        backgroundColor: isSelected ? 'turquoise' : 'transparent'
+        backgroundColor: isSelected ? '#e91e63' : 'transparent'
       }
       // change this color to another color that not black or gray
     }}

@@ -14,7 +14,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = () => (
   <View style={{ ...styles.sectionContatiner, ...styles.addSectionContainer }}>
     <View style={{ ...styles.reviewRow, ...styles.marginBottom40 }}>
       <View style={styles.iconView}>
-        <StarIcon name="star" size={25} color="turquoise" />
+        <StarIcon name="star" size={25} color="#e91e63" />
       </View>
       <View style={styles.reviewTitleView}>
         <Text style={styles.aboutSectionTitle}>5.0 (19 reviews)</Text>
