@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.servicesnativeapp"
+        applicationId "com.shipnativeapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

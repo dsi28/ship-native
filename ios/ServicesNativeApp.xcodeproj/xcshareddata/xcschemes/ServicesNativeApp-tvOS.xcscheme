@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "ServicesNativeApp-tvOS.app"
-               BlueprintName = "ServicesNativeApp-tvOS"
-               ReferencedContainer = "container:ServicesNativeApp.xcodeproj">
+               BuildableName = "ShipNativeApp-tvOS.app"
+               BlueprintName = "ShipNativeApp-tvOS"
+               ReferencedContainer = "container:ShipNativeApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "ServicesNativeApp-tvOSTests.xctest"
-               BlueprintName = "ServicesNativeApp-tvOSTests"
-               ReferencedContainer = "container:ServicesNativeApp.xcodeproj">
+               BuildableName = "ShipNativeApp-tvOSTests.xctest"
+               BlueprintName = "ShipNativeApp-tvOSTests"
+               ReferencedContainer = "container:ShipNativeApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "ServicesNativeApp-tvOS.app"
-            BlueprintName = "ServicesNativeApp-tvOS"
-            ReferencedContainer = "container:ServicesNativeApp.xcodeproj">
+            BuildableName = "ShipNativeApp-tvOS.app"
+            BlueprintName = "ShipNativeApp-tvOS"
+            ReferencedContainer = "container:ShipNativeApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "ServicesNativeApp-tvOS.app"
-            BlueprintName = "ServicesNativeApp-tvOS"
-            ReferencedContainer = "container:ServicesNativeApp.xcodeproj">
+            BuildableName = "ShipNativeApp-tvOS.app"
+            BlueprintName = "ShipNativeApp-tvOS"
+            ReferencedContainer = "container:ShipNativeApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "ServicesNativeApp.app"
-               BlueprintName = "ServicesNativeApp"
-               ReferencedContainer = "container:ServicesNativeApp.xcodeproj">
+               BuildableName = "ShipNativeApp.app"
+               BlueprintName = "ShipNativeApp"
+               ReferencedContainer = "container:ShipNativeApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "ServicesNativeAppTests.xctest"
-               BlueprintName = "ServicesNativeAppTests"
-               ReferencedContainer = "container:ServicesNativeApp.xcodeproj">
+               BuildableName = "ShipNativeAppTests.xctest"
+               BlueprintName = "ShipNativeAppTests"
+               ReferencedContainer = "container:ShipNativeApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ServicesNativeApp.app"
-            BlueprintName = "ServicesNativeApp"
-            ReferencedContainer = "container:ServicesNativeApp.xcodeproj">
+            BuildableName = "ShipNativeApp.app"
+            BlueprintName = "ShipNativeApp"
+            ReferencedContainer = "container:ShipNativeApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ServicesNativeApp.app"
-            BlueprintName = "ServicesNativeApp"
-            ReferencedContainer = "container:ServicesNativeApp.xcodeproj">
+            BuildableName = "ShipNativeApp.app"
+            BlueprintName = "ShipNativeApp"
+            ReferencedContainer = "container:ShipNativeApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
