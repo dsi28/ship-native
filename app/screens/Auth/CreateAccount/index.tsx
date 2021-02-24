@@ -25,7 +25,17 @@ const CreateAccountScreen: React.FC = () => {
       >
         <View style={{ alignItems: 'flex-end' }}>
           <Pressable onPress={() => console.log('Login')}>
-            <Text style={{ color: 'white', fontSize: 20 }}>Log In</Text>
+            {({ pressed }) => (
+              <Text
+                style={{
+                  opacity: pressed ? 0.8 : 1,
+                  color: 'white',
+                  fontSize: 20
+                }}
+              >
+                Log In
+              </Text>
+            )}
           </Pressable>
         </View>
         <View style={{ alignItems: 'center', marginTop: 70 }}>
@@ -80,7 +90,7 @@ const CreateAccountScreen: React.FC = () => {
         <View style={{ alignItems: 'center', marginVertical: 20 }}>
           <Text style={{ color: 'gray' }}>OR</Text>
         </View>
-        <View>
+        <View style={{ marginBottom: 20 }}>
           <Pressable
             style={({ pressed }) => [
               styles.pressableNext,
@@ -105,6 +115,12 @@ const CreateAccountScreen: React.FC = () => {
               </Text>
             )}
           </Pressable>
+        </View>
+        <View style={{ marginHorizontal: 20 }}>
+          <Text style={{ color: 'gray', textAlign: 'center', fontSize: 15 }}>
+            By pressing Continue or Create Account, I agree to ShipX's Terms Of
+            Service and Privacy Policy
+          </Text>
         </View>
       </View>
     </View>
