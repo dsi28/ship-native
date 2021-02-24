@@ -118,8 +118,8 @@ const CreateAccountScreen: React.FC = () => {
         </View>
         <View style={{ marginHorizontal: 20 }}>
           <Text style={{ color: 'gray', textAlign: 'center', fontSize: 15 }}>
-            By pressing Continue or Create Account, I agree to ShipX's Terms Of
-            Service and Privacy Policy
+            By pressing Continue or Create Account, I agree to ShipX&apos;s
+            Terms Of Service and Privacy Policy
           </Text>
         </View>
       </View>
