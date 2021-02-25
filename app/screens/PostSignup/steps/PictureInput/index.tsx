@@ -20,7 +20,7 @@ const PictureInput: React.FC = () => {
   const userPostProfile = useSelector((state: AppState) => state.default);
   const dispatch = useDispatch();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [pictureInput, setPictureInput] = useState<string[]>(
+  const [pictureInput, setPictureInput] = useState<string>(
     userPostProfile.pictures
   );
   const sheetRef = React.useRef();
@@ -31,10 +31,8 @@ const PictureInput: React.FC = () => {
     sheetRef.current.snapTo(0);
     console.log('add img');
   };
-  const handleRemoveImage = (imageIndex: number) => {
-    const tempArray = [...pictureInput];
-    tempArray.splice(imageIndex, 1);
-    setPictureInput(tempArray);
+  const handleRemoveImage = () => {
+    setPictureInput('');
     console.log('remove img');
   };
 
@@ -48,7 +46,7 @@ const PictureInput: React.FC = () => {
       >
         <View style={styles.imageContentContainer}>
           <View style={styles.screenTitleContainer}>
-            <Text style={styles.screenTitle}>Upload your pictures</Text>
+            <Text style={styles.screenTitle}>Upload your profile picture</Text>
           </View>
           <View>
             <View style={styles.screenInputContainer}>
@@ -63,73 +61,6 @@ const PictureInput: React.FC = () => {
                       handleImageChange={handleRemoveImage}
                       imageShown={pictureInput[0]}
                       imageIndex={0}
-                    />
-                  )}
-                </View>
-                <View style={styles.imageView}>
-                  {pictureInput.length < 2 ? (
-                    <PictureUploadComponent
-                      handleImageChange={handleAddImage}
-                    />
-                  ) : (
-                    <PictureUploadComponent
-                      handleImageChange={handleRemoveImage}
-                      imageShown={pictureInput[1]}
-                      imageIndex={1}
-                    />
-                  )}
-                </View>
-                <View style={styles.imageView}>
-                  {pictureInput.length < 3 ? (
-                    <PictureUploadComponent
-                      handleImageChange={handleAddImage}
-                    />
-                  ) : (
-                    <PictureUploadComponent
-                      handleImageChange={handleRemoveImage}
-                      imageShown={pictureInput[2]}
-                      imageIndex={2}
-                    />
-                  )}
-                </View>
-              </View>
-              <View style={styles.imageRowView}>
-                <View style={styles.imageView}>
-                  {pictureInput.length < 4 ? (
-                    <PictureUploadComponent
-                      handleImageChange={handleAddImage}
-                    />
-                  ) : (
-                    <PictureUploadComponent
-                      handleImageChange={handleRemoveImage}
-                      imageShown={pictureInput[3]}
-                      imageIndex={3}
-                    />
-                  )}
-                </View>
-                <View style={styles.imageView}>
-                  {pictureInput.length < 5 ? (
-                    <PictureUploadComponent
-                      handleImageChange={handleAddImage}
-                    />
-                  ) : (
-                    <PictureUploadComponent
-                      handleImageChange={handleRemoveImage}
-                      imageShown={pictureInput[4]}
-                      imageIndex={4}
-                    />
-                  )}
-                </View>
-                <View style={styles.imageView}>
-                  {pictureInput.length < 6 ? (
-                    <PictureUploadComponent
-                      handleImageChange={handleAddImage}
-                    />
-                  ) : (
-                    <PictureUploadComponent
-                      handleImageChange={handleRemoveImage}
-                      imageShown={pictureInput[5]}
-                      imageIndex={5}
                     />
                   )}
                 </View>

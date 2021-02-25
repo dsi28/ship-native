@@ -4,7 +4,7 @@ import { IconButton } from 'react-native-paper';
 import styles from './styles';
 
 interface PictureUploadProps {
-  handleImageChange: (() => void) | ((imageIndex: number) => void);
+  handleImageChange: () => void;
   imageShown?: string;
   imageIndex?: number;
 }
@@ -46,7 +46,7 @@ const PictureUploadComponent: React.FC<PictureUploadProps> = ({
         console.log('press plus outline');
         if (imageIndex) {
           console.log('index exsists');
-          handleImageChange(imageIndex);
+          handleImageChange();
         } else {
           console.log('index not exsist');
           // @ts-ignore

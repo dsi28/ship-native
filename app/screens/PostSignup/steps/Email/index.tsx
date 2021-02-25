@@ -5,7 +5,7 @@ import NextButton from '../../../../components/buttons/NextButton';
 import NavigationService from '../../../../navigation/NavigationService';
 import { setProfileUser } from '../../../../redux/actions/postProfile';
 import { AppState } from '../../../../redux/store/configureStore';
-import EmailInput from '../Email';
+import BirthdayInput from '../BirthdayInput';
 import styles from './styles';
 
 // interface NameInputProps {
@@ -13,7 +13,7 @@ import styles from './styles';
 //   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
 // }
 
-const NameInput: React.FC = () => {
+const EmailInput: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userPostProfile = useSelector((state: AppState) => state.default);
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const NameInput: React.FC = () => {
       <View style={styles.subContainer}>
         <View>
           <View style={styles.screenTitleContainer}>
-            <Text style={styles.screenTitle}>My name is</Text>
+            <Text style={styles.screenTitle}>My email is</Text>
           </View>
           <View>
             <View style={styles.screenInputContainer}>
@@ -42,7 +42,7 @@ const NameInput: React.FC = () => {
           <NextButton
             buttonText="Next"
             onPressHandler={() => {
-              NavigationService.navigate('Email', EmailInput);
+              NavigationService.navigate('Birthday', BirthdayInput);
               dispatch(setProfileUser({ ...userPostProfile, name: nameInput }));
             }}
             isDisabled={nameInput.length < 2}
@@ -52,4 +52,4 @@ const NameInput: React.FC = () => {
     </View>
   );
 };
-export default NameInput;
+export default EmailInput;

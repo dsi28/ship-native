@@ -22,19 +22,16 @@ const styles = StyleSheet.create({
     marginRight: 150
   },
   screenInputContainer: {
-    borderRadius: 10,
-    flexDirection: 'column'
+    borderRadius: 10
     // borderColor: 'black',
     // borderWidth: 10,
   },
-  inputButtonContainer: { marginBottom: 7 },
-
-  //   screenInput: {
-  //     fontSize: 20,
-  //     marginBottom: 20,
-  //     borderBottomWidth: 2,
-  //     borderBottomColor: 'black'
-  //   },
+  screenInput: {
+    fontSize: 20,
+    marginBottom: 20,
+    borderBottomWidth: 2,
+    borderBottomColor: 'black'
+  },
   screenNextButtonContainer: {
     marginBottom: 20,
     bottom: 0,

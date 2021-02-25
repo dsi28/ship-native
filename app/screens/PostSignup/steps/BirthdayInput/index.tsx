@@ -5,7 +5,7 @@ import NextButton from '../../../../components/buttons/NextButton';
 import { IBirthday } from '../../../../models/IUserProfile';
 import NavigationService from '../../../../navigation/NavigationService';
 import { setProfileUser } from '../../../../redux/actions/postProfile';
-import GenderInput from '../GenderInput';
+import PictureInput from '../PictureInput';
 import styles from './styles';
 
 interface BirthdayInputProps {
@@ -69,7 +69,7 @@ const BirthdayInput: React.FC<BirthdayInputProps> = () => {
           <NextButton
             buttonText="Next"
             onPressHandler={() => {
-              NavigationService.navigate('Gender', GenderInput);
+              NavigationService.navigate('Picture', PictureInput);
               dispatch(
                 setProfileUser({
                   ...userPostProfile,
