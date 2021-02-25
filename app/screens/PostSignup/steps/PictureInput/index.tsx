@@ -7,7 +7,6 @@ import RenderContent from '../../../../components/bottomSheet/renderContent';
 import RenderHeader from '../../../../components/bottomSheet/renderHeader';
 import NextButton from '../../../../components/buttons/NextButton';
 import PictureUploadComponent from '../../../../components/pictureUpload';
-import BottomTabsNav from '../../../../navigation/BottomTabNavigation';
 import NavigationService from '../../../../navigation/NavigationService';
 import { setProfileUser } from '../../../../redux/actions/postProfile';
 import styles from './styles';
@@ -75,7 +74,9 @@ const PictureInput: React.FC = () => {
             buttonText="Next"
             onPressHandler={() => {
               console.log('end of profile flow');
-              NavigationService.navigate('FlowStart', BottomTabsNav);
+              // NavigationService.navigate('FlowStart', BottomTabsNav);
+              // TODO keep an eye on this. may need to add the rest of the routes.
+              NavigationService.reset(1, [{ name: 'FlowStart' }]);
               dispatch(
                 setProfileUser({ ...userPostProfile, pictures: pictureInput })
               );

@@ -5,14 +5,13 @@ import WideButton from '../buttons/WideButton';
 import styles from './styles';
 
 interface RenderContentProps {
-  setPictureInput: React.Dispatch<React.SetStateAction<string[]>>;
-  pictureInput: string[];
+  setPictureInput: React.Dispatch<React.SetStateAction<string>>;
+  pictureInput: string;
   sheetRef: React.MutableRefObject<undefined>;
 }
 
 const RenderContent: React.FC<RenderContentProps> = ({
   setPictureInput,
-  pictureInput,
   sheetRef
 }) => (
   <View style={styles.contentContainer}>
@@ -27,7 +26,7 @@ const RenderContent: React.FC<RenderContentProps> = ({
             cropping: true
           }).then((image) => {
             console.log(image);
-            setPictureInput([...pictureInput, image.path]);
+            setPictureInput(image.path);
             // @ts-ignore
             sheetRef.current.snapTo(2);
           });
@@ -45,7 +44,7 @@ const RenderContent: React.FC<RenderContentProps> = ({
             cropping: true
           }).then((image) => {
             console.log(image);
-            setPictureInput([...pictureInput, image.path]);
+            setPictureInput(image.path);
             // @ts-ignore
             sheetRef.current.snapTo(2);
           });
