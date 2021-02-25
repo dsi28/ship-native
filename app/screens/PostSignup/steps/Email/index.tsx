@@ -17,7 +17,25 @@ const EmailInput: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userPostProfile = useSelector((state: AppState) => state.default);
   const dispatch = useDispatch();
-  const [nameInput, setNameInput] = useState(userPostProfile.name);
+  const [emailInput, setEmailInput] = useState(userPostProfile.email);
+  const [isValidated, setIsValidated] = useState(false);
+
+  const validateEmail = (text: string) => {
+    console.log(text);
+    console.log(typeof text);
+    // https://stackoverflow.com/questions/43676695/email-validation-react-native-returning-the-result-as-invalid-for-all-the-e
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (reg.test(text) === false) {
+      console.log('Email is Not Correct');
+      setEmailInput(text);
+      setIsValidated(false);
+    } else {
+      setEmailInput(text);
+      console.log('Email is Correct');
+      setIsValidated(true);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
@@ -29,10 +47,11 @@ const EmailInput: React.FC = () => {
             <View style={styles.screenInputContainer}>
               <TextInput
                 style={styles.screenInput}
-                placeholder="Name.."
-                value={nameInput}
-                onChangeText={(e) => {
-                  setNameInput(e);
+                placeholder="email.."
+                value={emailInput.toString()}
+                onChangeText={(text: string) => {
+                  console.log(text);
+                  validateEmail(text);
                 }}
               />
             </View>
@@ -43,9 +62,11 @@ const EmailInput: React.FC = () => {
             buttonText="Next"
             onPressHandler={() => {
               NavigationService.navigate('Birthday', BirthdayInput);
-              dispatch(setProfileUser({ ...userPostProfile, name: nameInput }));
+              dispatch(
+                setProfileUser({ ...userPostProfile, email: emailInput })
+              );
             }}
-            isDisabled={nameInput.length < 2}
+            isDisabled={!isValidated}
           />
         </View>
       </View>
