@@ -24,6 +24,7 @@ const EmailInput: React.FC = () => {
     console.log(text);
     console.log(typeof text);
     // https://stackoverflow.com/questions/43676695/email-validation-react-native-returning-the-result-as-invalid-for-all-the-e
+    // eslint-disable-next-line no-useless-escape
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (reg.test(text) === false) {
       console.log('Email is Not Correct');
