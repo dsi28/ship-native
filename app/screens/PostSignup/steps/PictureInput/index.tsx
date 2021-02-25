@@ -7,6 +7,8 @@ import RenderContent from '../../../../components/bottomSheet/renderContent';
 import RenderHeader from '../../../../components/bottomSheet/renderHeader';
 import NextButton from '../../../../components/buttons/NextButton';
 import PictureUploadComponent from '../../../../components/pictureUpload';
+import BottomTabsNav from '../../../../navigation/BottomTabNavigation';
+import NavigationService from '../../../../navigation/NavigationService';
 import { setProfileUser } from '../../../../redux/actions/postProfile';
 import styles from './styles';
 
@@ -73,7 +75,7 @@ const PictureInput: React.FC = () => {
             buttonText="Next"
             onPressHandler={() => {
               console.log('end of profile flow');
-              // NavigationService.navigate('Birthday', BirthdayInput);
+              NavigationService.navigate('FlowStart', BottomTabsNav);
               dispatch(
                 setProfileUser({ ...userPostProfile, pictures: pictureInput })
               );
