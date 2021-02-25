@@ -1,11 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import BirthdayInput from './steps/BirthdayInput';
-import GenderInput from './steps/GenderInput';
+import EmailInput from './steps/Email';
 import NameInput from './steps/NameInput';
 import PictureInput from './steps/PictureInput';
-import RoleInput from './steps/RoleInput';
-import ShowMeInput from './steps/ShowMe';
 
 export default function PostSignup() {
   const Stack = createStackNavigator();
@@ -20,10 +18,8 @@ export default function PostSignup() {
       }}
     >
       <Stack.Screen name="Name" component={NameInput} />
+      <Stack.Screen name="Email" component={EmailInput} />
       <Stack.Screen name="Birthday" component={BirthdayInput} />
-      <Stack.Screen name="Gender" component={GenderInput} />
-      <Stack.Screen name="Role" component={RoleInput} />
-      <Stack.Screen name="ShowMe" component={ShowMeInput} />
       <Stack.Screen name="Picture" component={PictureInput} />
     </Stack.Navigator>
   );

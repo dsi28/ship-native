@@ -3,17 +3,16 @@ import { SET_PROFILE_USER } from '../actions/postProfile';
 
 const initialState: IUserProfile = {
   uid: '123', // will change when linked with auth
-  done: false,
+  isSignedUp: false,
   name: '',
+  email: '',
+  phone: '',
   birthday: {
     month: '',
     day: '',
     year: ''
   },
-  gender: '',
-  role: '',
-  showMe: '',
-  pictures: []
+  pictures: ''
 };
 
 interface IAction {

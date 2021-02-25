@@ -6,6 +6,7 @@ import {
   DefaultTheme as PaperDefaultTheme,
   Provider as PaperProvider
 } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
 import RootNavigator from './navigation/RootNavigation';
@@ -39,10 +40,12 @@ const RootNavigation: React.FC = () => {
 };
 
 const EntryPoint: React.FC<EntryPointProps> = () => (
-  <Provider store={store}>
-    <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
-      <RootNavigation />
-    </PersistGate>
-  </Provider>
+  <SafeAreaProvider>
+    <Provider store={store}>
+      <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
+        <RootNavigation />
+      </PersistGate>
+    </Provider>
+  </SafeAreaProvider>
 );
 export default EntryPoint;

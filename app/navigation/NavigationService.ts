@@ -14,7 +14,13 @@ function goBack() {
   navigationRef.current?.goBack();
 }
 
+// TODO keep an eye on this
+function reset(index: number, routes: any) {
+  navigationRef.current?.reset({ index, routes });
+}
+
 export default {
   navigate,
-  goBack
+  goBack,
+  reset
 };

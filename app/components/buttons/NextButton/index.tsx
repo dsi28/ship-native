@@ -28,11 +28,22 @@ const NextButton: React.FC<NextButtonProps> = ({
     }}
     style={{
       ...styles.pressableNext,
-      ...{ backgroundColor: isDisabled ? 'lightgray' : 'black' }
+      ...{ backgroundColor: isDisabled ? 'lightgray' : 'orange' }
     }}
     disabled={isDisabled}
   >
-    <Text style={styles.pressableNextTxt}>{buttonText}</Text>
+    {({ pressed }) => (
+      <Text
+        style={{
+          opacity: pressed ? 0.8 : 1,
+          fontSize: 16,
+          fontWeight: 'bold',
+          color: 'white'
+        }}
+      >
+        {buttonText}
+      </Text>
+    )}
   </Pressable>
 );
 

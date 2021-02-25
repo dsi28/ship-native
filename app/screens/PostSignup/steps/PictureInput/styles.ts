@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     // fontWeight: 'bold',
     color: 'black',
     // width: '70%',
-    marginRight: 150
+    marginRight: 100
   },
   screenInputContainer: {
     borderRadius: 10,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   imageView: {
     flex: 1,
-    marginHorizontal: 5
+    marginHorizontal: 30
   }
 });
 export default styles;

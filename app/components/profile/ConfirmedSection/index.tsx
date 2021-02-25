@@ -12,7 +12,7 @@ interface ConfirmedSectionProps {
 const ConfirmedSection: React.FC<ConfirmedSectionProps> = () => (
   <View style={{ ...styles.sectionContatiner, ...styles.addSectionContainer }}>
     <View style={styles.marginBottom40}>
-      <Text style={styles.aboutSectionTitle}>Jessica confirmed</Text>
+      <Text style={styles.aboutSectionTitle}>Confirmed</Text>
     </View>
     <View>
       <View>
