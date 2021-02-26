@@ -29,7 +29,7 @@ const PictureInput: React.FC = () => {
 
   const handleAddImage = () => {
     // @ts-ignore
-    sheetRef.current.snapTo(0);
+    sheetRef.current.snapTo(2);
     console.log('add img');
   };
   const handleRemoveImage = () => {
@@ -88,8 +88,8 @@ const PictureInput: React.FC = () => {
       <BottomSheet
         // @ts-ignore
         ref={sheetRef}
-        snapPoints={[450, 300, 0]}
-        initialSnap={2}
+        snapPoints={[0, 300, 450]}
+        initialSnap={0}
         borderRadius={10}
         callbackNode={fall}
         enabledGestureInteraction

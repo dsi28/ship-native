@@ -1,14 +1,16 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
+    // height: '100%',
+    height: Dimensions.get('window').height,
     marginHorizontal: 20,
     marginVertical: 10
   },
   subContainer: {
     flexDirection: 'column',
-    height: '100%'
+    // height: '100%'
+    height: Dimensions.get('window').height
   },
   imageContentContainer: {
     height: '80%'
@@ -35,6 +37,7 @@ const styles = StyleSheet.create({
     // borderWidth: 10,
   },
   screenNextButtonContainer: {
+    height: '20%',
     marginBottom: 20,
     bottom: 0,
     right: 0,

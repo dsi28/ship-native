@@ -31,7 +31,7 @@ const BirthdayInput: React.FC<BirthdayInputProps> = () => {
               <View>
                 <Text>Month</Text>
                 <TextInput
-                  autoFocus
+                  autoFocus={false}
                   maxLength={2}
                   style={styles.inputDayMonth}
                   value={birthdayInput.month}
