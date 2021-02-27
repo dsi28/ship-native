@@ -14,8 +14,8 @@ const JobItem: React.FC = () => {
   const userProfile = useSelector((state: AppState) => state.default);
   console.log(userProfile);
   return (
-    <ScrollView>
-      <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      <View style={styles.scrollContainer}>
         <Text>Job Item</Text>
       </View>
     </ScrollView>
