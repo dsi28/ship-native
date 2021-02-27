@@ -1,5 +1,5 @@
 import React from 'react';
-import { Animated, FlatList, Image, View } from 'react-native';
+import { Image, View } from 'react-native';
 import styles from './styles';
 
 interface CarouselItemProps {
@@ -13,36 +13,40 @@ const CarouselItem: React.FC<CarouselItemProps> = ({ item }) => (
 );
 
 interface CarouselSectionProps {
-  data: string[];
+  data: string; // string[];
 }
 const CarouselSection: React.FC<CarouselSectionProps> = ({ data }) => {
-  const scrollX = new Animated.Value(0);
-
+  // const scrollX = new Animated.Value(0);
+  console.log('data pic profile', data);
+  // if (data && data.length > 1) {
+  //   return (
+  //     <View>
+  //       <FlatList
+  //         data={data}
+  //         //   ref={(fList) => {
+  //         //     flatList = fList;
+  //         //   }}
+  //         keyExtractor={(item, index) => `key${index}`}
+  //         horizontal
+  //         pagingEnabled
+  //         scrollEnabled
+  //         snapToAlignment="center"
+  //         scrollEventThrottle={16}
+  //         decelerationRate="fast"
+  //         showsHorizontalScrollIndicator={false}
+  //         renderItem={({ item }) => <CarouselItem item={item} />}
+  //         // TODO remove the { useNativeDriver: false } and we get a warning
+  //         onScroll={Animated.event(
+  //           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+  //           { useNativeDriver: false }
+  //         )}
+  //       />
+  //     </View>
+  //   );
+  // }
   if (data && data.length) {
-    return (
-      <View>
-        <FlatList
-          data={data}
-          //   ref={(fList) => {
-          //     flatList = fList;
-          //   }}
-          keyExtractor={(item, index) => `key${index}`}
-          horizontal
-          pagingEnabled
-          scrollEnabled
-          snapToAlignment="center"
-          scrollEventThrottle={16}
-          decelerationRate="fast"
-          showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => <CarouselItem item={item} />}
-          // TODO remove the { useNativeDriver: false } and we get a warning
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-            { useNativeDriver: false }
-          )}
-        />
-      </View>
-    );
+    // @ts-ignore
+    return <CarouselItem item={data} />;
   }
 
   console.log('Please provide Images');
