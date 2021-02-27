@@ -5,6 +5,8 @@ import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import ItemComponent from '../../components/home/ItemComponent';
+import NavigationService from '../../navigation/NavigationService';
+import JobItem from '../Job/JobItem';
 import styles from './styles';
 
 const HomeScreenTab: React.FC = () => {
@@ -13,6 +15,7 @@ const HomeScreenTab: React.FC = () => {
   console.log(userProfile);
   const pressItemHandler = () => {
     console.log('item pressed');
+    NavigationService.navigate('Job', JobItem);
   };
   return (
     <ScrollView style={{ backgroundColor: '#f3f5fa' }}>
@@ -54,6 +57,7 @@ const Stack = createStackNavigator();
 const HomeStack: React.FC = () => (
   <Stack.Navigator>
     <Stack.Screen name="Home" component={HomeScreenTabs} />
+    <Stack.Screen name="Job" component={JobItem} />
   </Stack.Navigator>
 );
 
