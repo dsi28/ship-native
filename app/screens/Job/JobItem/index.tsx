@@ -1,9 +1,10 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import NextButton from '../../../components/buttons/NextButton';
 import WideButton from '../../../components/buttons/WideButton';
+import ImagePropertyComponent from '../../../components/job/imageProperty';
 import JobPropertyComponent from '../../../components/job/property';
 import styles from './styles';
 
@@ -47,49 +48,13 @@ const JobItem: React.FC = () => {
             title="Notes from Owner"
             value="These are the owners notes. Please read these notes. Thank you for reading these notes."
           />
-          <View style={{ marginBottom: 25 }}>
-            <Text style={{ fontSize: 18, marginBottom: 7, fontWeight: 'bold' }}>
-              Item Images:
-            </Text>
-            <View style={{ flexDirection: 'row' }}>
-              <View
-                style={{
-                  width: 100,
-                  backgroundColor: 'lightgray',
-                  marginRight: 20
-                }}
-              >
-                <Image
-                  style={{
-                    // flex: 2,
-                    height: 100,
-                    width: 100
-                  }}
-                  // resizeMode="contain"
-                  resizeMode="cover"
-                  // eslint-disable-next-line global-require
-                  source={require('../../../assets/images/mango.jpg')}
-                />
-              </View>
-              <View
-                style={{
-                  width: 100,
-                  backgroundColor: 'lightgray'
-                }}
-              >
-                <Image
-                  style={{
-                    height: 100,
-                    width: 100
-                  }}
-                  // resizeMode="contain"
-                  resizeMode="cover"
-                  // eslint-disable-next-line global-require
-                  source={require('../../../assets/images/mango.jpg')}
-                />
-              </View>
-            </View>
-          </View>
+          <ImagePropertyComponent
+            title="Item Images"
+            value={[
+              '../../../assets/images/mango.jpg',
+              '../../../assets/images/mango.jpg'
+            ]}
+          />
         </View>
         <View
           style={{
