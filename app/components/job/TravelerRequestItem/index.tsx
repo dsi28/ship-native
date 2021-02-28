@@ -12,12 +12,12 @@ const TravelerRequestItemComponent: React.FC<TravelerRequestItemComponentProps> 
 }) => (
   <Pressable onPress={onPressHandler}>
     <View style={styles.cardItemContainer}>
-      <View style={{ flexDirection: 'row', width: '100%' }}>
-        <View style={{ marginRight: 30 }}>
+      <View style={styles.subContainer}>
+        <View style={styles.marginRight30}>
           <View style={styles.avatarView}>
             {/* TODO get seller profile pic or initial */}
             <Image
-              style={{ height: 90, width: 90, borderRadius: 45 }}
+              style={styles.travelerImage}
               // resizeMode="contain"
               resizeMode="cover"
               // eslint-disable-next-line global-require, import/no-dynamic-require
@@ -38,46 +38,30 @@ const TravelerRequestItemComponent: React.FC<TravelerRequestItemComponentProps> 
             </View>
           </View>
         </View>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
+        <View style={styles.detailsContainer}>
           <View style={styles.cardDetailsView}>
             <View style={styles.topRow}>
-              <View style={{ flexDirection: 'column' }}>
-                <View>
+              <View style={styles.flexDirectionColumn}>
+                <View style={styles.nameContainer}>
                   {/* TODO get item name */}
-                  <Text
-                    style={{
-                      fontWeight: 'bold',
-                      color: 'orange',
-                      fontSize: 20
-                    }}
-                  >
-                    James Rodriguez
-                  </Text>
+                  <Text style={styles.nameText}>James Rodriguez</Text>
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: 15 }}>
+                <View style={styles.detailContainer}>
                   {/* TODO get destination */}
                   <View>
-                    <Text style={{ fontSize: 15, color: 'gray' }}>
-                      Flying To:
-                    </Text>
+                    <Text style={styles.detailTitle}>Flying To:</Text>
                   </View>
-                  <View style={{ marginLeft: 5 }}>
-                    <Text style={{ fontSize: 15, color: 'black' }}>
-                      California, USA
-                    </Text>
+                  <View style={styles.detailValueContainer}>
+                    <Text style={styles.detailValueText}>California, USA</Text>
                   </View>
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                <View style={styles.detailContainer}>
                   {/* TODO get size */}
                   <View>
-                    <Text style={{ fontSize: 15, color: 'gray' }}>
-                      Flying On:
-                    </Text>
+                    <Text style={styles.detailTitle}>Flying On:</Text>
                   </View>
-                  <View style={{ marginLeft: 5 }}>
-                    <Text style={{ fontSize: 15, color: 'black' }}>
-                      Jul 22, 2019
-                    </Text>
+                  <View style={styles.detailValueContainer}>
+                    <Text style={styles.detailValueText}>Jul 22, 2019</Text>
                   </View>
                 </View>
               </View>

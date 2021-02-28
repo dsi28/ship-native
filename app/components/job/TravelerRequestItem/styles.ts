@@ -13,6 +13,20 @@ const styles = StyleSheet.create({
     // elevation: 5
     backgroundColor: 'white'
   },
+  subContainer: { flexDirection: 'row', width: '100%' },
+  avatarView: {
+    width: 90,
+    backgroundColor: 'lightgray',
+    height: 90,
+    borderRadius: 45,
+    // borderWidth: 5,
+    // borderColor: 'lightgray',
+    borderColor: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10
+  },
+  travelerImage: { height: '100%', width: '100%', borderRadius: 45 },
   bottomRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -25,48 +39,21 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginTop: 5
   },
-  avatarView: {
-    width: 90,
-    backgroundColor: 'lightgray',
-    height: 90,
-    // borderRadius: 30,
-    // borderWidth: 5,
-    // borderColor: 'lightgray',
-    borderColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 10
-  },
+
   avatarLetter: { fontSize: 30 },
   iconView: {
     marginRight: 5,
     alignItems: 'center',
     justifyContent: 'center'
   },
-  buttonPresable: {
-    elevation: 8,
-    backgroundColor: 'white',
-    borderRadius: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    borderColor: 'black',
-    borderWidth: 3
-  },
-  buttonDeclineText: {
-    fontSize: 18,
+  detailsContainer: { flex: 1, flexDirection: 'row' },
+  nameText: {
     fontWeight: 'bold',
-    alignSelf: 'center',
-    textTransform: 'uppercase'
+    color: 'orange',
+    fontSize: 20
   },
-  rightButtonView: { flex: 1, marginLeft: 5 },
-  leftButtonView: { flex: 1, marginRight: 5 },
-  buttonAcceptText: {
-    fontSize: 18,
-    color: 'black',
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    textTransform: 'uppercase'
-  },
+  nameContainer: { marginBottom: 5 },
+  detailContainer: { flexDirection: 'row', marginTop: 10 },
   cardDetailsView: {
     flexDirection: 'column',
     marginLeft: 5,
@@ -74,8 +61,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1
   },
+  detailTitle: { fontSize: 15, color: 'gray' },
+  detailValueContainer: { marginLeft: 5 },
+  detailValueText: { fontSize: 15, color: 'black' },
 
   // reusable styles:
+  marginRight30: { marginRight: 30 },
+  flexDirectionColumn: { flexDirection: 'column' },
   flexDirectionRow: { flexDirection: 'row' },
   fontSize17: { fontSize: 17 },
   fontSize30: { fontSize: 30 },

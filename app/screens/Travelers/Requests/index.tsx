@@ -14,8 +14,8 @@ const TravelerRequests: React.FC = () => {
     // NavigationService.navigate('Job', JobItem);
   };
   return (
-    <ScrollView style={{ backgroundColor: '#f3f5fa' }}>
-      <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      <View style={styles.scrollContainer}>
         <TravelerRequestItemComponent onPressHandler={pressItemHandler} />
         <TravelerRequestItemComponent onPressHandler={pressItemHandler} />
       </View>
