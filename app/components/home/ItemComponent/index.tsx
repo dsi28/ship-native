@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 
@@ -14,7 +14,14 @@ const ItemComponent: React.FC<ItemComponentProps> = ({ onPressHandler }) => (
         <View style={{ marginRight: 10 }}>
           <View style={styles.avatarView}>
             {/* TODO get seller profile pic or initial */}
-            <Text style={styles.avatarLetter}>D</Text>
+            {/* <Text style={styles.avatarLetter}>D</Text> */}
+            <Image
+              style={{ height: 90, width: 90 }}
+              // resizeMode="contain"
+              resizeMode="cover"
+              // eslint-disable-next-line global-require, import/no-dynamic-require
+              source={require('../../../assets/images/mango.jpg')}
+            />
           </View>
           <View style={styles.flexDirectionRow}>
             <View

@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
 import ImagePropertyComponent from '../../../components/job/imageProperty';
 import JobPropertyComponent from '../../../components/job/property';
+import NavigationService from '../../../navigation/NavigationService';
+import TravelerRequests from '../../Travelers/Requests';
 import styles from './styles';
 
 // interface ProfileProps {
@@ -68,7 +70,13 @@ const JobItem: React.FC = () => {
           <View style={styles.buttonContainer}>
             <WideButton
               buttonText="View Traveler requests"
-              onPressHandler={() => console.log('view traveler reqeuests')}
+              onPressHandler={() => {
+                console.log('view traveler reqeuests');
+                NavigationService.navigate(
+                  'Traveler Requests',
+                  TravelerRequests
+                );
+              }}
               isSelected
               btnBackgoundColor="orange"
               btnTextColor="white"
