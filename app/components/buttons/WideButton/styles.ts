@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: '100%', // substract sum of marginHorizontal(10+10)
     borderRadius: 30,
-    borderColor: 'black',
+    // borderColor: 'black',
     borderWidth: 2,
     // marginHorizontal: 10,
     flexDirection: 'row',
@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
   },
   pressableNextTxt: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: 'black'
+    fontWeight: 'bold'
+    // color: 'black'
   }
 });
 export default styles;

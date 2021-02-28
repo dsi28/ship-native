@@ -61,6 +61,9 @@ const ReviewSection: React.FC<ReviewSectionProps> = () => (
                 NavigationService.navigate('Reviews');
               }}
               isSelected={false}
+              btnBackgoundColor="mediumvioletred"
+              btnBorderColor="mediumvioletred"
+              btnTextColor="black"
             />
           </View>
         </View>
