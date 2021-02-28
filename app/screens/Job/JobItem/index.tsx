@@ -74,7 +74,6 @@ const JobItem: React.FC = () => {
             >
               <Image
                 style={{
-                  // flex: 2,
                   height: 100,
                   width: 100
                 }}
