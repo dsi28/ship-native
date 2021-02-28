@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
-import NextButton from '../../../components/buttons/NextButton';
 import WideButton from '../../../components/buttons/WideButton';
 import ImagePropertyComponent from '../../../components/job/imageProperty';
 import JobPropertyComponent from '../../../components/job/property';
@@ -67,17 +66,23 @@ const JobItem: React.FC = () => {
         </View>
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
-            <NextButton
+            <WideButton
               buttonText="View Traveler requests"
               onPressHandler={() => console.log('view traveler reqeuests')}
-              isDisabled={false}
+              isSelected
+              btnBackgoundColor="orange"
+              btnTextColor="white"
+              btnBorderColor="orange"
             />
           </View>
           <View style={styles.buttonContainer}>
-            <NextButton
+            <WideButton
               buttonText="Edit Job"
               onPressHandler={() => console.log('edit job')}
-              isDisabled={false}
+              isSelected
+              btnBackgoundColor="bisque"
+              btnTextColor="orange"
+              btnBorderColor="orange"
             />
           </View>
           <View>
@@ -85,6 +90,9 @@ const JobItem: React.FC = () => {
               buttonText="Close Job"
               onPressHandler={() => console.log('close job')}
               isSelected
+              btnBackgoundColor="white"
+              btnTextColor="orange"
+              btnBorderColor="orange"
             />
           </View>
         </View>

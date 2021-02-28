@@ -6,12 +6,18 @@ interface WideButtonProps {
   buttonText: string;
   onPressHandler: () => void;
   isSelected: boolean;
+  btnBackgoundColor: string;
+  btnTextColor: string;
+  btnBorderColor: string;
 }
 
 const WideButton: React.FC<WideButtonProps> = ({
   buttonText,
   onPressHandler,
-  isSelected
+  isSelected,
+  btnBackgoundColor,
+  btnTextColor,
+  btnBorderColor
 }) => (
   <Pressable
     onPress={() => {
@@ -20,12 +26,24 @@ const WideButton: React.FC<WideButtonProps> = ({
     style={{
       ...styles.pressableNext,
       ...{
-        backgroundColor: isSelected ? '#e91e63' : 'transparent'
+        backgroundColor: isSelected ? btnBackgoundColor : 'transparent',
+        borderColor: btnBorderColor
       }
       // change this color to another color that not black or gray
     }}
   >
-    <Text style={styles.pressableNextTxt}>{buttonText}</Text>
+    {({ pressed }) => (
+      <Text
+        style={{
+          opacity: pressed ? 0.8 : 1,
+          fontSize: 20,
+          fontWeight: 'bold',
+          color: btnTextColor
+        }}
+      >
+        {buttonText}
+      </Text>
+    )}
   </Pressable>
 );
 
