@@ -20,13 +20,9 @@ const JobItem: React.FC = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
-        <View style={{ marginHorizontal: 15 }}>
+        <View style={styles.itemDetailsContainer}>
           <View>
-            <Text
-              style={{ fontWeight: 'bold', fontSize: 30, marginBottom: 30 }}
-            >
-              Item Details
-            </Text>
+            <Text style={styles.detailsHeader}>Item Details</Text>
           </View>
           {/* TODO get real item detail values */}
           <JobPropertyComponent title="Item Name" value="Alphonso Mangoes" />
@@ -56,84 +52,28 @@ const JobItem: React.FC = () => {
             ]}
           />
         </View>
-        <View
-          style={{
-            backgroundColor: '#f3f5fa',
-            width: '100%',
-            paddingTop: 30,
-            paddingBottom: 10,
-            paddingHorizontal: 15
-          }}
-        >
-          <View style={{ marginBottom: 30 }}>
-            <Text style={{ fontSize: 25, fontWeight: 'bold' }}>
-              Receiver Details
-            </Text>
+        <View style={styles.receiverContainer}>
+          <View style={styles.receiverHeaderContainer}>
+            <Text style={styles.receiverHeader}>Receiver Details</Text>
           </View>
           <JobPropertyComponent title="Name" value="Alice Chaser" />
           <JobPropertyComponent title="Email" value="achaser@email.com" />
         </View>
-        <View
-          style={{
-            backgroundColor: '#f3f5fa',
-            width: '100%',
-            paddingTop: 30,
-            paddingBottom: 10,
-            paddingHorizontal: 15
-          }}
-        >
-          <View style={{ marginBottom: 30 }}>
-            <Text style={{ fontSize: 25, fontWeight: 'bold' }}>
-              Receiver Details
-            </Text>
-          </View>
-          <JobPropertyComponent title="Name" value="Alice Chaser" />
-          <JobPropertyComponent title="Email" value="achaser@email.com" />
-        </View>
-        <View
-          style={{
-            backgroundColor: '#87CEEB',
-            width: '100%',
-            paddingVertical: 25,
-            paddingHorizontal: 15
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 25,
-              textAlign: 'center',
-              color: 'white'
-            }}
-          >
+        <View style={styles.paymentContainer}>
+          <Text style={styles.paymentText}>
             Traveler will be paid on delivery
           </Text>
-          <Text
-            style={{
-              fontSize: 25,
-              fontWeight: 'bold',
-              textAlign: 'center',
-              color: 'white'
-            }}
-          >
-            $60
-          </Text>
+          <Text style={styles.paymentAmount}>$60</Text>
         </View>
-        <View
-          style={{
-            // backgroundColor: '#87CEEB',
-            width: '100%',
-            paddingVertical: 25,
-            paddingHorizontal: 15
-          }}
-        >
-          <View style={{ marginBottom: 20 }}>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
             <NextButton
               buttonText="View Traveler requests"
               onPressHandler={() => console.log('view traveler reqeuests')}
               isDisabled={false}
             />
           </View>
-          <View style={{ marginBottom: 20 }}>
+          <View style={styles.buttonContainer}>
             <NextButton
               buttonText="Edit Job"
               onPressHandler={() => console.log('edit job')}

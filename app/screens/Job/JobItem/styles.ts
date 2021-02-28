@@ -14,38 +14,40 @@ const styles = StyleSheet.create({
     height: '100%',
     flexDirection: 'column'
   },
-  imageRowView: {
-    flex: 1,
-    flexDirection: 'row'
-    // backgroundColor: 'red',
-  },
-  screenInputContainer: {
-    borderRadius: 10,
-    flexDirection: 'column',
-    // backgroundColor: 'yellow',
+  itemDetailsContainer: { marginHorizontal: 15 },
+  detailsHeader: { fontWeight: 'bold', fontSize: 30, marginBottom: 30 },
+  receiverContainer: {
+    backgroundColor: '#f3f5fa',
     width: '100%',
-    height: '80%'
-    // borderColor: 'black',
-    // borderWidth: 10,
+    paddingTop: 30,
+    paddingBottom: 10,
+    paddingHorizontal: 15
   },
-  imageView: {
-    flex: 1,
-    marginHorizontal: 30
-  },
-  imageContainer: { width: '100%' },
-  imageSubContainer: {
+  receiverHeaderContainer: { marginBottom: 30 },
+  receiverHeader: { fontSize: 25, fontWeight: 'bold' },
+  paymentContainer: {
+    backgroundColor: '#87CEEB',
     width: '100%',
-    backgroundColor: 'lightgray',
-    height: '100%',
-    borderRadius: 1,
-    borderWidth: 5,
-    // borderColor: 'lightgray',
-    borderColor: 'black'
+    paddingVertical: 25,
+    paddingHorizontal: 15
   },
-  imagePhoto: {
-    flex: 2,
-    height: undefined,
-    width: undefined
-  }
+  paymentText: {
+    fontSize: 25,
+    textAlign: 'center',
+    color: 'white'
+  },
+  paymentAmount: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white'
+  },
+  buttonsContainer: {
+    // backgroundColor: '#87CEEB',
+    width: '100%',
+    paddingVertical: 25,
+    paddingHorizontal: 15
+  },
+  buttonContainer: { marginBottom: 20 }
 });
 export default styles;
