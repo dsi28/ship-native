@@ -10,9 +10,9 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     // backgroundColor: 'blue',
-    marginHorizontal: 15,
     marginTop: 30,
-    height: '100%'
+    height: '100%',
+    flexDirection: 'column'
   },
   imageRowView: {
     flex: 1,
