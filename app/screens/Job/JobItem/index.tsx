@@ -2,6 +2,8 @@ import React from 'react';
 import { Image, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
+import NextButton from '../../../components/buttons/NextButton';
+import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
 import styles from './styles';
 
@@ -150,6 +152,36 @@ const JobItem: React.FC = () => {
           >
             $60
           </Text>
+        </View>
+        <View
+          style={{
+            // backgroundColor: '#87CEEB',
+            width: '100%',
+            paddingVertical: 25,
+            paddingHorizontal: 15
+          }}
+        >
+          <View style={{ marginBottom: 20 }}>
+            <NextButton
+              buttonText="View Traveler requests"
+              onPressHandler={() => console.log('view traveler reqeuests')}
+              isDisabled={false}
+            />
+          </View>
+          <View style={{ marginBottom: 20 }}>
+            <NextButton
+              buttonText="Edit Job"
+              onPressHandler={() => console.log('edit job')}
+              isDisabled={false}
+            />
+          </View>
+          <View>
+            <WideButton
+              buttonText="Close Job"
+              onPressHandler={() => console.log('close job')}
+              isSelected
+            />
+          </View>
         </View>
       </View>
     </ScrollView>
