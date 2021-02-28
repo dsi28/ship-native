@@ -36,7 +36,7 @@ const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ userProfile }) => (
             // resizeMode="contain"
             resizeMode="cover"
             source={{
-              uri: userProfile.pictures[0]
+              uri: userProfile.pictures
             }}
           />
         </View>

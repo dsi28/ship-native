@@ -60,7 +60,7 @@ const PictureInput: React.FC = () => {
                   ) : (
                     <PictureUploadComponent
                       handleImageChange={handleRemoveImage}
-                      imageShown={pictureInput[0]}
+                      imageShown={pictureInput}
                       imageIndex={0}
                     />
                   )}
