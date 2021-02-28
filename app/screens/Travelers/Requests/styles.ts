@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     width: 90,
     backgroundColor: 'lightgray',
     height: 90,
-    // borderRadius: 30,
+    borderRadius: 45,
     // borderWidth: 5,
     // borderColor: 'lightgray',
     borderColor: 'black',

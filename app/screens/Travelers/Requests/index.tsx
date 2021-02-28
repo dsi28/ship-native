@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
@@ -19,10 +19,16 @@ const TravelerRequests: React.FC = () => {
         <Pressable onPress={pressItemHandler}>
           <View style={styles.cardItemContainer}>
             <View style={{ flexDirection: 'row', width: '100%' }}>
-              <View style={{ marginRight: 10 }}>
+              <View style={{ marginRight: 30 }}>
                 <View style={styles.avatarView}>
                   {/* TODO get seller profile pic or initial */}
-                  <Text style={styles.avatarLetter}>D</Text>
+                  <Image
+                    style={{ height: 90, width: 90, borderRadius: 45 }}
+                    // resizeMode="contain"
+                    resizeMode="cover"
+                    // eslint-disable-next-line global-require, import/no-dynamic-require
+                    source={require('../../../assets/images/mango.jpg')}
+                  />
                 </View>
                 <View style={styles.flexDirectionRow}>
                   <View
@@ -34,7 +40,7 @@ const TravelerRequests: React.FC = () => {
                     <MaterialIcon
                       name="location-pin"
                       size={20}
-                      color="#e91e63"
+                      color="#87CEEB"
                     />
                   </View>
                   <View>
@@ -50,19 +56,19 @@ const TravelerRequests: React.FC = () => {
                         {/* TODO get item name */}
                         <Text
                           style={{
-                            ...styles.fontSize17,
-                            ...{ fontWeight: 'bold', color: '#e91e63' }
+                            fontWeight: 'bold',
+                            color: 'orange',
+                            fontSize: 20
                           }}
                         >
-                          Alphanso Mangoes
+                          James Rodriguez
                         </Text>
                       </View>
-
-                      <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                      <View style={{ flexDirection: 'row', marginTop: 15 }}>
                         {/* TODO get destination */}
                         <View>
                           <Text style={{ fontSize: 15, color: 'gray' }}>
-                            To:
+                            Flying To:
                           </Text>
                         </View>
                         <View style={{ marginLeft: 5 }}>
@@ -75,20 +81,7 @@ const TravelerRequests: React.FC = () => {
                         {/* TODO get size */}
                         <View>
                           <Text style={{ fontSize: 15, color: 'gray' }}>
-                            Size:
-                          </Text>
-                        </View>
-                        <View style={{ marginLeft: 5 }}>
-                          <Text style={{ fontSize: 15, color: 'black' }}>
-                            Large
-                          </Text>
-                        </View>
-                      </View>
-                      <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                        {/* TODO get delivery date */}
-                        <View>
-                          <Text style={{ fontSize: 15, color: 'gray' }}>
-                            Delivery by:
+                            Flying On:
                           </Text>
                         </View>
                         <View style={{ marginLeft: 5 }}>
@@ -97,12 +90,6 @@ const TravelerRequests: React.FC = () => {
                           </Text>
                         </View>
                       </View>
-                    </View>
-                    <View>
-                      {/* TODO get bid price */}
-                      <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-                        $60
-                      </Text>
                     </View>
                   </View>
                 </View>
