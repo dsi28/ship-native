@@ -106,6 +106,51 @@ const JobItem: React.FC = () => {
           <JobPropertyComponent title="Name" value="Alice Chaser" />
           <JobPropertyComponent title="Email" value="achaser@email.com" />
         </View>
+        <View
+          style={{
+            backgroundColor: '#f3f5fa',
+            width: '100%',
+            paddingTop: 30,
+            paddingBottom: 10,
+            paddingHorizontal: 15
+          }}
+        >
+          <View style={{ marginBottom: 30 }}>
+            <Text style={{ fontSize: 25, fontWeight: 'bold' }}>
+              Receiver Details
+            </Text>
+          </View>
+          <JobPropertyComponent title="Name" value="Alice Chaser" />
+          <JobPropertyComponent title="Email" value="achaser@email.com" />
+        </View>
+        <View
+          style={{
+            backgroundColor: '#87CEEB',
+            width: '100%',
+            paddingVertical: 25,
+            paddingHorizontal: 15
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 25,
+              textAlign: 'center',
+              color: 'white'
+            }}
+          >
+            Traveler will be paid on delivery
+          </Text>
+          <Text
+            style={{
+              fontSize: 25,
+              fontWeight: 'bold',
+              textAlign: 'center',
+              color: 'white'
+            }}
+          >
+            $60
+          </Text>
+        </View>
       </View>
     </ScrollView>
   );
