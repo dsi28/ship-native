@@ -8,6 +8,7 @@ import ItemComponent from '../../components/home/ItemComponent';
 import NavigationService from '../../navigation/NavigationService';
 import JobItem from '../Job/JobItem';
 import TravelerRequests from '../Travelers/Requests';
+import TravelerScreen from '../Travelers/TravelerScreen';
 import styles from './styles';
 
 const HomeScreenTab: React.FC = () => {
@@ -60,6 +61,7 @@ const HomeStack: React.FC = () => (
     <Stack.Screen name="Home" component={HomeScreenTabs} />
     <Stack.Screen name="Job" component={JobItem} />
     <Stack.Screen name="Traveler Requests" component={TravelerRequests} />
+    <Stack.Screen name="View Traveler" component={TravelerScreen} />
   </Stack.Navigator>
 );
 

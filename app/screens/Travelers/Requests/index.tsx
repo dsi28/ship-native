@@ -3,6 +3,8 @@ import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import TravelerRequestItemComponent from '../../../components/job/TravelerRequestItem';
+import NavigationService from '../../../navigation/NavigationService';
+import TravelerScreen from '../TravelerScreen';
 import styles from './styles';
 
 const TravelerRequests: React.FC = () => {
@@ -11,7 +13,7 @@ const TravelerRequests: React.FC = () => {
   console.log(userProfile);
   const pressItemHandler = () => {
     console.log('item pressed');
-    // NavigationService.navigate('Job', JobItem);
+    NavigationService.navigate('View Traveler', TravelerScreen);
   };
   return (
     <ScrollView style={styles.container}>
