@@ -19,7 +19,7 @@ const TravelerScreen: React.FC = () => {
       <View style={styles.scrollContainer}>
         <TravelerHeaderComponent />
         <TravelerCDComponent />
-        <View style={{ marginTop: 20, marginHorizontal: 25 }}>
+        <View style={styles.travelerContainer}>
           <JobPropertyComponent title="Flying on" value="January 12, 2021" />
           <JobPropertyComponent title="Flying to" value="Florida, USA" />
           <JobPropertyComponent
@@ -32,8 +32,8 @@ const TravelerScreen: React.FC = () => {
           />
         </View>
         <DarkBackgroundPropertyComponent />
-        <View style={{ marginTop: 25, marginHorizontal: 25 }}>
-          <View style={{ marginBottom: 20 }}>
+        <View style={styles.travelerContainer}>
+          <View style={styles.buttonContainer}>
             <WideButton
               buttonText="Accept Request"
               onPressHandler={() => console.log('Accept Request')}
@@ -43,7 +43,7 @@ const TravelerScreen: React.FC = () => {
               btnBorderColor="orange"
             />
           </View>
-          <View style={{ marginBottom: 20 }}>
+          <View style={styles.bottomButtonContainer}>
             <WideButton
               buttonText="Decline"
               onPressHandler={() => console.log('Decline Request')}
