@@ -69,7 +69,7 @@ const JobItem: React.FC = () => {
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <WideButton
-              buttonText="View Traveler requests"
+              buttonText="View Traveler Requests"
               onPressHandler={() => {
                 console.log('view traveler reqeuests');
                 NavigationService.navigate(
