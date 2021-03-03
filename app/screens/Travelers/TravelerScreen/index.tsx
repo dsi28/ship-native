@@ -1,10 +1,11 @@
 import React from 'react';
-import { Dimensions, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
+import TravelerCDComponent from '../../../components/Traveler/ChatDistance';
+import DarkBackgroundPropertyComponent from '../../../components/Traveler/DarkBackGroundProperty';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
 import styles from './styles';
 
@@ -17,73 +18,7 @@ const TravelerScreen: React.FC = () => {
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
         <TravelerHeaderComponent />
-        <View
-          style={{
-            width: Dimensions.get('screen').width,
-            backgroundColor: '#f3f5fa',
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-            marginTop: 30,
-            flexDirection: 'row',
-            justifyContent: 'space-between'
-          }}
-        >
-          <View style={{ flexDirection: 'row' }}>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: 5
-              }}
-            >
-              <MaterialIcon name="location-pin" size={30} color="#87CEEB" />
-            </View>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'mediumvioletred',
-                  fontWeight: 'bold'
-                }}
-              >
-                100 Miles Away
-              </Text>
-            </View>
-          </View>
-
-          <View style={{ flexDirection: 'row' }}>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: 5
-              }}
-            >
-              <MaterialIcon name="chat" size={30} color="mediumvioletred" />
-            </View>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'mediumvioletred',
-                  fontWeight: 'bold'
-                }}
-              >
-                Chat
-              </Text>
-            </View>
-          </View>
-        </View>
+        <TravelerCDComponent />
         <View style={{ marginTop: 20, marginHorizontal: 25 }}>
           <JobPropertyComponent title="Flying on" value="January 12, 2021" />
           <JobPropertyComponent title="Flying to" value="Florida, USA" />
@@ -96,18 +31,7 @@ const TravelerScreen: React.FC = () => {
             value="1 day before traveling"
           />
         </View>
-        <View
-          style={{
-            paddingTop: 20,
-            paddingHorizontal: 25,
-            backgroundColor: '#f3f5fa'
-          }}
-        >
-          <JobPropertyComponent
-            title="About Travler"
-            value="This is what the travler is about. The traveler is about this. Blah, blah, blah."
-          />
-        </View>
+        <DarkBackgroundPropertyComponent />
         <View style={{ marginTop: 25, marginHorizontal: 25 }}>
           <View style={{ marginBottom: 20 }}>
             <WideButton
