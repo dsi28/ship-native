@@ -95,6 +95,18 @@ const TravelerScreen: React.FC = () => {
             value="1 day before traveling"
           />
         </View>
+        <View
+          style={{
+            paddingTop: 20,
+            paddingHorizontal: 25,
+            backgroundColor: '#f3f5fa'
+          }}
+        >
+          <JobPropertyComponent
+            title="About Travler"
+            value="This is what the travler is about. The traveler is about this. Blah, blah, blah."
+          />
+        </View>
       </View>
     </ScrollView>
   );
