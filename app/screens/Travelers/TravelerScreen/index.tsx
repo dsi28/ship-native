@@ -3,6 +3,7 @@ import { Dimensions, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
+import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
 import styles from './styles';
@@ -106,6 +107,28 @@ const TravelerScreen: React.FC = () => {
             title="About Travler"
             value="This is what the travler is about. The traveler is about this. Blah, blah, blah."
           />
+        </View>
+        <View style={{ marginTop: 25, marginHorizontal: 25 }}>
+          <View style={{ marginBottom: 20 }}>
+            <WideButton
+              buttonText="Accept Request"
+              onPressHandler={() => console.log('Accept Request')}
+              isSelected
+              btnBackgoundColor="orange"
+              btnTextColor="white"
+              btnBorderColor="orange"
+            />
+          </View>
+          <View style={{ marginBottom: 20 }}>
+            <WideButton
+              buttonText="Decline"
+              onPressHandler={() => console.log('Decline Request')}
+              isSelected
+              btnBackgoundColor="bisque"
+              btnTextColor="orange"
+              btnBorderColor="orange"
+            />
+          </View>
         </View>
       </View>
     </ScrollView>
