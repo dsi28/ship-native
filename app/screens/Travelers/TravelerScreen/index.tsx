@@ -3,6 +3,7 @@ import { Dimensions, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
+import JobPropertyComponent from '../../../components/job/property';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
 import styles from './styles';
 
@@ -81,6 +82,18 @@ const TravelerScreen: React.FC = () => {
               </Text>
             </View>
           </View>
+        </View>
+        <View style={{ marginTop: 20, marginHorizontal: 25 }}>
+          <JobPropertyComponent title="Flying on" value="January 12, 2021" />
+          <JobPropertyComponent title="Flying to" value="Florida, USA" />
+          <JobPropertyComponent
+            title="Address"
+            value="167 NW 23rd St, Miami, FL 33127"
+          />
+          <JobPropertyComponent
+            title="Receive the item from the sender prior"
+            value="1 day before traveling"
+          />
         </View>
       </View>
     </ScrollView>
