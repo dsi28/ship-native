@@ -6,7 +6,7 @@ import styles from './styles';
 interface TravelerHeaderComponentProps {}
 
 const TravelerHeaderComponent: React.FC<TravelerHeaderComponentProps> = () => (
-  <View style={{ alignItems: 'center' }}>
+  <View style={styles.container}>
     <View style={styles.avatarView}>
       {/* TODO get seller profile pic or initial */}
       <Image
@@ -17,22 +17,16 @@ const TravelerHeaderComponent: React.FC<TravelerHeaderComponentProps> = () => (
         source={require('../../../assets/images/mango.jpg')}
       />
     </View>
-    <View style={{ marginTop: 15 }}>
-      <Text style={{ fontSize: 25, fontWeight: 'bold' }}>James Rodriguez</Text>
+    <View style={styles.titleContainer}>
+      <Text style={styles.titleText}>James Rodriguez</Text>
     </View>
-    <View style={{ flexDirection: 'row', marginTop: 10 }}>
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginRight: 5
-        }}
-      >
+    <View style={styles.reviewContainer}>
+      <View style={styles.reviewIconContainer}>
         <MaterialIcon name="star" size={20} color="mediumvioletred" />
       </View>
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.reviewTextContainer}>
         {/* TODO get review average + number of reviews */}
-        <Text style={{ fontSize: 20, color: 'gray' }}>4.5 (4)</Text>
+        <Text style={styles.reviewText}>4.5 (4)</Text>
       </View>
     </View>
   </View>
