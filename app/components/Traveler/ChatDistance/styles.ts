@@ -1,18 +1,29 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  avatarView: {
-    width: 110,
-    backgroundColor: 'lightgray',
-    height: 110,
-    borderRadius: 55,
-    // borderWidth: 5,
-    // borderColor: 'lightgray',
-    borderColor: 'black',
+  container: {
+    width: Dimensions.get('screen').width,
+    backgroundColor: '#f3f5fa',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    marginTop: 30,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  cdContainer: { flexDirection: 'row' },
+  cdIconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 10
+    marginRight: 5
   },
-  travelerImage: { height: '100%', width: '100%', borderRadius: 55 }
+  cdTextContainer: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  cdText: {
+    fontSize: 20,
+    color: 'mediumvioletred',
+    fontWeight: 'bold'
+  }
 });
 export default styles;
