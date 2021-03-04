@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: { flexDirection: 'row', flexWrap: 'wrap' },
-  textFont: { fontSize: 20 },
+  textFont: { fontSize: 15, lineHeight: 30, marginBottom: 5 },
   showMoreText: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: 'bold',
     alignSelf: 'baseline',
     justifyContent: 'center'

@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'lightgray'
   },
-  reviewHeaderView: { flexDirection: 'row', marginBottom: 15 },
+  reviewHeaderView: { flexDirection: 'row', marginBottom: 5 },
   reviewAvatar: {
     width: 50,
     // backgroundColor: 'lightgray',
@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
   },
   reviewerDetails: {
     flexDirection: 'column',
-    marginHorizontal: 10,
-    justifyContent: 'center'
+    marginHorizontal: 10
+    // justifyContent: 'center'
   },
   reviewerName: { fontSize: 17, fontWeight: 'bold' },
   reviewDate: {
