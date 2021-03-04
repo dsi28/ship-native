@@ -12,7 +12,7 @@ const ReadMoreComponent: React.FC<ReadMoreProps> = ({
   maxLength = 100
 }) => {
   const [isShownAll, setIsShownAll] = useState(false);
-
+  // TODO add font size as prop
   return (
     <View style={styles.container}>
       <Text style={styles.textFont}>
