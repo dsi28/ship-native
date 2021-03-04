@@ -27,22 +27,9 @@ const ProfileReviews: React.FC<ProfileReviewsProps> = () => (
 
         <View style={styles.flexDirectionCol}>
           <View style={styles.reviewHeaderView}>
-            <View
-              style={{
-                width: 50,
-                backgroundColor: 'lightgray',
-                height: 50,
-                borderRadius: 25,
-                // borderWidth: 5,
-                // borderColor: 'lightgray',
-                borderColor: 'black',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 10
-              }}
-            >
+            <View style={styles.reviewImageContainer}>
               <Image
-                style={{ height: '100%', width: '100%', borderRadius: 25 }}
+                style={styles.reviewImage}
                 // resizeMode="contain"
                 resizeMode="cover"
                 // eslint-disable-next-line global-require, import/no-dynamic-require
@@ -74,25 +61,13 @@ const ProfileReviews: React.FC<ProfileReviewsProps> = () => (
 
         {/* end review 1 */}
 
-        {/* Filler reivew start */}
+        {/* filler reviews */}
+
         <View style={styles.flexDirectionCol}>
           <View style={styles.reviewHeaderView}>
-            <View
-              style={{
-                width: 50,
-                backgroundColor: 'lightgray',
-                height: 50,
-                borderRadius: 25,
-                // borderWidth: 5,
-                // borderColor: 'lightgray',
-                borderColor: 'black',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 10
-              }}
-            >
+            <View style={styles.reviewImageContainer}>
               <Image
-                style={{ height: '100%', width: '100%', borderRadius: 25 }}
+                style={styles.reviewImage}
                 // resizeMode="contain"
                 resizeMode="cover"
                 // eslint-disable-next-line global-require, import/no-dynamic-require
@@ -121,24 +96,12 @@ const ProfileReviews: React.FC<ProfileReviewsProps> = () => (
             />
           </View>
         </View>
+
         <View style={styles.flexDirectionCol}>
           <View style={styles.reviewHeaderView}>
-            <View
-              style={{
-                width: 50,
-                backgroundColor: 'lightgray',
-                height: 50,
-                borderRadius: 25,
-                // borderWidth: 5,
-                // borderColor: 'lightgray',
-                borderColor: 'black',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 10
-              }}
-            >
+            <View style={styles.reviewImageContainer}>
               <Image
-                style={{ height: '100%', width: '100%', borderRadius: 25 }}
+                style={styles.reviewImage}
                 // resizeMode="contain"
                 resizeMode="cover"
                 // eslint-disable-next-line global-require, import/no-dynamic-require
@@ -167,24 +130,12 @@ const ProfileReviews: React.FC<ProfileReviewsProps> = () => (
             />
           </View>
         </View>
+
         <View style={styles.flexDirectionCol}>
           <View style={styles.reviewHeaderView}>
-            <View
-              style={{
-                width: 50,
-                backgroundColor: 'lightgray',
-                height: 50,
-                borderRadius: 25,
-                // borderWidth: 5,
-                // borderColor: 'lightgray',
-                borderColor: 'black',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 10
-              }}
-            >
+            <View style={styles.reviewImageContainer}>
               <Image
-                style={{ height: '100%', width: '100%', borderRadius: 25 }}
+                style={styles.reviewImage}
                 // resizeMode="contain"
                 resizeMode="cover"
                 // eslint-disable-next-line global-require, import/no-dynamic-require
@@ -213,24 +164,12 @@ const ProfileReviews: React.FC<ProfileReviewsProps> = () => (
             />
           </View>
         </View>
+
         <View style={styles.flexDirectionCol}>
           <View style={styles.reviewHeaderView}>
-            <View
-              style={{
-                width: 50,
-                backgroundColor: 'lightgray',
-                height: 50,
-                borderRadius: 25,
-                // borderWidth: 5,
-                // borderColor: 'lightgray',
-                borderColor: 'black',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 10
-              }}
-            >
+            <View style={styles.reviewImageContainer}>
               <Image
-                style={{ height: '100%', width: '100%', borderRadius: 25 }}
+                style={styles.reviewImage}
                 // resizeMode="contain"
                 resizeMode="cover"
                 // eslint-disable-next-line global-require, import/no-dynamic-require
@@ -259,7 +198,42 @@ const ProfileReviews: React.FC<ProfileReviewsProps> = () => (
             />
           </View>
         </View>
-        {/* Filler review end */}
+
+        <View style={styles.flexDirectionCol}>
+          <View style={styles.reviewHeaderView}>
+            <View style={styles.reviewImageContainer}>
+              <Image
+                style={styles.reviewImage}
+                // resizeMode="contain"
+                resizeMode="cover"
+                // eslint-disable-next-line global-require, import/no-dynamic-require
+                source={require('../../../assets/images/mango.jpg')}
+              />
+            </View>
+
+            <View style={styles.reviewerDetails}>
+              <View>
+                <Text style={styles.reviewerName}>Juan Cuadrado</Text>
+              </View>
+              <View>
+                <Text style={styles.reviewDate}>January 2021</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.flex1}>
+            {/* TODO get all reviews ready for review screen */}
+            {/* TODO add read more */}
+            <ReadMoreComponent
+              fullText="Reivew text review. Decription test te st. Review four one two.
+              Decription test1 decription test2 decription test3 decription test4
+              decription test5 decription test6.Reivew text review. Decription test te st. Review four one two.
+              Decription test1 decription test2 decription test3 decription test4
+              decription test5 decription test6."
+            />
+          </View>
+        </View>
+
+        {/* End filler reviews */}
       </View>
     </ScrollView>
   </View>
