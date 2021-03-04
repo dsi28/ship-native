@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import ItemComponent from '../../components/home/ItemComponent';
 import NavigationService from '../../navigation/NavigationService';
 import JobItem from '../Job/JobItem';
+import ProfileReviews from '../Profile/Reviews';
 import TravelerRequests from '../Travelers/Requests';
 import TravelerScreen from '../Travelers/TravelerScreen';
 import styles from './styles';
@@ -62,6 +63,7 @@ const HomeStack: React.FC = () => (
     <Stack.Screen name="Job" component={JobItem} />
     <Stack.Screen name="Traveler Requests" component={TravelerRequests} />
     <Stack.Screen name="View Traveler" component={TravelerScreen} />
+    <Stack.Screen name="Traveler Reviews" component={ProfileReviews} />
   </Stack.Navigator>
 );
 
