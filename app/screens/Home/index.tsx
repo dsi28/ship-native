@@ -6,6 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import ItemComponent from '../../components/home/ItemComponent';
 import NavigationService from '../../navigation/NavigationService';
+import AcceptTravler from '../Job/AcceptRequest';
 import JobItem from '../Job/JobItem';
 import ProfileReviews from '../Profile/Reviews';
 import TravelerRequests from '../Travelers/Requests';
@@ -64,6 +65,7 @@ const HomeStack: React.FC = () => (
     <Stack.Screen name="Traveler Requests" component={TravelerRequests} />
     <Stack.Screen name="View Traveler" component={TravelerScreen} />
     <Stack.Screen name="Traveler Reviews" component={ProfileReviews} />
+    <Stack.Screen name="Accept Traveler" component={AcceptTravler} />
   </Stack.Navigator>
 );
 

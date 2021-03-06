@@ -7,6 +7,8 @@ import JobPropertyComponent from '../../../components/job/property';
 import TravelerCDComponent from '../../../components/Traveler/ChatDistance';
 import DarkBackgroundPropertyComponent from '../../../components/Traveler/DarkBackGroundProperty';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
+import NavigationService from '../../../navigation/NavigationService';
+import AcceptTravler from '../../Job/AcceptRequest';
 import styles from './styles';
 
 const TravelerScreen: React.FC = () => {
@@ -36,7 +38,10 @@ const TravelerScreen: React.FC = () => {
           <View style={styles.buttonContainer}>
             <WideButton
               buttonText="Accept Request"
-              onPressHandler={() => console.log('Accept Request')}
+              onPressHandler={() => {
+                console.log('Accept Request');
+                NavigationService.navigate('Accept Traveler', AcceptTravler);
+              }}
               isSelected
               btnBackgoundColor="orange"
               btnTextColor="white"
