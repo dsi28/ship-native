@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     // backgroundColor: 'blue',
-    marginTop: 30,
+    // marginTop: 30,
     height: '100%',
     flexDirection: 'column'
   },
