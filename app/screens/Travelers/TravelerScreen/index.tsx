@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
@@ -7,12 +7,16 @@ import JobPropertyComponent from '../../../components/job/property';
 import TravelerCDComponent from '../../../components/Traveler/ChatDistance';
 import DarkBackgroundPropertyComponent from '../../../components/Traveler/DarkBackGroundProperty';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
+import NavigationService from '../../../navigation/NavigationService';
+import AcceptTravler from '../../Job/AcceptRequest';
+import DeclineTravler from '../../Job/DeclineRequest';
 import styles from './styles';
 
 const TravelerScreen: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userProfile = useSelector((state: AppState) => state.default);
   console.log(userProfile);
+  const [showDeclineModal, setShowDeclineModal] = useState(false);
 
   return (
     <ScrollView style={styles.container}>
@@ -36,7 +40,10 @@ const TravelerScreen: React.FC = () => {
           <View style={styles.buttonContainer}>
             <WideButton
               buttonText="Accept Request"
-              onPressHandler={() => console.log('Accept Request')}
+              onPressHandler={() => {
+                console.log('Accept Request');
+                NavigationService.navigate('Accept Traveler', AcceptTravler);
+              }}
               isSelected
               btnBackgoundColor="orange"
               btnTextColor="white"
@@ -46,7 +53,11 @@ const TravelerScreen: React.FC = () => {
           <View style={styles.bottomButtonContainer}>
             <WideButton
               buttonText="Decline"
-              onPressHandler={() => console.log('Decline Request')}
+              onPressHandler={() => {
+                console.log('decline traveler');
+                setShowDeclineModal(true);
+                // NavigationService.navigate('Decline Traveler', DeclineTravler);
+              }}
               isSelected
               btnBackgoundColor="bisque"
               btnTextColor="orange"
@@ -55,6 +66,10 @@ const TravelerScreen: React.FC = () => {
           </View>
         </View>
       </View>
+      <DeclineTravler
+        showModal={showDeclineModal}
+        setShowModal={setShowDeclineModal}
+      />
     </ScrollView>
   );
 };
