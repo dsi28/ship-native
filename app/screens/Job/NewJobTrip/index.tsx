@@ -1,23 +1,11 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { Button, Text } from 'react-native-elements';
 import Modal from 'react-native-modal';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-const styles = StyleSheet.create({
-  contentView: {
-    justifyContent: 'flex-end',
-    margin: 0
-  },
-  buttonStyle: {
-    height: 90,
-    width: 90,
-    backgroundColor: 'pink',
-    borderRadius: 100
-  }
-});
+import NavigationService from '../../../navigation/NavigationService';
 
 const PayScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -36,12 +24,15 @@ const PayScreen = () => {
           />
         }
       />
-      <View style={{ backgroundColor: 'green' }}>
+      <View>
         <Modal
           backdropOpacity={0.3}
           isVisible={modalVisible}
           onBackdropPress={() => setModalVisible(false)}
-          style={styles.contentView}
+          style={{
+            justifyContent: 'flex-end',
+            margin: 0
+          }}
         >
           <View
             style={{
@@ -66,7 +57,14 @@ const PayScreen = () => {
               </Text>
             </View>
             <Pressable
-              onPress={() => console.log('ship')}
+              onPress={() => {
+                console.log('shipp');
+                setModalVisible(false);
+                NavigationService.navigate('Home', {
+                  screen: 'New Job'
+                  // initial: false
+                });
+              }}
               style={{ width: '100%', marginBottom: 10 }}
             >
               {({ pressed }) => (
@@ -105,7 +103,7 @@ const PayScreen = () => {
             </Pressable>
 
             <Pressable
-              onPress={() => console.log('ship')}
+              onPress={() => console.log('add trip')}
               style={{ width: '100%' }}
             >
               {({ pressed }) => (

@@ -3,7 +3,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeStack from '../screens/Home';
-import NewJobTrip from '../screens/Job/NewJobTrip';
+import PayScreen from '../screens/Job/NewJobTrip';
 import SellerProfileStack from '../screens/Profile/SellerProfile';
 
 const PayScreenComponent = () => null;
@@ -25,7 +25,7 @@ function BottomTabsNav() {
       }}
     >
       <Tab.Screen
-        name="Feed"
+        name="Home"
         component={HomeStack}
         options={{
           tabBarLabel: 'Home',
@@ -67,9 +67,9 @@ function BottomTabsNav() {
           //     size={size * 2}
           //   />
           // ),
-          // tabBarLabel: 'test',
-          // tabBarLabel: () => null,
-          tabBarButton: () => <NewJobTrip />
+          // // tabBarLabel: 'test',
+          // tabBarLabel: () => null
+          tabBarButton: () => <PayScreen />
         }}
       />
       {/*

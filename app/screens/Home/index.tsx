@@ -9,6 +9,7 @@ import NavigationService from '../../navigation/NavigationService';
 import AcceptTravler from '../Job/AcceptRequest';
 import DeclineTravler from '../Job/DeclineRequest';
 import JobItem from '../Job/JobItem';
+import NewJobForm from '../Job/NewJobForm';
 import ProfileReviews from '../Profile/Reviews';
 import TravelerRequests from '../Travelers/Requests';
 import TravelerScreen from '../Travelers/TravelerScreen';
@@ -61,13 +62,18 @@ function HomeScreenTabs() {
 const Stack = createStackNavigator();
 const HomeStack: React.FC = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Home" component={HomeScreenTabs} />
+    <Stack.Screen
+      name="HomeScreen"
+      options={{ headerTitle: 'Home' }}
+      component={HomeScreenTabs}
+    />
     <Stack.Screen name="Job" component={JobItem} />
     <Stack.Screen name="Traveler Requests" component={TravelerRequests} />
     <Stack.Screen name="View Traveler" component={TravelerScreen} />
     <Stack.Screen name="Traveler Reviews" component={ProfileReviews} />
     <Stack.Screen name="Accept Traveler" component={AcceptTravler} />
     <Stack.Screen name="Decline Traveler" component={DeclineTravler} />
+    <Stack.Screen name="New Job" component={NewJobForm} />
   </Stack.Navigator>
 );
 
