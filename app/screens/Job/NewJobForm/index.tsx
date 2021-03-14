@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { Text, View } from 'react-native';
+import NewJobS1 from './Step1Form';
 
 const Temp = () => (
   <View>
@@ -20,7 +21,7 @@ export default function NewJobForm() {
         headerStyle: { backgroundColor: 'white' }
       }}
     >
-      <Stack.Screen name="Step 1" component={Temp} />
+      <Stack.Screen name="Step 1" component={NewJobS1} />
       <Stack.Screen name="Step 2" component={Temp} />
       <Stack.Screen name="Step 3" component={Temp} />
       <Stack.Screen name="Preview Job Post" component={Temp} />
