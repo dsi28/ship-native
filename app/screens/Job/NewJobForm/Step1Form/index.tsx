@@ -5,6 +5,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import NextButton from '../../../../components/buttons/NextButton';
 import DropDownFormInput from '../../../../components/FormInputs/DropDown';
+import TextFormInput from '../../../../components/FormInputs/TextI';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -69,28 +70,15 @@ const NewJobS1: React.FC = () => {
                   }
                 ]}
               />
-              <View style={{ marginBottom: 30 }}>
-                <TextInput
-                  style={styles.screenInput}
-                  placeholder="Item Name"
-                  // value={nameInput}
-                  onChangeText={(e) => {
-                    console.log(e);
-                    // setNameInput(e);
-                  }}
-                />
-              </View>
-              <View style={{ marginBottom: 30 }}>
-                <TextInput
-                  style={styles.screenInput}
-                  placeholder="Delivery Date"
-                  // value={nameInput}
-                  onChangeText={(e) => {
-                    console.log(e);
-                    // setNameInput(e);
-                  }}
-                />
-              </View>
+              <TextFormInput
+                labelText="Item Name"
+                placeholderText="Enter item name"
+              />
+              <TextFormInput
+                labelText="Delivery Date"
+                placeholderText="Enter delivery date"
+              />
+
               <View>
                 <View
                   style={{
@@ -123,24 +111,10 @@ const NewJobS1: React.FC = () => {
                   />
                 </View>
               </View>
-              <View>
-                <View>
-                  <Text style={{ fontSize: 20, color: 'gray' }}>
-                    Item Value
-                  </Text>
-                </View>
-                <View style={{ marginBottom: 30 }}>
-                  <TextInput
-                    style={styles.screenInput}
-                    placeholder="..."
-                    // value={nameInput}
-                    onChangeText={(e) => {
-                      console.log(e);
-                      // setNameInput(e);
-                    }}
-                  />
-                </View>
-              </View>
+              <TextFormInput
+                labelText="Item Value"
+                placeholderText="Enter item value"
+              />
             </View>
           </View>
         </View>
