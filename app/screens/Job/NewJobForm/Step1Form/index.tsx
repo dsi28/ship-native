@@ -40,28 +40,12 @@ const NewJobS1: React.FC = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.subContainer}>
-        <View style={{ paddingHorizontal: 20 }}>
+        <View style={styles.itemInfoContainer}>
           <View style={styles.screenTitleContainer}>
             <Text style={styles.screenTitle}>Step 1</Text>
           </View>
-          <View
-            style={{
-              // marginTop: 20,
-              marginBottom: 40
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 25,
-                fontWeight: 'bold',
-                color: 'black',
-                opacity: 0.8,
-                // width: '70%',
-                marginRight: 150
-              }}
-            >
-              Basic Details
-            </Text>
+          <View style={styles.subTitleContainer}>
+            <Text style={styles.subTitleContainer}>Basic Details</Text>
           </View>
           <View>
             <View style={styles.screenInputContainer}>
@@ -87,20 +71,20 @@ const NewJobS1: React.FC = () => {
                   }
                 ]}
               />
-              <View style={{ marginBottom: 10 }}>
+              <View style={styles.inputContainer}>
                 <TextFormInput
                   labelText="Item Name"
                   placeholderText="Enter item name"
                 />
               </View>
 
-              <View style={{ marginBottom: 10 }}>
+              <View style={styles.inputContainer}>
                 <TextFormInput
                   labelText="Delivery Date"
                   placeholderText="Enter delivery date"
                 />
               </View>
-              <View style={{ marginBottom: 10 }}>
+              <View style={styles.inputContainer}>
                 <TextFormInputWithIcon
                   labelText="Delivery Location"
                   placeholderText="Enter Location"
@@ -112,8 +96,8 @@ const NewJobS1: React.FC = () => {
                 placeholderText="Enter item value"
               />
               {/* @TODO replace this with an i icon  */}
-              <View style={{ marginBottom: 50 }}>
-                <Text style={{ fontSize: 20, color: 'gray' }}>
+              <View style={styles.inputSubTextContainer}>
+                <Text style={styles.inputSubText}>
                   This value is for insurance purposes so try to be as accurate
                   as possible
                 </Text>
@@ -121,35 +105,11 @@ const NewJobS1: React.FC = () => {
             </View>
           </View>
         </View>
-        <View
-          style={{
-            marginBottom: 50,
-            backgroundColor: '#f3f5fa',
-            paddingVertical: 50,
-            paddingHorizontal: 20
-          }}
-        >
-          <View style={{ marginBottom: 30 }}>
-            <Text
-              style={{
-                fontSize: 25,
-                fontWeight: 'bold',
-                color: 'black',
-                opacity: 0.8,
-                // width: '70%',
-                marginRight: 150
-              }}
-            >
-              Add Item Image
-            </Text>
+        <View style={styles.addItemContainer}>
+          <View style={styles.AddItemTitleContainer}>
+            <Text style={styles.subTitle}>Add Item Image</Text>
           </View>
-          <View
-            style={{
-              marginHorizontal: 20,
-              height: 100,
-              width: 100
-            }}
-          >
+          <View style={styles.imageInputContainer}>
             {pictureInput.length < 1 ? (
               <PictureUploadComponent handleImageChange={handleAddImage} />
             ) : (
@@ -161,8 +121,8 @@ const NewJobS1: React.FC = () => {
             )}
           </View>
         </View>
-        <View style={styles.screenNextButtonContainer}>
-          <View style={{ marginBottom: 20 }}>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
             <WideButton
               buttonText="Next"
               onPressHandler={() => console.log('next')}
