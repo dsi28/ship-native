@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import BottomSheet from 'reanimated-bottom-sheet';
 import RenderContent from '../../../../components/bottomSheet/renderContent';
 import RenderHeader from '../../../../components/bottomSheet/renderHeader';
-import NextButton from '../../../../components/buttons/NextButton';
+import WideButton from '../../../../components/buttons/WideButton';
 import DropDownFormInput from '../../../../components/FormInputs/DropDown';
 import TextFormInput from '../../../../components/FormInputs/TextI';
 import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIcon';
@@ -162,15 +162,27 @@ const NewJobS1: React.FC = () => {
           </View>
         </View>
         <View style={styles.screenNextButtonContainer}>
-          <NextButton
-            buttonText="Next"
-            onPressHandler={() => {
-              // NavigationService.navigate('Email', EmailInput);
-              // dispatch(setProfileUser({ ...userPostProfile, name: nameInput }));
-            }}
-            // isDisabled={nameInput.length < 2}
-            isDisabled={false}
-          />
+          <View style={{ marginBottom: 20 }}>
+            <WideButton
+              buttonText="Next"
+              onPressHandler={() => console.log('next')}
+              isSelected
+              btnBackgoundColor="orange"
+              btnBorderColor="orange"
+              btnTextColor="white"
+            />
+          </View>
+
+          <View>
+            <WideButton
+              buttonText="Cancel"
+              onPressHandler={() => console.log('cancel')}
+              isSelected
+              btnBackgoundColor="white"
+              btnBorderColor="orange"
+              btnTextColor="orange"
+            />
+          </View>
         </View>
       </View>
       <BottomSheet
