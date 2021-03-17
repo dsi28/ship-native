@@ -17,7 +17,7 @@ const TextFormInput: React.FC<TextFormInputProps> = ({
   labelText,
   placeholderText
 }) => (
-  <View style={styles.container}>
+  <View>
     <View>
       <Text style={styles.labelText}>{labelText}</Text>
     </View>

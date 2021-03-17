@@ -19,7 +19,7 @@ const TextFormInputWithIcon: React.FC<TextFormInputWithIconProps> = ({
   placeholderText,
   iconName
 }) => (
-  <View style={styles.container}>
+  <View>
     <View style={styles.labelIconContainer}>
       <View>
         <Text style={styles.labelText}>{labelText}</Text>

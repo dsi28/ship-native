@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
     marginVertical: 10
     // backgroundColor: 'green'
   },
@@ -12,6 +12,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     height: '100%',
     width: '100%'
+
+    // paddingHorizontal: 20
+
     // backgroundColor: 'pink'
   },
   screenTitleContainer: {
@@ -38,7 +41,9 @@ const styles = StyleSheet.create({
     borderBottomColor: 'lightgray'
   },
   screenNextButtonContainer: {
-    marginBottom: 20
+    marginBottom: 20,
+    paddingHorizontal: 20
+
     // bottom: 0,
     // right: 0,
     // left: 0,
