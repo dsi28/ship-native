@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, TextInput, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import NextButton from '../../../../components/buttons/NextButton';
 import DropDownFormInput from '../../../../components/FormInputs/DropDown';
 import TextFormInput from '../../../../components/FormInputs/TextI';
+import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIcon';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -78,39 +78,11 @@ const NewJobS1: React.FC = () => {
                 labelText="Delivery Date"
                 placeholderText="Enter delivery date"
               />
-
-              <View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between'
-                  }}
-                >
-                  <View>
-                    <Text style={{ fontSize: 20, color: 'gray' }}>
-                      Delivery Location
-                    </Text>
-                  </View>
-                  <View>
-                    <MaterialIcon
-                      name="location-pin"
-                      size={25}
-                      color="#e91e63"
-                    />
-                  </View>
-                </View>
-                <View style={{ marginBottom: 30 }}>
-                  <TextInput
-                    style={styles.screenInput}
-                    placeholder="..."
-                    // value={nameInput}
-                    onChangeText={(e) => {
-                      console.log(e);
-                      // setNameInput(e);
-                    }}
-                  />
-                </View>
-              </View>
+              <TextFormInputWithIcon
+                labelText="Delivery Location"
+                placeholderText="Enter Location"
+                iconName="location-pin"
+              />
               <TextFormInput
                 labelText="Item Value"
                 placeholderText="Enter item value"
