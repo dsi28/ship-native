@@ -3,7 +3,10 @@ import React from 'react';
 import { Text } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeStack from '../screens/Home';
+import PayScreen from '../screens/Job/NewJobTrip';
 import SellerProfileStack from '../screens/Profile/SellerProfile';
+
+const PayScreenComponent = () => null;
 
 const TempComponent = () => (
   <>
@@ -22,7 +25,7 @@ function BottomTabsNav() {
       }}
     >
       <Tab.Screen
-        name="Feed"
+        name="Home"
         component={HomeStack}
         options={{
           tabBarLabel: 'Home',
@@ -42,17 +45,31 @@ function BottomTabsNav() {
         }}
       />
       <Tab.Screen
-        name="New"
-        component={TempComponent}
+        // name="New"
+        // component={NewJobTrip}
+        // options={{
+        //   tabBarIcon: ({ size }) => (
+        //     <MaterialCommunityIcons
+        //       name="plus-circle"
+        //       color="#e91e63"
+        //       size={size * 2}
+        //     />
+        //   ),
+        //   tabBarLabel: () => null
+        // }}
+        name="BottomSheet"
+        component={PayScreenComponent}
         options={{
-          tabBarIcon: ({ size }) => (
-            <MaterialCommunityIcons
-              name="plus-circle"
-              color="#e91e63"
-              size={size * 2}
-            />
-          ),
-          tabBarLabel: () => null
+          // tabBarIcon: ({ size }) => (
+          //   <MaterialCommunityIcons
+          //     name="plus-circle"
+          //     color="#e91e63"
+          //     size={size * 2}
+          //   />
+          // ),
+          // // tabBarLabel: 'test',
+          // tabBarLabel: () => null
+          tabBarButton: () => <PayScreen />
         }}
       />
       {/*
