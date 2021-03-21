@@ -3,14 +3,12 @@ import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import styles from './styles';
 
-interface CheckBoxItemProps {
+interface SimpleCheckBoxItemProps {
   headerText: string;
-  subHeaderText: string;
 }
 
-const CheckBoxItem: React.FC<CheckBoxItemProps> = ({
-  headerText,
-  subHeaderText
+const SimpleCheckBoxItem: React.FC<SimpleCheckBoxItemProps> = ({
+  headerText
 }) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
@@ -24,14 +22,9 @@ const CheckBoxItem: React.FC<CheckBoxItemProps> = ({
         />
       </View>
       <View style={styles.textContainer}>
-        <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>{headerText}</Text>
-        </View>
-        <View style={styles.subHeaderContainer}>
-          <Text style={styles.subHeaderText}>{subHeaderText}</Text>
-        </View>
+        <Text style={styles.headerText}>{headerText}</Text>
       </View>
     </View>
   );
 };
-export default CheckBoxItem;
+export default SimpleCheckBoxItem;

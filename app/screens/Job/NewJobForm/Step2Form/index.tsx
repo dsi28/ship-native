@@ -1,4 +1,3 @@
-import CheckBox from '@react-native-community/checkbox';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -8,7 +7,8 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import RenderContent from '../../../../components/bottomSheet/renderContent';
 import RenderHeader from '../../../../components/bottomSheet/renderHeader';
 import WideButton from '../../../../components/buttons/WideButton';
-import PictureUploadComponent from '../../../../components/pictureUpload';
+import CheckBoxItem from '../../../../components/FormInputs/checkbox';
+import SimpleCheckBoxItem from '../../../../components/FormInputs/simpleCheckBox';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -24,7 +24,6 @@ const NewJobS2: React.FC = () => {
   const [pictureInput, setPictureInput] = useState<string>('');
   const sheetRef = React.useRef();
   const fall = new Animated.Value(1);
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   const handleAddImage = () => {
     // @ts-ignore
@@ -49,59 +48,50 @@ const NewJobS2: React.FC = () => {
           </View>
           <View>
             <View style={styles.screenInputContainer}>
-              <View style={{ flexDirection: 'row' }}>
-                <View
-                  style={{
-                    // backgroundColor: 'red',
-                    justifyContent: 'flex-start'
-                  }}
-                >
-                  <CheckBox
-                    disabled={false}
-                    value={toggleCheckBox}
-                    onValueChange={(newValue) => setToggleCheckBox(newValue)}
-                  />
-                </View>
-                <View
-                  style={{
-                    marginLeft: 20,
-                    justifyContent: 'center'
-                  }}
-                >
-                  <View
-                    style={{
-                      justifyContent: 'center',
-                      marginTop: 2
-                    }}
-                  >
-                    <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                      Small
-                    </Text>
-                  </View>
-                  <View style={{ marginTop: 10 }}>
-                    <Text style={{ fontSize: 18, color: 'gray' }}>
-                      Fits in a small backpack or carry-on bag
-                    </Text>
-                  </View>
-                </View>
+              <View style={{ marginBottom: 20 }}>
+                <CheckBoxItem
+                  headerText="Small"
+                  subHeaderText="Fits in a small backpack or carry-on bag"
+                />
+              </View>
+              <View style={{ marginBottom: 20 }}>
+                <CheckBoxItem
+                  headerText="Medium"
+                  subHeaderText="Fits in a large duffel bag or carry-on suitcase"
+                />
+              </View>
+              <View style={{ marginBottom: 20 }}>
+                <CheckBoxItem
+                  headerText="Large"
+                  subHeaderText="Fits in a large suitcase"
+                />
+              </View>
+              <View style={{ marginBottom: 20 }}>
+                <CheckBoxItem
+                  headerText="Extra Large"
+                  subHeaderText="Needs to be shipped in cargo area"
+                />
               </View>
             </View>
           </View>
         </View>
         <View style={styles.addItemContainer}>
           <View style={styles.AddItemTitleContainer}>
-            <Text style={styles.subTitle}>Add Item Image</Text>
+            <Text style={styles.subTitle}>Select Item Weigth</Text>
           </View>
-          <View style={styles.imageInputContainer}>
-            {pictureInput.length < 1 ? (
-              <PictureUploadComponent handleImageChange={handleAddImage} />
-            ) : (
-              <PictureUploadComponent
-                handleImageChange={handleRemoveImage}
-                imageShown={pictureInput}
-                imageIndex={0}
-              />
-            )}
+          <View>
+            <View style={{ marginBottom: 20 }}>
+              <SimpleCheckBoxItem headerText="Around 2 lbs" />
+            </View>
+            <View style={{ marginBottom: 20 }}>
+              <SimpleCheckBoxItem headerText="Around 2-5 lbs" />
+            </View>
+            <View style={{ marginBottom: 20 }}>
+              <SimpleCheckBoxItem headerText="Around 5-20 lbs" />
+            </View>
+            <View style={{ marginBottom: 20 }}>
+              <SimpleCheckBoxItem headerText="Around 20-50 lbs" />
+            </View>
           </View>
         </View>
         <View style={styles.buttonsContainer}>
