@@ -45,7 +45,7 @@ const NewJobS1: React.FC = () => {
             <Text style={styles.screenTitle}>Step 1</Text>
           </View>
           <View style={styles.subTitleContainer}>
-            <Text style={styles.subTitleContainer}>Basic Details</Text>
+            <Text style={styles.subTitle}>Basic Details</Text>
           </View>
           <View>
             <View style={styles.screenInputContainer}>
