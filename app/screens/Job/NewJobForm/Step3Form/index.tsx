@@ -3,7 +3,7 @@ import { Text, TextInput, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../../components/buttons/WideButton';
-import SimpleCheckBoxItem from '../../../../components/FormInputs/simpleCheckBox';
+import TextFormInput from '../../../../components/FormInputs/TextI';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -58,20 +58,17 @@ const NewJobS3: React.FC = () => {
         </View>
         <View style={styles.addItemContainer}>
           <View style={styles.AddItemTitleContainer}>
-            <Text style={styles.subTitle}>Select Item Weigth</Text>
+            <Text style={styles.subTitle}>Who will receive the item?</Text>
           </View>
           <View>
             <View style={{ marginBottom: 20 }}>
-              <SimpleCheckBoxItem headerText="Around 2 lbs" />
+              <TextFormInput labelText="Name" placeholderText="Name" />
             </View>
-            <View style={{ marginBottom: 20 }}>
-              <SimpleCheckBoxItem headerText="Around 2-5 lbs" />
-            </View>
-            <View style={{ marginBottom: 20 }}>
-              <SimpleCheckBoxItem headerText="Around 5-20 lbs" />
-            </View>
-            <View style={{ marginBottom: 20 }}>
-              <SimpleCheckBoxItem headerText="Around 20-50 lbs" />
+            <View>
+              <TextFormInput
+                labelText="Email Address"
+                placeholderText="Email Address"
+              />
             </View>
           </View>
         </View>

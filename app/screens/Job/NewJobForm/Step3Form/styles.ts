@@ -43,8 +43,9 @@ const styles = StyleSheet.create({
   inputSubText: { fontSize: 20, color: 'gray' },
   addItemContainer: {
     marginBottom: 50,
+    marginTop: 30,
     backgroundColor: '#f3f5fa',
-    paddingVertical: 50,
+    paddingVertical: 30,
     paddingHorizontal: 20
   },
   AddItemTitleContainer: { marginBottom: 30 },
