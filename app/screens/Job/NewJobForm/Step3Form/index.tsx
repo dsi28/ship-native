@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../../components/buttons/WideButton';
 import TextFormInput from '../../../../components/FormInputs/TextI';
+import NumberToggler from '../../../../components/numberToggler';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -69,6 +70,24 @@ const NewJobS3: React.FC = () => {
                 labelText="Email Address"
                 placeholderText="Email Address"
               />
+            </View>
+          </View>
+        </View>
+        <View style={styles.itemInfoContainer}>
+          <View style={styles.subTitleContainer}>
+            <View>
+              <Text style={styles.subTitle}>Shipment Cost</Text>
+            </View>
+          </View>
+          <View>
+            <View style={styles.screenInputContainer}>
+              <View
+                style={{
+                  marginBottom: 20
+                }}
+              >
+                <NumberToggler />
+              </View>
             </View>
           </View>
         </View>
