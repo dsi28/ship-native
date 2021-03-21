@@ -1,3 +1,4 @@
+import CheckBox from '@react-native-community/checkbox';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -7,11 +8,7 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import RenderContent from '../../../../components/bottomSheet/renderContent';
 import RenderHeader from '../../../../components/bottomSheet/renderHeader';
 import WideButton from '../../../../components/buttons/WideButton';
-import DropDownFormInput from '../../../../components/FormInputs/DropDown';
-import TextFormInput from '../../../../components/FormInputs/TextI';
-import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIcon';
 import PictureUploadComponent from '../../../../components/pictureUpload';
-import NavigationService from '../../../../navigation/NavigationService';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -20,13 +17,15 @@ import styles from './styles';
 //   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
 // }
 
-const NewJobS1: React.FC = () => {
+const NewJobS2: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userPostProfile = useSelector((state: AppState) => state.default);
   const dispatch = useDispatch();
   const [pictureInput, setPictureInput] = useState<string>('');
   const sheetRef = React.useRef();
   const fall = new Animated.Value(1);
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
   const handleAddImage = () => {
     // @ts-ignore
     sheetRef.current.snapTo(0);
@@ -43,65 +42,48 @@ const NewJobS1: React.FC = () => {
       <View style={styles.subContainer}>
         <View style={styles.itemInfoContainer}>
           <View style={styles.screenTitleContainer}>
-            <Text style={styles.screenTitle}>Step 1</Text>
+            <Text style={styles.screenTitle}>Step 2</Text>
           </View>
           <View style={styles.subTitleContainer}>
-            <Text style={styles.subTitle}>Basic Details</Text>
+            <Text style={styles.subTitle}>Select Item Size</Text>
           </View>
           <View>
             <View style={styles.screenInputContainer}>
-              <DropDownFormInput
-                labelText="Item Category"
-                placeholderText="Select a category"
-                itemList={[
-                  {
-                    label: 'Category 1',
-                    value: 'cat1'
-                    // icon: () => <Icon name="flag" size={18} color="#900" />,
-                    // hidden: true
-                  },
-                  {
-                    label: 'Category 2',
-                    value: 'cat2'
-                    // icon: () => <Icon name="flag" size={18} color="#900" />
-                  },
-                  {
-                    label: 'Category 3',
-                    value: 'cat3'
-                    // icon: () => <Icon name="flag" size={18} color="#900" />
-                  }
-                ]}
-              />
-              <View style={styles.inputContainer}>
-                <TextFormInput
-                  labelText="Item Name"
-                  placeholderText="Enter item name"
-                />
-              </View>
-
-              <View style={styles.inputContainer}>
-                <TextFormInput
-                  labelText="Delivery Date"
-                  placeholderText="Enter delivery date"
-                />
-              </View>
-              <View style={styles.inputContainer}>
-                <TextFormInputWithIcon
-                  labelText="Delivery Location"
-                  placeholderText="Enter Location"
-                  iconName="location-pin"
-                />
-              </View>
-              <TextFormInput
-                labelText="Item Value"
-                placeholderText="Enter item value"
-              />
-              {/* @TODO replace this with an i icon  */}
-              <View style={styles.inputSubTextContainer}>
-                <Text style={styles.inputSubText}>
-                  This value is for insurance purposes so try to be as accurate
-                  as possible
-                </Text>
+              <View style={{ flexDirection: 'row' }}>
+                <View
+                  style={{
+                    // backgroundColor: 'red',
+                    justifyContent: 'flex-start'
+                  }}
+                >
+                  <CheckBox
+                    disabled={false}
+                    value={toggleCheckBox}
+                    onValueChange={(newValue) => setToggleCheckBox(newValue)}
+                  />
+                </View>
+                <View
+                  style={{
+                    marginLeft: 20,
+                    justifyContent: 'center'
+                  }}
+                >
+                  <View
+                    style={{
+                      justifyContent: 'center',
+                      marginTop: 2
+                    }}
+                  >
+                    <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
+                      Small
+                    </Text>
+                  </View>
+                  <View style={{ marginTop: 10 }}>
+                    <Text style={{ fontSize: 18, color: 'gray' }}>
+                      Fits in a small backpack or carry-on bag
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -126,9 +108,7 @@ const NewJobS1: React.FC = () => {
           <View style={styles.buttonContainer}>
             <WideButton
               buttonText="Next"
-              onPressHandler={() => {
-                NavigationService.navigate('Step 2');
-              }}
+              onPressHandler={() => console.log('next')}
               isSelected
               btnBackgoundColor="orange"
               btnBorderColor="orange"
@@ -168,4 +148,4 @@ const NewJobS1: React.FC = () => {
     </ScrollView>
   );
 };
-export default NewJobS1;
+export default NewJobS2;
