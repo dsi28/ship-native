@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../../components/buttons/WideButton';
 import TextFormInput from '../../../../components/FormInputs/TextI';
 import NumberToggler from '../../../../components/numberToggler';
+import NavigationService from '../../../../navigation/NavigationService';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -95,7 +96,10 @@ const NewJobS3: React.FC = () => {
           <View style={styles.buttonContainer}>
             <WideButton
               buttonText="Next"
-              onPressHandler={() => console.log('next')}
+              onPressHandler={() => {
+                console.log('next');
+                NavigationService.navigate('Preview Job Post');
+              }}
               isSelected
               btnBackgoundColor="orange"
               btnBorderColor="orange"

@@ -75,7 +75,7 @@ const NewJobS2: React.FC = () => {
         </View>
         <View style={styles.addItemContainer}>
           <View style={styles.AddItemTitleContainer}>
-            <Text style={styles.subTitle}>Select Item Weigth</Text>
+            <Text style={styles.subTitle}>Select Item Weight</Text>
           </View>
           <View>
             <View style={{ marginBottom: 20 }}>
