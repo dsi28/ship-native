@@ -15,6 +15,7 @@ const ImagePropertyComponent: React.FC<ImagePropertyComponentProps> = ({
     <Text style={styles.titleText}>{title}:</Text>
     <View style={styles.imagesContainer}>
       {
+        // TODO add keys
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         value.map((image) => (
           <View style={styles.imageContainer}>

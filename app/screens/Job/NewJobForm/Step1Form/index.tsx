@@ -11,6 +11,7 @@ import DropDownFormInput from '../../../../components/FormInputs/DropDown';
 import TextFormInput from '../../../../components/FormInputs/TextI';
 import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIcon';
 import PictureUploadComponent from '../../../../components/pictureUpload';
+import NavigationService from '../../../../navigation/NavigationService';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -45,7 +46,7 @@ const NewJobS1: React.FC = () => {
             <Text style={styles.screenTitle}>Step 1</Text>
           </View>
           <View style={styles.subTitleContainer}>
-            <Text style={styles.subTitleContainer}>Basic Details</Text>
+            <Text style={styles.subTitle}>Basic Details</Text>
           </View>
           <View>
             <View style={styles.screenInputContainer}>
@@ -125,7 +126,9 @@ const NewJobS1: React.FC = () => {
           <View style={styles.buttonContainer}>
             <WideButton
               buttonText="Next"
-              onPressHandler={() => console.log('next')}
+              onPressHandler={() => {
+                NavigationService.navigate('Step 2');
+              }}
               isSelected
               btnBackgoundColor="orange"
               btnBorderColor="orange"
