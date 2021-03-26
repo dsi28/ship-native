@@ -2,12 +2,7 @@ export interface IJob {
   // TODO maybe name as new Job
   uid?: string; // from firebase TODO remove the ? when firebase is being used
   itemName?: string;
-  itemCategory?:
-    | 'category 1'
-    | 'category 2'
-    | 'category 3'
-    | 'category 4'
-    | 'category 5';
+  itemCategory?: IItemCategory;
   itemDeliveryDate?: IDate; // TODO figure out if string is the best way
   itemDeliveryLocation?: string;
   itemValue?: number;
@@ -36,4 +31,13 @@ export interface IDate {
   month?: string;
   day?: string;
   year?: string;
+}
+
+export interface IItemCategory {
+  category:
+    | 'category 1'
+    | 'category 2'
+    | 'category 3'
+    | 'category 4'
+    | 'category 5';
 }

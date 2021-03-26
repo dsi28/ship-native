@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { IItemCategory } from '../../../models/IJob';
 import styles from './styles';
 
 interface DropDownFormInputProps {
@@ -10,6 +11,7 @@ interface DropDownFormInputProps {
     label: string;
     value: string;
   }[];
+  onChangeHandler: (newCategory: IItemCategory) => void;
   //   isSelected: boolean;
   //   btnBackgoundColor: string;
   //   btnTextColor: string;
@@ -19,7 +21,8 @@ interface DropDownFormInputProps {
 const DropDownFormInput: React.FC<DropDownFormInputProps> = ({
   labelText,
   placeholderText,
-  itemList
+  itemList,
+  onChangeHandler
 }) => (
   <View>
     <View style={styles.labelContainer}>

@@ -11,6 +11,7 @@ import DropDownFormInput from '../../../../components/FormInputs/DropDown';
 import TextFormInput from '../../../../components/FormInputs/TextI';
 import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIcon';
 import PictureUploadComponent from '../../../../components/pictureUpload';
+import { IItemCategory, IJob } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
@@ -22,12 +23,15 @@ import styles from './styles';
 
 const NewJobS1: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
-  const defaultState = useSelector((state: AppState) => state.default);
-  console.log('default state: ', defaultState);
+  const jobState = useSelector((state: AppState) => state.job);
+  console.log('job state: ', jobState);
   const dispatch = useDispatch();
   const [pictureInput, setPictureInput] = useState<string>('');
   const sheetRef = React.useRef();
   const fall = new Animated.Value(1);
+
+  const [newJob, setNewJob] = useState<IJob>();
+
   const handleAddImage = () => {
     // @ts-ignore
     sheetRef.current.snapTo(0);
@@ -36,6 +40,11 @@ const NewJobS1: React.FC = () => {
   const handleRemoveImage = () => {
     setPictureInput('');
     console.log('remove img');
+  };
+
+  const handleCategoryChange = (newCategory: IItemCategory) => {
+    // @ts-ignore
+    setNewJob({ ...newJob, itemCategory: newCategory });
   };
 
   // const [nameInput, setNameInput] = useState(userPostProfile.name);
@@ -54,6 +63,7 @@ const NewJobS1: React.FC = () => {
               <DropDownFormInput
                 labelText="Item Category"
                 placeholderText="Select a category"
+                onChangeHandler={handleCategoryChange}
                 itemList={[
                   {
                     label: 'Category 1',
