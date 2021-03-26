@@ -22,7 +22,8 @@ import styles from './styles';
 
 const NewJobS1: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
-  const userPostProfile = useSelector((state: AppState) => state.default);
+  const defaultState = useSelector((state: AppState) => state.default);
+  console.log('default state: ', defaultState);
   const dispatch = useDispatch();
   const [pictureInput, setPictureInput] = useState<string>('');
   const sheetRef = React.useRef();

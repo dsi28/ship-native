@@ -2,7 +2,7 @@ import { IJob } from '../../models/IJob';
 import { SET_JOB } from '../actions/job';
 
 const initialState: IJob = {
-  uid: '123', // will change when linked with auth
+  uid: '888', // will change when linked with auth
   itemName: '',
   // itemCategory: '',
   itemDeliveryDate: {
@@ -22,7 +22,7 @@ interface IAction {
   type: string;
 }
 
-const userProfile = (state = initialState, action: IAction) => {
+const jobReducer = (state = initialState, action: IAction) => {
   console.log('ACTION NOW', action);
   switch (action.type) {
     case SET_JOB:
@@ -34,4 +34,4 @@ const userProfile = (state = initialState, action: IAction) => {
       return state;
   }
 };
-export default userProfile;
+export default jobReducer;
