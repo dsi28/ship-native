@@ -13,6 +13,7 @@ import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIc
 import PictureUploadComponent from '../../../../components/pictureUpload';
 import { IItemCategory, IJob } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
+import { setJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -30,7 +31,7 @@ const NewJobS1: React.FC = () => {
   const sheetRef = React.useRef();
   const fall = new Animated.Value(1);
 
-  const [newJob, setNewJob] = useState<IJob>();
+  const [newJob, setNewJob] = useState<IJob>(jobState);
 
   const handleAddImage = () => {
     // @ts-ignore
@@ -42,8 +43,14 @@ const NewJobS1: React.FC = () => {
     console.log('remove img');
   };
 
+  const textFormInputChangeHandler = (
+    propertyName: string,
+    propertyValue: string
+  ) => {
+    setNewJob({ ...newJob, [propertyName]: propertyValue });
+  };
+
   const handleCategoryChange = (newCategory: IItemCategory) => {
-    // @ts-ignore
     setNewJob({ ...newJob, itemCategory: newCategory });
   };
 
@@ -67,26 +74,40 @@ const NewJobS1: React.FC = () => {
                 itemList={[
                   {
                     label: 'Category 1',
-                    value: 'cat1'
+                    value: 'category 1'
                     // icon: () => <Icon name="flag" size={18} color="#900" />,
                     // hidden: true
                   },
                   {
                     label: 'Category 2',
-                    value: 'cat2'
+                    value: 'category 2'
                     // icon: () => <Icon name="flag" size={18} color="#900" />
                   },
                   {
                     label: 'Category 3',
-                    value: 'cat3'
+                    value: 'category 3'
+                    // icon: () => <Icon name="flag" size={18} color="#900" />
+                  },
+                  {
+                    label: 'Category 4',
+                    value: 'category 4'
+                    // icon: () => <Icon name="flag" size={18} color="#900" />
+                  },
+                  {
+                    label: 'Category 5',
+                    value: 'category 5'
                     // icon: () => <Icon name="flag" size={18} color="#900" />
                   }
                 ]}
+                inputValue={newJob?.itemCategory ? newJob.itemCategory : null}
               />
               <View style={styles.inputContainer}>
                 <TextFormInput
                   labelText="Item Name"
                   placeholderText="Enter item name"
+                  onChangeHandler={textFormInputChangeHandler}
+                  propertyName="itemName"
+                  inputValue={newJob?.itemName ? newJob.itemName : ''}
                 />
               </View>
 
@@ -138,6 +159,7 @@ const NewJobS1: React.FC = () => {
             <WideButton
               buttonText="Next"
               onPressHandler={() => {
+                dispatch(setJob({ ...jobState, ...newJob }));
                 NavigationService.navigate('Step 2');
               }}
               isSelected
