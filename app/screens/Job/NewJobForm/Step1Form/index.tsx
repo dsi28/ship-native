@@ -122,6 +122,13 @@ const NewJobS1: React.FC = () => {
                   labelText="Delivery Location"
                   placeholderText="Enter Location"
                   iconName="location-pin"
+                  onChangeHandler={textFormInputChangeHandler}
+                  propertyName="itemDeliveryLocation"
+                  inputValue={
+                    newJob?.itemDeliveryLocation
+                      ? newJob.itemDeliveryLocation
+                      : ''
+                  }
                 />
               </View>
               <TextFormInput

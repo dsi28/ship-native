@@ -47,15 +47,10 @@ const DropDownFormInput: React.FC<DropDownFormInputProps> = ({
           labelStyle={styles.dropDownLabelStyle}
           dropDownStyle={styles.dropDownDropDownStyle}
           defaultValue={inputValue}
-          onChangeItem={
-            (item: { label: string; value: IItemCategory }) => {
-              console.log(item);
-              onChangeHandler(item.value);
-            }
-            // this.setState({
-            //   country: item.value
-            // })
-          }
+          onChangeItem={(item: { label: string; value: IItemCategory }) => {
+            console.log(item);
+            onChangeHandler(item.value);
+          }}
           placeholder={placeholderText}
         />
       </View>

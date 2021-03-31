@@ -8,6 +8,9 @@ interface TextFormInputWithIconProps {
   labelText: string;
   placeholderText: string;
   iconName: string;
+  onChangeHandler: (propertyName: string, propertyValue: string) => void;
+  propertyName: 'itemDeliveryLocation';
+  inputValue: string;
   //   isSelected: boolean;
   //   btnBackgoundColor: string;
   //   btnTextColor: string;
@@ -17,7 +20,10 @@ interface TextFormInputWithIconProps {
 const TextFormInputWithIcon: React.FC<TextFormInputWithIconProps> = ({
   labelText,
   placeholderText,
-  iconName
+  iconName,
+  onChangeHandler,
+  propertyName,
+  inputValue
 }) => (
   <View>
     <View style={styles.labelIconContainer}>
@@ -32,10 +38,10 @@ const TextFormInputWithIcon: React.FC<TextFormInputWithIconProps> = ({
       <TextInput
         style={styles.inputText}
         placeholder={placeholderText}
-        // value={nameInput}
+        value={inputValue}
         onChangeText={(e) => {
           console.log(e);
-          // setNameInput(e);
+          onChangeHandler(propertyName, e);
         }}
       />
     </View>
