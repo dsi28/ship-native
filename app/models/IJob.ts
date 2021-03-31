@@ -8,7 +8,7 @@ export interface IJob {
     | 'category 3'
     | 'category 4'
     | 'category 5';
-  itemDeliveryDate?: IDate; // TODO figure out if string is the best way
+  itemDeliveryDate?: Date; // TODO figure out if string is the best way
   itemDeliveryLocation?: string;
   itemValue?: number;
   itemImages?: string; // TODO only one image for now will add more images and make this a string array later.

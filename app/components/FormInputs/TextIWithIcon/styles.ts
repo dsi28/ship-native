@@ -7,8 +7,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   labelText: { fontSize: 20, color: 'gray' },
-  inputTextContainer: { marginBottom: 30 },
+  inputTextContainer: { marginBottom: 30, color: 'black' },
   inputText: {
+    color: 'black',
     fontSize: 20,
     // marginBottom: 20,
     borderBottomWidth: 2,

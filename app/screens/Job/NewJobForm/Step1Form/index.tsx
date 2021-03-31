@@ -1,5 +1,6 @@
+import DateTimePicker from '@react-native-community/datetimepicker';
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
@@ -31,8 +32,12 @@ const NewJobS1: React.FC = () => {
   const sheetRef = React.useRef();
   const fall = new Animated.Value(1);
 
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [show, setShow] = useState(false);
+
   const [newJob, setNewJob] = useState<IJob>(jobState);
 
+  console.log('deli', newJob.itemDeliveryDate);
   const handleAddImage = () => {
     // @ts-ignore
     sheetRef.current.snapTo(0);
@@ -61,6 +66,31 @@ const NewJobS1: React.FC = () => {
     setNewJob({ ...newJob, itemCategory: newCategory });
   };
 
+  const onChange = (event: any, selectedDate: Date | undefined) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    // if (event.type === 'neutralButtonPressed') {
+    //   setDate(new Date(0));
+
+    // } else {
+    //   setDate(currentDate);
+    // }
+    setDate(currentDate);
+    setNewJob({ ...newJob, itemDeliveryDate: currentDate });
+
+    console.log('cur date', currentDate);
+  };
+
+  const showDatepicker = () => {
+    setShow(true);
+  };
+
+  const handlePressCalendarInput = (
+    propertyName: string,
+    propertyValue: string
+  ) => {
+    // showDatepicker();
+  };
   // const [nameInput, setNameInput] = useState(userPostProfile.name);
   return (
     <ScrollView style={styles.container}>
@@ -119,10 +149,38 @@ const NewJobS1: React.FC = () => {
               </View>
 
               <View style={styles.inputContainer}>
-                <TextFormInput
-                  labelText="Delivery Date"
-                  placeholderText="Enter delivery date"
-                />
+                <Pressable onPress={showDatepicker}>
+                  <TextFormInputWithIcon
+                    labelText="Delivery Date"
+                    placeholderText="Enter Delivery Date"
+                    iconName="calendar-today"
+                    onChangeHandler={handlePressCalendarInput}
+                    propertyName="itemDeliveryDate"
+                    inputValue={
+                      newJob?.itemDeliveryDate
+                        ? newJob.itemDeliveryDate.toDateString()
+                        : ''
+                    }
+                    inputDisabled={false}
+                  />
+                </Pressable>
+
+                <View>
+                  {show && (
+                    <DateTimePicker
+                      testID="dateTimePicker"
+                      value={date}
+                      // mode={mode}
+                      is24Hour
+                      display="default"
+                      onChange={(e, pickedDate) => {
+                        // console.log('e', e);
+                        // console.log('date', pickedDate);
+                        onChange(e, pickedDate);
+                      }}
+                    />
+                  )}
+                </View>
               </View>
               <View style={styles.inputContainer}>
                 <TextFormInputWithIcon
