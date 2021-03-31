@@ -7,8 +7,8 @@ interface TextFormInputProps {
   labelText: string;
   placeholderText: string;
   onChangeHandler: (propertyName: string, propertyValue: string) => void;
-  propertyName: 'itemName';
-  inputValue: string;
+  propertyName: 'itemName' | 'itemValue';
+  inputValue: string | number;
 }
 
 const TextFormInput: React.FC<TextFormInputProps> = ({

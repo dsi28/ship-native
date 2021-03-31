@@ -5,7 +5,7 @@ import WideButton from '../buttons/WideButton';
 import styles from './styles';
 
 interface RenderContentProps {
-  setPictureInput: React.Dispatch<React.SetStateAction<string>>;
+  setPictureInput: (image: string) => void;
   pictureInput: string;
   sheetRef: React.MutableRefObject<undefined>;
 }

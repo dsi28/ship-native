@@ -16,7 +16,6 @@ const PictureUploadComponent: React.FC<PictureUploadProps> = ({
 }) => {
   console.log('Test', imageShown);
   return (
-    // TODO print image shown
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         {imageShown && (

@@ -37,9 +37,11 @@ const NewJobS1: React.FC = () => {
     // @ts-ignore
     sheetRef.current.snapTo(0);
     console.log('add img');
+    // setNewJob({ ...newJob, itemImages: pictureInput });
   };
   const handleRemoveImage = () => {
     setPictureInput('');
+
     console.log('remove img');
   };
 
@@ -48,6 +50,11 @@ const NewJobS1: React.FC = () => {
     propertyValue: string
   ) => {
     setNewJob({ ...newJob, [propertyName]: propertyValue });
+  };
+
+  const handleImageChange = (image: string) => {
+    setPictureInput(image);
+    setNewJob({ ...newJob, itemImages: image });
   };
 
   const handleCategoryChange = (newCategory: IItemCategory) => {
@@ -134,6 +141,9 @@ const NewJobS1: React.FC = () => {
               <TextFormInput
                 labelText="Item Value"
                 placeholderText="Enter item value"
+                onChangeHandler={textFormInputChangeHandler}
+                propertyName="itemValue"
+                inputValue={newJob?.itemValue ? newJob.itemValue : ''}
               />
               {/* @TODO replace this with an i icon  */}
               <View style={styles.inputSubTextContainer}>
@@ -150,12 +160,12 @@ const NewJobS1: React.FC = () => {
             <Text style={styles.subTitle}>Add Item Image</Text>
           </View>
           <View style={styles.imageInputContainer}>
-            {pictureInput.length < 1 ? (
+            {newJob.itemImages && newJob.itemImages.length < 1 ? (
               <PictureUploadComponent handleImageChange={handleAddImage} />
             ) : (
               <PictureUploadComponent
                 handleImageChange={handleRemoveImage}
-                imageShown={pictureInput}
+                imageShown={newJob.itemImages}
                 imageIndex={0}
               />
             )}
@@ -198,7 +208,7 @@ const NewJobS1: React.FC = () => {
         enabledGestureInteraction
         renderContent={() => (
           <RenderContent
-            setPictureInput={setPictureInput}
+            setPictureInput={handleImageChange}
             pictureInput={pictureInput}
             sheetRef={sheetRef}
           />
