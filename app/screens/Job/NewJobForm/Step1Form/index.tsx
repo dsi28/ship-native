@@ -1,3 +1,4 @@
+import DateTimePicker from '@react-native-community/datetimepicker';
 import React, { useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -31,7 +32,7 @@ const NewJobS1: React.FC = () => {
   const sheetRef = React.useRef();
   const fall = new Animated.Value(1);
 
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
 
   const [newJob, setNewJob] = useState<IJob>(jobState);
@@ -150,7 +151,7 @@ const NewJobS1: React.FC = () => {
 
               <View style={styles.inputContainer}>
                 <Pressable onPress={showDatepicker}>
-                  {/* <TextFormInputWithIcon
+                  <TextFormInputWithIcon
                     labelText="Delivery Date"
                     placeholderText="Enter Delivery Date"
                     iconName="calendar-today"
@@ -159,13 +160,13 @@ const NewJobS1: React.FC = () => {
                     inputValue={
                       newJob?.itemDeliveryDate
                         ? newJob.itemDeliveryDate.toDateString()
-                        : ''
+                        : date.toDateString()
                     }
                     inputDisabled={false}
-                  /> */}
+                  />
                 </Pressable>
 
-                {/* <View>
+                <View>
                   {show && (
                     <DateTimePicker
                       testID="dateTimePicker"
@@ -180,7 +181,7 @@ const NewJobS1: React.FC = () => {
                       }}
                     />
                   )}
-                </View> */}
+                </View>
               </View>
               <View style={styles.inputContainer}>
                 <TextFormInputWithIcon
