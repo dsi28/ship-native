@@ -5,11 +5,6 @@ const initialState: IJob = {
   uid: '888', // will change when linked with auth
   itemName: '',
   // itemCategory: '',
-  itemDeliveryDate: {
-    month: '',
-    day: '',
-    year: ''
-  },
   itemDeliveryLocation: '',
   itemValue: 0,
   itemImages: '',

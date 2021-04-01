@@ -1,4 +1,3 @@
-import DateTimePicker from '@react-native-community/datetimepicker';
 import React, { useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -84,6 +83,7 @@ const NewJobS1: React.FC = () => {
   const showDatepicker = () => {
     setShow(true);
   };
+  console.log(newJob.itemImages.length);
 
   const handlePressCalendarInput = (
     propertyName: string,
@@ -150,7 +150,7 @@ const NewJobS1: React.FC = () => {
 
               <View style={styles.inputContainer}>
                 <Pressable onPress={showDatepicker}>
-                  <TextFormInputWithIcon
+                  {/* <TextFormInputWithIcon
                     labelText="Delivery Date"
                     placeholderText="Enter Delivery Date"
                     iconName="calendar-today"
@@ -162,10 +162,10 @@ const NewJobS1: React.FC = () => {
                         : ''
                     }
                     inputDisabled={false}
-                  />
+                  /> */}
                 </Pressable>
 
-                <View>
+                {/* <View>
                   {show && (
                     <DateTimePicker
                       testID="dateTimePicker"
@@ -180,7 +180,7 @@ const NewJobS1: React.FC = () => {
                       }}
                     />
                   )}
-                </View>
+                </View> */}
               </View>
               <View style={styles.inputContainer}>
                 <TextFormInputWithIcon
@@ -218,14 +218,14 @@ const NewJobS1: React.FC = () => {
             <Text style={styles.subTitle}>Add Item Image</Text>
           </View>
           <View style={styles.imageInputContainer}>
-            {newJob.itemImages && newJob.itemImages.length < 1 ? (
-              <PictureUploadComponent handleImageChange={handleAddImage} />
-            ) : (
+            {newJob.itemImages && newJob.itemImages.length > 1 ? (
               <PictureUploadComponent
                 handleImageChange={handleRemoveImage}
                 imageShown={newJob.itemImages}
                 imageIndex={0}
               />
+            ) : (
+              <PictureUploadComponent handleImageChange={handleAddImage} />
             )}
           </View>
         </View>
