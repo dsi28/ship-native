@@ -26,7 +26,6 @@ import styles from './styles';
 const NewJobS1: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const jobState = useSelector((state: AppState) => state.job);
-  console.log('job state: ', jobState);
   const dispatch = useDispatch();
   const [pictureInput, setPictureInput] = useState<string>('');
   const sheetRef = React.useRef();
@@ -37,11 +36,6 @@ const NewJobS1: React.FC = () => {
 
   const [newJob, setNewJob] = useState<IJob>(jobState);
 
-  console.log('deli', typeof newJob.itemDeliveryDate);
-  console.log(
-    'test IDK what is going on'
-    // newJob.itemDeliveryDate?.toDateString()
-  );
   const handleAddImage = () => {
     // @ts-ignore
     sheetRef.current.snapTo(0);
@@ -79,18 +73,14 @@ const NewJobS1: React.FC = () => {
     // } else {
     //   setDate(currentDate);
     // }
-    console.log('type of selected date: ', typeof selectedDate);
-    console.log('type of date: ', typeof date);
+
     setDate(currentDate);
     setNewJob({ ...newJob, itemDeliveryDate: new Date(currentDate) });
-
-    console.log('cur date', currentDate);
   };
 
   const showDatepicker = () => {
     setShow(true);
   };
-  console.log(newJob.itemImages.length);
 
   const handlePressCalendarInput = (
     propertyName: string,

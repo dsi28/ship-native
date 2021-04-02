@@ -21,9 +21,9 @@ const NewJobS2: React.FC = () => {
   const dispatch = useDispatch();
   const [itemSize, setItemSize] = useState<
     'small' | 'medium' | 'large' | 'extra large' | undefined
-  >(undefined);
+  >(jobState.itemSize);
   const [itemWeight, setItemWeight] = useState<IItemWeight | undefined>(
-    undefined
+    jobState.itemWeight
   );
 
   const checkBoxOnChange = (
