@@ -19,12 +19,12 @@ export interface IJob {
   shipmentCost?: number;
 }
 export interface IItemWeight {
-  name:
-    | 'Around 2 lbs'
-    | 'Around 2-5 lbs'
-    | 'Around 5-20 lbs'
-    | 'Around 20-50 lbs';
-  maxWeight: 2 | 5 | 20 | 50;
+  weight:
+    | { max: 2; text: 'Around 2 lbs' }
+    | { max: 5; text: 'Around 2-5 lbs' }
+    | { max: 20; text: 'Around 5-20 lbs' }
+    | { max: 50; text: 'Around 20-50 lbs' }
+    | { max: 1000; text: 'Over 50 lbs' };
 }
 
 export interface IItemReciever {
