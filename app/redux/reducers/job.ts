@@ -18,7 +18,7 @@ interface IAction {
 }
 
 const jobReducer = (state = initialState, action: IAction) => {
-  console.log('ACTION NOW', action);
+  console.log('JOB ACTION NOW', action);
   switch (action.type) {
     case SET_JOB:
       return {

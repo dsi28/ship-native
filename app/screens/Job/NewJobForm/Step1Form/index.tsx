@@ -32,12 +32,16 @@ const NewJobS1: React.FC = () => {
   const sheetRef = React.useRef();
   const fall = new Animated.Value(1);
 
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date>(new Date());
   const [show, setShow] = useState(false);
 
   const [newJob, setNewJob] = useState<IJob>(jobState);
 
-  console.log('deli', newJob.itemDeliveryDate);
+  console.log('deli', typeof newJob.itemDeliveryDate);
+  console.log(
+    'test IDK what is going on'
+    // newJob.itemDeliveryDate?.toDateString()
+  );
   const handleAddImage = () => {
     // @ts-ignore
     sheetRef.current.snapTo(0);
@@ -66,7 +70,7 @@ const NewJobS1: React.FC = () => {
     setNewJob({ ...newJob, itemCategory: newCategory });
   };
 
-  const onChange = (event: any, selectedDate: Date | undefined) => {
+  const onChangeDate = (event: any, selectedDate: Date | undefined) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     // if (event.type === 'neutralButtonPressed') {
@@ -75,8 +79,10 @@ const NewJobS1: React.FC = () => {
     // } else {
     //   setDate(currentDate);
     // }
+    console.log('type of selected date: ', typeof selectedDate);
+    console.log('type of date: ', typeof date);
     setDate(currentDate);
-    setNewJob({ ...newJob, itemDeliveryDate: currentDate });
+    setNewJob({ ...newJob, itemDeliveryDate: new Date(currentDate) });
 
     console.log('cur date', currentDate);
   };
@@ -158,9 +164,12 @@ const NewJobS1: React.FC = () => {
                     onChangeHandler={handlePressCalendarInput}
                     propertyName="itemDeliveryDate"
                     inputValue={
-                      newJob?.itemDeliveryDate
-                        ? newJob.itemDeliveryDate.toDateString()
-                        : date.toDateString()
+                      // eslint-disable-next-line no-nested-ternary
+                      typeof newJob?.itemDeliveryDate !== undefined
+                        ? typeof newJob?.itemDeliveryDate === 'object'
+                          ? newJob?.itemDeliveryDate.toDateString() // newJob.itemDeliveryDate?.toDateString()
+                          : new Date(newJob?.itemDeliveryDate).toDateString() // this is a mess
+                        : date.toDateString() // 'set date'
                     }
                     inputDisabled={false}
                   />
@@ -177,7 +186,7 @@ const NewJobS1: React.FC = () => {
                       onChange={(e, pickedDate) => {
                         // console.log('e', e);
                         // console.log('date', pickedDate);
-                        onChange(e, pickedDate);
+                        onChangeDate(e, pickedDate);
                       }}
                     />
                   )}
