@@ -194,6 +194,7 @@ const NewJobS1: React.FC = () => {
                       ? newJob.itemDeliveryLocation
                       : ''
                   }
+                  inputDisabled={false}
                 />
               </View>
               <TextFormInput
