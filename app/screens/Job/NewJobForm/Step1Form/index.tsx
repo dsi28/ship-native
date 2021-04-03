@@ -14,7 +14,7 @@ import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIc
 import PictureUploadComponent from '../../../../components/pictureUpload';
 import { INewJob } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
-import { setJob } from '../../../../redux/actions/job';
+import { setNewJob as tempSetNewJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -24,8 +24,7 @@ import styles from './styles';
 // }
 
 const NewJobS1: React.FC = () => {
-  // @ts-ignore default does exsist not sure why this show up
-  const jobState = useSelector((state: AppState) => state.job);
+  const jobState = useSelector((state: AppState) => state.job.newJob);
   const dispatch = useDispatch();
   const [pictureInput, setPictureInput] = useState<string>('');
   const sheetRef = React.useRef();
@@ -201,7 +200,7 @@ const NewJobS1: React.FC = () => {
                       ? newJob.itemDeliveryLocation
                       : ''
                   }
-                  inputDisabled={false}
+                  inputDisabled
                 />
               </View>
               <TextFormInput
@@ -242,7 +241,7 @@ const NewJobS1: React.FC = () => {
             <WideButton
               buttonText="Next"
               onPressHandler={() => {
-                dispatch(setJob({ ...jobState, ...newJob }));
+                dispatch(tempSetNewJob({ ...jobState, ...newJob }));
                 NavigationService.navigate('Step 2');
               }}
               isSelected

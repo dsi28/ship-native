@@ -7,7 +7,7 @@ import CheckBoxItem from '../../../../components/FormInputs/checkbox';
 import SimpleCheckBoxItem from '../../../../components/FormInputs/simpleCheckBox';
 import { IItemWeight } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
-import { setJob } from '../../../../redux/actions/job';
+import { setNewJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -17,7 +17,7 @@ import styles from './styles';
 // }
 
 const NewJobS2: React.FC = () => {
-  const jobState = useSelector((state: AppState) => state.job);
+  const jobState = useSelector((state: AppState) => state.job.newJob);
   const dispatch = useDispatch();
   const [itemSize, setItemSize] = useState<
     'small' | 'medium' | 'large' | 'extra large' | undefined
@@ -150,7 +150,7 @@ const NewJobS2: React.FC = () => {
               onPressHandler={() => {
                 console.log('next.');
                 dispatch(
-                  setJob({
+                  setNewJob({
                     ...jobState,
                     ...{ itemSize, itemWeight }
                   })

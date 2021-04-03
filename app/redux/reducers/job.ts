@@ -1,5 +1,5 @@
 import { IJobState } from '../../models/IJob';
-import { SET_JOB } from '../actions/job';
+import { SET_NEW_JOB } from '../actions/job';
 
 const initialState: IJobState = {
   newJob: {
@@ -12,7 +12,7 @@ const initialState: IJobState = {
     note: '',
     shipmentCost: 0
   },
-  ownerJob: []
+  ownerJobs: []
 };
 
 interface IAction {
@@ -23,10 +23,10 @@ interface IAction {
 const jobReducer = (state = initialState, action: IAction) => {
   console.log('JOB ACTION NOW', action);
   switch (action.type) {
-    case SET_JOB:
+    case SET_NEW_JOB:
       return {
         ...state,
-        ...action.data
+        newJob: { ...action.data }
       };
     default:
       return state;

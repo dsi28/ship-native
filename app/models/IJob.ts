@@ -1,6 +1,8 @@
 export interface IJobState {
   newJob: INewJob;
-  ownerJob: [];
+  ownerJobs: [];
+  // add traveler jobs
+  // saved jobs?
 }
 
 export interface INewJob {

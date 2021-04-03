@@ -13,7 +13,7 @@ import styles from './styles';
 // }
 
 const NewJobConfirm: React.FC = () => {
-  const jobState = useSelector((state: AppState) => state.job);
+  const jobState = useSelector((state: AppState) => state.job.newJob);
   const dispatch = useDispatch();
 
   // const [nameInput, setNameInput] = useState(userPostProfile.name);
