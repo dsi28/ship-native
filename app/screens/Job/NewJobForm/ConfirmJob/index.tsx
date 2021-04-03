@@ -13,20 +13,23 @@ import styles from './styles';
 // }
 
 const NewJobConfirm: React.FC = () => {
-  // @ts-ignore default does exsist not sure why this show up
-  const userPostProfile = useSelector((state: AppState) => state.default);
+  const jobState = useSelector((state: AppState) => state.job);
   const dispatch = useDispatch();
 
   // const [nameInput, setNameInput] = useState(userPostProfile.name);
   return (
     <ScrollView style={styles.container}>
       <View style={styles.subContainer}>
-        <JobDetails />
+        <JobDetails job={jobState} />
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <WideButton
-              buttonText="Next"
-              onPressHandler={() => console.log('next')}
+              buttonText="Post Job"
+              onPressHandler={() => {
+                console.log('job posted');
+                // clear new job
+                // add job to user's job
+              }}
               isSelected
               btnBackgoundColor="orange"
               btnBorderColor="orange"
@@ -36,7 +39,10 @@ const NewJobConfirm: React.FC = () => {
           <View>
             <WideButton
               buttonText="Cancel"
-              onPressHandler={() => console.log('cancel')}
+              onPressHandler={() => {
+                console.log('cancel job');
+                // clear new job
+              }}
               isSelected
               btnBackgoundColor="white"
               btnBorderColor="orange"
