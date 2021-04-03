@@ -1,4 +1,4 @@
-export interface IJob {
+export interface INewJob {
   // TODO maybe name as new Job
   uid?: string; // from firebase TODO remove the ? when firebase is being used
   itemName?: string;

@@ -12,7 +12,7 @@ import DropDownFormInput from '../../../../components/FormInputs/DropDown';
 import TextFormInput from '../../../../components/FormInputs/TextI';
 import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIcon';
 import PictureUploadComponent from '../../../../components/pictureUpload';
-import { IItemCategory, IJob } from '../../../../models/IJob';
+import { INewJob } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
 import { setJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
@@ -34,7 +34,7 @@ const NewJobS1: React.FC = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [show, setShow] = useState(false);
 
-  const [newJob, setNewJob] = useState<IJob>(jobState);
+  const [newJob, setNewJob] = useState<INewJob>(jobState);
 
   const handleAddImage = () => {
     // @ts-ignore
@@ -60,7 +60,14 @@ const NewJobS1: React.FC = () => {
     setNewJob({ ...newJob, itemImages: image });
   };
 
-  const handleCategoryChange = (newCategory: IItemCategory) => {
+  const handleCategoryChange = (
+    newCategory:
+      | 'category 1'
+      | 'category 2'
+      | 'category 3'
+      | 'category 4'
+      | 'category 5'
+  ) => {
     setNewJob({ ...newJob, itemCategory: newCategory });
   };
 
