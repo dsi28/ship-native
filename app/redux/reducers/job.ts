@@ -1,7 +1,7 @@
-import { IJob } from '../../models/IJob';
+import { IJobState } from '../../models/IJob';
 import { SET_JOB } from '../actions/job';
 
-const initialState: IJob = {
+const initialState: IJobState = {
   newJob: {
     uid: '888', // will change when linked with auth
     itemName: '',
@@ -11,11 +11,12 @@ const initialState: IJob = {
     itemImages: '',
     note: '',
     shipmentCost: 0
-  }
+  },
+  ownerJob: []
 };
 
 interface IAction {
-  data: IJob;
+  data: IJobState;
   type: string;
 }
 
