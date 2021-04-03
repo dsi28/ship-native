@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../../components/buttons/WideButton';
 import TextFormInput from '../../../../components/FormInputs/TextI';
 import NumberToggler from '../../../../components/numberToggler';
+import { IItemReciever } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
+import { setJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -15,11 +17,26 @@ import styles from './styles';
 // }
 
 const NewJobS3: React.FC = () => {
-  // @ts-ignore default does exsist not sure why this show up
-  const userPostProfile = useSelector((state: AppState) => state.default);
+  const jobState = useSelector((state: AppState) => state.job);
   const dispatch = useDispatch();
+  const [note, setNote] = useState<string>(jobState.note || '');
+  const [itemReceiver, setItemReceiver] = useState<IItemReciever>(
+    jobState.itemReceiver || {
+      name: '',
+      email: ''
+    }
+  );
+  const [shipmentCost, setShipmentCost] = useState<number>(
+    jobState.shipmentCost || 60
+  );
 
-  // const [nameInput, setNameInput] = useState(userPostProfile.name);
+  const textFormInputChangeHandler = (
+    propertyName: string,
+    propertyValue: string
+  ) => {
+    setItemReceiver({ ...itemReceiver, ...{ [propertyName]: propertyValue } });
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.subContainer}>
@@ -50,9 +67,12 @@ const NewJobS3: React.FC = () => {
                     fontSize: 20
                   }}
                   editable
+                  multiline
                   placeholder="Write here"
-                  maxLength={40}
+                  maxLength={120}
                   numberOfLines={4}
+                  value={note}
+                  onChangeText={setNote}
                 />
               </View>
             </View>
@@ -64,12 +84,21 @@ const NewJobS3: React.FC = () => {
           </View>
           <View>
             <View style={{ marginBottom: 20 }}>
-              <TextFormInput labelText="Name" placeholderText="Name" />
+              <TextFormInput
+                labelText="Name"
+                placeholderText="Name"
+                inputValue={itemReceiver.name}
+                propertyName="name"
+                onChangeHandler={textFormInputChangeHandler}
+              />
             </View>
             <View>
               <TextFormInput
                 labelText="Email Address"
                 placeholderText="Email Address"
+                inputValue={itemReceiver.email}
+                propertyName="email"
+                onChangeHandler={textFormInputChangeHandler}
               />
             </View>
           </View>
@@ -87,7 +116,10 @@ const NewJobS3: React.FC = () => {
                   marginBottom: 20
                 }}
               >
-                <NumberToggler />
+                <NumberToggler
+                  count={shipmentCost}
+                  setCount={setShipmentCost}
+                />
               </View>
             </View>
           </View>
@@ -98,6 +130,12 @@ const NewJobS3: React.FC = () => {
               buttonText="Next"
               onPressHandler={() => {
                 console.log('next');
+                dispatch(
+                  setJob({
+                    ...jobState,
+                    ...{ note, itemReceiver, shipmentCost }
+                  })
+                );
                 NavigationService.navigate('Preview Job Post');
               }}
               isSelected

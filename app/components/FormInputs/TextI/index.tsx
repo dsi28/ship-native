@@ -7,7 +7,7 @@ interface TextFormInputProps {
   labelText: string;
   placeholderText: string;
   onChangeHandler: (propertyName: string, propertyValue: string) => void;
-  propertyName: 'itemName' | 'itemValue';
+  propertyName: 'itemName' | 'itemValue' | 'name' | 'email';
   inputValue: string | number;
 }
 
