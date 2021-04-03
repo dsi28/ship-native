@@ -73,7 +73,11 @@ const HomeStack: React.FC = () => (
     <Stack.Screen name="Traveler Reviews" component={ProfileReviews} />
     <Stack.Screen name="Accept Traveler" component={AcceptTravler} />
     <Stack.Screen name="Decline Traveler" component={DeclineTravler} />
-    <Stack.Screen name="New Job" component={NewJobForm} />
+    <Stack.Screen
+      name="New Job"
+      component={NewJobForm}
+      options={{ headerShown: false }}
+    />
   </Stack.Navigator>
 );
 
