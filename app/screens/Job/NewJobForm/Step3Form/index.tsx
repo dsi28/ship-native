@@ -49,23 +49,14 @@ const NewJobS3: React.FC = () => {
               <Text style={styles.subTitle}>Add note for the traveller</Text>
             </View>
             <View>
-              <Text style={{ fontSize: 20, color: 'gray' }}>(optional)</Text>
+              <Text style={styles.inputSubText}>(optional)</Text>
             </View>
           </View>
           <View>
             <View style={styles.screenInputContainer}>
-              <View
-                style={{
-                  marginBottom: 20
-                }}
-              >
+              <View style={styles.inputContainer}>
                 <TextInput
-                  style={{
-                    borderColor: 'gray',
-                    borderWidth: 2,
-                    textAlignVertical: 'top',
-                    fontSize: 20
-                  }}
+                  style={styles.inputMultiLine}
                   editable
                   multiline
                   placeholder="Write here"
@@ -83,7 +74,7 @@ const NewJobS3: React.FC = () => {
             <Text style={styles.subTitle}>Who will receive the item?</Text>
           </View>
           <View>
-            <View style={{ marginBottom: 20 }}>
+            <View style={styles.inputContainer}>
               <TextFormInput
                 labelText="Name"
                 placeholderText="Name"
@@ -111,11 +102,7 @@ const NewJobS3: React.FC = () => {
           </View>
           <View>
             <View style={styles.screenInputContainer}>
-              <View
-                style={{
-                  marginBottom: 20
-                }}
-              >
+              <View style={styles.inputContainer}>
                 <NumberToggler
                   count={shipmentCost}
                   setCount={setShipmentCost}

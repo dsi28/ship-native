@@ -38,7 +38,13 @@ const styles = StyleSheet.create({
   screenInputContainer: {
     borderRadius: 10
   },
-  inputContainer: { marginBottom: 10 },
+  inputContainer: { marginBottom: 20 },
+  inputMultiLine: {
+    borderColor: 'gray',
+    borderWidth: 2,
+    textAlignVertical: 'top',
+    fontSize: 20
+  },
   inputSubTextContainer: { marginBottom: 50 },
   inputSubText: { fontSize: 20, color: 'gray' },
   addItemContainer: {
