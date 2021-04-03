@@ -11,7 +11,7 @@ export default function NewJobForm() {
     <Stack.Navigator
       headerMode="screen"
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
         headerTintColor: 'black',
         headerStyle: { backgroundColor: 'white' }
       }}

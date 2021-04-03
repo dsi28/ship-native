@@ -7,7 +7,7 @@ import TextFormInput from '../../../../components/FormInputs/TextI';
 import NumberToggler from '../../../../components/numberToggler';
 import { IItemReciever } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
-import { setJob } from '../../../../redux/actions/job';
+import { resetNewJob, setNewJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -17,7 +17,7 @@ import styles from './styles';
 // }
 
 const NewJobS3: React.FC = () => {
-  const jobState = useSelector((state: AppState) => state.job);
+  const jobState = useSelector((state: AppState) => state.job.newJob);
   const dispatch = useDispatch();
   const [note, setNote] = useState<string>(jobState.note || '');
   const [itemReceiver, setItemReceiver] = useState<IItemReciever>(
@@ -118,7 +118,7 @@ const NewJobS3: React.FC = () => {
               onPressHandler={() => {
                 console.log('next');
                 dispatch(
-                  setJob({
+                  setNewJob({
                     ...jobState,
                     ...{ note, itemReceiver, shipmentCost }
                   })
@@ -134,7 +134,11 @@ const NewJobS3: React.FC = () => {
           <View>
             <WideButton
               buttonText="Cancel"
-              onPressHandler={() => console.log('cancel')}
+              onPressHandler={() => {
+                NavigationService.navigate('HomeScreen');
+                console.log('cancel job');
+                dispatch(resetNewJob());
+              }}
               isSelected
               btnBackgoundColor="white"
               btnBorderColor="orange"

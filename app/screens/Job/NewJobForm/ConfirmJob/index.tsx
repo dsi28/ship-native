@@ -4,6 +4,8 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../../components/buttons/WideButton';
 import JobDetails from '../../../../components/job/Details';
+import NavigationService from '../../../../navigation/NavigationService';
+import { addJob, resetNewJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -13,7 +15,7 @@ import styles from './styles';
 // }
 
 const NewJobConfirm: React.FC = () => {
-  const jobState = useSelector((state: AppState) => state.job);
+  const jobState = useSelector((state: AppState) => state.job.newJob);
   const dispatch = useDispatch();
 
   // const [nameInput, setNameInput] = useState(userPostProfile.name);
@@ -27,8 +29,8 @@ const NewJobConfirm: React.FC = () => {
               buttonText="Post Job"
               onPressHandler={() => {
                 console.log('job posted');
-                // clear new job
-                // add job to user's job
+                NavigationService.navigate('HomeScreen');
+                dispatch(addJob(jobState));
               }}
               isSelected
               btnBackgoundColor="orange"
@@ -40,8 +42,9 @@ const NewJobConfirm: React.FC = () => {
             <WideButton
               buttonText="Cancel"
               onPressHandler={() => {
+                NavigationService.navigate('HomeScreen');
                 console.log('cancel job');
-                // clear new job
+                dispatch(resetNewJob());
               }}
               isSelected
               btnBackgoundColor="white"
