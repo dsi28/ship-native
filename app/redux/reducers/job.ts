@@ -1,5 +1,5 @@
 import { IJobState } from '../../models/IJob';
-import { SET_NEW_JOB } from '../actions/job';
+import { ADD_JOB, RESET_NEW_JOB, SET_NEW_JOB } from '../actions/job';
 
 const initialState: IJobState = {
   newJob: {
@@ -27,6 +27,17 @@ const jobReducer = (state = initialState, action: IAction) => {
       return {
         ...state,
         newJob: { ...action.data }
+      };
+    case RESET_NEW_JOB:
+      return {
+        ...state,
+        newJob: initialState.newJob
+      };
+    case ADD_JOB:
+      return {
+        ...state,
+        newJob: initialState.newJob,
+        ownerJobs: [...state.ownerJobs, action.data]
       };
     default:
       return state;

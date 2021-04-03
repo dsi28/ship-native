@@ -14,7 +14,10 @@ import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIc
 import PictureUploadComponent from '../../../../components/pictureUpload';
 import { INewJob } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
-import { setNewJob as tempSetNewJob } from '../../../../redux/actions/job';
+import {
+  resetNewJob,
+  setNewJob as tempSetNewJob
+} from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -25,6 +28,7 @@ import styles from './styles';
 
 const NewJobS1: React.FC = () => {
   const jobState = useSelector((state: AppState) => state.job.newJob);
+
   const dispatch = useDispatch();
   const [pictureInput, setPictureInput] = useState<string>('');
   const sheetRef = React.useRef();
@@ -94,7 +98,6 @@ const NewJobS1: React.FC = () => {
   ) => {
     // showDatepicker();
   };
-  // const [nameInput, setNameInput] = useState(userPostProfile.name);
   return (
     <ScrollView style={styles.container}>
       <View style={styles.subContainer}>
@@ -170,7 +173,6 @@ const NewJobS1: React.FC = () => {
                     inputDisabled={false}
                   />
                 </Pressable>
-
                 <View>
                   {show && (
                     <DateTimePicker
@@ -254,7 +256,11 @@ const NewJobS1: React.FC = () => {
           <View>
             <WideButton
               buttonText="Cancel"
-              onPressHandler={() => console.log('cancel')}
+              onPressHandler={() => {
+                NavigationService.navigate('HomeScreen');
+                console.log('cancel job');
+                dispatch(resetNewJob());
+              }}
               isSelected
               btnBackgoundColor="white"
               btnBorderColor="orange"

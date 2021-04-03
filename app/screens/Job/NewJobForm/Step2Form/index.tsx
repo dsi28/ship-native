@@ -7,7 +7,7 @@ import CheckBoxItem from '../../../../components/FormInputs/checkbox';
 import SimpleCheckBoxItem from '../../../../components/FormInputs/simpleCheckBox';
 import { IItemWeight } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
-import { setNewJob } from '../../../../redux/actions/job';
+import { resetNewJob, setNewJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -168,7 +168,11 @@ const NewJobS2: React.FC = () => {
           <View>
             <WideButton
               buttonText="Cancel"
-              onPressHandler={() => console.log('cancel')}
+              onPressHandler={() => {
+                NavigationService.navigate('HomeScreen');
+                console.log('cancel job');
+                dispatch(resetNewJob());
+              }}
               isSelected
               btnBackgoundColor="white"
               btnBorderColor="orange"
