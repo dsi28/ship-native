@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { IItemCategory } from '../../../models/IJob';
 import styles from './styles';
 
 interface DropDownFormInputProps {
@@ -10,6 +11,14 @@ interface DropDownFormInputProps {
     label: string;
     value: string;
   }[];
+  onChangeHandler: (newCategory: IItemCategory) => void;
+  inputValue:
+    | 'category 1'
+    | 'category 2'
+    | 'category 3'
+    | 'category 4'
+    | 'category 5'
+    | null;
   //   isSelected: boolean;
   //   btnBackgoundColor: string;
   //   btnTextColor: string;
@@ -19,31 +28,34 @@ interface DropDownFormInputProps {
 const DropDownFormInput: React.FC<DropDownFormInputProps> = ({
   labelText,
   placeholderText,
-  itemList
-}) => (
-  <View>
-    <View style={styles.labelContainer}>
-      <Text style={styles.labelText}>{labelText}</Text>
+  itemList,
+  onChangeHandler,
+  inputValue
+}) => {
+  console.log('input val', inputValue);
+  return (
+    <View>
+      <View style={styles.labelContainer}>
+        <Text style={styles.labelText}>{labelText}</Text>
+      </View>
+      <View style={styles.dropDownItemContainer}>
+        <DropDownPicker
+          items={itemList}
+          containerStyle={styles.dropDownContainer}
+          style={styles.dropDownStyles}
+          itemStyle={styles.dropDownItemStyle}
+          labelStyle={styles.dropDownLabelStyle}
+          dropDownStyle={styles.dropDownDropDownStyle}
+          defaultValue={inputValue}
+          onChangeItem={(item: { label: string; value: IItemCategory }) => {
+            console.log(item);
+            onChangeHandler(item.value);
+          }}
+          placeholder={placeholderText}
+        />
+      </View>
     </View>
-    <View style={styles.dropDownItemContainer}>
-      <DropDownPicker
-        items={itemList}
-        // defaultValue={this.state.country}
-        containerStyle={styles.dropDownContainer}
-        style={styles.dropDownStyles}
-        itemStyle={styles.dropDownItemStyle}
-        labelStyle={styles.dropDownLabelStyle}
-        dropDownStyle={styles.dropDownDropDownStyle}
-        onChangeItem={
-          (item) => console.log(item)
-          // this.setState({
-          //   country: item.value
-          // })
-        }
-        placeholder={placeholderText}
-      />
-    </View>
-  </View>
-);
+  );
+};
 
 export default DropDownFormInput;

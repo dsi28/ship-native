@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import Styles from './styles';
 
-// interface NumberTogglerProps {
-//   handleItemQty: (cItem: ICartItem, addQty: number) => void;
-//   cartItem: ICartItem;
-// }
+interface NumberTogglerProps {
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+}
 interface ToggleButtonProps {
   isMinus: boolean;
   onPress: (isMinus: boolean) => void;
@@ -25,8 +25,7 @@ const ToggleButton = ({ isMinus, onPress }: ToggleButtonProps) => {
   );
 };
 
-const NumberToggler: React.FC = () => {
-  const [count, setCount] = useState(60);
+const NumberToggler: React.FC<NumberTogglerProps> = ({ count, setCount }) => {
   const minCount = 0;
   const maxCount = 500;
 

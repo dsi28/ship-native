@@ -1,5 +1,6 @@
+import DateTimePicker from '@react-native-community/datetimepicker';
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +12,9 @@ import DropDownFormInput from '../../../../components/FormInputs/DropDown';
 import TextFormInput from '../../../../components/FormInputs/TextI';
 import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIcon';
 import PictureUploadComponent from '../../../../components/pictureUpload';
+import { IItemCategory, IJob } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
+import { setJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
@@ -22,21 +25,69 @@ import styles from './styles';
 
 const NewJobS1: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
-  const userPostProfile = useSelector((state: AppState) => state.default);
+  const jobState = useSelector((state: AppState) => state.job);
   const dispatch = useDispatch();
   const [pictureInput, setPictureInput] = useState<string>('');
   const sheetRef = React.useRef();
   const fall = new Animated.Value(1);
+
+  const [date, setDate] = useState<Date>(new Date());
+  const [show, setShow] = useState(false);
+
+  const [newJob, setNewJob] = useState<IJob>(jobState);
+
   const handleAddImage = () => {
     // @ts-ignore
     sheetRef.current.snapTo(0);
     console.log('add img');
+    // setNewJob({ ...newJob, itemImages: pictureInput });
   };
   const handleRemoveImage = () => {
     setPictureInput('');
+
     console.log('remove img');
   };
 
+  const textFormInputChangeHandler = (
+    propertyName: string,
+    propertyValue: string
+  ) => {
+    setNewJob({ ...newJob, [propertyName]: propertyValue });
+  };
+
+  const handleImageChange = (image: string) => {
+    setPictureInput(image);
+    setNewJob({ ...newJob, itemImages: image });
+  };
+
+  const handleCategoryChange = (newCategory: IItemCategory) => {
+    setNewJob({ ...newJob, itemCategory: newCategory });
+  };
+
+  const onChangeDate = (event: any, selectedDate: Date | undefined) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    // if (event.type === 'neutralButtonPressed') {
+    //   setDate(new Date(0));
+
+    // } else {
+    //   setDate(currentDate);
+    // }
+
+    setDate(currentDate);
+    setNewJob({ ...newJob, itemDeliveryDate: new Date(currentDate) });
+  };
+
+  const showDatepicker = () => {
+    setShow(true);
+  };
+
+  const handlePressCalendarInput = (
+    propertyName: string,
+    propertyValue: string
+  ) => {
+    // showDatepicker();
+  };
   // const [nameInput, setNameInput] = useState(userPostProfile.name);
   return (
     <ScrollView style={styles.container}>
@@ -53,48 +104,105 @@ const NewJobS1: React.FC = () => {
               <DropDownFormInput
                 labelText="Item Category"
                 placeholderText="Select a category"
+                onChangeHandler={handleCategoryChange}
                 itemList={[
                   {
                     label: 'Category 1',
-                    value: 'cat1'
+                    value: 'category 1'
                     // icon: () => <Icon name="flag" size={18} color="#900" />,
                     // hidden: true
                   },
                   {
                     label: 'Category 2',
-                    value: 'cat2'
+                    value: 'category 2'
                     // icon: () => <Icon name="flag" size={18} color="#900" />
                   },
                   {
                     label: 'Category 3',
-                    value: 'cat3'
+                    value: 'category 3'
+                    // icon: () => <Icon name="flag" size={18} color="#900" />
+                  },
+                  {
+                    label: 'Category 4',
+                    value: 'category 4'
+                    // icon: () => <Icon name="flag" size={18} color="#900" />
+                  },
+                  {
+                    label: 'Category 5',
+                    value: 'category 5'
                     // icon: () => <Icon name="flag" size={18} color="#900" />
                   }
                 ]}
+                inputValue={newJob?.itemCategory ? newJob.itemCategory : null}
               />
               <View style={styles.inputContainer}>
                 <TextFormInput
                   labelText="Item Name"
                   placeholderText="Enter item name"
+                  onChangeHandler={textFormInputChangeHandler}
+                  propertyName="itemName"
+                  inputValue={newJob?.itemName ? newJob.itemName : ''}
                 />
               </View>
 
               <View style={styles.inputContainer}>
-                <TextFormInput
-                  labelText="Delivery Date"
-                  placeholderText="Enter delivery date"
-                />
+                <Pressable onPress={showDatepicker}>
+                  <TextFormInputWithIcon
+                    labelText="Delivery Date"
+                    placeholderText="Enter Delivery Date"
+                    iconName="calendar-today"
+                    onChangeHandler={handlePressCalendarInput}
+                    propertyName="itemDeliveryDate"
+                    inputValue={
+                      // eslint-disable-next-line no-nested-ternary
+                      typeof newJob?.itemDeliveryDate !== undefined
+                        ? typeof newJob?.itemDeliveryDate === 'object'
+                          ? newJob?.itemDeliveryDate.toDateString() // newJob.itemDeliveryDate?.toDateString()
+                          : new Date(newJob?.itemDeliveryDate).toDateString() // this is a mess
+                        : date.toDateString() // 'set date'
+                    }
+                    inputDisabled={false}
+                  />
+                </Pressable>
+
+                <View>
+                  {show && (
+                    <DateTimePicker
+                      testID="dateTimePicker"
+                      value={date}
+                      // mode={mode}
+                      is24Hour
+                      display="default"
+                      onChange={(e, pickedDate) => {
+                        // console.log('e', e);
+                        // console.log('date', pickedDate);
+                        onChangeDate(e, pickedDate);
+                      }}
+                    />
+                  )}
+                </View>
               </View>
               <View style={styles.inputContainer}>
                 <TextFormInputWithIcon
                   labelText="Delivery Location"
                   placeholderText="Enter Location"
                   iconName="location-pin"
+                  onChangeHandler={textFormInputChangeHandler}
+                  propertyName="itemDeliveryLocation"
+                  inputValue={
+                    newJob?.itemDeliveryLocation
+                      ? newJob.itemDeliveryLocation
+                      : ''
+                  }
+                  inputDisabled={false}
                 />
               </View>
               <TextFormInput
                 labelText="Item Value"
                 placeholderText="Enter item value"
+                onChangeHandler={textFormInputChangeHandler}
+                propertyName="itemValue"
+                inputValue={newJob?.itemValue ? newJob.itemValue : ''}
               />
               {/* @TODO replace this with an i icon  */}
               <View style={styles.inputSubTextContainer}>
@@ -111,14 +219,14 @@ const NewJobS1: React.FC = () => {
             <Text style={styles.subTitle}>Add Item Image</Text>
           </View>
           <View style={styles.imageInputContainer}>
-            {pictureInput.length < 1 ? (
-              <PictureUploadComponent handleImageChange={handleAddImage} />
-            ) : (
+            {newJob.itemImages && newJob.itemImages.length > 1 ? (
               <PictureUploadComponent
                 handleImageChange={handleRemoveImage}
-                imageShown={pictureInput}
+                imageShown={newJob.itemImages}
                 imageIndex={0}
               />
+            ) : (
+              <PictureUploadComponent handleImageChange={handleAddImage} />
             )}
           </View>
         </View>
@@ -127,6 +235,7 @@ const NewJobS1: React.FC = () => {
             <WideButton
               buttonText="Next"
               onPressHandler={() => {
+                dispatch(setJob({ ...jobState, ...newJob }));
                 NavigationService.navigate('Step 2');
               }}
               isSelected
@@ -158,7 +267,7 @@ const NewJobS1: React.FC = () => {
         enabledGestureInteraction
         renderContent={() => (
           <RenderContent
-            setPictureInput={setPictureInput}
+            setPictureInput={handleImageChange}
             pictureInput={pictureInput}
             sheetRef={sheetRef}
           />

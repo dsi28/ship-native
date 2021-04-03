@@ -6,16 +6,17 @@ import styles from './styles';
 interface TextFormInputProps {
   labelText: string;
   placeholderText: string;
-
-  //   isSelected: boolean;
-  //   btnBackgoundColor: string;
-  //   btnTextColor: string;
-  //   btnBorderColor: string;
+  onChangeHandler: (propertyName: string, propertyValue: string) => void;
+  propertyName: 'itemName' | 'itemValue' | 'name' | 'email';
+  inputValue: string | number;
 }
 
 const TextFormInput: React.FC<TextFormInputProps> = ({
   labelText,
-  placeholderText
+  placeholderText,
+  onChangeHandler,
+  propertyName,
+  inputValue
 }) => (
   <View>
     <View>
@@ -28,8 +29,10 @@ const TextFormInput: React.FC<TextFormInputProps> = ({
         // value={nameInput}
         onChangeText={(e) => {
           console.log(e);
+          onChangeHandler(propertyName, e);
           // setNameInput(e);
         }}
+        value={inputValue}
       />
     </View>
   </View>

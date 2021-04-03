@@ -1,20 +1,12 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { Text, View } from 'react-native';
 import NewJobConfirm from './ConfirmJob';
 import NewJobS1 from './Step1Form';
 import NewJobS2 from './Step2Form';
 import NewJobS3 from './Step3Form';
 
-const Temp = () => (
-  <View>
-    <Text>Temp</Text>
-  </View>
-);
-
 export default function NewJobForm() {
   const Stack = createStackNavigator();
-
   return (
     <Stack.Navigator
       headerMode="screen"
