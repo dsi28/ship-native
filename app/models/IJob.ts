@@ -5,8 +5,29 @@ export interface IJobState {
   // saved jobs?
 }
 
+export interface IJob {
+  uid?: string; // from firebase TODO remove the ? when firebase is being used
+  itemName?: string;
+  itemCategory?:
+    | 'category 1'
+    | 'category 2'
+    | 'category 3'
+    | 'category 4'
+    | 'category 5';
+  itemDeliveryDate?: Date;
+  itemDeliveryLocation?: string;
+  itemValue?: number;
+  itemImages?: string; // TODO only one image for now will add more images and make this a string array later.
+  itemSize?: 'small' | 'medium' | 'large' | 'extra large';
+  itemWeight?: IItemWeight;
+  note?: string;
+  itemReceiver?: IItemReciever;
+  shipmentCost?: number;
+  traveler?: string;
+  status?: 'needs traveler' | 'in progress' | 'complete' | 'canceled';
+}
+
 export interface INewJob {
-  // TODO maybe name as new Job
   uid?: string; // from firebase TODO remove the ? when firebase is being used
   itemName?: string;
   itemCategory?:
