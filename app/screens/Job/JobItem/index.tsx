@@ -3,15 +3,14 @@ import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
-import JobDetails from '../../../components/job/Details';
 import NavigationService from '../../../navigation/NavigationService';
 import TravelerRequests from '../../Travelers/Requests';
 import styles from './styles';
 
-// interface ProfileProps {
-//   curInput: any;
-//   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
-// }
+interface ProfileProps {
+  curInput: any;
+  setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
+}
 
 const JobItem: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
@@ -20,7 +19,7 @@ const JobItem: React.FC = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
-        <JobDetails />
+        {/* <JobDetails  /> */}
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <WideButton

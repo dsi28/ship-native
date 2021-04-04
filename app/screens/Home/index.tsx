@@ -5,7 +5,9 @@ import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import ItemComponent from '../../components/home/ItemComponent';
+import { IJob } from '../../models/IJob';
 import NavigationService from '../../navigation/NavigationService';
+import { AppState } from '../../redux/store/configureStore';
 import AcceptTravler from '../Job/AcceptRequest';
 import DeclineTravler from '../Job/DeclineRequest';
 import JobItem from '../Job/JobItem';
@@ -15,10 +17,13 @@ import TravelerRequests from '../Travelers/Requests';
 import TravelerScreen from '../Travelers/TravelerScreen';
 import styles from './styles';
 
-const HomeScreenTab: React.FC = () => {
-  // @ts-ignore default does exsist not sure why this show up
-  const userProfile = useSelector((state: AppState) => state.default);
-  console.log(userProfile);
+interface HomeInputProps {
+  jobList: [] | IJob[];
+  jobType: string;
+}
+
+const HomeScreenTab: React.FC<HomeInputProps> = ({ jobList, jobType }) => {
+  console.log('job list', jobList);
   const pressItemHandler = () => {
     console.log('item pressed');
     NavigationService.navigate('Job', JobItem);
@@ -26,7 +31,14 @@ const HomeScreenTab: React.FC = () => {
   return (
     <ScrollView style={{ backgroundColor: '#f3f5fa' }}>
       <View style={styles.container}>
-        <ItemComponent onPressHandler={pressItemHandler} />
+        {jobList.map((jobItem: IJob) => (
+          // <Text>{jobItem.itemName}</Text>
+          <ItemComponent
+            jobItem={jobItem}
+            onPressHandler={pressItemHandler}
+            key={jobItem.itemName}
+          />
+        ))}
       </View>
     </ScrollView>
   );
@@ -35,6 +47,8 @@ const HomeScreenTab: React.FC = () => {
 const Tab = createMaterialTopTabNavigator();
 
 function HomeScreenTabs() {
+  const jobState = useSelector((state: AppState) => state.job);
+
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -45,16 +59,12 @@ function HomeScreenTabs() {
         style: { backgroundColor: 'white' }
       }}
     >
-      <Tab.Screen
-        name="Sender"
-        component={HomeScreenTab}
-        options={{ tabBarLabel: 'Sender' }}
-      />
-      <Tab.Screen
-        name="Traveler"
-        component={HomeScreenTab}
-        options={{ tabBarLabel: 'Traveler' }}
-      />
+      <Tab.Screen name="Sender" options={{ tabBarLabel: 'Sender' }}>
+        {() => <HomeScreenTab jobList={jobState.ownerJobs} jobType="Owner" />}
+      </Tab.Screen>
+      <Tab.Screen name="Traveler" options={{ tabBarLabel: 'Traveler' }}>
+        {() => <HomeScreenTab jobList={jobState.ownerJobs} jobType="Owner" />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }
