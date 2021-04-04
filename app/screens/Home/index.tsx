@@ -24,19 +24,18 @@ interface HomeInputProps {
 
 const HomeScreenTab: React.FC<HomeInputProps> = ({ jobList, jobType }) => {
   console.log('job list', jobList);
-  const pressItemHandler = () => {
+  const pressItemHandler = (job: IJob) => {
     console.log('item pressed');
-    NavigationService.navigate('Job', JobItem);
+    NavigationService.navigate('Job', job);
   };
   return (
     <ScrollView style={{ backgroundColor: '#f3f5fa' }}>
       <View style={styles.container}>
         {jobList.map((jobItem: IJob) => (
-          // <Text>{jobItem.itemName}</Text>
           <ItemComponent
             jobItem={jobItem}
             onPressHandler={pressItemHandler}
-            key={jobItem.itemName}
+            key={jobItem.itemName + jobType}
           />
         ))}
       </View>
