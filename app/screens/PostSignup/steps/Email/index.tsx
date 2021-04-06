@@ -15,11 +15,11 @@ import styles from './styles';
 
 const EmailInput: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
-  const userPostProfile = useSelector((state: AppState) => state.default);
+  const userPostProfile = useSelector((state: AppState) => state.profile);
   const dispatch = useDispatch();
   // eslint-disable-next-line no-useless-escape
   const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  const [emailInput, setEmailInput] = useState(userPostProfile.email);
+  const [emailInput, setEmailInput] = useState(userPostProfile.email || '');
   const [isValidated, setIsValidated] = useState(reg.test(emailInput));
 
   const validateEmail = (text: string) => {

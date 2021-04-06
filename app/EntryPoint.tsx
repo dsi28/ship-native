@@ -32,7 +32,6 @@ const RootNavigation: React.FC = () => {
   // console.log(CustomDefaultTheme);
 
   return (
-    // @ts-ignore
     <PaperProvider theme={combinedTheme}>
       <RootNavigator theme={combinedTheme} />
     </PaperProvider>

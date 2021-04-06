@@ -16,7 +16,7 @@ const LoginScreen: React.FC = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text>Login</Text>
+        <Text>Login test simple code</Text>
       </View>
     </ScrollView>
   );
