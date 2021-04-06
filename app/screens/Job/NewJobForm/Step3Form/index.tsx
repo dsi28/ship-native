@@ -19,14 +19,17 @@ import styles from './styles';
 const NewJobS3: React.FC = () => {
   const jobState = useSelector((state: AppState) => state.job.newJob);
   const dispatch = useDispatch();
+  // @ts-ignore
   const [note, setNote] = useState<string>(jobState.note || '');
   const [itemReceiver, setItemReceiver] = useState<IItemReciever>(
+    // @ts-ignore
     jobState.itemReceiver || {
       name: '',
       email: ''
     }
   );
   const [shipmentCost, setShipmentCost] = useState<number>(
+    // @ts-ignore
     jobState.shipmentCost || 60
   );
 

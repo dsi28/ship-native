@@ -30,7 +30,8 @@ const JobDetails: React.FC<JobDetailsProps> = ({ job }) => (
           typeof job?.itemDeliveryDate !== undefined
             ? typeof job?.itemDeliveryDate === 'object'
               ? job?.itemDeliveryDate.toDateString() // newJob.itemDeliveryDate?.toDateString()
-              : new Date(job?.itemDeliveryDate).toDateString() // this is a mess
+              : // @ts-ignore
+                new Date(job?.itemDeliveryDate).toDateString() // this is a mess
             : 'Delivery date not set' // 'set date'
         }
       />

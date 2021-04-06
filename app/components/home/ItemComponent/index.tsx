@@ -88,7 +88,8 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
                         typeof jobItem?.itemDeliveryDate !== undefined
                           ? typeof jobItem?.itemDeliveryDate === 'object'
                             ? jobItem?.itemDeliveryDate.toDateString() // newJob.itemDeliveryDate?.toDateString()
-                            : new Date(jobItem?.itemDeliveryDate).toDateString() // this is a mess
+                            : // @ts-ignore
+                              new Date(jobItem?.itemDeliveryDate).toDateString() // this is a mess
                           : 'No date set'
                       }
                     </Text>
