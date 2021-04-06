@@ -2,7 +2,6 @@ import auth from '@react-native-firebase/auth';
 import { NavigationContainer, Theme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
 import CreateAccountScreen from '../screens/Auth/CreateAccount';
 import LoginScreen from '../screens/Auth/Login';
 import PostSignup from '../screens/PostSignup';
@@ -33,34 +32,41 @@ const RootNavigator: React.FC<RootNavigatorProps> = ({ theme }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (initializing) return null;
-
-  if (!user) {
-    console.log('create account or login screen');
-    return (
-      <View>
-        <Text>Login fb code test</Text>
-      </View>
-    );
+  if (initializing) {
+    console.log('test', user);
+    return null;
   }
+
+  // if (!user) {
+  //   return (
+  //     <View>
+  //       <Text>Login fb code test</Text>
+  //     </View>
+  //   );
+  // }
 
   return (
     <NavigationContainer ref={navigationRef} theme={theme}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {/* Login should be default */}
-        <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="FlowStart" component={BottomTabsNav} />
-        {/* <Stack.Screen name="SellerBids" component={SellerBidsTabs} />
-      <Stack.Screen name="UserRequests" component={UserRequests} /> */}
-
-        <Stack.Screen
-          name="SignUp"
-          component={PostSignup}
-          options={{
-            headerShown: false
-          }}
-        />
+        {!user ? (
+          <>
+            <Stack.Screen
+              name="CreateAccount"
+              component={CreateAccountScreen}
+            />
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen
+              name="SignUp"
+              component={PostSignup}
+              options={{
+                headerShown: false
+              }}
+            />
+          </>
+        ) : (
+          // User is signed in
+          <Stack.Screen name="FlowStart" component={BottomTabsNav} />
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
