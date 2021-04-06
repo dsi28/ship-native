@@ -38,7 +38,7 @@ function BottomTabsNav() {
         name="Search"
         component={TempComponent}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Search',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="magnify" color={color} size={size} />
           )
