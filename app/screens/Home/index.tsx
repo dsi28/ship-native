@@ -31,6 +31,7 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({ jobList, jobType }) => {
   return (
     <ScrollView style={{ backgroundColor: '#f3f5fa' }}>
       <View style={styles.container}>
+        {/* @ts-ignore */}
         {jobList.map((jobItem: IJob) => (
           <ItemComponent
             jobItem={jobItem}
@@ -59,10 +60,16 @@ function HomeScreenTabs() {
       }}
     >
       <Tab.Screen name="Sender" options={{ tabBarLabel: 'Sender' }}>
-        {() => <HomeScreenTab jobList={jobState.ownerJobs} jobType="Owner" />}
+        {() => (
+          // @ts-ignore
+          <HomeScreenTab jobList={jobState.ownerJobs} jobType="Owner" />
+        )}
       </Tab.Screen>
       <Tab.Screen name="Traveler" options={{ tabBarLabel: 'Traveler' }}>
-        {() => <HomeScreenTab jobList={jobState.ownerJobs} jobType="Owner" />}
+        {() => (
+          // @ts-ignore
+          <HomeScreenTab jobList={jobState.ownerJobs} jobType="Owner" />
+        )}
       </Tab.Screen>
     </Tab.Navigator>
   );

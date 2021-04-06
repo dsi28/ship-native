@@ -21,8 +21,10 @@ const NewJobS2: React.FC = () => {
   const dispatch = useDispatch();
   const [itemSize, setItemSize] = useState<
     'small' | 'medium' | 'large' | 'extra large' | undefined
+    // @ts-ignore
   >(jobState.itemSize);
   const [itemWeight, setItemWeight] = useState<IItemWeight | undefined>(
+    // @ts-ignore
     jobState.itemWeight
   );
 

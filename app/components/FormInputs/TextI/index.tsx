@@ -8,7 +8,7 @@ interface TextFormInputProps {
   placeholderText: string;
   onChangeHandler: (propertyName: string, propertyValue: string) => void;
   propertyName: 'itemName' | 'itemValue' | 'name' | 'email';
-  inputValue: string | number;
+  inputValue: string | number | undefined; // @TODO come back to this
 }
 
 const TextFormInput: React.FC<TextFormInputProps> = ({
@@ -32,6 +32,7 @@ const TextFormInput: React.FC<TextFormInputProps> = ({
           onChangeHandler(propertyName, e);
           // setNameInput(e);
         }}
+        // @ts-ignore
         value={inputValue}
       />
     </View>

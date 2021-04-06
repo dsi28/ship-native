@@ -36,7 +36,7 @@ const NewJobS1: React.FC = () => {
 
   const [date, setDate] = useState<Date>(new Date());
   const [show, setShow] = useState(false);
-
+  // @ts-ignore
   const [newJob, setNewJob] = useState<INewJob>(jobState);
 
   const handleAddImage = () => {
@@ -93,7 +93,9 @@ const NewJobS1: React.FC = () => {
   };
 
   const handlePressCalendarInput = (
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     propertyName: string,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     propertyValue: string
   ) => {
     // showDatepicker();
@@ -167,7 +169,8 @@ const NewJobS1: React.FC = () => {
                       typeof newJob?.itemDeliveryDate !== undefined
                         ? typeof newJob?.itemDeliveryDate === 'object'
                           ? newJob?.itemDeliveryDate.toDateString() // newJob.itemDeliveryDate?.toDateString()
-                          : new Date(newJob?.itemDeliveryDate).toDateString() // this is a mess
+                          : // @ts-ignore
+                            new Date(newJob?.itemDeliveryDate).toDateString() // this is a mess
                         : date.toDateString() // 'set date'
                     }
                     inputDisabled={false}

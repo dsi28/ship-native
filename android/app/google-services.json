@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "632027898693",
+    "project_id": "ship-54045",
+    "storage_bucket": "ship-54045.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632027898693:android:06423c607341535b3fd42c",
+        "android_client_info": {
+          "package_name": "com.shipnativeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632027898693-p9iqceuk345cesmsgcdvesai317v2sb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCabHytvj5pDIfq-6BS-xBqHAHXMlIjjjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632027898693-p9iqceuk345cesmsgcdvesai317v2sb4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

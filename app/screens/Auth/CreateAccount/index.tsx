@@ -14,7 +14,7 @@ import styles from './styles';
 
 const CreateAccountScreen: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
-  const userProfile = useSelector((state: AppState) => state.default);
+  const userProfile = useSelector((state: AppState) => state.profile);
   console.log(userProfile);
   return (
     <View style={styles.container}>

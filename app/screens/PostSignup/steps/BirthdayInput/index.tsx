@@ -14,7 +14,7 @@ interface BirthdayInputProps {
 
 const BirthdayInput: React.FC<BirthdayInputProps> = () => {
   // @ts-ignore default does exsist not sure why this show up
-  const userPostProfile = useSelector((state: AppState) => state.default);
+  const userPostProfile = useSelector((state: AppState) => state.profile);
   const dispatch = useDispatch();
   const [birthdayInput, setbirthdayInput] = useState<IBirthday>(
     userPostProfile.birthday

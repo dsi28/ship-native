@@ -22,6 +22,7 @@ const NewJobConfirm: React.FC = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.subContainer}>
+        {/* @ts-ignore */}
         <JobDetails job={jobState} />
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
@@ -30,6 +31,7 @@ const NewJobConfirm: React.FC = () => {
               onPressHandler={() => {
                 console.log('job posted');
                 NavigationService.navigate('HomeScreen');
+                // @ts-ignore
                 dispatch(addJob(jobState));
               }}
               isSelected

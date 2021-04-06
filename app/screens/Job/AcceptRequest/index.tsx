@@ -153,6 +153,7 @@ const AcceptTravler: React.FC = () => {
           </View>
         </View>
         <View style={{ marginTop: 25 }}>
+          {/* @ts-ignore */}
           <JobDetails />
         </View>
         <View style={styles.buttonsContainer}>
