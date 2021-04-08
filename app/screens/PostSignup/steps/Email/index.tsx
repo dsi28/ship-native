@@ -5,7 +5,7 @@ import NextButton from '../../../../components/buttons/NextButton';
 import NavigationService from '../../../../navigation/NavigationService';
 import { setProfileUser } from '../../../../redux/actions/postProfile';
 import { AppState } from '../../../../redux/store/configureStore';
-import BirthdayInput from '../BirthdayInput';
+import PassInput from '../Pass';
 import styles from './styles';
 
 // interface NameInputProps {
@@ -63,7 +63,7 @@ const EmailInput: React.FC = () => {
           <NextButton
             buttonText="Next"
             onPressHandler={() => {
-              NavigationService.navigate('Birthday', BirthdayInput);
+              NavigationService.navigate('Pass', PassInput);
               dispatch(
                 setProfileUser({ ...userPostProfile, email: emailInput })
               );

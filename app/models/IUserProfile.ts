@@ -2,6 +2,7 @@ export interface IUserProfile {
   uid: string; // from auth???
   name?: string;
   email?: string;
+  password?: string;
   phone?: string;
   birthday?: IBirthday;
   pictures?: string;
