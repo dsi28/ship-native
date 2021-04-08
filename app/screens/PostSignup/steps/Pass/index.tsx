@@ -75,7 +75,7 @@ const PassInput: React.FC = () => {
               />
             </View>
           </View>
-          <View>
+          <View style={styles.secondInputContainer}>
             <View style={styles.screenInputContainer}>
               <TextInput
                 style={styles.screenInput}

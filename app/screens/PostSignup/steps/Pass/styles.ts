@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     // width: '70%',
     marginRight: 150
   },
+  secondInputContainer: { marginTop: 50 },
   screenInputContainer: {
     borderRadius: 10
     // borderColor: 'black',
