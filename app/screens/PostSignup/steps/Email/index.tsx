@@ -63,7 +63,7 @@ const EmailInput: React.FC = () => {
           <NextButton
             buttonText="Next"
             onPressHandler={() => {
-              NavigationService.navigate('Pass', PassInput);
+              NavigationService.navigate('Password', PassInput);
               dispatch(
                 setProfileUser({ ...userPostProfile, email: emailInput })
               );

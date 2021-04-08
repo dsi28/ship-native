@@ -20,7 +20,7 @@ export default function PostSignup() {
     >
       <Stack.Screen name="Name" component={NameInput} />
       <Stack.Screen name="Email" component={EmailInput} />
-      <Stack.Screen name="Pass" component={PassInput} />
+      <Stack.Screen name="Password" component={PassInput} />
       <Stack.Screen name="Birthday" component={BirthdayInput} />
       <Stack.Screen name="Picture" component={PictureInput} />
     </Stack.Navigator>

@@ -32,7 +32,7 @@ const PassInput: React.FC = () => {
   const validatePass = (text: string) => {
     console.log(text);
     console.log(typeof text);
-
+    console.log('match', isMatch, '  valdi', isValidated);
     if (reg.test(text) === false) {
       console.log(
         'Input Password and Submit [8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character'
@@ -66,7 +66,7 @@ const PassInput: React.FC = () => {
             <View style={styles.screenInputContainer}>
               <TextInput
                 style={styles.screenInput}
-                placeholder="email.."
+                placeholder="enter password"
                 value={passInput.toString()}
                 onChangeText={(text: string) => {
                   console.log(text);
@@ -75,20 +75,23 @@ const PassInput: React.FC = () => {
               />
             </View>
           </View>
-          <View style={styles.secondInputContainer}>
-            <View style={styles.screenInputContainer}>
-              <TextInput
-                style={styles.screenInput}
-                textContentType="password"
-                placeholder="email.."
-                value={confirmInput.toString()}
-                onChangeText={(text: string) => {
-                  console.log(text);
-                  passMatchCheck(text);
-                }}
-              />
+          {isValidated && (
+            <View style={styles.secondInputContainer}>
+              <View style={styles.screenInputContainer}>
+                <TextInput
+                  style={styles.screenInput}
+                  textContentType="password"
+                  placeholder="confirm password"
+                  value={confirmInput.toString()}
+                  onChangeText={(text: string) => {
+                    console.log(text);
+                    passMatchCheck(text);
+                  }}
+                  editable={isValidated}
+                />
+              </View>
             </View>
-          </View>
+          )}
         </View>
         <View style={styles.screenNextButtonContainer}>
           <NextButton
