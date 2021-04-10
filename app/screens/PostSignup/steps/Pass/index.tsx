@@ -46,9 +46,12 @@ const PassInput: React.FC = () => {
     }
   };
 
-  const passMatchCheck = (confirm: string) => {
-    setConfirmInput(confirm);
-    if (passInput === confirm) {
+  const passMatchCheck = (text: string, isConfirm: boolean) => {
+    // is confirm is true then test text with passinput
+    // is confirm false then test text with confirminput
+    if (isConfirm && passInput === text) {
+      setIsMatch(true);
+    } else if (!isConfirm && confirmInput === text) {
       setIsMatch(true);
     } else {
       setIsMatch(false);
@@ -71,8 +74,9 @@ const PassInput: React.FC = () => {
                 onChangeText={(text: string) => {
                   console.log(text);
                   validatePass(text);
+                  passMatchCheck(text, false);
                 }}
-                editable={!isValidated}
+                // editable={!isValidated}
               />
             </View>
           </View>
@@ -86,7 +90,8 @@ const PassInput: React.FC = () => {
                   value={confirmInput.toString()}
                   onChangeText={(text: string) => {
                     console.log(text);
-                    passMatchCheck(text);
+                    setConfirmInput(text);
+                    passMatchCheck(text, true);
                   }}
                   editable={isValidated}
                 />
@@ -100,7 +105,7 @@ const PassInput: React.FC = () => {
             onPressHandler={() => {
               NavigationService.navigate('Birthday', BirthdayInput);
               dispatch(
-                setProfileUser({ ...userPostProfile, email: passInput })
+                setProfileUser({ ...userPostProfile, password: passInput })
               );
             }}
             isDisabled={!isMatch}
