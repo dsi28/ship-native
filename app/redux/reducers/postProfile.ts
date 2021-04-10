@@ -6,6 +6,7 @@ const initialState: IUserProfile = {
   isSignedUp: false,
   name: '',
   email: '',
+  password: '',
   phone: '',
   birthday: {
     month: '',
