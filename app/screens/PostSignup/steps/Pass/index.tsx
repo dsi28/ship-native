@@ -72,6 +72,7 @@ const PassInput: React.FC = () => {
                   console.log(text);
                   validatePass(text);
                 }}
+                editable={!isValidated}
               />
             </View>
           </View>
@@ -102,7 +103,7 @@ const PassInput: React.FC = () => {
                 setProfileUser({ ...userPostProfile, email: passInput })
               );
             }}
-            isDisabled={!isValidated && !isMatch}
+            isDisabled={!isMatch}
           />
         </View>
       </View>

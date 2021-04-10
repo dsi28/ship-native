@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     flexDirection: 'column',
-    height: '100%'
+    height: '100%',
+    justifyContent: 'space-between'
   },
   screenTitleContainer: {
     // marginTop: 20,
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     // width: '70%',
     marginRight: 150
   },
-  secondInputContainer: { marginTop: 50 },
+  secondInputContainer: { marginTop: 30 },
   screenInputContainer: {
     borderRadius: 10
     // borderColor: 'black',
@@ -34,11 +35,11 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black'
   },
   screenNextButtonContainer: {
-    marginBottom: 20,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    position: 'absolute'
+    marginBottom: 20
+    // bottom: 0,
+    // right: 0,
+    // left: 0,
+    // position: 'relative'
   }
 });
 export default styles;
