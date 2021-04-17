@@ -1,3 +1,4 @@
+import auth from '@react-native-firebase/auth';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import NextButton from '../../../components/buttons/NextButton';
@@ -73,10 +74,25 @@ const LoginScreen: React.FC = () => {
             buttonText="Login"
             onPressHandler={() => {
               console.log('login btn');
-              // NavigationService.navigate('Password', PassInput);
-              // dispatch(
-              //   setProfileUser({ ...userPostProfile, email: emailInput })
-              // );
+              // TODO  firebase login code
+              auth()
+                .signInWithEmailAndPassword(email, password)
+                .then(() => {
+                  console.log('User signed in!');
+                  // NavigationService.navigate('Password', PassInput);
+                  // dispatch(
+                  //   setProfileUser({ ...userPostProfile, email: emailInput })
+                  // );
+                })
+                .catch((error) => {
+                  if (error.code === 'auth/invalid-email') {
+                    console.log('That email address is invalid!');
+                  }
+                  if (error.code === 'auth/email-already-in-use') {
+                    console.log('Email & password combination is incorrect!');
+                  }
+                  console.error(error);
+                });
             }}
             isDisabled={false}
           />
