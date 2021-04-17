@@ -33,37 +33,39 @@ const LoginScreen: React.FC = () => {
         <View style={styles.createAccountView}>
           <NavigationLinkComponent
             navigateTo="CreateAccount"
-            textColor="black"
+            textColor="mediumvioletred"
             linkText="Create Account"
           />
         </View>
-        <View>
+        <View style={styles.headerView}>
           <Text style={styles.headerText}>Log In</Text>
         </View>
-        <View>
-          <TextFormInput
-            labelText="Email Address"
-            placeholderText="enter your email"
-            propertyName="email"
-            onChangeHandler={onChangeInputHandler}
-            inputValue={email}
-          />
-        </View>
-        <View>
-          <TextFormInput
-            labelText="Password"
-            placeholderText="enter your password"
-            propertyName="password"
-            onChangeHandler={onChangeInputHandler}
-            inputValue={password}
-          />
-        </View>
-        <View>
-          <NavigationLinkComponent
-            navigateTo="Forgot Password"
-            textColor="black"
-            linkText="Forgot Password"
-          />
+        <View style={styles.contentView}>
+          <View>
+            <TextFormInput
+              labelText="Email Address"
+              placeholderText="enter your email"
+              propertyName="email"
+              onChangeHandler={onChangeInputHandler}
+              inputValue={email}
+            />
+          </View>
+          <View>
+            <TextFormInput
+              labelText="Password"
+              placeholderText="enter your password"
+              propertyName="password"
+              onChangeHandler={onChangeInputHandler}
+              inputValue={password}
+            />
+          </View>
+          <View style={styles.forgotContainer}>
+            <NavigationLinkComponent
+              navigateTo="Forgot Password"
+              textColor="mediumvioletred"
+              linkText="Forgot Password"
+            />
+          </View>
         </View>
       </View>
     </View>
