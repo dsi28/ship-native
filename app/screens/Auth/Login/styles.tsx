@@ -6,14 +6,15 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   subContainer: {
-    marginTop: 30,
+    marginTop: 10,
     marginHorizontal: 15
     // backgroundColor: 'pink'
   },
   headerText: {
     fontWeight: 'bold',
     fontSize: 40
-  }
+  },
+  createAccountView: { alignItems: 'flex-end' }
 
   // /// item component styles
 
