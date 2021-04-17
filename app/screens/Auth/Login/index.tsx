@@ -14,6 +14,7 @@ const LoginScreen: React.FC = () => {
   // const userProfile = useSelector((state: AppState) => state.default);
 
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const onChangeInputHandler = (
     propertyName: string,
@@ -21,8 +22,10 @@ const LoginScreen: React.FC = () => {
   ) => {
     if (propertyName === 'email') {
       setEmail(propertyValue);
+    } else if (propertyName === 'password') {
+      setPassword(propertyValue);
     }
-    console.log(email);
+    console.log(email, password);
   };
   return (
     <View style={styles.container}>
@@ -57,6 +60,15 @@ const LoginScreen: React.FC = () => {
             propertyName="email"
             onChangeHandler={onChangeInputHandler}
             inputValue={email}
+          />
+        </View>
+        <View>
+          <TextFormInput
+            labelText="Password"
+            placeholderText="enter your password"
+            propertyName="password"
+            onChangeHandler={onChangeInputHandler}
+            inputValue={password}
           />
         </View>
       </View>
