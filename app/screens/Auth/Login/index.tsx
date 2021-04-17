@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
+import NextButton from '../../../components/buttons/NextButton';
 import TextFormInput from '../../../components/FormInputs/TextI';
 import NavigationLinkComponent from '../../../components/navigationLink';
 import styles from './styles';
@@ -66,6 +67,19 @@ const LoginScreen: React.FC = () => {
               linkText="Forgot Password"
             />
           </View>
+        </View>
+        <View style={styles.loginBtn}>
+          <NextButton
+            buttonText="Login"
+            onPressHandler={() => {
+              console.log('login btn');
+              // NavigationService.navigate('Password', PassInput);
+              // dispatch(
+              //   setProfileUser({ ...userPostProfile, email: emailInput })
+              // );
+            }}
+            isDisabled={false}
+          />
         </View>
       </View>
     </View>

@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
   subContainer: {
     marginTop: 10,
     marginHorizontal: 15,
-    flexDirection: 'column'
+    flexDirection: 'column',
+    height: '100%'
     // backgroundColor: 'pink'
   },
   headerText: {
@@ -18,7 +19,14 @@ const styles = StyleSheet.create({
   headerView: { marginTop: 15 },
   createAccountView: { alignItems: 'flex-end' },
   contentView: { marginTop: 50 },
-  forgotContainer: { alignItems: 'center' }
+  forgotContainer: { alignItems: 'center' },
+  loginBtn: {
+    marginBottom: 20,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    position: 'absolute'
+  }
 
   // /// item component styles
 
