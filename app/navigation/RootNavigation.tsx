@@ -3,6 +3,7 @@ import { NavigationContainer, Theme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
 import CreateAccountScreen from '../screens/Auth/CreateAccount';
+import ForgotPasswordScreen from '../screens/Auth/ForgotPassword';
 import LoginScreen from '../screens/Auth/Login';
 import PostSignup from '../screens/PostSignup';
 import BottomTabsNav from './BottomTabNavigation';
@@ -55,6 +56,10 @@ const RootNavigator: React.FC<RootNavigatorProps> = ({ theme }) => {
               component={CreateAccountScreen}
             />
             <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen
+              name="Forgot Password"
+              component={ForgotPasswordScreen}
+            />
             <Stack.Screen
               name="SignUp"
               component={PostSignup}

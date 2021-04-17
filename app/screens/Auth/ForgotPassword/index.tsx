@@ -9,7 +9,7 @@ import styles from './styles';
 //   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
 // }
 
-const LoginScreen: React.FC = () => {
+const ForgotPasswordScreen: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   // const userProfile = useSelector((state: AppState) => state.default);
 
@@ -51,7 +51,7 @@ const LoginScreen: React.FC = () => {
           </Pressable>
         </View>
         <View>
-          <Text style={styles.headerText}>Log In</Text>
+          <Text style={styles.headerText}>Forgot</Text>
         </View>
         <View>
           <TextFormInput
@@ -74,8 +74,8 @@ const LoginScreen: React.FC = () => {
         <View>
           <Pressable
             onPress={() => {
-              console.log('forgot pass');
-              NavigationService.navigate('Forgot Password');
+              console.log('create Account');
+              NavigationService.navigate('CreateAccount');
             }}
           >
             {({ pressed }) => (
@@ -96,4 +96,4 @@ const LoginScreen: React.FC = () => {
   );
 };
 
-export default LoginScreen;
+export default ForgotPasswordScreen;
