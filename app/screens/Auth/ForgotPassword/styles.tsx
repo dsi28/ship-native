@@ -7,26 +7,14 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     marginTop: 10,
-    marginHorizontal: 15,
-    flexDirection: 'column',
-    height: '100%'
+    marginHorizontal: 15
     // backgroundColor: 'pink'
   },
   headerText: {
     fontWeight: 'bold',
     fontSize: 40
   },
-  headerView: { marginTop: 15 },
-  createAccountView: { alignItems: 'flex-end' },
-  contentView: { marginTop: 50 },
-  forgotContainer: { alignItems: 'center' },
-  loginBtn: {
-    marginBottom: 20,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    position: 'absolute'
-  }
+  createAccountView: { alignItems: 'flex-end' }
 
   // /// item component styles
 

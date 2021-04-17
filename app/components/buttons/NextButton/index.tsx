@@ -28,7 +28,7 @@ const NextButton: React.FC<NextButtonProps> = ({
     }}
     style={{
       ...styles.pressableNext,
-      ...{ backgroundColor: isDisabled ? 'lightgray' : 'orange' }
+      ...{ backgroundColor: isDisabled ? 'lightgray' : 'mediumvioletred' }
     }}
     disabled={isDisabled}
   >
