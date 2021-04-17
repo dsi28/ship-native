@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import TextFormInput from '../../../components/FormInputs/TextI';
-import NavigationService from '../../../navigation/NavigationService';
+import NavigationLinkComponent from '../../../components/navigationLink';
 import styles from './styles';
 
 // interface LoginScreenProps {
@@ -31,24 +31,11 @@ const LoginScreen: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.subContainer}>
         <View style={styles.createAccountView}>
-          <Pressable
-            onPress={() => {
-              console.log('create Account');
-              NavigationService.navigate('CreateAccount');
-            }}
-          >
-            {({ pressed }) => (
-              <Text
-                style={{
-                  opacity: pressed ? 0.8 : 1,
-                  color: 'black',
-                  fontSize: 20
-                }}
-              >
-                Create Account
-              </Text>
-            )}
-          </Pressable>
+          <NavigationLinkComponent
+            navigateTo="CreateAccount"
+            textColor="black"
+            linkText="Create Account"
+          />
         </View>
         <View>
           <Text style={styles.headerText}>Log In</Text>
@@ -72,24 +59,11 @@ const LoginScreen: React.FC = () => {
           />
         </View>
         <View>
-          <Pressable
-            onPress={() => {
-              console.log('forgot pass');
-              NavigationService.navigate('Forgot Password');
-            }}
-          >
-            {({ pressed }) => (
-              <Text
-                style={{
-                  opacity: pressed ? 0.8 : 1,
-                  color: 'black',
-                  fontSize: 20
-                }}
-              >
-                Forgot Password
-              </Text>
-            )}
-          </Pressable>
+          <NavigationLinkComponent
+            navigateTo="Forgot Password"
+            textColor="black"
+            linkText="Forgot Password"
+          />
         </View>
       </View>
     </View>

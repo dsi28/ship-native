@@ -2,9 +2,9 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 import { useSelector } from 'react-redux';
+import NavigationLinkComponent from '../../../components/navigationLink';
 import NavigationService from '../../../navigation/NavigationService';
 import PostSignup from '../../PostSignup';
-import LoginScreen from '../Login';
 import styles from './styles';
 
 // interface LoginScreenProps {
@@ -27,24 +27,11 @@ const CreateAccountScreen: React.FC = () => {
         }}
       >
         <View style={{ alignItems: 'flex-end' }}>
-          <Pressable
-            onPress={() => {
-              console.log('Login');
-              NavigationService.navigate('Login', LoginScreen);
-            }}
-          >
-            {({ pressed }) => (
-              <Text
-                style={{
-                  opacity: pressed ? 0.8 : 1,
-                  color: 'white',
-                  fontSize: 20
-                }}
-              >
-                Log In
-              </Text>
-            )}
-          </Pressable>
+          <NavigationLinkComponent
+            navigateTo="Login"
+            textColor="white"
+            linkText="Log In"
+          />
         </View>
         <View style={{ alignItems: 'center', marginTop: 70 }}>
           <Text style={{ color: 'white', fontSize: 20, opacity: 0.5 }}>
