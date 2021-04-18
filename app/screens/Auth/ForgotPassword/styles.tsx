@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
     right: 0,
     left: 0,
     position: 'absolute'
-  }
+  },
+  subHeaderContainer: { marginTop: 50 },
+  subHeaderText: { fontSize: 20, color: 'black', lineHeight: 30 },
+  contentContainer: { marginTop: 50 }
 });
 export default styles;

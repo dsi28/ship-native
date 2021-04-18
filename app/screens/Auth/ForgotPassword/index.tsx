@@ -15,7 +15,6 @@ const ForgotPasswordScreen: React.FC = () => {
   // const userProfile = useSelector((state: AppState) => state.default);
 
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   const onChangeInputHandler = (
     propertyName: string,
@@ -23,10 +22,8 @@ const ForgotPasswordScreen: React.FC = () => {
   ) => {
     if (propertyName === 'email') {
       setEmail(propertyValue);
-    } else if (propertyName === 'password') {
-      setPassword(propertyValue);
     }
-    console.log(email, password);
+    console.log(email);
   };
   return (
     <View style={styles.container}>
@@ -41,12 +38,12 @@ const ForgotPasswordScreen: React.FC = () => {
         <View style={styles.headerView}>
           <Text style={styles.headerText}>Forgot password</Text>
         </View>
-        <View style={{ marginTop: 50 }}>
-          <Text style={{ fontSize: 20, color: 'black', lineHeight: 30 }}>
+        <View style={styles.subHeaderContainer}>
+          <Text style={styles.subHeaderText}>
             Please enter your email address to receive your verification code
           </Text>
         </View>
-        <View style={{ marginTop: 50 }}>
+        <View style={styles.contentContainer}>
           <TextFormInput
             labelText="Email Address"
             placeholderText=""
@@ -69,5 +66,4 @@ const ForgotPasswordScreen: React.FC = () => {
     </View>
   );
 };
-
 export default ForgotPasswordScreen;
