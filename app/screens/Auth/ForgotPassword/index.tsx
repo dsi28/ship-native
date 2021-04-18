@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
+import NextButton from '../../../components/buttons/NextButton';
 import TextFormInput from '../../../components/FormInputs/TextI';
-import NavigationService from '../../../navigation/NavigationService';
+import NavigationLinkComponent from '../../../components/navigationLink';
 import styles from './styles';
 
 // interface LoginScreenProps {
@@ -14,7 +15,6 @@ const ForgotPasswordScreen: React.FC = () => {
   // const userProfile = useSelector((state: AppState) => state.default);
 
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   const onChangeInputHandler = (
     propertyName: string,
@@ -22,78 +22,53 @@ const ForgotPasswordScreen: React.FC = () => {
   ) => {
     if (propertyName === 'email') {
       setEmail(propertyValue);
-    } else if (propertyName === 'password') {
-      setPassword(propertyValue);
     }
-    console.log(email, password);
+    console.log(email);
   };
   return (
     <View style={styles.container}>
-      <View style={styles.subContainer}>
-        <View style={styles.createAccountView}>
-          <Pressable
-            onPress={() => {
-              console.log('create Account');
-              NavigationService.navigate('CreateAccount');
+      <ScrollView
+        style={styles.subContainer}
+        contentContainerStyle={styles.subContainerContent}
+      >
+        <View>
+          <View style={styles.createAccountView}>
+            <NavigationLinkComponent
+              navigateTo="Login"
+              textColor="mediumvioletred"
+              linkText="Log In"
+            />
+          </View>
+          <View style={styles.headerView}>
+            <Text style={styles.headerText}>Forgot password</Text>
+          </View>
+          <View style={styles.subHeaderContainer}>
+            <Text style={styles.subHeaderText}>
+              Please enter your email address to receive your verification code
+            </Text>
+          </View>
+          <View style={styles.contentContainer}>
+            <TextFormInput
+              labelText="Email Address"
+              placeholderText=""
+              propertyName="email"
+              onChangeHandler={onChangeInputHandler}
+              inputValue={email}
+            />
+          </View>
+        </View>
+        <View style={styles.loginBtn}>
+          <NextButton
+            buttonText="Reset Password"
+            onPressHandler={() => {
+              console.log('password reset');
+              // TODO  firebase password reset code
             }}
-          >
-            {({ pressed }) => (
-              <Text
-                style={{
-                  opacity: pressed ? 0.8 : 1,
-                  color: 'black',
-                  fontSize: 20
-                }}
-              >
-                Create Account
-              </Text>
-            )}
-          </Pressable>
-        </View>
-        <View>
-          <Text style={styles.headerText}>Forgot</Text>
-        </View>
-        <View>
-          <TextFormInput
-            labelText="Email Address"
-            placeholderText="enter your email"
-            propertyName="email"
-            onChangeHandler={onChangeInputHandler}
-            inputValue={email}
+            isDisabled={false}
           />
         </View>
-        <View>
-          <TextFormInput
-            labelText="Password"
-            placeholderText="enter your password"
-            propertyName="password"
-            onChangeHandler={onChangeInputHandler}
-            inputValue={password}
-          />
-        </View>
-        <View>
-          <Pressable
-            onPress={() => {
-              console.log('create Account');
-              NavigationService.navigate('CreateAccount');
-            }}
-          >
-            {({ pressed }) => (
-              <Text
-                style={{
-                  opacity: pressed ? 0.8 : 1,
-                  color: 'black',
-                  fontSize: 20
-                }}
-              >
-                Forgot Password
-              </Text>
-            )}
-          </Pressable>
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
-
 export default ForgotPasswordScreen;
