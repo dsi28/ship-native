@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import NextButton from '../../../components/buttons/NextButton';
 import TextFormInput from '../../../components/FormInputs/TextI';
-import NavigationService from '../../../navigation/NavigationService';
+import NavigationLinkComponent from '../../../components/navigationLink';
 import styles from './styles';
 
 // interface LoginScreenProps {
@@ -31,65 +32,38 @@ const ForgotPasswordScreen: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.subContainer}>
         <View style={styles.createAccountView}>
-          <Pressable
-            onPress={() => {
-              console.log('create Account');
-              NavigationService.navigate('CreateAccount');
-            }}
-          >
-            {({ pressed }) => (
-              <Text
-                style={{
-                  opacity: pressed ? 0.8 : 1,
-                  color: 'black',
-                  fontSize: 20
-                }}
-              >
-                Create Account
-              </Text>
-            )}
-          </Pressable>
+          <NavigationLinkComponent
+            navigateTo="Login"
+            textColor="mediumvioletred"
+            linkText="Log In"
+          />
         </View>
-        <View>
-          <Text style={styles.headerText}>Forgot</Text>
+        <View style={styles.headerView}>
+          <Text style={styles.headerText}>Forgot password</Text>
         </View>
-        <View>
+        <View style={{ marginTop: 50 }}>
+          <Text style={{ fontSize: 20, color: 'black', lineHeight: 30 }}>
+            Please enter your email address to receive your verification code
+          </Text>
+        </View>
+        <View style={{ marginTop: 50 }}>
           <TextFormInput
             labelText="Email Address"
-            placeholderText="enter your email"
+            placeholderText=""
             propertyName="email"
             onChangeHandler={onChangeInputHandler}
             inputValue={email}
           />
         </View>
-        <View>
-          <TextFormInput
-            labelText="Password"
-            placeholderText="enter your password"
-            propertyName="password"
-            onChangeHandler={onChangeInputHandler}
-            inputValue={password}
-          />
-        </View>
-        <View>
-          <Pressable
-            onPress={() => {
-              console.log('create Account');
-              NavigationService.navigate('CreateAccount');
+        <View style={styles.loginBtn}>
+          <NextButton
+            buttonText="Reset Password"
+            onPressHandler={() => {
+              console.log('password reset');
+              // TODO  firebase password reset code
             }}
-          >
-            {({ pressed }) => (
-              <Text
-                style={{
-                  opacity: pressed ? 0.8 : 1,
-                  color: 'black',
-                  fontSize: 20
-                }}
-              >
-                Forgot Password
-              </Text>
-            )}
-          </Pressable>
+            isDisabled={false}
+          />
         </View>
       </View>
     </View>
