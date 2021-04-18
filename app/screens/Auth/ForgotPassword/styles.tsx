@@ -9,7 +9,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginHorizontal: 15,
     height: '100%'
-    // backgroundColor: 'pink'
+  },
+  subContainerContent: {
+    flexGrow: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between'
   },
   headerText: {
     fontWeight: 'bold',
@@ -27,6 +31,6 @@ const styles = StyleSheet.create({
   },
   subHeaderContainer: { marginTop: 50 },
   subHeaderText: { fontSize: 20, color: 'black', lineHeight: 30 },
-  contentContainer: { marginTop: 50 }
+  contentContainer: { marginTop: 50, marginBottom: 50 }
 });
 export default styles;
