@@ -2,14 +2,6 @@ import React from 'react';
 import { Pressable, Text } from 'react-native';
 import styles from './styles';
 
-// interface HandleNextProps {
-//   name?: string;
-//   birthday?: string;
-//   gender?: IGender;
-//   role?: string;
-//   showMe?: IGender;
-//   pictures?: string[];
-// }
 interface NextButtonProps {
   buttonText: string;
   onPressHandler: () => void;
@@ -23,7 +15,7 @@ const NextButton: React.FC<NextButtonProps> = ({
 }) => (
   <Pressable
     onPress={() => {
-      console.log('presss');
+      console.log('next button press');
       onPressHandler();
     }}
     style={{

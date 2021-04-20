@@ -25,10 +25,6 @@ interface DropDownFormInputProps {
     | 'category 4'
     | 'category 5'
     | null;
-  //   isSelected: boolean;
-  //   btnBackgoundColor: string;
-  //   btnTextColor: string;
-  //   btnBorderColor: string;
 }
 
 const DropDownFormInput: React.FC<DropDownFormInputProps> = ({
@@ -37,39 +33,36 @@ const DropDownFormInput: React.FC<DropDownFormInputProps> = ({
   itemList,
   onChangeHandler,
   inputValue
-}) => {
-  console.log('input val', inputValue);
-  return (
-    <View>
-      <View style={styles.labelContainer}>
-        <Text style={styles.labelText}>{labelText}</Text>
-      </View>
-      <View style={styles.dropDownItemContainer}>
-        <DropDownPicker
-          items={itemList}
-          containerStyle={styles.dropDownContainer}
-          style={styles.dropDownStyles}
-          itemStyle={styles.dropDownItemStyle}
-          labelStyle={styles.dropDownLabelStyle}
-          dropDownStyle={styles.dropDownDropDownStyle}
-          defaultValue={inputValue}
-          onChangeItem={(item: {
-            label: string;
-            value:
-              | 'category 1'
-              | 'category 2'
-              | 'category 3'
-              | 'category 4'
-              | 'category 5';
-          }) => {
-            console.log(item);
-            onChangeHandler(item.value);
-          }}
-          placeholder={placeholderText}
-        />
-      </View>
+}) => (
+  <View>
+    <View style={styles.labelContainer}>
+      <Text style={styles.labelText}>{labelText}</Text>
     </View>
-  );
-};
+    <View style={styles.dropDownItemContainer}>
+      <DropDownPicker
+        items={itemList}
+        containerStyle={styles.dropDownContainer}
+        style={styles.dropDownStyles}
+        itemStyle={styles.dropDownItemStyle}
+        labelStyle={styles.dropDownLabelStyle}
+        dropDownStyle={styles.dropDownDropDownStyle}
+        defaultValue={inputValue}
+        onChangeItem={(item: {
+          label: string;
+          value:
+            | 'category 1'
+            | 'category 2'
+            | 'category 3'
+            | 'category 4'
+            | 'category 5';
+        }) => {
+          console.log('input item change: ', item);
+          onChangeHandler(item.value);
+        }}
+        placeholder={placeholderText}
+      />
+    </View>
+  </View>
+);
 
 export default DropDownFormInput;
