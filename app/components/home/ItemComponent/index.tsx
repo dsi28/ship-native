@@ -15,25 +15,17 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
 }) => (
   <Pressable onPress={() => onPressHandler(jobItem)}>
     <View style={styles.cardItemContainer}>
-      <View style={{ flexDirection: 'row', width: '100%' }}>
-        <View style={{ marginRight: 10 }}>
+      <View style={styles.cardItemSubContainer}>
+        <View style={styles.cardItemSection}>
           <View style={styles.avatarView}>
-            {/* <Text style={styles.avatarLetter}>D</Text> */}
             <Image
-              style={{ height: 90, width: 90 }}
-              // resizeMode="contain"
+              style={styles.cardItemImage}
               resizeMode="cover"
-              // eslint-disable-next-line global-require, import/no-dynamic-require
               source={{ uri: jobItem.itemImages }}
             />
           </View>
           <View style={styles.flexDirectionRow}>
-            <View
-              style={{
-                ...styles.iconView,
-                ...{ marginRight: 0 }
-              }}
-            >
+            <View style={styles.iconView}>
               <MaterialIcon name="location-pin" size={20} color="#e91e63" />
             </View>
             <View>
@@ -41,48 +33,41 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
             </View>
           </View>
         </View>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
+        <View style={styles.cardItemSection2}>
           <View style={styles.cardDetailsView}>
             <View style={styles.topRow}>
-              <View style={{ flexDirection: 'column' }}>
+              <View style={styles.topRowSubContainer}>
                 <View>
-                  <Text
-                    style={{
-                      ...styles.fontSize17,
-                      ...{ fontWeight: 'bold', color: '#e91e63' }
-                    }}
-                  >
-                    {jobItem.itemName}
-                  </Text>
+                  <Text style={styles.itemNameText}>{jobItem.itemName}</Text>
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                <View style={styles.itemPropertyContainer}>
                   <View>
-                    <Text style={{ fontSize: 15, color: 'gray' }}>To:</Text>
+                    <Text style={styles.itemPropertyLabelText}>To:</Text>
                   </View>
-                  <View style={{ marginLeft: 5 }}>
-                    <Text style={{ fontSize: 15, color: 'black' }}>
+                  <View style={styles.itemPropertyValueContainer}>
+                    <Text style={styles.itemPropertyValueText}>
                       {jobItem.itemDeliveryLocation}
                     </Text>
                   </View>
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                <View style={styles.itemPropertyContainer}>
                   <View>
-                    <Text style={{ fontSize: 15, color: 'gray' }}>Size:</Text>
+                    <Text style={styles.itemPropertyLabelText}>Size:</Text>
                   </View>
-                  <View style={{ marginLeft: 5 }}>
-                    <Text style={{ fontSize: 15, color: 'black' }}>
+                  <View style={styles.itemPropertyValueContainer}>
+                    <Text style={styles.itemPropertyValueText}>
                       {jobItem.itemSize}
                     </Text>
                   </View>
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                <View style={styles.itemPropertyContainer}>
                   <View>
-                    <Text style={{ fontSize: 15, color: 'gray' }}>
+                    <Text style={styles.itemPropertyLabelText}>
                       Delivery by:
                     </Text>
                   </View>
-                  <View style={{ marginLeft: 5 }}>
-                    <Text style={{ fontSize: 15, color: 'black' }}>
+                  <View style={styles.itemPropertyValueContainer}>
+                    <Text style={styles.itemPropertyValueText}>
                       {
                         // eslint-disable-next-line no-nested-ternary
                         typeof jobItem?.itemDeliveryDate !== undefined
@@ -97,7 +82,7 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
                 </View>
               </View>
               <View>
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+                <Text style={styles.costTextValue}>
                   ${jobItem.shipmentCost}
                 </Text>
               </View>
