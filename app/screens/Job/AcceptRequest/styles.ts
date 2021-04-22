@@ -14,34 +14,56 @@ const styles = StyleSheet.create({
     height: '100%',
     flexDirection: 'column'
   },
-  itemDetailsContainer: { marginHorizontal: 15 },
-  detailsHeader: { fontWeight: 'bold', fontSize: 30, marginBottom: 30 },
-  receiverContainer: {
+  headerContainer: {
     backgroundColor: '#f3f5fa',
     width: '100%',
     paddingTop: 30,
     paddingBottom: 10,
     paddingHorizontal: 15
   },
-  receiverHeaderContainer: { marginBottom: 30 },
-  receiverHeader: { fontSize: 25, fontWeight: 'bold' },
-  paymentContainer: {
-    backgroundColor: '#87CEEB',
-    width: '100%',
-    paddingVertical: 25,
-    paddingHorizontal: 15
+  headerSubContainer: { flexDirection: 'row', marginBottom: 5 },
+  imageContainer: { flexDirection: 'row', marginBottom: 5 },
+  image: { height: '100%', width: '100%', borderRadius: 40 },
+  contentContainer: {
+    flexDirection: 'column',
+    marginHorizontal: 10,
+    // alignItems: 'center'
+    justifyContent: 'flex-end'
   },
-  paymentText: {
-    fontSize: 25,
-    textAlign: 'center',
-    color: 'white'
+  nameContainer: { marginBottom: 5 },
+  nameText: { fontSize: 23, fontWeight: 'bold' },
+  contentSubContainer: {
+    flexDirection: 'row',
+    marginBottom: 40
   },
-  paymentAmount: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: 'white'
+  pressableContainer: {
+    marginRight: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
+  pressableSimpleContainer: { alignItems: 'center', justifyContent: 'center' },
+  pressableText: {
+    fontSize: 17,
+    fontWeight: 'bold'
+  },
+  locationContainer: { flexDirection: 'row', marginBottom: 25 },
+  locationIconContainer: {
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    // TODO https://github.com/oblador/react-native-vector-icons/issues/774
+    marginLeft: -5
+  },
+  locationTextContainer: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  locationText: {
+    fontSize: 20,
+    color: 'mediumvioletred',
+    fontWeight: 'bold'
+  },
+  jobDetailsContainer: { marginTop: 25 },
+
   buttonsContainer: {
     // backgroundColor: '#87CEEB',
     width: '100%',

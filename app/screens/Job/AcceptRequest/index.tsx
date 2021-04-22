@@ -11,11 +11,6 @@ import NavigationService from '../../../navigation/NavigationService';
 import ProfileReviews from '../../Profile/Reviews';
 import styles from './styles';
 
-// interface AcceptTravlerProps {
-//   curInput: any;
-//   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
-// }
-
 const AcceptTravler: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userProfile = useSelector((state: AppState) => state.default);
@@ -23,65 +18,22 @@ const AcceptTravler: React.FC = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
-        <View
-          style={{
-            backgroundColor: '#f3f5fa',
-            width: '100%',
-            paddingTop: 30,
-            paddingBottom: 10,
-            paddingHorizontal: 15
-          }}
-        >
-          <View style={{ flexDirection: 'row', marginBottom: 5 }}>
-            <View
-              style={{
-                width: 80,
-                backgroundColor: 'lightgray',
-                height: 80,
-                borderRadius: 40,
-                // borderWidth: 5,
-                // borderColor: 'lightgray',
-                borderColor: 'black',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 10
-              }}
-            >
+        <View style={styles.headerContainer}>
+          <View style={styles.headerSubContainer}>
+            <View style={styles.imageContainer}>
               <Image
-                style={{ height: '100%', width: '100%', borderRadius: 40 }}
-                // resizeMode="contain"
+                style={styles.image}
                 resizeMode="cover"
                 // eslint-disable-next-line global-require, import/no-dynamic-require
                 source={require('../../../assets/images/mango.jpg')}
               />
             </View>
-            <View
-              style={{
-                flexDirection: 'column',
-                marginHorizontal: 10,
-                // alignItems: 'center'
-                justifyContent: 'flex-end'
-              }}
-            >
-              <View style={{ marginBottom: 5 }}>
-                <Text style={{ fontSize: 23, fontWeight: 'bold' }}>
-                  James Rodriguez
-                </Text>
+            <View style={styles.contentContainer}>
+              <View style={styles.nameContainer}>
+                <Text style={styles.nameText}>James Rodriguez</Text>
               </View>
-
-              <View
-                style={{
-                  flexDirection: 'row',
-                  marginBottom: 40
-                }}
-              >
-                <View
-                  style={{
-                    marginRight: 10,
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
+              <View style={styles.contentSubContainer}>
+                <View style={styles.pressableContainer}>
                   <Pressable
                     onPress={() => {
                       console.log('reviews');
@@ -94,9 +46,7 @@ const AcceptTravler: React.FC = () => {
                     <StarIcon name="star" size={17} color="#e91e63" />
                   </Pressable>
                 </View>
-                <View
-                  style={{ alignItems: 'center', justifyContent: 'center' }}
-                >
+                <View style={styles.pressableSimpleContainer}>
                   <Pressable
                     onPress={() => {
                       console.log('reviews');
@@ -106,14 +56,7 @@ const AcceptTravler: React.FC = () => {
                       );
                     }}
                   >
-                    <Text
-                      style={{
-                        fontSize: 17,
-                        fontWeight: 'bold'
-                      }}
-                    >
-                      4.5 (4 reviews)
-                    </Text>
+                    <Text style={styles.pressableText}>4.5 (4 reviews)</Text>
                   </Pressable>
                 </View>
               </View>
@@ -123,36 +66,16 @@ const AcceptTravler: React.FC = () => {
             <JobPropertyComponent title="Flying on" value="January 12, 2021" />
             <JobPropertyComponent title="Flying to" value="Florida, USA" />
           </View>
-          <View style={{ flexDirection: 'row', marginBottom: 25 }}>
-            <View
-              style={{
-                alignItems: 'flex-start',
-                justifyContent: 'flex-start',
-                // TODO https://github.com/oblador/react-native-vector-icons/issues/774
-                marginLeft: -5
-              }}
-            >
+          <View style={styles.locationContainer}>
+            <View style={styles.locationIconContainer}>
               <MaterialIcon name="location-pin" size={30} color="#87CEEB" />
             </View>
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'mediumvioletred',
-                  fontWeight: 'bold'
-                }}
-              >
-                100 Miles Away
-              </Text>
+            <View style={styles.locationTextContainer}>
+              <Text style={styles.locationText}>100 Miles Away</Text>
             </View>
           </View>
         </View>
-        <View style={{ marginTop: 25 }}>
+        <View style={styles.jobDetailsContainer}>
           {/* @ts-ignore */}
           <JobDetails />
         </View>
