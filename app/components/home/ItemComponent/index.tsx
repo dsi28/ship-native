@@ -72,7 +72,7 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
                         // eslint-disable-next-line no-nested-ternary
                         typeof jobItem?.itemDeliveryDate !== undefined
                           ? typeof jobItem?.itemDeliveryDate === 'object'
-                            ? jobItem?.itemDeliveryDate.toDateString() // newJob.itemDeliveryDate?.toDateString()
+                            ? jobItem?.itemDeliveryDate.toDateString()
                             : // @ts-ignore
                               new Date(jobItem?.itemDeliveryDate).toDateString() // this is a mess
                           : 'No date set'
