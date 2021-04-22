@@ -35,7 +35,7 @@ const RequestItemComponent: React.FC<RequestItemProps> = ({
       </View>
       <View style={styles.cardDetailsView}>
         <View style={styles.topRow}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={styles.flexDirectionCol}>
             <View>
               {/* TODO get seller name */}
               <Text style={{ ...styles.fontSize17, ...{ fontWeight: 'bold' } }}>
@@ -45,9 +45,7 @@ const RequestItemComponent: React.FC<RequestItemProps> = ({
             {itemStatus && (
               <View>
                 {/* TODO get seller name */}
-                <Text style={{ fontSize: 17, color: 'gray' }}>
-                  {itemStatus}
-                </Text>
+                <Text style={styles.statusText}>{itemStatus}</Text>
               </View>
             )}
           </View>
