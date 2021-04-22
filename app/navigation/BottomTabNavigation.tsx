@@ -45,63 +45,12 @@ function BottomTabsNav() {
         }}
       />
       <Tab.Screen
-        // name="New"
-        // component={NewJobTrip}
-        // options={{
-        //   tabBarIcon: ({ size }) => (
-        //     <MaterialCommunityIcons
-        //       name="plus-circle"
-        //       color="#e91e63"
-        //       size={size * 2}
-        //     />
-        //   ),
-        //   tabBarLabel: () => null
-        // }}
         name="BottomSheet"
         component={PayScreenComponent}
         options={{
-          // tabBarIcon: ({ size }) => (
-          //   <MaterialCommunityIcons
-          //     name="plus-circle"
-          //     color="#e91e63"
-          //     size={size * 2}
-          //   />
-          // ),
-          // // tabBarLabel: 'test',
-          // tabBarLabel: () => null
           tabBarButton: () => <PayScreen />
         }}
       />
-      {/*
-      https://stackoverflow.com/questions/59304281/create-custom-bottom-tab-navigator-in-react-native
-      <Tab.Screen
-        name="Add"
-        options={{
-          tabBarLabel: '',
-          tabBarIcon: ({ color }) => (
-            <View
-              style={{
-                position: 'absolute',
-                bottom: 0, // space from bottombar
-                height: 68,
-                width: 68,
-                borderRadius: 34,
-                borderWidth: 4,
-                borderColor: color,
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-            >
-              <MaterialCommunityIcons
-                name="plus-circle-outline"
-                color={color}
-                size={68}
-              />
-            </View>
-          )
-        }}
-        component={TempComponent}
-      /> */}
       <Tab.Screen
         name="Chat"
         component={TempComponent}
@@ -115,7 +64,6 @@ function BottomTabsNav() {
       <Tab.Screen
         name="Profile"
         component={SellerProfileStack}
-        // component={UserProfile}
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({ color, size }) => (
@@ -126,5 +74,4 @@ function BottomTabsNav() {
     </Tab.Navigator>
   );
 }
-
 export default BottomTabsNav;
