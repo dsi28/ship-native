@@ -6,8 +6,36 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
-
-  /// Social btn
+  welcomeText: { color: 'white', fontSize: 20, opacity: 0.5 },
+  shipContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 50
+  },
+  shipText: { color: 'white', fontWeight: 'bold', fontSize: 40 },
+  shipLetterText: { color: 'orange', fontWeight: 'bold', fontSize: 40 },
+  contentContainer: {
+    flexDirection: 'column',
+    backgroundColor: 'white',
+    flex: 1,
+    borderTopEndRadius: 25,
+    borderTopStartRadius: 25,
+    paddingTop: 30
+  },
+  headerContainer: {
+    flexDirection: 'column',
+    marginHorizontal: 15,
+    marginTop: 10
+  },
+  navLinkContainer: { alignItems: 'flex-end' },
+  welcomeContainer: { alignItems: 'center', marginTop: 70 },
+  iconStyle: { marginHorizontal: 20, height: 50 },
+  orContainer: { alignItems: 'center', marginVertical: 20 },
+  orText: { color: 'gray' },
+  pressableContainer: { marginBottom: 20 },
+  subTextContainer: { marginHorizontal: 20 },
+  subText: { color: 'gray', textAlign: 'center', fontSize: 15 },
   pressableNext: {
     backgroundColor: '#87CEEB',
     height: 50,
@@ -23,93 +51,6 @@ const styles = StyleSheet.create({
     // top: 20
     // zIndex: 100,
     // elevation: 101 // only for android?
-  },
-  pressableNextTxt: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'white'
-  },
-  /// end Social btn
-
-  /// item component styles
-
-  cardItemContainer: {
-    padding: 15,
-    margin: 5,
-    flexDirection: 'column',
-    // borderColor: 'black',
-    // borderWidth: 2,
-    borderRadius: 10,
-    // elevation: 5
-    backgroundColor: 'white'
-  },
-  bottomRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 5,
-    marginTop: 5
-  },
-  topRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 5,
-    marginTop: 5
-  },
-  avatarView: {
-    width: 90,
-    backgroundColor: 'lightgray',
-    height: 90,
-    // borderRadius: 30,
-    // borderWidth: 5,
-    // borderColor: 'lightgray',
-    borderColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 10
-  },
-  avatarLetter: { fontSize: 30 },
-  iconView: {
-    marginRight: 5,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  buttonPresable: {
-    elevation: 8,
-    backgroundColor: 'white',
-    borderRadius: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    borderColor: 'black',
-    borderWidth: 3
-  },
-  buttonDeclineText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    textTransform: 'uppercase'
-  },
-  rightButtonView: { flex: 1, marginLeft: 5 },
-  leftButtonView: { flex: 1, marginRight: 5 },
-  buttonAcceptText: {
-    fontSize: 18,
-    color: 'black',
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    textTransform: 'uppercase'
-  },
-  cardDetailsView: {
-    flexDirection: 'column',
-    marginLeft: 5,
-    // flex: 2,
-    justifyContent: 'space-between',
-    flex: 1
-  },
-
-  // reusable styles:
-  flexDirectionRow: { flexDirection: 'row' },
-  fontSize17: { fontSize: 17 },
-  fontSize30: { fontSize: 30 },
-  fontSize25: { fontSize: 25 },
-  fontSize15: { fontSize: 15 }
+  }
 });
 export default styles;
