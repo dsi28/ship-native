@@ -234,7 +234,6 @@ const NewJobS1: React.FC = () => {
               <PictureUploadComponent
                 handleImageChange={handleRemoveImage}
                 imageShown={newJob.itemImages}
-                imageIndex={0}
               />
             ) : (
               <PictureUploadComponent handleImageChange={handleAddImage} />

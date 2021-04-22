@@ -6,9 +6,6 @@ interface NavigationLinkComponentProps {
   navigateTo: string;
   textColor: string;
   linkText: string;
-  // onChangeHandler: (propertyName: string, propertyValue: string) => void;
-  // propertyName: 'itemName' | 'itemValue' | 'name' | 'email' | 'password';
-  // inputValue: string | number | undefined; // @TODO come back to this
 }
 
 const NavigationLinkComponent: React.FC<NavigationLinkComponentProps> = ({
@@ -18,7 +15,6 @@ const NavigationLinkComponent: React.FC<NavigationLinkComponentProps> = ({
 }) => (
   <Pressable
     onPress={() => {
-      console.log(navigateTo);
       NavigationService.navigate(navigateTo);
     }}
   >
