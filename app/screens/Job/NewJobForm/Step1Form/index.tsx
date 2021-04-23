@@ -21,11 +21,6 @@ import {
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
-// interface NameInputProps {
-//   curInput: any;
-//   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
-// }
-
 const NewJobS1: React.FC = () => {
   const jobState = useSelector((state: AppState) => state.job.newJob);
 
@@ -43,11 +38,9 @@ const NewJobS1: React.FC = () => {
     // @ts-ignore
     sheetRef.current.snapTo(0);
     console.log('add img');
-    // setNewJob({ ...newJob, itemImages: pictureInput });
   };
   const handleRemoveImage = () => {
     setPictureInput('');
-
     console.log('remove img');
   };
 
@@ -77,13 +70,6 @@ const NewJobS1: React.FC = () => {
   const onChangeDate = (event: any, selectedDate: Date | undefined) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
-    // if (event.type === 'neutralButtonPressed') {
-    //   setDate(new Date(0));
-
-    // } else {
-    //   setDate(currentDate);
-    // }
-
     setDate(currentDate);
     setNewJob({ ...newJob, itemDeliveryDate: new Date(currentDate) });
   };
@@ -120,28 +106,22 @@ const NewJobS1: React.FC = () => {
                   {
                     label: 'Category 1',
                     value: 'category 1'
-                    // icon: () => <Icon name="flag" size={18} color="#900" />,
-                    // hidden: true
                   },
                   {
                     label: 'Category 2',
                     value: 'category 2'
-                    // icon: () => <Icon name="flag" size={18} color="#900" />
                   },
                   {
                     label: 'Category 3',
                     value: 'category 3'
-                    // icon: () => <Icon name="flag" size={18} color="#900" />
                   },
                   {
                     label: 'Category 4',
                     value: 'category 4'
-                    // icon: () => <Icon name="flag" size={18} color="#900" />
                   },
                   {
                     label: 'Category 5',
                     value: 'category 5'
-                    // icon: () => <Icon name="flag" size={18} color="#900" />
                   }
                 ]}
                 inputValue={newJob?.itemCategory ? newJob.itemCategory : null}
@@ -155,7 +135,6 @@ const NewJobS1: React.FC = () => {
                   inputValue={newJob?.itemName ? newJob.itemName : ''}
                 />
               </View>
-
               <View style={styles.inputContainer}>
                 <Pressable onPress={showDatepicker}>
                   <TextFormInputWithIcon
@@ -181,12 +160,9 @@ const NewJobS1: React.FC = () => {
                     <DateTimePicker
                       testID="dateTimePicker"
                       value={date}
-                      // mode={mode}
                       is24Hour
                       display="default"
                       onChange={(e, pickedDate) => {
-                        // console.log('e', e);
-                        // console.log('date', pickedDate);
                         onChangeDate(e, pickedDate);
                       }}
                     />
@@ -215,7 +191,7 @@ const NewJobS1: React.FC = () => {
                 propertyName="itemValue"
                 inputValue={newJob?.itemValue ? newJob.itemValue : ''}
               />
-              {/* @TODO replace this with an i icon  */}
+              {/* TODO replace this with an i icon  */}
               <View style={styles.inputSubTextContainer}>
                 <Text style={styles.inputSubText}>
                   This value is for insurance purposes so try to be as accurate
@@ -254,7 +230,6 @@ const NewJobS1: React.FC = () => {
               btnTextColor="white"
             />
           </View>
-
           <View>
             <WideButton
               buttonText="Cancel"

@@ -1,53 +1,48 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    // marginTop: 30,
-    // marginHorizontal: 15,
-    // backgroundColor: 'pink',
-    width: Dimensions.get('screen').width
-    // height: Dimensions.get('screen').height
+  modal: { backgroundColor: 'green' },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10
   },
-  scrollContainer: {
-    // backgroundColor: 'blue',
-    // marginTop: 30,
-    height: '100%',
-    flexDirection: 'column'
+  modalSubContainer: {
+    paddingTop: 20,
+    // margin: 20,
+    borderRadius: 20,
+    // padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    backgroundColor: 'white',
+    width: '90%',
+    height: '80%'
   },
-  itemDetailsContainer: { marginHorizontal: 15 },
-  detailsHeader: { fontWeight: 'bold', fontSize: 30, marginBottom: 30 },
-  receiverContainer: {
-    backgroundColor: '#f3f5fa',
-    width: '100%',
-    paddingTop: 30,
-    paddingBottom: 10,
-    paddingHorizontal: 15
-  },
-  receiverHeaderContainer: { marginBottom: 30 },
-  receiverHeader: { fontSize: 25, fontWeight: 'bold' },
-  paymentContainer: {
-    backgroundColor: '#87CEEB',
-    width: '100%',
-    paddingVertical: 25,
-    paddingHorizontal: 15
-  },
-  paymentText: {
-    fontSize: 25,
+  modalScroll: { width: '100%' },
+  titleContainer: { marginBottom: 20 },
+  titleText: {
     textAlign: 'center',
-    color: 'white'
-  },
-  paymentAmount: {
-    fontSize: 25,
     fontWeight: 'bold',
-    textAlign: 'center',
-    color: 'white'
+    fontSize: 25
   },
-  buttonsContainer: {
-    // backgroundColor: '#87CEEB',
-    width: '100%',
-    paddingVertical: 25,
-    paddingHorizontal: 15
+  headerContainer: { marginBottom: 25 },
+  loctionsContainer: {
+    paddingTop: 20,
+    paddingHorizontal: 25,
+    marginBottom: 25,
+    backgroundColor: '#f3f5fa',
+    width: '100%'
   },
+  optionsContainer: { marginBottom: 25, marginHorizontal: 20 },
+  topButtonContainer: { marginBottom: 20, marginTop: 10 },
   buttonContainer: { marginBottom: 20 }
 });
 export default styles;

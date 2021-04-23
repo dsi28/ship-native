@@ -11,11 +11,6 @@ import { resetNewJob, setNewJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
-// interface NameInputProps {
-//   curInput: any;
-//   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
-// }
-
 const NewJobS2: React.FC = () => {
   const jobState = useSelector((state: AppState) => state.job.newJob);
   const dispatch = useDispatch();
@@ -45,8 +40,6 @@ const NewJobS2: React.FC = () => {
       setItemWeight(undefined);
     }
   };
-
-  // const [nameInput, setNameInput] = useState(userPostProfile.name);
   return (
     <ScrollView style={styles.container}>
       <View style={styles.subContainer}>
@@ -161,8 +154,8 @@ const NewJobS2: React.FC = () => {
                 NavigationService.navigate('Step 3');
               }}
               isSelected
-              btnBackgoundColor="orange"
-              btnBorderColor="orange"
+              btnBackgoundColor="mediumvioletred "
+              btnBorderColor="mediumvioletred"
               btnTextColor="white"
             />
           </View>
@@ -177,8 +170,8 @@ const NewJobS2: React.FC = () => {
               }}
               isSelected
               btnBackgoundColor="white"
-              btnBorderColor="orange"
-              btnTextColor="orange"
+              btnBorderColor="mediumvioletred"
+              btnTextColor="mediumvioletred"
             />
           </View>
         </View>

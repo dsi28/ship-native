@@ -9,16 +9,10 @@ import { addJob, resetNewJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
 import styles from './styles';
 
-// interface NameInputProps {
-//   curInput: any;
-//   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
-// }
-
 const NewJobConfirm: React.FC = () => {
   const jobState = useSelector((state: AppState) => state.job.newJob);
   const dispatch = useDispatch();
 
-  // const [nameInput, setNameInput] = useState(userPostProfile.name);
   return (
     <ScrollView style={styles.container}>
       <View style={styles.subContainer}>
