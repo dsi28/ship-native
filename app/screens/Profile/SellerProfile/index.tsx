@@ -11,11 +11,6 @@ import ReviewSection from '../../../components/profile/ReviewSection';
 import ProfileReviews from '../Reviews';
 import styles from './styles';
 
-// interface ProfileProps {
-//   curInput: any;
-//   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
-// }
-
 const SellerProfile: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userProfile = useSelector((state: AppState) => state.default);

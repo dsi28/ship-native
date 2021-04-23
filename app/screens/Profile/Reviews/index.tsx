@@ -30,7 +30,6 @@ const ProfileReviews: React.FC<ProfileReviewsProps> = () => (
             <View style={styles.reviewImageContainer}>
               <Image
                 style={styles.reviewImage}
-                // resizeMode="contain"
                 resizeMode="cover"
                 // eslint-disable-next-line global-require, import/no-dynamic-require
                 source={require('../../../assets/images/mango.jpg')}
