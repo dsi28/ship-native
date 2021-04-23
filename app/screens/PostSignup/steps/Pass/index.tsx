@@ -7,17 +7,12 @@ import { setProfileUser } from '../../../../redux/actions/postProfile';
 import { AppState } from '../../../../redux/store/configureStore';
 import BirthdayInput from '../BirthdayInput';
 import styles from './styles';
-// interface NameInputProps {
-//   curInput: any;
-//   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
-// }
 
 const PassInput: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userPostProfile = useSelector((state: AppState) => state.profile);
   const dispatch = useDispatch();
-  // eslint-disable-next-line no-useless-escape
-  // const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
   // eslint-disable-next-line no-useless-escape
   const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
   const [passInput, setPassInput] = useState(userPostProfile.password || '');
@@ -76,7 +71,6 @@ const PassInput: React.FC = () => {
                   validatePass(text);
                   passMatchCheck(text, false);
                 }}
-                // editable={!isValidated}
               />
             </View>
           </View>

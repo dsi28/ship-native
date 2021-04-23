@@ -11,11 +11,6 @@ import PictureUploadComponent from '../../../../components/pictureUpload';
 import { setProfileUser } from '../../../../redux/actions/postProfile';
 import styles from './styles';
 
-// interface NameInputProps {
-//   curInput: any;
-//   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
-// }
-
 const PictureInput: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userPostProfile = useSelector((state: AppState) => state.profile);
