@@ -5,15 +5,7 @@ import TextFormInput from '../../../components/FormInputs/TextI';
 import NavigationLinkComponent from '../../../components/navigationLink';
 import styles from './styles';
 
-// interface LoginScreenProps {
-//   curInput: any;
-//   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
-// }
-
 const ForgotPasswordScreen: React.FC = () => {
-  // @ts-ignore default does exsist not sure why this show up
-  // const userProfile = useSelector((state: AppState) => state.default);
-
   const [email, setEmail] = useState('');
 
   const onChangeInputHandler = (

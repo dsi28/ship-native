@@ -13,7 +13,6 @@ const TravelerHeaderComponent: React.FC<TravelerHeaderComponentProps> = () => (
       {/* TODO get seller profile pic or initial */}
       <Image
         style={styles.travelerImage}
-        // resizeMode="contain"
         resizeMode="cover"
         // eslint-disable-next-line global-require, import/no-dynamic-require
         source={require('../../../assets/images/mango.jpg')}

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Image, Text, View } from 'react-native';
-// @ts-ignore
 import StarIcon from 'react-native-vector-icons/FontAwesome';
-// @ts-ignore
 import CheckIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './styles';
 
@@ -24,16 +22,13 @@ const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ userProfile }) => (
       </View>
       <View style={styles.avatarContainer}>
         <View style={styles.avatarView}>
-          {/* <Text style={styles.avatarLetter}>{userProfile.name[0]}</Text> */}
           <Image
             style={{
-              // flex: 2,
               height: '100%',
               width: '100%',
               borderRadius: 30,
               borderWidth: 5
             }}
-            // resizeMode="contain"
             resizeMode="cover"
             source={{
               uri: userProfile.pictures

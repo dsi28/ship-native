@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
+import styles from './styles';
 
 interface DeclineTravlerProps {
   showModal: boolean;
@@ -27,69 +28,26 @@ const DeclineTravler: React.FC<DeclineTravlerProps> = ({
         onRequestClose={() => {
           console.log('close');
         }}
-        style={{ backgroundColor: 'green' }}
-        // presentationStyle="fullScreen"
+        style={styles.modal}
       >
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 10
-          }}
-        >
-          <View
-            style={{
-              paddingTop: 20,
-              // margin: 20,
-              borderRadius: 20,
-              // padding: 35,
-              alignItems: 'center',
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 2
-              },
-              shadowOpacity: 0.25,
-              shadowRadius: 4,
-              elevation: 5,
-              backgroundColor: 'white',
-              width: '90%',
-              height: '80%'
-            }}
-          >
-            <ScrollView style={{ width: '100%' }}>
-              <View style={{ marginBottom: 20 }}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    fontWeight: 'bold',
-                    fontSize: 25
-                  }}
-                >
-                  Decline Request
-                </Text>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalSubContainer}>
+            <ScrollView style={styles.modalScroll}>
+              <View style={styles.titleContainer}>
+                <Text style={styles.titleText}>Decline Request</Text>
               </View>
-              <View style={{ marginBottom: 25 }}>
+              <View style={styles.headerContainer}>
                 <TravelerHeaderComponent />
               </View>
-              <View
-                style={{
-                  paddingTop: 20,
-                  paddingHorizontal: 25,
-                  marginBottom: 25,
-                  backgroundColor: '#f3f5fa',
-                  width: '100%'
-                }}
-              >
+              <View style={styles.loctionsContainer}>
                 <JobPropertyComponent
                   title="Flying on"
                   value="January 12, 2021"
                 />
                 <JobPropertyComponent title="Flying to" value="Florida, USA" />
               </View>
-              <View style={{ marginBottom: 25, marginHorizontal: 20 }}>
-                <View style={{ marginBottom: 20, marginTop: 10 }}>
+              <View style={styles.optionsContainer}>
+                <View style={styles.topButtonContainer}>
                   <WideButton
                     buttonText="Decline"
                     onPressHandler={() => {
@@ -97,12 +55,12 @@ const DeclineTravler: React.FC<DeclineTravlerProps> = ({
                       console.log('decline traveler');
                     }}
                     isSelected
-                    btnBackgoundColor="orange"
+                    btnBackgoundColor="mediumvioletred"
                     btnTextColor="white"
-                    btnBorderColor="orange"
+                    btnBorderColor="mediumvioletred"
                   />
                 </View>
-                <View style={{ marginBottom: 20 }}>
+                <View style={styles.buttonContainer}>
                   <WideButton
                     buttonText="Cancel"
                     onPressHandler={() => {
@@ -110,9 +68,9 @@ const DeclineTravler: React.FC<DeclineTravlerProps> = ({
                       setShowModal(false);
                     }}
                     isSelected
-                    btnBackgoundColor="bisque"
-                    btnTextColor="orange"
-                    btnBorderColor="orange"
+                    btnBackgoundColor="white"
+                    btnTextColor="mediumvioletred"
+                    btnBorderColor="mediumvioletred"
                   />
                 </View>
               </View>

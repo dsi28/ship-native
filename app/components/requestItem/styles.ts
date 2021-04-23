@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10
   },
+  statusText: { fontSize: 17, color: 'gray' },
   bottomRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
 
   // reusable styles:
   flexDirectionRow: { flexDirection: 'row' },
+  flexDirectionCol: { flexDirection: 'column' },
   fontSize17: { fontSize: 17 },
   fontSize30: { fontSize: 30 },
   fontSize25: { fontSize: 25 }

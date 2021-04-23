@@ -12,10 +12,6 @@ interface TextFormInputWithIconProps {
   propertyName: 'itemDeliveryLocation' | 'itemDeliveryDate';
   inputValue: string;
   inputDisabled: boolean;
-  //   isSelected: boolean;
-  //   btnBackgoundColor: string;
-  //   btnTextColor: string;
-  //   btnBorderColor: string;
 }
 
 const TextFormInputWithIcon: React.FC<TextFormInputWithIconProps> = ({
@@ -38,13 +34,12 @@ const TextFormInputWithIcon: React.FC<TextFormInputWithIconProps> = ({
     </View>
     <View style={styles.inputTextContainer}>
       <TextInput
-        // enabled={inputDisabled}
         editable={inputDisabled}
         style={styles.inputText}
         placeholder={placeholderText}
         value={inputValue}
         onChangeText={(e) => {
-          console.log(e);
+          console.log('input with icon change: ', e);
           onChangeHandler(propertyName, e);
         }}
       />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import Styles from './styles';
+import styles from './styles';
 
 interface NumberTogglerProps {
   count: number;
@@ -13,11 +13,11 @@ interface ToggleButtonProps {
 
 const ToggleButton = ({ isMinus, onPress }: ToggleButtonProps) => {
   const icon = () => (
-    <Text style={Styles.buttonText}>{isMinus ? '—' : '+'}</Text>
+    <Text style={styles.buttonText}>{isMinus ? '—' : '+'}</Text>
   );
   return (
     <TouchableOpacity
-      style={[Styles.touchable]}
+      style={[styles.touchable]}
       onPress={() => onPress(isMinus)}
     >
       {icon()}
@@ -36,22 +36,19 @@ const NumberToggler: React.FC<NumberTogglerProps> = ({ count, setCount }) => {
         newCount = minCount;
       } else {
         newCount = count - 1;
-        // handleItemQty(cartItem, -1);
       }
     } else if (count + 1 >= maxCount) {
       newCount = maxCount;
     } else {
       newCount = count + 1;
-      // handleItemQty(cartItem, 1);
     }
     setCount(newCount);
   };
-
   return (
-    <View style={Styles.container}>
+    <View style={styles.container}>
       <ToggleButton isMinus onPress={onPress} />
-      <View style={Styles.count}>
-        <Text style={Styles.countText}>${count}</Text>
+      <View style={styles.count}>
+        <Text style={styles.countText}>${count}</Text>
       </View>
       <ToggleButton isMinus={false} onPress={onPress} />
     </View>

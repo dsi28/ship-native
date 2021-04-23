@@ -12,9 +12,6 @@ import styles from './styles';
 // }
 
 const LoginScreen: React.FC = () => {
-  // @ts-ignore default does exsist not sure why this show up
-  // const userProfile = useSelector((state: AppState) => state.default);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

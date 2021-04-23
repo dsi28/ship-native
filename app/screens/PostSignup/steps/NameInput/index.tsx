@@ -8,11 +8,6 @@ import { AppState } from '../../../../redux/store/configureStore';
 import EmailInput from '../Email';
 import styles from './styles';
 
-// interface NameInputProps {
-//   curInput: any;
-//   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
-// }
-
 const NameInput: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userPostProfile = useSelector((state: AppState) => state.profile);

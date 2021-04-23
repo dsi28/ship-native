@@ -8,11 +8,6 @@ import { AppState } from '../../../../redux/store/configureStore';
 import PassInput from '../Pass';
 import styles from './styles';
 
-// interface NameInputProps {
-//   curInput: any;
-//   setCurInput: React.Dispatch<React.SetStateAction<string | undefined>>;
-// }
-
 const EmailInput: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userPostProfile = useSelector((state: AppState) => state.profile);
@@ -25,7 +20,6 @@ const EmailInput: React.FC = () => {
   const validateEmail = (text: string) => {
     console.log(text);
     console.log(typeof text);
-    // https://stackoverflow.com/questions/43676695/email-validation-react-native-returning-the-result-as-invalid-for-all-the-e
 
     if (reg.test(text) === false) {
       console.log('Email is Not Correct');

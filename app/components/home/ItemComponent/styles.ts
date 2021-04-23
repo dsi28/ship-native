@@ -13,18 +13,11 @@ const styles = StyleSheet.create({
     // elevation: 5
     backgroundColor: 'white'
   },
-  bottomRow: {
+  cardItemSubContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 5,
-    marginTop: 5
+    width: '100%'
   },
-  topRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 5,
-    marginTop: 5
-  },
+  cardItemSection: { marginRight: 10 },
   avatarView: {
     width: 90,
     backgroundColor: 'lightgray',
@@ -37,12 +30,42 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 10
   },
-  avatarLetter: { fontSize: 30 },
+  cardItemImage: {
+    height: 90,
+    width: 90
+  },
   iconView: {
-    marginRight: 5,
+    marginRight: 0,
     alignItems: 'center',
     justifyContent: 'center'
   },
+  cardItemSection2: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+  bottomRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 5,
+    marginTop: 5
+  },
+  topRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 5,
+    marginTop: 5
+  },
+  topRowSubContainer: { flexDirection: 'column' },
+  itemNameText: {
+    fontWeight: 'bold',
+    color: '#e91e63',
+    fontSize: 17
+  },
+  itemPropertyContainer: { flexDirection: 'row', marginTop: 10 },
+  itemPropertyLabelText: { fontSize: 15, color: 'gray' },
+  itemPropertyValueContainer: { marginLeft: 5 },
+  itemPropertyValueText: { fontSize: 15, color: 'black' },
+  costTextValue: { fontSize: 20, fontWeight: 'bold' },
   buttonPresable: {
     elevation: 8,
     backgroundColor: 'white',

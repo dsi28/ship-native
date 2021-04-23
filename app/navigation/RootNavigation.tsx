@@ -21,7 +21,7 @@ const RootNavigator: React.FC<RootNavigatorProps> = ({ theme }) => {
   const [user, setUser] = useState();
 
   // Handle user state changes
-  // @TODO use model for this
+  // TODO use model for this
   function onAuthStateChanged(firebaseUser: any) {
     console.warn('firebase auth: ', firebaseUser);
     setUser(firebaseUser);
@@ -37,15 +37,6 @@ const RootNavigator: React.FC<RootNavigatorProps> = ({ theme }) => {
     console.log('test', user);
     return null;
   }
-
-  // if (!user) {
-  //   return (
-  //     <View>
-  //       <Text>Login fb code test</Text>
-  //     </View>
-  //   );
-  // }
-
   return (
     <NavigationContainer ref={navigationRef} theme={theme}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>

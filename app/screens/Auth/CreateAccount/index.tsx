@@ -18,59 +18,30 @@ const CreateAccountScreen: React.FC = () => {
   console.log(userProfile);
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          flexDirection: 'column',
-          // backgroundColor: 'pink',
-          marginHorizontal: 15,
-          marginTop: 10
-        }}
-      >
-        <View style={{ alignItems: 'flex-end' }}>
+      <View style={styles.headerContainer}>
+        <View style={styles.navLinkContainer}>
           <NavigationLinkComponent
             navigateTo="Login"
             textColor="white"
             linkText="Log In"
           />
         </View>
-        <View style={{ alignItems: 'center', marginTop: 70 }}>
-          <Text style={{ color: 'white', fontSize: 20, opacity: 0.5 }}>
-            Welcome To
-          </Text>
+        <View style={styles.welcomeContainer}>
+          <Text style={styles.welcomeText}>Welcome To</Text>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginBottom: 50
-          }}
-        >
-          <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 40 }}>
-            Ship
-          </Text>
-          <Text style={{ color: 'orange', fontWeight: 'bold', fontSize: 40 }}>
-            X
-          </Text>
+        <View style={styles.shipContainer}>
+          <Text style={styles.shipText}>Ship</Text>
+          <Text style={styles.shipLetterText}>X</Text>
         </View>
       </View>
-      <View
-        style={{
-          flexDirection: 'column',
-          backgroundColor: 'white',
-          flex: 1,
-          borderTopEndRadius: 25,
-          borderTopStartRadius: 25,
-          paddingTop: 30
-        }}
-      >
+      <View style={styles.contentContainer}>
         <View>
           <SocialIcon
             type="google"
             title="Sign In With Google"
             button
             onPress={() => console.log('sign in with google')}
-            style={{ marginHorizontal: 20, height: 50 }}
+            style={styles.iconStyle}
           />
         </View>
         <View>
@@ -79,13 +50,13 @@ const CreateAccountScreen: React.FC = () => {
             button
             type="facebook"
             onPress={() => console.log('sign in with facebook')}
-            style={{ marginHorizontal: 20, height: 50 }}
+            style={styles.iconStyle}
           />
         </View>
-        <View style={{ alignItems: 'center', marginVertical: 20 }}>
-          <Text style={{ color: 'gray' }}>OR</Text>
+        <View style={styles.orContainer}>
+          <Text style={styles.orText}>OR</Text>
         </View>
-        <View style={{ marginBottom: 20 }}>
+        <View style={styles.pressableContainer}>
           <Pressable
             style={({ pressed }) => [
               styles.pressableNext,
@@ -112,8 +83,8 @@ const CreateAccountScreen: React.FC = () => {
             )}
           </Pressable>
         </View>
-        <View style={{ marginHorizontal: 20 }}>
-          <Text style={{ color: 'gray', textAlign: 'center', fontSize: 15 }}>
+        <View style={styles.subTextContainer}>
+          <Text style={styles.subText}>
             By pressing Continue or Create Account, I agree to ShipX&apos;s
             Terms Of Service and Privacy Policy
           </Text>
@@ -122,5 +93,4 @@ const CreateAccountScreen: React.FC = () => {
     </View>
   );
 };
-
 export default CreateAccountScreen;
