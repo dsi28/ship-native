@@ -47,18 +47,6 @@ const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ userProfile }) => (
         </View>
       </View>
     </View>
-    <View>
-      <Pressable onPress={() => NavigationService.navigate('Reviews')}>
-        <View style={styles.reviewRow}>
-          <View style={styles.iconView}>
-            <StarIcon name="star-o" size={30} color="black" />
-          </View>
-          <View>
-            <Text style={styles.reviewVerfiedText}>Reviews</Text>
-          </View>
-        </View>
-      </Pressable>
-    </View>
   </View>
 );
 export default BasicInfoSection;

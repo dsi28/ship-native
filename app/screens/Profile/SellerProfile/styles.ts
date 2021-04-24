@@ -1,10 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
-    marginHorizontal: 15
-    // backgroundColor: 'pink'
+    paddingTop: 30,
+    backgroundColor: '#f3f5fa',
+    height: Dimensions.get('window').height
+    // marginHorizontal: 15
   }
 });
 export default styles;

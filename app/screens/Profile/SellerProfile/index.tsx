@@ -1,12 +1,10 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { View } from 'react-native';
+import { Dimensions, Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import MIcons from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
-import AboutSection from '../../../components/profile/AboutSection';
 import BasicInfoSection from '../../../components/profile/BasicInfoSection';
-import ConfirmedSection from '../../../components/profile/ConfirmedSection';
-import ReviewSection from '../../../components/profile/ReviewSection';
 import ProfileReviews from '../Reviews';
 import styles from './styles';
 
@@ -17,11 +15,65 @@ const SellerProfile: React.FC = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        {/* <CarouselSection data={userProfile.pictures} /> */}
-        <BasicInfoSection userProfile={userProfile} />
-        <AboutSection />
+        <View style={{ marginHorizontal: 15 }}>
+          {/* <CarouselSection data={userProfile.pictures} /> */}
+          <BasicInfoSection userProfile={userProfile} />
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'column',
+            width: Dimensions.get('window').width
+          }}
+        >
+          <View>
+            <View
+              style={{
+                paddingVertical: 20,
+                backgroundColor: 'white',
+                paddingHorizontal: 15,
+                marginBottom: 10
+              }}
+            >
+              <Pressable
+                onPress={() => {
+                  console.log('logout');
+                }}
+              >
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <View>
+                    <Text
+                      style={{
+                        color: 'gray',
+                        fontSize: 20,
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      Logout
+                    </Text>
+                  </View>
+                  <View
+                    style={{
+                      marginRight: 10,
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <MIcons name="logout" size={30} color="gray" />
+                  </View>
+                </View>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+        {/* <AboutSection />
         <ConfirmedSection />
-        <ReviewSection />
+        <ReviewSection /> */}
       </View>
     </ScrollView>
   );
