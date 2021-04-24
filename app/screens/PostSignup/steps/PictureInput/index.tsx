@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
@@ -68,20 +69,33 @@ const PictureInput: React.FC = () => {
             buttonText="Next"
             onPressHandler={() => {
               console.log('end of profile flow');
-              // NavigationService.navigate('FlowStart', BottomTabsNav);
-              // TODO keep an eye on this. may need to add the rest of the routes.
-              // removing this for now since auth flow in rootnavigator handles this
-              // NavigationService.reset(1, [{ name: 'FlowStart' }]);
-              dispatch(
-                setProfileUser({ ...userPostProfile, pictures: pictureInput })
-              );
+
               auth()
                 .createUserWithEmailAndPassword(
                   userPostProfile.email,
                   userPostProfile.password
                 )
-                .then(() => {
+                .then((userAuth) => {
                   console.log('User account created & signed in!');
+                  console.log('auth user then2', userAuth);
+                  // // get user data
+                  const userData = {
+                    ...userPostProfile,
+                    pictures: pictureInput,
+                    uid: userAuth.user?.uid
+                  };
+
+                  // // update redux
+                  dispatch(setProfileUser(userData));
+
+                  // // use uid to create user in firestore
+                  firestore()
+                    .collection('Users')
+                    .doc(userAuth.user?.uid)
+                    .set(userData)
+                    .then(() => {
+                      console.log('User added!');
+                    });
                 })
                 .catch((error) => {
                   if (error.code === 'auth/email-already-in-use') {
