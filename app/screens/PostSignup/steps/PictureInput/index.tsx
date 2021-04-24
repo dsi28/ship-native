@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
@@ -10,6 +11,8 @@ import NextButton from '../../../../components/buttons/NextButton';
 import PictureUploadComponent from '../../../../components/pictureUpload';
 import { setProfileUser } from '../../../../redux/actions/postProfile';
 import styles from './styles';
+
+const usersRef = firestore().collection('Users');
 
 const PictureInput: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
@@ -66,16 +69,13 @@ const PictureInput: React.FC = () => {
         <View style={styles.screenNextButtonContainer}>
           <NextButton
             buttonText="Next"
-            onPressHandler={() => {
+            onPressHandler={async () => {
               console.log('end of profile flow');
-              // NavigationService.navigate('FlowStart', BottomTabsNav);
-              // TODO keep an eye on this. may need to add the rest of the routes.
-              // removing this for now since auth flow in rootnavigator handles this
-              // NavigationService.reset(1, [{ name: 'FlowStart' }]);
+
               dispatch(
                 setProfileUser({ ...userPostProfile, pictures: pictureInput })
               );
-              auth()
+              const authUser = await auth()
                 .createUserWithEmailAndPassword(
                   userPostProfile.email,
                   userPostProfile.password
@@ -92,6 +92,8 @@ const PictureInput: React.FC = () => {
                   }
                   console.error(error);
                 });
+              console.log('auth user', authUser, usersRef);
+              // use uid to create user in firestore
             }}
             isDisabled={pictureInput.length < 1}
           />
