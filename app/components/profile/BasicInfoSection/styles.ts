@@ -8,38 +8,48 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    marginBottom: 30
+    marginBottom: 15
   },
   flex3: { flex: 3 },
-  marginBottom10: { marginBottom: 10 },
+  nameContainer: { marginBottom: 5 },
   nameTitle: {
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 30
+    fontSize: 40
   },
   joinedTitle: {
-    color: 'gray',
-    fontSize: 15
+    color: 'mediumvioletred',
+    fontSize: 20
+  },
+  userImage: {
+    height: '100%',
+    width: '100%',
+    borderRadius: 60
+    // borderWidth: 5
   },
   avatarContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginRight: 20,
+    marginTop: 10
   },
   avatarView: {
-    width: 60,
+    width: 120,
     // backgroundColor: 'lightgray',
-    height: 60,
-    borderRadius: 30,
-    borderWidth: 5,
+    height: 120,
+    borderRadius: 60,
+    // borderWidth: 5,
     // borderColor: 'lightgray',
     borderColor: 'black',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    elevation: 15
   },
   reviewRow: {
     flexDirection: 'row',
-    marginBottom: 20
+    marginBottom: 20,
+    marginTop: 20
   },
   iconView: {
     marginRight: 10,

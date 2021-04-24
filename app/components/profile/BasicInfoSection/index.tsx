@@ -1,7 +1,8 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 import StarIcon from 'react-native-vector-icons/FontAwesome';
-import CheckIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import NavigationService from '../../../navigation/NavigationService';
+import NavigationLinkComponent from '../../navigationLink';
 import styles from './styles';
 
 interface BasicInfoSectionProps {
@@ -12,23 +13,32 @@ const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ userProfile }) => (
   <View style={styles.sectionContatiner}>
     <View style={styles.row}>
       <View style={styles.flex3}>
-        <View style={styles.marginBottom10}>
-          <Text style={styles.nameTitle}>Hi, I&apos;m {userProfile.name}</Text>
+        <View style={styles.nameContainer}>
+          <Text style={styles.nameTitle}>{userProfile.name}</Text>
         </View>
         <View>
-          {/* TODO get year joined */}
-          <Text style={styles.joinedTitle}>Joined in 2014</Text>
+          {/* TODO go to profile instead of Reviews */}
+          <NavigationLinkComponent
+            navigateTo="Reviews"
+            textColor="mediumvioletred"
+            linkText="View and Edit Profile"
+          />
         </View>
+        <Pressable onPress={() => NavigationService.navigate('Reviews')}>
+          <View style={styles.reviewRow}>
+            <View style={styles.iconView}>
+              <StarIcon name="star-o" size={30} color="black" />
+            </View>
+            <View>
+              <Text style={styles.reviewVerfiedText}>Reviews</Text>
+            </View>
+          </View>
+        </Pressable>
       </View>
       <View style={styles.avatarContainer}>
         <View style={styles.avatarView}>
           <Image
-            style={{
-              height: '100%',
-              width: '100%',
-              borderRadius: 30,
-              borderWidth: 5
-            }}
+            style={styles.userImage}
             resizeMode="cover"
             source={{
               uri: userProfile.pictures
@@ -38,24 +48,16 @@ const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ userProfile }) => (
       </View>
     </View>
     <View>
-      <View style={styles.reviewRow}>
-        <View style={styles.iconView}>
-          <StarIcon name="star-o" size={30} color="black" />
+      <Pressable onPress={() => NavigationService.navigate('Reviews')}>
+        <View style={styles.reviewRow}>
+          <View style={styles.iconView}>
+            <StarIcon name="star-o" size={30} color="black" />
+          </View>
+          <View>
+            <Text style={styles.reviewVerfiedText}>Reviews</Text>
+          </View>
         </View>
-        <View>
-          {/* TODO get reviews */}
-          <Text style={styles.reviewVerfiedText}>199 reviews</Text>
-        </View>
-      </View>
-      <View style={styles.row}>
-        <View style={styles.iconView}>
-          <CheckIcon name="shield-check-outline" size={30} color="black" />
-        </View>
-        <View>
-          {/* TODO check if identity is verified */}
-          <Text style={styles.reviewVerfiedText}>Identity verified</Text>
-        </View>
-      </View>
+      </Pressable>
     </View>
   </View>
 );
