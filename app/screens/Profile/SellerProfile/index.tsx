@@ -1,3 +1,4 @@
+import auth from '@react-native-firebase/auth';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { Dimensions, Pressable, Text, View } from 'react-native';
@@ -38,6 +39,9 @@ const SellerProfile: React.FC = () => {
               <Pressable
                 onPress={() => {
                   console.log('logout');
+                  auth()
+                    .signOut()
+                    .then(() => console.log('User signed out!'));
                 }}
               >
                 <View
