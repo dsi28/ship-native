@@ -12,8 +12,6 @@ import PictureUploadComponent from '../../../../components/pictureUpload';
 import { setProfileUser } from '../../../../redux/actions/postProfile';
 import styles from './styles';
 
-const usersRef = firestore().collection('Users');
-
 const PictureInput: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userPostProfile = useSelector((state: AppState) => state.profile);
@@ -69,19 +67,35 @@ const PictureInput: React.FC = () => {
         <View style={styles.screenNextButtonContainer}>
           <NextButton
             buttonText="Next"
-            onPressHandler={async () => {
+            onPressHandler={() => {
               console.log('end of profile flow');
 
-              dispatch(
-                setProfileUser({ ...userPostProfile, pictures: pictureInput })
-              );
-              const authUser = await auth()
+              auth()
                 .createUserWithEmailAndPassword(
                   userPostProfile.email,
                   userPostProfile.password
                 )
-                .then(() => {
+                .then((userAuth) => {
                   console.log('User account created & signed in!');
+                  console.log('auth user then2', userAuth);
+                  // // get user data
+                  const userData = {
+                    ...userPostProfile,
+                    pictures: pictureInput,
+                    uid: userAuth.user?.uid
+                  };
+
+                  // // update redux
+                  dispatch(setProfileUser(userData));
+
+                  // // use uid to create user in firestore
+                  firestore()
+                    .collection('Users')
+                    .doc(userAuth.user?.uid)
+                    .set(userData)
+                    .then(() => {
+                      console.log('User added!');
+                    });
                 })
                 .catch((error) => {
                   if (error.code === 'auth/email-already-in-use') {
@@ -92,8 +106,6 @@ const PictureInput: React.FC = () => {
                   }
                   console.error(error);
                 });
-              console.log('auth user', authUser, usersRef);
-              // use uid to create user in firestore
             }}
             isDisabled={pictureInput.length < 1}
           />
