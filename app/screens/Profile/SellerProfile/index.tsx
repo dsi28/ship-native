@@ -3,21 +3,35 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import BasicInfoSection from '../../../components/profile/BasicInfoSection';
 import MainProfileItem from '../../../components/profile/MainProfileItem';
+import { logOutJob } from '../../../redux/actions/job';
+import { logOutProfileUser } from '../../../redux/actions/postProfile';
 import ProfileReviews from '../Reviews';
 import styles from './styles';
 
 const SellerProfile: React.FC = () => {
   // @ts-ignore
   const userProfile = useSelector((state: AppState) => state.profile);
+  const dispatch = useDispatch();
+
+  // @ts-ignore
+  const testState = useSelector((state: AppState) => state);
   console.log(userProfile);
+
+  console.log('test state before: ', testState);
 
   const handleLogout = () => {
     auth()
       .signOut()
-      .then(() => console.log('User signed out!'));
+      .then(() => {
+        console.log('user signed out firebase');
+        // clear redux
+        dispatch(logOutProfileUser());
+        dispatch(logOutJob());
+        console.log('test state after', testState);
+      });
   };
   return (
     <ScrollView>

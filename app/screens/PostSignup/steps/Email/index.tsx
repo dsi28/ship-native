@@ -14,6 +14,7 @@ const EmailInput: React.FC = () => {
   const dispatch = useDispatch();
   // eslint-disable-next-line no-useless-escape
   const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  // @ts-ignore
   const [emailInput, setEmailInput] = useState(userPostProfile.email || '');
   const [isValidated, setIsValidated] = useState(reg.test(emailInput));
 
@@ -59,6 +60,7 @@ const EmailInput: React.FC = () => {
             onPressHandler={() => {
               NavigationService.navigate('Password', PassInput);
               dispatch(
+                // @ts-ignore
                 setProfileUser({ ...userPostProfile, email: emailInput })
               );
             }}
