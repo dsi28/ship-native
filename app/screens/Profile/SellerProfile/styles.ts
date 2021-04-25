@@ -6,6 +6,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#f3f5fa',
     height: Dimensions.get('window').height
     // marginHorizontal: 15
+  },
+  basicInfoContainer: { marginHorizontal: 15 },
+  itemContainer: {
+    flexDirection: 'column',
+    width: Dimensions.get('window').width
   }
 });
 export default styles;
