@@ -225,8 +225,8 @@ const NewJobS1: React.FC = () => {
                 NavigationService.navigate('Step 2');
               }}
               isSelected
-              btnBackgoundColor="orange"
-              btnBorderColor="orange"
+              btnBackgoundColor="mediumvioletred"
+              btnBorderColor="mediumvioletred"
               btnTextColor="white"
             />
           </View>
@@ -240,8 +240,8 @@ const NewJobS1: React.FC = () => {
               }}
               isSelected
               btnBackgoundColor="white"
-              btnBorderColor="orange"
-              btnTextColor="orange"
+              btnBorderColor="mediumvioletred"
+              btnTextColor="mediumvioletred"
             />
           </View>
         </View>
