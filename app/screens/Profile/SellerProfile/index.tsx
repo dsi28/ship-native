@@ -29,7 +29,40 @@ const SellerProfile: React.FC = () => {
 
         <View style={styles.itemContainer}>
           <View>
-            <MainProfileItem iconName="logout" onPressHandler={handleLogout} />
+            <MainProfileItem
+              itemName="My Trips"
+              iconName="airplanemode-active"
+              onPressHandler={() => console.log('My Trips')}
+            />
+
+            <MainProfileItem
+              itemName="Notifications"
+              iconName="notifications"
+              onPressHandler={() => console.log('Notifications')}
+            />
+
+            <MainProfileItem
+              itemName="Settings"
+              iconName="settings"
+              onPressHandler={() => console.log('Settings')}
+            />
+
+            <MainProfileItem
+              itemName="Help"
+              iconName="help"
+              onPressHandler={() => console.log('Help')}
+            />
+
+            <MainProfileItem
+              itemName="Give us Feedback"
+              iconName="feedback"
+              onPressHandler={() => console.log('feedback')}
+            />
+            <MainProfileItem
+              itemName="Logout"
+              iconName="logout"
+              onPressHandler={handleLogout}
+            />
           </View>
         </View>
         {/* <AboutSection />

@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   sectionContatiner: {
-    borderBottomWidth: 1,
-    borderColor: 'lightgray',
+    // borderBottomWidth: 1,
+    // borderColor: 'lightgray',
     paddingBottom: 10
   },
   row: {

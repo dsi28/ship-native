@@ -6,11 +6,13 @@ import styles from './styles';
 interface MainProfileItemProps {
   onPressHandler: () => void;
   iconName: string;
+  itemName: string;
 }
 
 const MainProfileItem: React.FC<MainProfileItemProps> = ({
   onPressHandler,
-  iconName
+  iconName,
+  itemName
 }) => (
   <View style={styles.container}>
     <Pressable
@@ -20,7 +22,7 @@ const MainProfileItem: React.FC<MainProfileItemProps> = ({
     >
       <View style={styles.contentContainer}>
         <View>
-          <Text style={styles.itemText}>Logout</Text>
+          <Text style={styles.itemText}>{itemName}</Text>
         </View>
         <View style={styles.iconContainer}>
           <MIcons name={iconName} size={30} color="gray" />
