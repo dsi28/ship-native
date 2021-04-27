@@ -48,7 +48,7 @@ const Tab = createMaterialTopTabNavigator();
 
 function HomeScreenTabs() {
   const jobState = useSelector((state: AppState) => state.job);
-
+  console.log('job state', jobState.ownerJobs, 'FULL');
   return (
     <Tab.Navigator
       tabBarOptions={{

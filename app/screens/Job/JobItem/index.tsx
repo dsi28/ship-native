@@ -29,9 +29,9 @@ const JobItem: React.FC<JobItemProps> = ({ route }) => {
                 );
               }}
               isSelected
-              btnBackgoundColor="orange"
+              btnBackgoundColor="mediumvioletred"
               btnTextColor="white"
-              btnBorderColor="orange"
+              btnBorderColor="mediumvioletred"
             />
           </View>
           <View style={styles.buttonContainer}>
@@ -39,9 +39,9 @@ const JobItem: React.FC<JobItemProps> = ({ route }) => {
               buttonText="Edit Job"
               onPressHandler={() => console.log('edit job')}
               isSelected
-              btnBackgoundColor="bisque"
-              btnTextColor="orange"
-              btnBorderColor="orange"
+              btnBackgoundColor="white"
+              btnTextColor="mediumvioletred"
+              btnBorderColor="mediumvioletred"
             />
           </View>
           <View>
@@ -50,8 +50,8 @@ const JobItem: React.FC<JobItemProps> = ({ route }) => {
               onPressHandler={() => console.log('close job')}
               isSelected
               btnBackgoundColor="white"
-              btnTextColor="orange"
-              btnBorderColor="orange"
+              btnTextColor="mediumvioletred"
+              btnBorderColor="mediumvioletred"
             />
           </View>
         </View>

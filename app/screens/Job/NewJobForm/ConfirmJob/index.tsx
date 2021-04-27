@@ -29,8 +29,8 @@ const NewJobConfirm: React.FC = () => {
                 dispatch(addJob(jobState));
               }}
               isSelected
-              btnBackgoundColor="orange"
-              btnBorderColor="orange"
+              btnBackgoundColor="mediumvioletred"
+              btnBorderColor="mediumvioletred"
               btnTextColor="white"
             />
           </View>
@@ -44,8 +44,8 @@ const NewJobConfirm: React.FC = () => {
               }}
               isSelected
               btnBackgoundColor="white"
-              btnBorderColor="orange"
-              btnTextColor="orange"
+              btnBorderColor="mediumvioletred"
+              btnTextColor="mediumvioletred"
             />
           </View>
         </View>

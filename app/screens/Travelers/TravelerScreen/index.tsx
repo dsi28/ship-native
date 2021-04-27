@@ -45,9 +45,9 @@ const TravelerScreen: React.FC = () => {
                 NavigationService.navigate('Accept Traveler', AcceptTravler);
               }}
               isSelected
-              btnBackgoundColor="orange"
+              btnBackgoundColor="mediumvioletred"
               btnTextColor="white"
-              btnBorderColor="orange"
+              btnBorderColor="mediumvioletred"
             />
           </View>
           <View style={styles.bottomButtonContainer}>
@@ -59,9 +59,9 @@ const TravelerScreen: React.FC = () => {
                 // NavigationService.navigate('Decline Traveler', DeclineTravler);
               }}
               isSelected
-              btnBackgoundColor="bisque"
-              btnTextColor="orange"
-              btnBorderColor="orange"
+              btnBackgoundColor="white"
+              btnTextColor="mediumvioletred"
+              btnBorderColor="mediumvioletred"
             />
           </View>
         </View>

@@ -12,6 +12,7 @@ const NameInput: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userPostProfile = useSelector((state: AppState) => state.profile);
   const dispatch = useDispatch();
+  // @ts-ignore
   const [nameInput, setNameInput] = useState(userPostProfile.name);
   return (
     <View style={styles.container}>
@@ -38,6 +39,7 @@ const NameInput: React.FC = () => {
             buttonText="Next"
             onPressHandler={() => {
               NavigationService.navigate('Email', EmailInput);
+              // @ts-ignore
               dispatch(setProfileUser({ ...userPostProfile, name: nameInput }));
             }}
             // @ts-ignore

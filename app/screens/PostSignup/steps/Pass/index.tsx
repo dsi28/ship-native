@@ -15,8 +15,10 @@ const PassInput: React.FC = () => {
 
   // eslint-disable-next-line no-useless-escape
   const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+  // @ts-ignore
   const [passInput, setPassInput] = useState(userPostProfile.password || '');
   const [confirmInput, setConfirmInput] = useState(
+    // @ts-ignore
     userPostProfile.password || ''
   );
   const [isValidated, setIsValidated] = useState(reg.test(passInput));
@@ -99,6 +101,7 @@ const PassInput: React.FC = () => {
             onPressHandler={() => {
               NavigationService.navigate('Birthday', BirthdayInput);
               dispatch(
+                // @ts-ignore
                 setProfileUser({ ...userPostProfile, password: passInput })
               );
             }}

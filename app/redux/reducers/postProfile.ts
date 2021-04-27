@@ -1,5 +1,5 @@
 import { IUserProfile } from '../../models/IUserProfile';
-import { SET_PROFILE_USER } from '../actions/postProfile';
+import { LOG_OUT_PROFILE_USER, SET_PROFILE_USER } from '../actions/postProfile';
 
 const initialState: IUserProfile = {
   uid: '123', // will change when linked with auth
@@ -29,6 +29,12 @@ const userProfile = (state = initialState, action: IAction) => {
         ...state,
         ...action.data
       };
+      break;
+    case LOG_OUT_PROFILE_USER:
+      return {
+        initialState
+      };
+      break;
     default:
       return state;
   }

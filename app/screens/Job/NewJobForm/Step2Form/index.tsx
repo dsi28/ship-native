@@ -154,7 +154,7 @@ const NewJobS2: React.FC = () => {
                 NavigationService.navigate('Step 3');
               }}
               isSelected
-              btnBackgoundColor="mediumvioletred "
+              btnBackgoundColor="mediumvioletred"
               btnBorderColor="mediumvioletred"
               btnTextColor="white"
             />
