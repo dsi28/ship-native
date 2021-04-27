@@ -34,7 +34,7 @@ const SellerProfile: React.FC = () => {
       });
   };
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
         <View style={styles.basicInfoContainer}>
           {/* <CarouselSection data={userProfile.pictures} /> */}
