@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   detailsContainer: { flex: 1, flexDirection: 'row' },
   nameText: {
     fontWeight: 'bold',
-    color: 'orange',
+    color: 'mediumvioletred',
     fontSize: 20
   },
   nameContainer: { marginBottom: 5 },

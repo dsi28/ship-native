@@ -124,8 +124,8 @@ const NewJobS3: React.FC = () => {
                 NavigationService.navigate('Preview Job Post');
               }}
               isSelected
-              btnBackgoundColor="orange"
-              btnBorderColor="orange"
+              btnBackgoundColor="mediumvioletred"
+              btnBorderColor="mediumvioletred"
               btnTextColor="white"
             />
           </View>
@@ -139,8 +139,8 @@ const NewJobS3: React.FC = () => {
               }}
               isSelected
               btnBackgoundColor="white"
-              btnBorderColor="orange"
-              btnTextColor="orange"
+              btnBorderColor="mediumvioletred"
+              btnTextColor="mediumvioletred"
             />
           </View>
         </View>
