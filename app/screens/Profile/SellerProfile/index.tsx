@@ -16,11 +16,7 @@ const SellerProfile: React.FC = () => {
   const userProfile = useSelector((state: AppState) => state.profile);
   const dispatch = useDispatch();
 
-  // @ts-ignore
-  const testState = useSelector((state: AppState) => state);
-  console.log(userProfile);
-
-  console.log('test state before: ', testState);
+  console.log('test state before: ', userProfile);
 
   const handleLogout = () => {
     auth()
@@ -30,7 +26,6 @@ const SellerProfile: React.FC = () => {
         // clear redux
         dispatch(logOutProfileUser());
         dispatch(logOutJob());
-        console.log('test state after', testState);
       });
   };
   return (
@@ -40,7 +35,6 @@ const SellerProfile: React.FC = () => {
           {/* <CarouselSection data={userProfile.pictures} /> */}
           <BasicInfoSection userProfile={userProfile} />
         </View>
-
         <View style={styles.itemContainer}>
           <View>
             <MainProfileItem
