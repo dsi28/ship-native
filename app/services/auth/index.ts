@@ -35,3 +35,8 @@ export const loginWithEmailAndPassword = async (
     return 'login failed';
   }
 };
+
+export const logoutUser = async () => {
+  await auth().signOut();
+  console.log('signed out user');
+};

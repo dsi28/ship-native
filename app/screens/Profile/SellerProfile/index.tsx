@@ -1,4 +1,3 @@
-import auth from '@react-native-firebase/auth';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { View } from 'react-native';
@@ -8,6 +7,7 @@ import BasicInfoSection from '../../../components/profile/BasicInfoSection';
 import MainProfileItem from '../../../components/profile/MainProfileItem';
 import { logOutJob } from '../../../redux/actions/job';
 import { logOutProfileUser } from '../../../redux/actions/postProfile';
+import { logoutUser } from '../../../services/auth';
 import ProfileReviews from '../Reviews';
 import styles from './styles';
 
@@ -19,14 +19,10 @@ const SellerProfile: React.FC = () => {
   console.log('test state before: ', userProfile);
 
   const handleLogout = () => {
-    auth()
-      .signOut()
-      .then(() => {
-        console.log('user signed out firebase');
-        // clear redux
-        dispatch(logOutProfileUser());
-        dispatch(logOutJob());
-      });
+    logoutUser();
+    // clear redux
+    dispatch(logOutProfileUser());
+    dispatch(logOutJob());
   };
   return (
     <ScrollView style={styles.scrollContainer}>
