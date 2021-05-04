@@ -18,8 +18,8 @@ const SellerProfile: React.FC = () => {
 
   console.log('test state before: ', userProfile);
 
-  const handleLogout = () => {
-    logoutUser();
+  const handleLogout = async () => {
+    await logoutUser();
     // clear redux
     dispatch(logOutProfileUser());
     dispatch(logOutJob());
