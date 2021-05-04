@@ -1,5 +1,3 @@
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
@@ -10,6 +8,7 @@ import RenderHeader from '../../../../components/bottomSheet/renderHeader';
 import NextButton from '../../../../components/buttons/NextButton';
 import PictureUploadComponent from '../../../../components/pictureUpload';
 import { setProfileUser } from '../../../../redux/actions/postProfile';
+import { createUserEmailPassword } from '../../../../services/auth';
 import styles from './styles';
 
 const PictureInput: React.FC = () => {
@@ -67,45 +66,22 @@ const PictureInput: React.FC = () => {
         <View style={styles.screenNextButtonContainer}>
           <NextButton
             buttonText="Next"
-            onPressHandler={() => {
+            onPressHandler={async () => {
               console.log('end of profile flow');
-
-              auth()
-                .createUserWithEmailAndPassword(
-                  userPostProfile.email,
-                  userPostProfile.password
-                )
-                .then((userAuth) => {
-                  console.log('User account created & signed in!');
-                  console.log('auth user then2', userAuth);
-                  // // get user data
-                  const userData = {
-                    ...userPostProfile,
-                    pictures: pictureInput,
-                    uid: userAuth.user?.uid
-                  };
-
-                  // // update redux
-                  dispatch(setProfileUser(userData));
-
-                  // // use uid to create user in firestore
-                  firestore()
-                    .collection('Users')
-                    .doc(userAuth.user?.uid)
-                    .set(userData)
-                    .then(() => {
-                      console.log('User added!');
-                    });
-                })
-                .catch((error) => {
-                  if (error.code === 'auth/email-already-in-use') {
-                    console.log('That email address is already in use!');
-                  }
-                  if (error.code === 'auth/invalid-email') {
-                    console.log('That email address is invalid!');
-                  }
-                  console.error(error);
-                });
+              const createdUser = await createUserEmailPassword(
+                userPostProfile,
+                pictureInput
+              );
+              if (
+                typeof createdUser !== 'undefined' &&
+                typeof createdUser !== 'string'
+              ) {
+                console.warn('test dispatch: ', createdUser);
+                // // update redux
+                dispatch(setProfileUser(createdUser));
+              } else {
+                console.log('Error creating user');
+              }
             }}
             isDisabled={pictureInput.length < 1}
           />

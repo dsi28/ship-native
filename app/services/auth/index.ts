@@ -40,3 +40,36 @@ export const logoutUser = async () => {
   await auth().signOut();
   console.log('signed out user');
 };
+
+export const createUserEmailPassword = async (
+  inputUser: any,
+  pictureInput: string
+) => {
+  try {
+    const userAuth = await auth().createUserWithEmailAndPassword(
+      inputUser.email,
+      inputUser.password
+    );
+    console.log('User account created & signed in!');
+    console.log('auth user then2', inputUser);
+    const userData = {
+      ...inputUser,
+      pictures: pictureInput,
+      uid: userAuth.user?.uid
+    };
+
+    // // use uid to create user in firestore
+    await firestore().collection('Users').doc(userAuth.user?.uid).set(userData);
+    console.log('user added to firebase');
+    return userData;
+  } catch (error) {
+    if (error.code === 'auth/email-already-in-use') {
+      console.log('That email address is already in use!');
+    }
+    if (error.code === 'auth/invalid-email') {
+      console.log('That email address is invalid!');
+    }
+    console.warn('ERROR creating user: ', error);
+    return 'create user failed';
+  }
+};
