@@ -32,7 +32,7 @@ const userProfile = (state = initialState, action: IAction) => {
       break;
     case LOG_OUT_PROFILE_USER:
       return {
-        initialState
+        ...initialState
       };
       break;
     default:
