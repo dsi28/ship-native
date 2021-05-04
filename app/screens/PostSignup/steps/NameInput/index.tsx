@@ -43,7 +43,9 @@ const NameInput: React.FC = () => {
               dispatch(setProfileUser({ ...userPostProfile, name: nameInput }));
             }}
             // @ts-ignore
-            isDisabled={nameInput.length < 2}
+            isDisabled={
+              typeof nameInput !== 'undefined' ? nameInput.length < 2 : true
+            }
           />
         </View>
       </View>

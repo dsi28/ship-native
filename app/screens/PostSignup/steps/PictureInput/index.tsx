@@ -32,6 +32,21 @@ const PictureInput: React.FC = () => {
     console.log('remove img');
   };
 
+  const handleCreateUser = async () => {
+    console.log('end of profile flow');
+    const createdUser = await createUserEmailPassword(
+      userPostProfile,
+      pictureInput
+    );
+    if (typeof createdUser !== 'undefined' && typeof createdUser !== 'string') {
+      console.warn('test dispatch: ', createdUser);
+      // // update redux
+      dispatch(setProfileUser(createdUser));
+    } else {
+      console.log('Error creating user');
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Animated.View
@@ -66,23 +81,7 @@ const PictureInput: React.FC = () => {
         <View style={styles.screenNextButtonContainer}>
           <NextButton
             buttonText="Next"
-            onPressHandler={async () => {
-              console.log('end of profile flow');
-              const createdUser = await createUserEmailPassword(
-                userPostProfile,
-                pictureInput
-              );
-              if (
-                typeof createdUser !== 'undefined' &&
-                typeof createdUser !== 'string'
-              ) {
-                console.warn('test dispatch: ', createdUser);
-                // // update redux
-                dispatch(setProfileUser(createdUser));
-              } else {
-                console.log('Error creating user');
-              }
-            }}
+            onPressHandler={handleCreateUser}
             isDisabled={pictureInput.length < 1}
           />
         </View>
