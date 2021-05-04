@@ -1,7 +1,3 @@
-import auth from '@react-native-firebase/auth';
-import firestore, {
-  FirebaseFirestoreTypes
-} from '@react-native-firebase/firestore';
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
@@ -9,6 +5,7 @@ import NextButton from '../../../components/buttons/NextButton';
 import TextFormInput from '../../../components/FormInputs/TextI';
 import NavigationLinkComponent from '../../../components/navigationLink';
 import { setProfileUser } from '../../../redux/actions/postProfile';
+import { loginWithEmailAndPassword } from '../../../services/auth';
 import styles from './styles';
 
 // interface LoginScreenProps {
@@ -31,6 +28,28 @@ const LoginScreen: React.FC = () => {
       setPassword(propertyValue);
     }
     console.log(email, password);
+  };
+
+  const onLoginHandler = async () => {
+    console.log('login btn');
+    const loginUser = await loginWithEmailAndPassword(email, password);
+    console.warn('test login', loginUser);
+    if (typeof loginUser !== 'undefined' && typeof loginUser !== 'string') {
+      console.warn('test dispatch: ', loginUser);
+      dispatch(
+        setProfileUser({
+          uid: loginUser.uid,
+          name: loginUser.name,
+          email: loginUser.email,
+          phone: loginUser.phone,
+          birthday: loginUser.birthday,
+          pictures: loginUser.pictures,
+          isSignedUp: loginUser.isSignedUp
+        })
+      );
+    } else {
+      console.log('Error logging in');
+    }
   };
   return (
     <View style={styles.container}>
@@ -75,51 +94,7 @@ const LoginScreen: React.FC = () => {
         <View style={styles.loginBtn}>
           <NextButton
             buttonText="Login"
-            onPressHandler={() => {
-              console.log('login btn');
-              // TODO  firebase login code
-              auth()
-                .signInWithEmailAndPassword(email, password)
-                .then((userAuth) => {
-                  console.log('User signed in!', userAuth.user.uid);
-                  firestore()
-                    .collection('Users')
-                    .doc(userAuth.user?.uid)
-                    .get()
-                    .then(
-                      (
-                        firebaseUser: FirebaseFirestoreTypes.DocumentSnapshot<FirebaseFirestoreTypes.DocumentData>
-                      ) => {
-                        // @ts-ignore
-                        // eslint-disable-next-line no-underscore-dangle
-                        console.log('User got!', firebaseUser._data);
-                        // @ts-ignore
-                        // eslint-disable-next-line no-underscore-dangle
-                        const loginUser = firebaseUser._data;
-                        dispatch(
-                          setProfileUser({
-                            uid: loginUser.uid,
-                            name: loginUser.name,
-                            email: loginUser.email,
-                            phone: loginUser.phone,
-                            birthday: loginUser.birthday,
-                            pictures: loginUser.pictures,
-                            isSignedUp: loginUser.isSignedUp
-                          })
-                        );
-                      }
-                    );
-                })
-                .catch((error) => {
-                  if (error.code === 'auth/invalid-email') {
-                    console.log('That email address is invalid!');
-                  }
-                  if (error.code === 'auth/email-already-in-use') {
-                    console.log('Email & password combination is incorrect!');
-                  }
-                  console.error(error);
-                });
-            }}
+            onPressHandler={onLoginHandler}
             isDisabled={false}
           />
         </View>

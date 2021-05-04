@@ -1,4 +1,3 @@
-import auth from '@react-native-firebase/auth';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { View } from 'react-native';
@@ -8,6 +7,7 @@ import BasicInfoSection from '../../../components/profile/BasicInfoSection';
 import MainProfileItem from '../../../components/profile/MainProfileItem';
 import { logOutJob } from '../../../redux/actions/job';
 import { logOutProfileUser } from '../../../redux/actions/postProfile';
+import { logoutUser } from '../../../services/auth';
 import ProfileReviews from '../Reviews';
 import styles from './styles';
 
@@ -16,22 +16,13 @@ const SellerProfile: React.FC = () => {
   const userProfile = useSelector((state: AppState) => state.profile);
   const dispatch = useDispatch();
 
-  // @ts-ignore
-  const testState = useSelector((state: AppState) => state);
-  console.log(userProfile);
+  console.log('test state before: ', userProfile);
 
-  console.log('test state before: ', testState);
-
-  const handleLogout = () => {
-    auth()
-      .signOut()
-      .then(() => {
-        console.log('user signed out firebase');
-        // clear redux
-        dispatch(logOutProfileUser());
-        dispatch(logOutJob());
-        console.log('test state after', testState);
-      });
+  const handleLogout = async () => {
+    await logoutUser();
+    // clear redux
+    dispatch(logOutProfileUser());
+    dispatch(logOutJob());
   };
   return (
     <ScrollView style={styles.scrollContainer}>
@@ -40,7 +31,6 @@ const SellerProfile: React.FC = () => {
           {/* <CarouselSection data={userProfile.pictures} /> */}
           <BasicInfoSection userProfile={userProfile} />
         </View>
-
         <View style={styles.itemContainer}>
           <View>
             <MainProfileItem
