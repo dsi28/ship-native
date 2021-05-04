@@ -78,11 +78,13 @@ const BirthdayInput: React.FC<BirthdayInputProps> = () => {
               );
             }}
             isDisabled={
-              !(
-                birthdayInput.month?.length === 2 &&
-                birthdayInput.day?.length === 2 &&
-                birthdayInput.year?.length === 4
-              )
+              typeof birthdayInput !== 'undefined'
+                ? !(
+                    birthdayInput.month?.length === 2 &&
+                    birthdayInput.day?.length === 2 &&
+                    birthdayInput.year?.length === 4
+                  )
+                : true
             }
           />
         </View>
