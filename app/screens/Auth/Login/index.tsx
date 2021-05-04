@@ -29,6 +29,28 @@ const LoginScreen: React.FC = () => {
     }
     console.log(email, password);
   };
+
+  const onLoginHandler = async () => {
+    console.log('login btn');
+    const loginUser = await loginWithEmailAndPassword(email, password);
+    console.warn('test login', loginUser);
+    if (typeof loginUser !== 'undefined' && typeof loginUser !== 'string') {
+      console.warn('test dispatch: ', loginUser);
+      dispatch(
+        setProfileUser({
+          uid: loginUser.uid,
+          name: loginUser.name,
+          email: loginUser.email,
+          phone: loginUser.phone,
+          birthday: loginUser.birthday,
+          pictures: loginUser.pictures,
+          isSignedUp: loginUser.isSignedUp
+        })
+      );
+    } else {
+      console.log('Error logging in');
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.subContainer}>
@@ -72,33 +94,7 @@ const LoginScreen: React.FC = () => {
         <View style={styles.loginBtn}>
           <NextButton
             buttonText="Login"
-            onPressHandler={async () => {
-              console.log('login btn');
-              const loginUser = await loginWithEmailAndPassword(
-                email,
-                password
-              );
-              console.warn('test login', loginUser);
-              if (
-                typeof loginUser !== 'undefined' &&
-                typeof loginUser !== 'string'
-              ) {
-                console.warn('test dispatch: ', loginUser);
-                dispatch(
-                  setProfileUser({
-                    uid: loginUser.uid,
-                    name: loginUser.name,
-                    email: loginUser.email,
-                    phone: loginUser.phone,
-                    birthday: loginUser.birthday,
-                    pictures: loginUser.pictures,
-                    isSignedUp: loginUser.isSignedUp
-                  })
-                );
-              } else {
-                console.log('EROr logging in');
-              }
-            }}
+            onPressHandler={onLoginHandler}
             isDisabled={false}
           />
         </View>
