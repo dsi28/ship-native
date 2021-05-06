@@ -13,10 +13,10 @@ import styles from './styles';
 
 const SellerProfile: React.FC = () => {
   // @ts-ignore
-  const userProfile = useSelector((state: AppState) => state.profile);
+  const userState = useSelector((state: AppState) => state.user);
   const dispatch = useDispatch();
 
-  console.log('test state before: ', userProfile);
+  console.log('test state before: ', userState);
 
   const handleLogout = async () => {
     await logoutUser();
@@ -28,8 +28,8 @@ const SellerProfile: React.FC = () => {
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
         <View style={styles.basicInfoContainer}>
-          {/* <CarouselSection data={userProfile.pictures} /> */}
-          <BasicInfoSection userProfile={userProfile} />
+          {/* <CarouselSection data={userState.pictures} /> */}
+          <BasicInfoSection userProfile={userState} />
         </View>
         <View style={styles.itemContainer}>
           <View>
