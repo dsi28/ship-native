@@ -7,7 +7,7 @@ export interface IUserProfile {
   phone?: string;
   birthday?: IBirthday;
   pictures?: string;
-  isSignedUp: boolean;
+  isSignedUp: boolean; // remove this
   step?: number;
 }
 
@@ -16,7 +16,6 @@ export interface IUser {
   uid: string;
   email?: string;
   birthday?: IBirthday;
-  isSignedUp: boolean;
   name?: string;
   phone?: string;
   pictures?: string;
