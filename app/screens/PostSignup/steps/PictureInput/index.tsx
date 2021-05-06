@@ -8,6 +8,7 @@ import RenderHeader from '../../../../components/bottomSheet/renderHeader';
 import NextButton from '../../../../components/buttons/NextButton';
 import PictureUploadComponent from '../../../../components/pictureUpload';
 import { setProfileUser } from '../../../../redux/actions/postProfile';
+import { newUserAction } from '../../../../redux/actions/user';
 import { createUserEmailPassword } from '../../../../services/auth';
 import styles from './styles';
 
@@ -34,14 +35,15 @@ const PictureInput: React.FC = () => {
 
   const handleCreateUser = async () => {
     console.log('end of profile flow');
+    setProfileUser({ ...userPostProfile, pictures: pictureInput });
     const createdUser = await createUserEmailPassword(
       userPostProfile,
       pictureInput
     );
     if (typeof createdUser !== 'undefined' && typeof createdUser !== 'string') {
       console.warn('test dispatch: ', createdUser);
-      // // update redux
-      dispatch(setProfileUser(createdUser));
+      // // update user state
+      dispatch(newUserAction(createdUser));
     } else {
       console.log('Error creating user');
     }

@@ -7,29 +7,31 @@ import BasicInfoSection from '../../../components/profile/BasicInfoSection';
 import MainProfileItem from '../../../components/profile/MainProfileItem';
 import { logOutJob } from '../../../redux/actions/job';
 import { logOutProfileUser } from '../../../redux/actions/postProfile';
+import { logOffUserAction } from '../../../redux/actions/user';
 import { logoutUser } from '../../../services/auth';
 import ProfileReviews from '../Reviews';
 import styles from './styles';
 
 const SellerProfile: React.FC = () => {
   // @ts-ignore
-  const userProfile = useSelector((state: AppState) => state.profile);
+  const userState = useSelector((state: AppState) => state.user);
   const dispatch = useDispatch();
 
-  console.log('test state before: ', userProfile);
+  console.log('test state before: ', userState);
 
   const handleLogout = async () => {
     await logoutUser();
     // clear redux
     dispatch(logOutProfileUser());
     dispatch(logOutJob());
+    dispatch(logOffUserAction());
   };
   return (
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
         <View style={styles.basicInfoContainer}>
-          {/* <CarouselSection data={userProfile.pictures} /> */}
-          <BasicInfoSection userProfile={userProfile} />
+          {/* <CarouselSection data={userState.pictures} /> */}
+          <BasicInfoSection userProfile={userState} />
         </View>
         <View style={styles.itemContainer}>
           <View>

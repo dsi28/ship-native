@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import NextButton from '../../../components/buttons/NextButton';
 import TextFormInput from '../../../components/FormInputs/TextI';
 import NavigationLinkComponent from '../../../components/navigationLink';
-import { setProfileUser } from '../../../redux/actions/postProfile';
+import { newUserAction } from '../../../redux/actions/user';
 import { loginWithEmailAndPassword } from '../../../services/auth';
 import styles from './styles';
 
@@ -37,14 +37,13 @@ const LoginScreen: React.FC = () => {
     if (typeof loginUser !== 'undefined' && typeof loginUser !== 'string') {
       console.warn('test dispatch: ', loginUser);
       dispatch(
-        setProfileUser({
+        newUserAction({
           uid: loginUser.uid,
           name: loginUser.name,
           email: loginUser.email,
           phone: loginUser.phone,
           birthday: loginUser.birthday,
-          pictures: loginUser.pictures,
-          isSignedUp: loginUser.isSignedUp
+          pictures: loginUser.pictures
         })
       );
     } else {
