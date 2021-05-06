@@ -7,6 +7,7 @@ import BasicInfoSection from '../../../components/profile/BasicInfoSection';
 import MainProfileItem from '../../../components/profile/MainProfileItem';
 import { logOutJob } from '../../../redux/actions/job';
 import { logOutProfileUser } from '../../../redux/actions/postProfile';
+import { logOffUserAction } from '../../../redux/actions/user';
 import { logoutUser } from '../../../services/auth';
 import ProfileReviews from '../Reviews';
 import styles from './styles';
@@ -23,6 +24,7 @@ const SellerProfile: React.FC = () => {
     // clear redux
     dispatch(logOutProfileUser());
     dispatch(logOutJob());
+    dispatch(logOffUserAction());
   };
   return (
     <ScrollView style={styles.scrollContainer}>
