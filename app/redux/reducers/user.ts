@@ -19,7 +19,7 @@ interface IAction {
   type: string;
 }
 
-const user = (state = initialState, action: IAction) => {
+const userReducer = (state = initialState, action: IAction) => {
   console.log('ACTION NOW', action);
   switch (action.type) {
     case SET_USER:
@@ -39,4 +39,4 @@ const user = (state = initialState, action: IAction) => {
       return state;
   }
 };
-export default user;
+export default userReducer;
