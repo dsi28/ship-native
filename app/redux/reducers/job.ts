@@ -8,7 +8,6 @@ import {
 
 const initialState: IJobState = {
   newJob: {
-    uid: '888', // will change when linked with auth
     itemName: '',
     itemDeliveryLocation: '',
     itemValue: 0,

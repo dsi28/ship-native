@@ -6,7 +6,6 @@ export interface IJobState {
 }
 
 export interface IJob {
-  uid?: string; // from firebase TODO remove the ? when firebase is being used
   itemName?: string;
   itemCategory?:
     | 'category 1'
