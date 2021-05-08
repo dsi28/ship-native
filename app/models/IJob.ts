@@ -25,6 +25,7 @@ export interface IJob {
   shipmentCost?: number;
   traveler?: string;
   status?: 'needs traveler' | 'in progress' | 'complete' | 'canceled';
+  travelerRequests?: ITravelerRequest[];
 }
 
 export interface INewJob {
@@ -73,4 +74,9 @@ export interface IItemCategory {
     | 'category 3'
     | 'category 4'
     | 'category 5';
+}
+
+export interface ITravelerRequest {
+  travelerId: string;
+  status: 'accepted' | 'denied' | 'pending';
 }
