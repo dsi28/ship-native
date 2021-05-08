@@ -23,6 +23,7 @@ export interface IJob {
   itemReceiver?: IItemReciever;
   shipmentCost?: number;
   traveler?: string;
+  owner?: string; // uid
   status?: 'needs traveler' | 'in progress' | 'complete' | 'canceled';
   travelerRequests?: ITravelerRequest[];
 }

@@ -15,3 +15,14 @@ export const createJobFirebase = async (newJob: IJob) => {
     return 'create user failed';
   }
 };
+
+export const getUserOwnJob = async (userId: string) => {
+  try {
+    const firebaseJobs = await jobsRef.where('owner', '==', userId).get();
+    console.log(userId, ' firebase jobs: ', firebaseJobs);
+    return firebaseJobs;
+  } catch (error) {
+    console.warn('ERROR creating job: ', error);
+    return 'create user failed';
+  }
+};

@@ -12,6 +12,8 @@ import styles from './styles';
 
 const NewJobConfirm: React.FC = () => {
   const jobState = useSelector((state: AppState) => state.job.newJob);
+  const userId = useSelector((state: AppState) => state.user.uid);
+
   const dispatch = useDispatch();
 
   return (
@@ -26,7 +28,10 @@ const NewJobConfirm: React.FC = () => {
               onPressHandler={() => {
                 console.warn('job posted: ', jobState);
                 NavigationService.navigate('HomeScreen');
-                const newJob = { ...jobState, ...{ travelerRequests: [] } };
+                const newJob = {
+                  ...jobState,
+                  ...{ travelerRequests: [], owner: userId }
+                };
                 // @ts-ignore
                 dispatch(addJob(newJob));
                 // update firebase job
