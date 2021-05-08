@@ -8,6 +8,7 @@ import ItemComponent from '../../components/home/ItemComponent';
 import { IJob } from '../../models/IJob';
 import NavigationService from '../../navigation/NavigationService';
 import { AppState } from '../../redux/store/configureStore';
+import { getUserOwnJob } from '../../services/jobs';
 import AcceptTravler from '../Job/AcceptRequest';
 import DeclineTravler from '../Job/DeclineRequest';
 import JobItem from '../Job/JobItem';
@@ -48,6 +49,14 @@ const Tab = createMaterialTopTabNavigator();
 
 function HomeScreenTabs() {
   const jobState = useSelector((state: AppState) => state.job);
+  const userId = useSelector((state: AppState) => state.user.uid);
+  // const dispatch = useDispatch();
+
+  const ownerJobs = getUserOwnJob(userId);
+  if (typeof ownerJobs !== 'string') {
+    console.log(ownerJobs);
+  }
+
   console.log('job state', jobState.ownerJobs, 'FULL');
   return (
     <Tab.Navigator
