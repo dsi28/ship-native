@@ -27,6 +27,7 @@ const NewJobConfirm: React.FC = () => {
                 NavigationService.navigate('HomeScreen');
                 // @ts-ignore
                 dispatch(addJob(jobState));
+                // update firebase job
               }}
               isSelected
               btnBackgoundColor="mediumvioletred"
