@@ -69,13 +69,14 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
                   <View style={styles.itemPropertyValueContainer}>
                     <Text style={styles.itemPropertyValueText}>
                       {
-                        // eslint-disable-next-line no-nested-ternary
-                        typeof jobItem?.itemDeliveryDate !== undefined
-                          ? typeof jobItem?.itemDeliveryDate === 'object'
-                            ? jobItem?.itemDeliveryDate.toDateString()
-                            : // @ts-ignore
-                              new Date(jobItem?.itemDeliveryDate).toDateString() // this is a mess
-                          : 'No date set'
+                        jobItem?.itemDeliveryDate
+                        // // eslint-disable-next-line no-nested-ternary
+                        // typeof jobItem?.itemDeliveryDate !== undefined
+                        //   ? typeof jobItem?.itemDeliveryDate === 'object'
+                        //     ? jobItem?.itemDeliveryDate.toDateString()
+                        //     : // @ts-ignore
+                        //       new Date(jobItem?.itemDeliveryDate).toDateString() // this is a mess
+                        //   : 'No date set'
                       }
                     </Text>
                   </View>
