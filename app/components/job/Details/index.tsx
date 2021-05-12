@@ -29,10 +29,16 @@ const JobDetails: React.FC<JobDetailsProps> = ({ job }) => (
           // eslint-disable-next-line no-nested-ternary
           typeof job?.itemDeliveryDate !== undefined
             ? typeof job?.itemDeliveryDate === 'object'
-              ? job?.itemDeliveryDate.toDateString() // newJob.itemDeliveryDate?.toDateString()
+              ? job?.itemDeliveryDate
+                  // @ts-ignore
+                  .toDate()
+                  .toDateString()
               : // @ts-ignore
-                new Date(job?.itemDeliveryDate).toDateString() // this is a mess
-            : 'Delivery date not set' // 'set date'
+                new Date(
+                  // @ts-ignore
+                  job?.itemDeliveryDate
+                ).toDateString() // this is a mess
+            : 'No date set'
         }
       />
       <JobPropertyComponent
