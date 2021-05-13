@@ -7,10 +7,13 @@ import JobDetails from '../../../../components/job/Details';
 import NavigationService from '../../../../navigation/NavigationService';
 import { addJob, resetNewJob } from '../../../../redux/actions/job';
 import { AppState } from '../../../../redux/store/configureStore';
+import { createJobFirebase } from '../../../../services/jobs';
 import styles from './styles';
 
 const NewJobConfirm: React.FC = () => {
   const jobState = useSelector((state: AppState) => state.job.newJob);
+  const userId = useSelector((state: AppState) => state.user.uid);
+
   const dispatch = useDispatch();
 
   return (
@@ -23,10 +26,17 @@ const NewJobConfirm: React.FC = () => {
             <WideButton
               buttonText="Post Job"
               onPressHandler={() => {
-                console.log('job posted');
+                console.warn('job posted: ', jobState);
                 NavigationService.navigate('HomeScreen');
+                const newJob = {
+                  ...jobState,
+                  ...{ travelerRequests: [], owner: userId }
+                };
                 // @ts-ignore
-                dispatch(addJob(jobState));
+                dispatch(addJob(newJob));
+                // update firebase job
+                // @ts-ignore
+                createJobFirebase(newJob);
               }}
               isSelected
               btnBackgoundColor="mediumvioletred"

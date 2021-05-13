@@ -6,7 +6,6 @@ export interface IJobState {
 }
 
 export interface IJob {
-  uid?: string; // from firebase TODO remove the ? when firebase is being used
   itemName?: string;
   itemCategory?:
     | 'category 1'
@@ -24,7 +23,9 @@ export interface IJob {
   itemReceiver?: IItemReciever;
   shipmentCost?: number;
   traveler?: string;
+  owner?: string; // uid
   status?: 'needs traveler' | 'in progress' | 'complete' | 'canceled';
+  travelerRequests?: ITravelerRequest[];
 }
 
 export interface INewJob {
@@ -73,4 +74,9 @@ export interface IItemCategory {
     | 'category 3'
     | 'category 4'
     | 'category 5';
+}
+
+export interface ITravelerRequest {
+  travelerId: string;
+  status: 'accepted' | 'denied' | 'pending';
 }

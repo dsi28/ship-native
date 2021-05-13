@@ -1,13 +1,16 @@
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ItemComponent from '../../components/home/ItemComponent';
 import { IJob } from '../../models/IJob';
 import NavigationService from '../../navigation/NavigationService';
+import { setOwnerJobs } from '../../redux/actions/job';
 import { AppState } from '../../redux/store/configureStore';
+import { getUserOwnJob } from '../../services/jobs';
 import AcceptTravler from '../Job/AcceptRequest';
 import DeclineTravler from '../Job/DeclineRequest';
 import JobItem from '../Job/JobItem';
@@ -18,12 +21,66 @@ import TravelerScreen from '../Travelers/TravelerScreen';
 import styles from './styles';
 
 interface HomeInputProps {
-  jobList: [] | IJob[];
   jobType: string;
+  getJobs: () => Promise<
+    | FirebaseFirestoreTypes.QueryDocumentSnapshot<FirebaseFirestoreTypes.DocumentData>[]
+    | 'failed to get jobs'
+  >;
+  setJobState: (ownerJobs: any) => void;
 }
 
-const HomeScreenTab: React.FC<HomeInputProps> = ({ jobList, jobType }) => {
-  console.log('job list', jobList);
+const HomeScreenTab: React.FC<HomeInputProps> = ({
+  jobType,
+  getJobs,
+  setJobState
+}) => {
+  const [jobList, setJobList] = useState([]);
+
+  const cleanJobsFS = (
+    jobs:
+      | FirebaseFirestoreTypes.QueryDocumentSnapshot<FirebaseFirestoreTypes.DocumentData>[]
+      | 'failed to get jobs'
+  ) => {
+    // @ts-ignore
+    const cleanJobs = jobs.map((job) => {
+      // eslint-disable-next-line no-underscore-dangle
+      const baseJob = job._data;
+      return {
+        itemName: baseJob.itemName,
+        itemCategory: baseJob.itemName,
+        itemDeliveryDate: baseJob.itemDeliveryDate,
+        itemDeliveryLocation: baseJob.itemDeliveryLocation,
+        itemValue: baseJob.itemValue,
+        itemImages: baseJob.itemImages,
+        itemSize: baseJob.itemName,
+        itemWeight: baseJob.itemWeight,
+        note: baseJob.note,
+        itemReceiver: baseJob.itemReceiver,
+        shipmentCost: baseJob.shipmentCost,
+        traveler: baseJob.traveler,
+        owner: baseJob.owner,
+        status: baseJob.status,
+        travelerRequests: baseJob.travelerRequests
+      };
+    });
+    return cleanJobs;
+  };
+
+  useEffect(() => {
+    console.log('component did mount');
+
+    getJobs().then((jobs) => {
+      console.log('jobs', jobs);
+      const cleanJobs = cleanJobsFS(jobs);
+      // @ts-ignore
+      setJobList(cleanJobs);
+      setJobState(cleanJobs);
+      // return jobs;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  console.log('job list REAL TEST', jobList);
   const pressItemHandler = (job: IJob) => {
     console.log('item pressed');
     NavigationService.navigate('Job', job);
@@ -32,10 +89,12 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({ jobList, jobType }) => {
     <ScrollView style={{ backgroundColor: '#f3f5fa' }}>
       <View style={styles.container}>
         {/* @ts-ignore */}
-        {jobList.map((jobItem: IJob) => (
+        {jobList.map((jobItem: any) => (
           <ItemComponent
+            // eslint-disable-next-line no-underscore-dangle
             jobItem={jobItem}
             onPressHandler={pressItemHandler}
+            // eslint-disable-next-line no-underscore-dangle
             key={jobItem.itemName + jobType}
           />
         ))}
@@ -47,8 +106,25 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({ jobList, jobType }) => {
 const Tab = createMaterialTopTabNavigator();
 
 function HomeScreenTabs() {
-  const jobState = useSelector((state: AppState) => state.job);
-  console.log('job state', jobState.ownerJobs, 'FULL');
+  const userId = useSelector((state: AppState) => state.user.uid);
+  const dispatch = useDispatch();
+
+  const getOwnerJobs = useCallback(async () => {
+    const ownerJobs = await getUserOwnJob(userId);
+    if (typeof ownerJobs !== 'string') {
+      console.log('Fireeee base jobs ', ownerJobs);
+      return ownerJobs;
+    }
+    return 'failed to get jobs';
+    // console.log('In Catss', cocktails, 'end in cats');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const setOwnerJobsState = (ownerJobs: any) => {
+    dispatch(setOwnerJobs(ownerJobs));
+  };
+
+  // console.log('job state', jobState.ownerJobs, 'FULL');
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -62,13 +138,23 @@ function HomeScreenTabs() {
       <Tab.Screen name="Sender" options={{ tabBarLabel: 'Sender' }}>
         {() => (
           // @ts-ignore
-          <HomeScreenTab jobList={jobState.ownerJobs} jobType="Owner" />
+          <HomeScreenTab
+            // jobList={jobState.ownerJobs}
+            jobType="Owner"
+            getJobs={getOwnerJobs}
+            setJobState={setOwnerJobsState}
+          />
         )}
       </Tab.Screen>
       <Tab.Screen name="Traveler" options={{ tabBarLabel: 'Traveler' }}>
         {() => (
           // @ts-ignore
-          <HomeScreenTab jobList={jobState.ownerJobs} jobType="Owner" />
+          <HomeScreenTab
+            // jobList={jobState.ownerJobs}
+            jobType="Owner"
+            getJobs={getOwnerJobs}
+            setJobState={setOwnerJobsState}
+          />
         )}
       </Tab.Screen>
     </Tab.Navigator>

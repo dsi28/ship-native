@@ -9,7 +9,7 @@ const config = {
   key: 'root',
   storage: AsyncStorage,
   blacklist: ['loadingReducer'],
-  debug: true // to get useful logging
+  debug: true // to get useful logging,
 };
 
 const middleware = [];

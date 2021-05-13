@@ -3,12 +3,12 @@ import {
   ADD_JOB,
   LOG_OUT_JOB,
   RESET_NEW_JOB,
-  SET_NEW_JOB
+  SET_NEW_JOB,
+  SET_OWNER_JOB
 } from '../actions/job';
 
 const initialState: IJobState = {
   newJob: {
-    uid: '888', // will change when linked with auth
     itemName: '',
     itemDeliveryLocation: '',
     itemValue: 0,
@@ -47,6 +47,11 @@ const jobReducer = (state = initialState, action: IAction) => {
       return {
         newJob: initialState.newJob,
         ownerJobs: initialState.ownerJobs
+      };
+    case SET_OWNER_JOB:
+      return {
+        ...state,
+        ownerJobs: action.data
       };
     default:
       return state;
