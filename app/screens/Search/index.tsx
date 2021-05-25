@@ -34,22 +34,13 @@ function SearchScreen() {
   };
   // console.log('job state', jobState.ownerJobs, 'FULL');
   return (
-    <ScrollView style={{ backgroundColor: '#f3f5fa' }}>
+    <ScrollView style={styles.scrollViewContainer}>
       <View style={styles.container}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <View style={styles.contentContainer}>
           <View>
-            <Text
-              style={{
-                fontSize: 30,
-                fontWeight: 'bold',
-                marginHorizontal: 5,
-                color: 'black'
-              }}
-            >
-              Near Me
-            </Text>
+            <Text style={styles.filterTitle}>Near Me</Text>
           </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={styles.filterIconsContainer}>
             <View style={styles.iconView}>
               <Pressable
                 onPress={() => {
@@ -70,16 +61,6 @@ function SearchScreen() {
             </View>
           </View>
         </View>
-        {/* @ts-ignore */}
-        {/* {jobList.map((jobItem: any) => (
-          <ItemComponent
-            // eslint-disable-next-line no-underscore-dangle
-            jobItem={jobItem}
-            onPressHandler={pressItemHandler}
-            // eslint-disable-next-line no-underscore-dangle
-            key={jobItem.itemName}
-          />
-        ))} */}
 
         {jobList.length > 0 ? (
           <View>
