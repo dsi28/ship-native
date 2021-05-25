@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import MComIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ItemComponent from '../../components/home/ItemComponent';
 import { IJob } from '../../models/IJob';
 import NavigationService from '../../navigation/NavigationService';
@@ -19,9 +20,33 @@ function SearchScreen() {
   return (
     <ScrollView style={{ backgroundColor: '#f3f5fa' }}>
       <View style={styles.container}>
-        <View>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <View>
-            <Text>Near Me</Text>
+            <Text
+              style={{ fontSize: 30, fontWeight: 'bold', marginHorizontal: 5 }}
+            >
+              Near Me
+            </Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View>
+              <Pressable
+                onPress={() => {
+                  console.log('press map icon');
+                }}
+              >
+                <MComIcon name="map" size={30} />
+              </Pressable>
+            </View>
+            <View>
+              <Pressable
+                onPress={() => {
+                  console.log('press filter icon');
+                }}
+              >
+                <MComIcon name="filter" size={30} />
+              </Pressable>
+            </View>
           </View>
         </View>
         {/* @ts-ignore */}
