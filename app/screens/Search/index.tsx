@@ -229,7 +229,7 @@ const SearchStack: React.FC = () => (
     <Stack.Screen
       name="SearchJobScreen"
       component={SearchJobScreen}
-      options={{ headerShown: false }}
+      options={{ title: '' }}
     />
   </Stack.Navigator>
 );
