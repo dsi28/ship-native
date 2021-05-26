@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import StarIcon from 'react-native-vector-icons/FontAwesome';
 import MaterialComIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import JobPropertyComponent from '../../../components/job/property';
@@ -97,7 +98,7 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
               {job.shipmentCost || 'cost not set'}
             </Text>
           </View>
-          <View style={{ marginHorizontal: 15 }}>
+          <View style={{ marginHorizontal: 15, marginBottom: 25 }}>
             <View style={{ flexDirection: 'row', marginBottom: 10 }}>
               <View
                 style={{
@@ -153,6 +154,79 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
                   {/* @ts-ignore */}
                   By {new Date(job.itemDeliveryDate?.toDate()).toDateString()}
                 </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={{
+              paddingHorizontal: 15,
+              backgroundColor: '#f3f5fa',
+              paddingVertical: 15
+            }}
+          >
+            <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+              <View
+                style={{
+                  width: 50,
+                  backgroundColor: 'lightgray',
+                  height: 50,
+                  borderRadius: 25,
+                  // borderWidth: 5,
+                  // borderColor: 'lightgray',
+                  borderColor: 'black',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: 10
+                }}
+              >
+                <Image
+                  style={{ height: '100%', width: '100%', borderRadius: 25 }}
+                  resizeMode="cover"
+                  // eslint-disable-next-line global-require, import/no-dynamic-require
+                  source={require('../../../assets/images/mango.jpg')}
+                />
+              </View>
+
+              <View
+                style={{
+                  flexDirection: 'column',
+                  marginHorizontal: 10
+                  // justifyContent: 'center'
+                }}
+              >
+                <View>
+                  <Text style={{ fontSize: 17, fontWeight: 'bold' }}>
+                    Juan Cuadrado
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    marginBottom: 40
+                  }}
+                >
+                  <View
+                    style={{
+                      marginRight: 10,
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <StarIcon name="star" size={20} color="#e91e63" />
+                  </View>
+                  <View
+                    style={{ alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      4.5 (4 reviews)
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
           </View>
