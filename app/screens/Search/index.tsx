@@ -1,3 +1,4 @@
+import { createStackNavigator } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -8,6 +9,7 @@ import { IJob } from '../../models/IJob';
 import NavigationService from '../../navigation/NavigationService';
 import { AppState } from '../../redux/store/configureStore';
 import { getOpenJobs } from '../../services/jobs';
+import SearchJobScreen from './JobScreen';
 import styles from './styles';
 
 function SearchScreen() {
@@ -30,7 +32,7 @@ function SearchScreen() {
 
   const pressItemHandler = (job: IJob) => {
     console.log('item pressed');
-    NavigationService.navigate('Job', job);
+    NavigationService.navigate('SearchJobScreen', job);
   };
   // console.log('job state', jobState.ownerJobs, 'FULL');
   return (
@@ -216,4 +218,20 @@ function SearchScreen() {
   );
 }
 
-export default SearchScreen;
+const Stack = createStackNavigator();
+const SearchStack: React.FC = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="HomeScreen"
+      component={SearchScreen}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen
+      name="SearchJobScreen"
+      component={SearchJobScreen}
+      options={{ headerShown: false }}
+    />
+  </Stack.Navigator>
+);
+
+export default SearchStack;
