@@ -164,6 +164,34 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
               paddingVertical: 15
             }}
           >
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between'
+              }}
+            >
+              <View style={{ marginBottom: 15 }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Sender</Text>
+              </View>
+              <Pressable onPress={() => console.log('chat')}>
+                <View style={{ flexDirection: 'row' }}>
+                  <View
+                    style={{
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginRight: 5
+                    }}
+                  >
+                    <MaterialIcon name="chat" size={30} color="#e91e63" />
+                  </View>
+                  <View
+                    style={{ alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    <Text style={{ fontSize: 20, color: '#e91e63' }}>Chat</Text>
+                  </View>
+                </View>
+              </Pressable>
+            </View>
             <View style={{ flexDirection: 'row', marginBottom: 5 }}>
               <View
                 style={{
