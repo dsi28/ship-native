@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import StarIcon from 'react-native-vector-icons/FontAwesome';
 import MaterialComIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
 import { IJob } from '../../../models/IJob';
 import styles from './styles';
@@ -230,7 +231,7 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
                 <View
                   style={{
                     flexDirection: 'row',
-                    marginBottom: 40
+                    marginBottom: 15
                   }}
                 >
                   <View
@@ -257,7 +258,29 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
                 </View>
               </View>
             </View>
+            <View>
+              <View>
+                <Text
+                  style={{ fontWeight: 'bold', fontSize: 15, color: 'gray' }}
+                >
+                  Note by Juan Cuadrado
+                </Text>
+              </View>
+              <View>
+                <Text style={{ fontSize: 15, color: 'gray' }}>{job.note}</Text>
+              </View>
+            </View>
           </View>
+        </View>
+        <View style={{ marginHorizontal: 15, marginTop: 20, marginBottom: 15 }}>
+          <WideButton
+            buttonText="Request to Carry This Package"
+            onPressHandler={() => console.log('request to carry package')}
+            isSelected
+            btnBackgoundColor="#e91e63"
+            btnTextColor="white"
+            btnBorderColor="#e91e63"
+          />
         </View>
       </View>
     </ScrollView>
