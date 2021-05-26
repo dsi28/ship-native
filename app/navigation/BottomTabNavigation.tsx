@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import HomeStack from '../screens/Home';
 import PayScreen from '../screens/Job/NewJobTrip';
 import SellerProfileStack from '../screens/Profile/SellerProfile';
+import SearchScreen from '../screens/Search';
 
 const PayScreenComponent = () => null;
 
@@ -36,7 +37,7 @@ function BottomTabsNav() {
       />
       <Tab.Screen
         name="Search"
-        component={TempComponent}
+        component={SearchScreen}
         options={{
           tabBarLabel: 'Search',
           tabBarIcon: ({ color, size }) => (
