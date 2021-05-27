@@ -5,6 +5,7 @@ import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
 import NumberToggler from '../../../components/numberToggler';
 import { IJob } from '../../../models/IJob';
+import NavigationService from '../../../navigation/NavigationService';
 import styles from './styles';
 
 interface SearchJobScreenProps {
@@ -105,7 +106,10 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
           <View>
             <WideButton
               buttonText="Cancel"
-              onPressHandler={() => console.log('cancel request')}
+              onPressHandler={() => {
+                console.log('cancel request');
+                NavigationService.navigate('SearchScreen');
+              }}
               isSelected
               btnBackgoundColor="white"
               btnTextColor="#e91e63"

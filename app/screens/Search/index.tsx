@@ -223,7 +223,7 @@ const Stack = createStackNavigator();
 const SearchStack: React.FC = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name="HomeScreen"
+      name="SearchScreen"
       component={SearchScreen}
       options={{ headerShown: false }}
     />
