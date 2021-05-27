@@ -7,6 +7,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
 import { IJob } from '../../../models/IJob';
+import NavigationService from '../../../navigation/NavigationService';
 import styles from './styles';
 
 interface SearchJobScreenProps {
@@ -277,7 +278,10 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
         <View style={{ marginHorizontal: 15, marginTop: 20, marginBottom: 15 }}>
           <WideButton
             buttonText="Request to Carry This Package"
-            onPressHandler={() => console.log('request to carry package')}
+            onPressHandler={() => {
+              NavigationService.navigate('SearchJobRequest', job);
+              console.log('request to carry package');
+            }}
             isSelected
             btnBackgoundColor="#e91e63"
             btnTextColor="white"

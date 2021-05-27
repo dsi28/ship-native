@@ -20,15 +20,12 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
     <ScrollView>
       <View style={styles.container}>
         <View style={{ marginHorizontal: 15, marginVertical: 20 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 30 }}>Mangos</Text>
-        </View>
-        <View style={styles.cardView}>
-          <Image
-            style={styles.image}
-            // source={{ uri: job.itemImages }}
-            // eslint-disable-next-line global-require
-            source={require('../../../assets/images/mango.jpg')}
-          />
+          <Text style={{ fontWeight: 'bold', fontSize: 30 }}>
+            Request to deliver
+          </Text>
+          <Text style={{ fontWeight: 'bold', fontSize: 30 }}>
+            {job.itemName}
+          </Text>
         </View>
         <View>
           <View style={{ marginHorizontal: 15 }}>

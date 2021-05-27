@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   scrollViewContainer: { backgroundColor: '#f3f5fa' },
   container: {
     paddingTop: 10,
-    backgroundColor: 'pink',
+    // backgroundColor: 'pink',
     paddingBottom: 10
     // marginHorizontal: 15
     // backgroundColor: 'pink'
