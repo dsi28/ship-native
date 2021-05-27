@@ -13,16 +13,14 @@ interface SearchJobScreenProps {
   route: any;
 }
 
-const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
+const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
   const job: IJob = route.params;
   console.log('job in search', job);
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={{ marginHorizontal: 15, marginVertical: 20 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 30 }}>
-            {job.itemName}
-          </Text>
+          <Text style={{ fontWeight: 'bold', fontSize: 30 }}>Mangos</Text>
         </View>
         <View style={styles.cardView}>
           <Image
@@ -288,4 +286,4 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
     </ScrollView>
   );
 };
-export default SearchJobScreen;
+export default SearchJobRequest;

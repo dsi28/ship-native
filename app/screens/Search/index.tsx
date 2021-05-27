@@ -9,6 +9,7 @@ import { IJob } from '../../models/IJob';
 import NavigationService from '../../navigation/NavigationService';
 import { AppState } from '../../redux/store/configureStore';
 import { getOpenJobs } from '../../services/jobs';
+import SearchJobRequest from './JobRequest';
 import SearchJobScreen from './JobScreen';
 import styles from './styles';
 
@@ -229,6 +230,11 @@ const SearchStack: React.FC = () => (
     <Stack.Screen
       name="SearchJobScreen"
       component={SearchJobScreen}
+      options={{ title: '' }}
+    />
+    <Stack.Screen
+      name="SearchJobRequest"
+      component={SearchJobRequest}
       options={{ title: '' }}
     />
   </Stack.Navigator>
