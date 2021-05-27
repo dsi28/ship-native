@@ -65,11 +65,14 @@ function SearchScreen() {
           </View>
         </View>
 
-        {jobList.length > 0 ? (
+        {typeof jobList !== 'undefined' &&
+        typeof jobList !== 'string' &&
+        jobList.length > 0 ? (
           <View>
             <View>
               {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
               {jobList.map((fbJob: any) => {
+                console.log('job here, ', fbJob);
                 // @ts-ignore
                 // eslint-disable-next-line no-underscore-dangle
                 const job = fbJob._data;
