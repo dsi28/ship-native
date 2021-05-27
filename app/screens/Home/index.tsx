@@ -166,7 +166,7 @@ const HomeStack: React.FC = () => (
   <Stack.Navigator>
     <Stack.Screen
       name="HomeScreen"
-      options={{ headerTitle: 'Home' }}
+      options={{ headerShown: false }}
       component={HomeScreenTabs}
     />
     <Stack.Screen name="Job" component={JobItem} />

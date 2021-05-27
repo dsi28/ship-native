@@ -40,8 +40,22 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
             <View style={styles.cardDetailsView}>
               <View style={styles.topRow}>
                 <View style={styles.topRowSubContainer}>
-                  <View>
-                    <Text style={styles.itemNameText}>{jobItem.itemName}</Text>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between'
+                    }}
+                  >
+                    <View>
+                      <Text style={styles.itemNameText}>
+                        {jobItem.itemName}
+                      </Text>
+                    </View>
+                    <View style={{ marginRight: 0 }}>
+                      <Text style={styles.costTextValue}>
+                        ${jobItem.shipmentCost}
+                      </Text>
+                    </View>
                   </View>
                   <View style={styles.itemPropertyContainer}>
                     <View>
@@ -90,11 +104,6 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
                       </Text>
                     </View>
                   </View>
-                </View>
-                <View>
-                  <Text style={styles.costTextValue}>
-                    ${jobItem.shipmentCost}
-                  </Text>
                 </View>
               </View>
             </View>
