@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
+import NumberToggler from '../../../components/numberToggler';
 import { IJob } from '../../../models/IJob';
 import styles from './styles';
 
@@ -12,6 +13,7 @@ interface SearchJobScreenProps {
 
 const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
   const job: IJob = route.params;
+  const [daysBefore, setDaysBefore] = useState(1);
   console.log('job in search', job);
   return (
     <ScrollView>
@@ -70,12 +72,30 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               {job.shipmentCost || 'cost not set'}
             </Text>
           </View>
+          <View style={{ marginHorizontal: 15 }}>
+            <View style={{ marginBottom: 10 }}>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: 'bold',
+                  textAlign: 'center'
+                }}
+              >
+                Receive the item from the owner prior
+              </Text>
+            </View>
+            <View style={{ alignItems: 'center' }}>
+              <NumberToggler count={daysBefore} setCount={setDaysBefore} />
+            </View>
+          </View>
         </View>
         <View style={{ marginHorizontal: 15, marginTop: 20, marginBottom: 15 }}>
           <View style={{ marginBottom: 15 }}>
             <WideButton
               buttonText="Request to Carry This Package"
-              onPressHandler={() => console.log('request to carry package')}
+              onPressHandler={() =>
+                console.log('send request to carry package')
+              }
               isSelected
               btnBackgoundColor="#e91e63"
               btnTextColor="white"
@@ -85,7 +105,7 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
           <View>
             <WideButton
               buttonText="Cancel"
-              onPressHandler={() => console.log('request to carry package')}
+              onPressHandler={() => console.log('cancel request')}
               isSelected
               btnBackgoundColor="white"
               btnTextColor="#e91e63"
