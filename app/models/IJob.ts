@@ -27,6 +27,7 @@ export interface IJob {
   ownerName?: string;
   status?: 'needs traveler' | 'in progress' | 'complete' | 'canceled';
   travelerRequests?: ITravelerRequest[];
+  uid: string;
 }
 
 export interface INewJob {

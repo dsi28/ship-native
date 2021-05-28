@@ -13,16 +13,12 @@ export const createJobFirebase = async (newJob: IJob, user: IUser) => {
     // // use uid to create user in firestore
     const uid = uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
     // const firebaseJob = await jobsRef.add(newJob);
-    const firebaseJob = await jobsRef.doc(uid).set({ uid, ...newJob });
-    await usersRef
-      .doc(newJob.ownerId)
-      .update({
-        // @ts-ignore
-        ownerJobs: [...user.ownerJobs, uid]
-      })
-      .then(() => {
-        console.log('User updated!');
-      });
+    const firebaseJob = await jobsRef.doc(uid).set({ ...newJob, uid });
+    await usersRef.doc(newJob.ownerId).update({
+      // @ts-ignore
+      ownerJobs: [...user.ownerJobs, uid]
+    });
+
     // console.log('job added to firebase: ', firebaseJob);
     return firebaseJob;
   } catch (error) {
@@ -74,4 +70,18 @@ export const getOpenJobs = async (userId: string) => {
       return 'get open jobs failed';
     });
   return openJobs;
+};
+
+export const jobTravelRequest = async (job: IJob, travlerId: string) => {
+  try {
+    await jobsRef.doc(job.uid).update({
+      // @ts-ignore
+      travelerRequests: [...job.travelerRequests, travlerId]
+    });
+    await usersRef
+      .doc(travlerId)
+      .update({ travelerRequests: [...job.travelerRequests, job.uid] });
+  } catch (error) {
+    console.log('error sending traveler request: ', error);
+  }
 };
