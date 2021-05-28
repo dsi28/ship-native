@@ -40,7 +40,7 @@ const NewJobConfirm: React.FC = () => {
                 dispatch(addJob(newJob));
                 // update firebase job
                 // @ts-ignore
-                createJobFirebase(newJob);
+                createJobFirebase(newJob, user);
               }}
               isSelected
               btnBackgoundColor="mediumvioletred"

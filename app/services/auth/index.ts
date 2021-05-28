@@ -55,11 +55,15 @@ export const createUserEmailPassword = async (
     const userData = {
       ...inputUser,
       pictures: pictureInput,
-      uid: userAuth.user?.uid
+      uid: userAuth.user?.uid,
+      travelerRequests: [],
+      ownerJobs: []
     };
 
+    const { password, ...readyUserData } = userData;
+
     // // use uid to create user in firestore
-    await firestore().collection('Users').doc(userAuth.user?.uid).set(userData);
+    await usersRef.doc(userAuth.user?.uid).set(readyUserData);
     console.log('user added to firebase');
     return userData;
   } catch (error) {
