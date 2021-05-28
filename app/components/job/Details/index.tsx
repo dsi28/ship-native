@@ -12,11 +12,21 @@ interface JobDetailsProps {
 const JobDetails: React.FC<JobDetailsProps> = ({ job }) => {
   const [dateTemp, setDateTemp] = useState('');
   const getDate = (): string => {
+    console.log(
+      'TYPE OF, ',
+      typeof job?.itemDeliveryDate,
+      ' end1 ',
+      job.itemDeliveryDate,
+      ' end2 ',
+      // @ts-ignore
+      typeof job?.itemDeliveryDate.toDate,
+      ' end3'
+    );
     if (job?.itemDeliveryDate !== undefined) {
       if (
         typeof job?.itemDeliveryDate === 'object' &&
         // @ts-ignore
-        typeof job?.itemDeliveryDate.toDate() !== 'undefined'
+        typeof job?.itemDeliveryDate.toDate !== 'undefined'
       ) {
         return (
           job?.itemDeliveryDate

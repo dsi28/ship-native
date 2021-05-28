@@ -12,7 +12,7 @@ import styles from './styles';
 
 const NewJobConfirm: React.FC = () => {
   const jobState = useSelector((state: AppState) => state.job.newJob);
-  const userId = useSelector((state: AppState) => state.user.uid);
+  const user = useSelector((state: AppState) => state.user);
 
   const dispatch = useDispatch();
 
@@ -30,7 +30,11 @@ const NewJobConfirm: React.FC = () => {
                 NavigationService.navigate('HomeScreen');
                 const newJob = {
                   ...jobState,
-                  ...{ travelerRequests: [], owner: userId }
+                  ...{
+                    travelerRequests: [],
+                    ownerId: user.uid,
+                    ownerName: user.name
+                  }
                 };
                 // @ts-ignore
                 dispatch(addJob(newJob));

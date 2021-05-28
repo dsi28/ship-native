@@ -130,7 +130,8 @@ function SearchScreen() {
                 note: 'test 123, this is the note',
                 itemReceiver: { email: 'benny@camelo.com', name: 'Benny' },
                 shipmentCost: 22,
-                owner: 'SPfn6YeX5tT1MCSSC5cd8LWG04v1', // uid
+                ownerId: 'SPfn6YeX5tT1MCSSC5cd8LWG04v1', // uid
+                ownerName: 'Filler User',
                 status: 'needs traveler',
                 travelerRequests: []
               }}
@@ -155,7 +156,8 @@ function SearchScreen() {
                 note: 'test 123, this is the note',
                 itemReceiver: { email: 'benny@camelo.com', name: 'Benny' },
                 shipmentCost: 22,
-                owner: 'SPfn6YeX5tT1MCSSC5cd8LWG04v1', // uid
+                ownerId: 'SPfn6YeX5tT1MCSSC5cd8LWG04v1', // uid
+                ownerName: 'Filler User',
                 status: 'needs traveler',
                 travelerRequests: []
               }}
@@ -179,7 +181,8 @@ function SearchScreen() {
                 note: 'test 123, this is the note',
                 itemReceiver: { email: 'benny@camelo.com', name: 'Benny' },
                 shipmentCost: 22,
-                owner: 'SPfn6YeX5tT1MCSSC5cd8LWG04v1', // uid
+                ownerId: 'SPfn6YeX5tT1MCSSC5cd8LWG04v1', // uid
+                ownerName: 'Filler User',
                 status: 'needs traveler',
                 travelerRequests: []
               }}
@@ -203,7 +206,8 @@ function SearchScreen() {
                 note: 'test 123, this is the note',
                 itemReceiver: { email: 'benny@camelo.com', name: 'Benny' },
                 shipmentCost: 22,
-                owner: 'SPfn6YeX5tT1MCSSC5cd8LWG04v1', // uid
+                ownerId: 'SPfn6YeX5tT1MCSSC5cd8LWG04v1', // uid
+                ownerName: 'Filler User',
                 status: 'needs traveler',
                 travelerRequests: []
               }}

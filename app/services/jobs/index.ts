@@ -18,7 +18,7 @@ export const createJobFirebase = async (newJob: IJob) => {
 
 export const getUserOwnJob = async (userId: string) => {
   const jobs = await jobsRef
-    .where('owner', '==', userId)
+    .where('ownerId', '==', userId)
     .get()
     .then((firebaseJobs) => {
       console.log(
@@ -39,7 +39,7 @@ export const getUserOwnJob = async (userId: string) => {
 
 export const getOpenJobs = async (userId: string) => {
   const openJobs = await jobsRef
-    .where('owner', '!=', userId)
+    .where('ownerId', '!=', userId)
     .get()
     .then((firebaseJobs) => {
       if (typeof firebaseJobs !== 'undefined') {
