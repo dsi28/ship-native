@@ -23,9 +23,11 @@ export interface IJob {
   itemReceiver?: IItemReciever;
   shipmentCost?: number;
   traveler?: string;
-  owner?: string; // uid
+  ownerId?: string; // uid
+  ownerName?: string;
   status?: 'needs traveler' | 'in progress' | 'complete' | 'canceled';
   travelerRequests?: ITravelerRequest[];
+  uid: string;
 }
 
 export interface INewJob {

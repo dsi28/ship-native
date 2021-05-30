@@ -19,6 +19,8 @@ export interface IUser {
   name?: string;
   phone?: string;
   pictures?: string;
+  travelerRequests?: string[];
+  ownerJobs?: string[];
 }
 
 export interface IBirthday {

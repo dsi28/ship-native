@@ -58,7 +58,8 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
         itemReceiver: baseJob.itemReceiver,
         shipmentCost: baseJob.shipmentCost,
         traveler: baseJob.traveler,
-        owner: baseJob.owner,
+        ownerName: baseJob.ownerName,
+        ownerId: baseJob.ownerId,
         status: baseJob.status,
         travelerRequests: baseJob.travelerRequests
       };
@@ -166,7 +167,7 @@ const HomeStack: React.FC = () => (
   <Stack.Navigator>
     <Stack.Screen
       name="HomeScreen"
-      options={{ headerTitle: 'Home' }}
+      options={{ headerShown: false }}
       component={HomeScreenTabs}
     />
     <Stack.Screen name="Job" component={JobItem} />

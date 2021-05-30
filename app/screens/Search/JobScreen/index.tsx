@@ -7,6 +7,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
 import { IJob } from '../../../models/IJob';
+import NavigationService from '../../../navigation/NavigationService';
 import styles from './styles';
 
 interface SearchJobScreenProps {
@@ -19,8 +20,8 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <View style={{ marginHorizontal: 15, marginVertical: 20 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 30 }}>Mangos</Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.titleText}>{job.itemName}</Text>
         </View>
         <View style={styles.cardView}>
           <Image
@@ -31,7 +32,7 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
           />
         </View>
         <View>
-          <View style={{ marginHorizontal: 15 }}>
+          <View style={styles.detailsContainer}>
             <View>
               <JobPropertyComponent
                 title="Deliver to"
@@ -39,75 +40,33 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
                 value={job.itemDeliveryLocation}
               />
             </View>
-            <View
-              style={{
-                marginBottom: 25,
-                flexDirection: 'row',
-                justifyContent: 'space-between'
-              }}
-            >
-              <View style={{ flexDirection: 'row' }}>
-                <View
-                  style={{
-                    // marginRight: 5,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: 0
-                  }}
-                >
+            <View style={styles.distanceContainer}>
+              <View style={styles.distancePinContainer}>
+                <View style={styles.distancePinIconContainer}>
                   <MaterialIcon name="location-pin" size={30} color="#87CEEB" />
                 </View>
                 <View>
-                  <Text style={{ fontSize: 20 }}>100 Miles</Text>
+                  <Text style={styles.distancePinText}>100 Miles</Text>
                 </View>
               </View>
               <View>
                 <Pressable onPress={() => console.log('view in map')}>
-                  <Text style={{ fontSize: 20, color: '#e91e63' }}>
-                    View in Map
-                  </Text>
+                  <Text style={styles.distanceMapLinkText}>View in Map</Text>
                 </Pressable>
               </View>
             </View>
           </View>
-          <View
-            style={{
-              backgroundColor: '#87CEEB',
-              width: '100%',
-              paddingVertical: 25,
-              paddingHorizontal: 15,
-              marginBottom: 25
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 25,
-                textAlign: 'center',
-                color: 'white'
-              }}
-            >
+          <View style={styles.paymentContainer}>
+            <Text style={styles.paymentTitle}>
               Traveler will be paid on delivery
             </Text>
-            <Text
-              style={{
-                fontSize: 25,
-                fontWeight: 'bold',
-                textAlign: 'center',
-                color: 'white'
-              }}
-            >
+            <Text style={styles.paymentValue}>
               {job.shipmentCost || 'cost not set'}
             </Text>
           </View>
-          <View style={{ marginHorizontal: 15, marginBottom: 25 }}>
-            <View style={{ flexDirection: 'row', marginBottom: 10 }}>
-              <View
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginRight: 5
-                }}
-              >
+          <View style={styles.detailsIconsContainer}>
+            <View style={styles.detailsIconContainer}>
+              <View style={styles.iconContainer}>
                 <MaterialIcon
                   name="wallet-giftcard"
                   size={30}
@@ -115,35 +74,21 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
                 />
               </View>
               <View>
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-                  {job.itemSize}
-                </Text>
+                <Text style={styles.iconText}>{job.itemSize}</Text>
               </View>
             </View>
-            <View style={{ flexDirection: 'row', marginBottom: 10 }}>
-              <View
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginRight: 5
-                }}
-              >
+            <View style={styles.detailsIconContainer}>
+              <View style={styles.iconContainer}>
                 <MaterialIcon name="comment" size={30} color="#87CEEB" />
               </View>
               <View>
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+                <Text style={styles.iconText}>
                   {job.itemWeight?.weight.text}
                 </Text>
               </View>
             </View>
-            <View style={{ flexDirection: 'row', marginBottom: 10 }}>
-              <View
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginRight: 5
-                }}
-              >
+            <View style={styles.detailsIconContainer}>
+              <View style={styles.iconContainer}>
                 <MaterialComIcon
                   name="calendar-range"
                   size={30}
@@ -151,107 +96,50 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
                 />
               </View>
               <View>
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+                <Text style={styles.iconText}>
                   {/* @ts-ignore */}
                   By {new Date(job.itemDeliveryDate?.toDate()).toDateString()}
                 </Text>
               </View>
             </View>
           </View>
-          <View
-            style={{
-              paddingHorizontal: 15,
-              backgroundColor: '#f3f5fa',
-              paddingVertical: 15
-            }}
-          >
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between'
-              }}
-            >
-              <View style={{ marginBottom: 15 }}>
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Sender</Text>
+          <View style={styles.ownerContainer}>
+            <View style={styles.ownerHeaderContainer}>
+              <View style={styles.headerTitleContainer}>
+                <Text style={styles.headerTitleText}>Sender</Text>
               </View>
               <Pressable onPress={() => console.log('chat')}>
-                <View style={{ flexDirection: 'row' }}>
-                  <View
-                    style={{
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginRight: 5
-                    }}
-                  >
+                <View style={styles.headerChatContainer}>
+                  <View style={styles.headerChatIcon}>
                     <MaterialIcon name="chat" size={30} color="#e91e63" />
                   </View>
-                  <View
-                    style={{ alignItems: 'center', justifyContent: 'center' }}
-                  >
-                    <Text style={{ fontSize: 20, color: '#e91e63' }}>Chat</Text>
+                  <View style={styles.headerChatTextContainer}>
+                    <Text style={styles.headerChatText}>Chat</Text>
                   </View>
                 </View>
               </Pressable>
             </View>
-            <View style={{ flexDirection: 'row', marginBottom: 5 }}>
-              <View
-                style={{
-                  width: 50,
-                  backgroundColor: 'lightgray',
-                  height: 50,
-                  borderRadius: 25,
-                  // borderWidth: 5,
-                  // borderColor: 'lightgray',
-                  borderColor: 'black',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: 10
-                }}
-              >
+            <View style={styles.oSenderInfoContainer}>
+              <View style={styles.oSenderInfoImageContainer}>
                 <Image
-                  style={{ height: '100%', width: '100%', borderRadius: 25 }}
+                  style={styles.oSenderInfoImage}
                   resizeMode="cover"
                   // eslint-disable-next-line global-require, import/no-dynamic-require
                   source={require('../../../assets/images/mango.jpg')}
                 />
               </View>
-
-              <View
-                style={{
-                  flexDirection: 'column',
-                  marginHorizontal: 10
-                  // justifyContent: 'center'
-                }}
-              >
+              <View style={styles.oSenderInfoDetailsContainer}>
                 <View>
-                  <Text style={{ fontSize: 17, fontWeight: 'bold' }}>
-                    Juan Cuadrado
+                  <Text style={styles.oSenderInfoDetailsText}>
+                    {job.ownerName}
                   </Text>
                 </View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    marginBottom: 15
-                  }}
-                >
-                  <View
-                    style={{
-                      marginRight: 10,
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
+                <View style={styles.oSenderInfoReviewContainer}>
+                  <View style={styles.oSenderInfoReviewIcon}>
                     <StarIcon name="star" size={20} color="#e91e63" />
                   </View>
-                  <View
-                    style={{ alignItems: 'center', justifyContent: 'center' }}
-                  >
-                    <Text
-                      style={{
-                        fontSize: 15,
-                        fontWeight: 'bold'
-                      }}
-                    >
+                  <View style={styles.oSenderInfoReviewTextContainer}>
+                    <Text style={styles.oSenderInfoReviewText}>
                       4.5 (4 reviews)
                     </Text>
                   </View>
@@ -260,22 +148,23 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
             </View>
             <View>
               <View>
-                <Text
-                  style={{ fontWeight: 'bold', fontSize: 15, color: 'gray' }}
-                >
+                <Text style={styles.oSenderInfoNoteTitle}>
                   Note by Juan Cuadrado
                 </Text>
               </View>
               <View>
-                <Text style={{ fontSize: 15, color: 'gray' }}>{job.note}</Text>
+                <Text style={styles.oSenderInfoNote}>{job.note}</Text>
               </View>
             </View>
           </View>
         </View>
-        <View style={{ marginHorizontal: 15, marginTop: 20, marginBottom: 15 }}>
+        <View style={styles.oSenderInfoButtonsContainer}>
           <WideButton
             buttonText="Request to Carry This Package"
-            onPressHandler={() => console.log('request to carry package')}
+            onPressHandler={() => {
+              NavigationService.navigate('SearchJobRequest', job);
+              console.log('request to carry package');
+            }}
             isSelected
             btnBackgoundColor="#e91e63"
             btnTextColor="white"

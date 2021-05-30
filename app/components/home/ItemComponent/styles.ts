@@ -55,7 +55,10 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginTop: 5
   },
-  topRowSubContainer: { flexDirection: 'column' },
+  topRowSubContainer: {
+    flexDirection: 'column',
+    width: '100%'
+  },
   itemNameText: {
     fontWeight: 'bold',
     color: '#e91e63',
@@ -65,7 +68,7 @@ const styles = StyleSheet.create({
   itemPropertyLabelText: { fontSize: 15, color: 'gray' },
   itemPropertyValueContainer: { marginLeft: 5 },
   itemPropertyValueText: { fontSize: 15, color: 'black' },
-  costTextValue: { fontSize: 20, fontWeight: 'bold' },
+  costTextValue: { fontSize: 20, fontWeight: 'bold', color: 'black' },
   buttonPresable: {
     elevation: 8,
     backgroundColor: 'white',
@@ -95,7 +98,8 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     // flex: 2,
     justifyContent: 'space-between',
-    flex: 1
+    flex: 1,
+    width: '100%'
   },
 
   // reusable styles:
