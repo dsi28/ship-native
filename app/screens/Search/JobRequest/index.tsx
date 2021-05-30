@@ -24,16 +24,12 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <View style={{ marginHorizontal: 15, marginVertical: 35 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 30 }}>
-            Request to deliver
-          </Text>
-          <Text style={{ fontWeight: 'bold', fontSize: 30 }}>
-            {job.itemName}
-          </Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.titleText}>Request to deliver</Text>
+          <Text style={styles.titleText}>{job.itemName}</Text>
         </View>
         <View>
-          <View style={{ marginHorizontal: 15 }}>
+          <View style={styles.deliveryContainer}>
             <View>
               <JobPropertyComponent
                 title="Deliver by"
@@ -49,54 +45,27 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               />
             </View>
           </View>
-          <View
-            style={{
-              backgroundColor: '#87CEEB',
-              width: '100%',
-              paddingVertical: 25,
-              paddingHorizontal: 15,
-              marginBottom: 25
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 25,
-                textAlign: 'center',
-                color: 'white'
-              }}
-            >
+          <View style={styles.paymentContainer}>
+            <Text style={styles.paymentTitleText}>
               Traveler will be paid on delivery
             </Text>
-            <Text
-              style={{
-                fontSize: 25,
-                fontWeight: 'bold',
-                textAlign: 'center',
-                color: 'white'
-              }}
-            >
+            <Text style={styles.paymentValueText}>
               {job.shipmentCost || 'cost not set'}
             </Text>
           </View>
-          <View style={{ marginHorizontal: 15 }}>
-            <View style={{ marginBottom: 10 }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  fontWeight: 'bold',
-                  textAlign: 'center'
-                }}
-              >
+          <View style={styles.receiveContainer}>
+            <View style={styles.receiveTitleContainer}>
+              <Text style={styles.receiveTitle}>
                 Receive the item from the owner prior
               </Text>
             </View>
-            <View style={{ alignItems: 'center' }}>
+            <View style={styles.receiveTogglerContainer}>
               <NumberToggler count={daysBefore} setCount={setDaysBefore} />
             </View>
           </View>
         </View>
-        <View style={{ marginHorizontal: 15, marginTop: 20, marginBottom: 15 }}>
-          <View style={{ marginBottom: 15 }}>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
             <WideButton
               buttonText="Request to Carry This Package"
               onPressHandler={() => {

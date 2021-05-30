@@ -1,6 +1,4 @@
-import { Dimensions, StyleSheet } from 'react-native';
-
-const { width, height } = Dimensions.get('window');
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   scrollViewContainer: { backgroundColor: '#f3f5fa' },
@@ -11,25 +9,39 @@ const styles = StyleSheet.create({
     // marginHorizontal: 15
     // backgroundColor: 'pink'
   },
-  cardView: {
-    // flex: 1,
-    width, // 30(marginHorizontal=15 from sellerprofile file) + 20(marginhorizontal= 10 from this file)
-    height: height / 3,
-    backgroundColor: 'orange',
-    // marginHorizontal: 10,
-    // borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0.5, height: 0.5 },
-    shadowOpacity: 0.5,
-    // shadowRadius: 3,
-    elevation: 5,
-    marginBottom: 20
+  titleContainer: {
+    marginHorizontal: 15,
+    marginBottom: 35
   },
-
-  image: {
-    width,
-    height: height / 3,
-    borderRadius: 10
-  }
+  titleText: { fontWeight: 'bold', fontSize: 30 },
+  deliveryContainer: { paddingHorizontal: 15, backgroundColor: '#f3f5fa' },
+  paymentContainer: {
+    backgroundColor: '#87CEEB',
+    width: '100%',
+    paddingVertical: 25,
+    paddingHorizontal: 15,
+    marginBottom: 25
+  },
+  paymentTitleText: {
+    fontSize: 25,
+    textAlign: 'center',
+    color: 'white'
+  },
+  paymentValueText: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white'
+  },
+  receiveContainer: { marginHorizontal: 15 },
+  receiveTitleContainer: { marginBottom: 10 },
+  receiveTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  receiveTogglerContainer: { alignItems: 'center' },
+  buttonsContainer: { marginHorizontal: 15, marginTop: 20, marginBottom: 15 },
+  buttonContainer: { marginBottom: 15 }
 });
 export default styles;
