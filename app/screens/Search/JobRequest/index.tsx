@@ -45,14 +45,6 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               />
             </View>
           </View>
-          <View style={styles.paymentContainer}>
-            <Text style={styles.paymentTitleText}>
-              Traveler will be paid on delivery
-            </Text>
-            <Text style={styles.paymentValueText}>
-              {job.shipmentCost || 'cost not set'}
-            </Text>
-          </View>
           <View style={styles.receiveContainer}>
             <View style={styles.receiveTitleContainer}>
               <Text style={styles.receiveTitle}>
@@ -62,6 +54,14 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
             <View style={styles.receiveTogglerContainer}>
               <NumberToggler count={daysBefore} setCount={setDaysBefore} />
             </View>
+          </View>
+          <View style={styles.paymentContainer}>
+            <Text style={styles.paymentTitleText}>
+              Traveler will be paid on delivery
+            </Text>
+            <Text style={styles.paymentValueText}>
+              {job.shipmentCost || 'cost not set'}
+            </Text>
           </View>
         </View>
         <View style={styles.buttonsContainer}>

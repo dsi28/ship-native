@@ -14,7 +14,11 @@ const styles = StyleSheet.create({
     marginBottom: 35
   },
   titleText: { fontWeight: 'bold', fontSize: 30 },
-  deliveryContainer: { paddingHorizontal: 15, backgroundColor: '#f3f5fa' },
+  deliveryContainer: {
+    paddingHorizontal: 15,
+    backgroundColor: '#f3f5fa',
+    paddingTop: 25
+  },
   paymentContainer: {
     backgroundColor: '#87CEEB',
     width: '100%',
@@ -33,7 +37,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white'
   },
-  receiveContainer: { marginHorizontal: 15 },
+  receiveContainer: { marginHorizontal: 15, marginTop: 20 },
   receiveTitleContainer: { marginBottom: 10 },
   receiveTitle: {
     fontSize: 20,
