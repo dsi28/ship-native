@@ -64,7 +64,7 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
   // };
 
   useEffect(() => {
-    console.log('component did mount');
+    console.log('component did mount:', jobType);
     console.log('jobs owner list, ', getJobs);
     setJobList(getJobs);
     // getJobs().then((jobs) => {
