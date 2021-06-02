@@ -4,7 +4,8 @@ import {
   LOG_OUT_JOB,
   RESET_NEW_JOB,
   SET_NEW_JOB,
-  SET_OWNER_JOB
+  SET_OWNER_JOB,
+  SET_TRAVELER_JOB
 } from '../actions/job';
 
 const initialState: IJobState = {
@@ -16,7 +17,8 @@ const initialState: IJobState = {
     note: '',
     shipmentCost: 0
   },
-  ownerJobs: []
+  ownerJobs: [],
+  travelerJobs: []
 };
 
 interface IAction {
@@ -52,6 +54,11 @@ const jobReducer = (state = initialState, action: IAction) => {
       return {
         ...state,
         ownerJobs: action.data
+      };
+    case SET_TRAVELER_JOB:
+      return {
+        ...state,
+        travelerJobs: action.data
       };
     default:
       return state;

@@ -1,6 +1,7 @@
 export interface IJobState {
   newJob: INewJob;
   ownerJobs: [];
+  travelerJobs: [];
   // add traveler jobs
   // saved jobs?
 }
