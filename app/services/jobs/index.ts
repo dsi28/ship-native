@@ -59,7 +59,7 @@ export const getUserTravelerJobs = async (userId: string) => {
       if (typeof firebaseJobs !== 'undefined') {
         console.log(
           userId,
-          ' firebase jobs: ',
+          ' firebase jobs travler: ',
           // @ts-ignore
           firebaseJobs.docs
         );

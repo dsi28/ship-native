@@ -41,7 +41,6 @@ const PictureInput: React.FC = () => {
       pictureInput
     );
     if (typeof createdUser !== 'undefined' && typeof createdUser !== 'string') {
-      console.warn('test dispatch: ', createdUser);
       // // update user state
       dispatch(newUserAction(createdUser));
     } else {

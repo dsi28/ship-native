@@ -38,7 +38,6 @@ const LoginScreen: React.FC = () => {
 
     console.warn('test login', loginUser);
     if (typeof loginUser !== 'undefined' && typeof loginUser !== 'string') {
-      console.warn('test dispatch: ', loginUser);
       dispatch(
         newUserAction({
           uid: loginUser.uid,

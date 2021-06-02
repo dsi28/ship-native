@@ -1,15 +1,15 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import ItemComponent from '../../components/home/ItemComponent';
 import { IJob } from '../../models/IJob';
 import NavigationService from '../../navigation/NavigationService';
-import { setOwnerJobs } from '../../redux/actions/job';
+import { setOwnerJobs, setTravlerJobs } from '../../redux/actions/job';
 import { AppState } from '../../redux/store/configureStore';
-import { getUserOwnJob } from '../../services/jobs';
+import { getUserOwnJob, getUserTravelerJobs } from '../../services/jobs';
 import AcceptTravler from '../Job/AcceptRequest';
 import DeclineTravler from '../Job/DeclineRequest';
 import JobItem from '../Job/JobItem';
@@ -34,7 +34,7 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
   // const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
   console.log(jobType, jobsList);
 
-  console.log('job list REAL TEST', jobsList);
+  console.log(jobType, 'job list REAL TEST', jobsList);
   const pressItemHandler = (job: IJob) => {
     console.log('item pressed');
     NavigationService.navigate('Job', job);
@@ -78,22 +78,26 @@ const Tab = createMaterialTopTabNavigator();
 function HomeScreenTabs() {
   const userId = useSelector((state: AppState) => state.user.uid);
   const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
-
-  const [jobList, setJobList] = useState([]);
+  // @ts-ignore
+  const travelerJobs = useSelector((state: AppState) => state.job.travelerJobs);
 
   const dispatch = useDispatch();
 
   const setOwnerJobsState = (ownerJobsList: any) => {
     dispatch(setOwnerJobs(ownerJobsList));
   };
-
+  const setTravelerJobsState = (travelerJobsList: any) => {
+    dispatch(setTravlerJobs(travelerJobsList));
+  };
   const getJobs = async () => {
     console.log(userId);
-    const jobs = await getUserOwnJob(userId);
-    console.log('OWner JOOOOOOOOOOOOBs ', jobs);
-    // @ts-ignore
-    setJobList(jobs);
-    setOwnerJobsState(jobs);
+    const oJobs = await getUserOwnJob(userId);
+    const tJobs = await getUserTravelerJobs(userId);
+
+    console.log('OWner JOOOOOOOOOOOOBs ', oJobs, ' Travler jobs: ', tJobs);
+
+    setOwnerJobsState(oJobs);
+    setTravelerJobsState(tJobs);
   };
 
   useEffect(() => {
@@ -128,8 +132,8 @@ function HomeScreenTabs() {
           // @ts-ignore
           <HomeScreenTab
             // jobList={jobState.ownerJobs}
-            jobType="Owner"
-            jobsList={jobList}
+            jobType="Traveler"
+            jobsList={travelerJobs}
             // setJobState={setOwnerJobsState}
           />
         )}
