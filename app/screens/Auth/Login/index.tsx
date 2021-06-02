@@ -4,8 +4,10 @@ import { useDispatch } from 'react-redux';
 import NextButton from '../../../components/buttons/NextButton';
 import TextFormInput from '../../../components/FormInputs/TextI';
 import NavigationLinkComponent from '../../../components/navigationLink';
+import { setOwnerJobs } from '../../../redux/actions/job';
 import { newUserAction } from '../../../redux/actions/user';
 import { loginWithEmailAndPassword } from '../../../services/auth';
+import { getUserOwnJob } from '../../../services/jobs';
 import styles from './styles';
 
 // interface LoginScreenProps {
@@ -33,6 +35,7 @@ const LoginScreen: React.FC = () => {
   const onLoginHandler = async () => {
     console.log('login btn');
     const loginUser = await loginWithEmailAndPassword(email, password);
+
     console.warn('test login', loginUser);
     if (typeof loginUser !== 'undefined' && typeof loginUser !== 'string') {
       console.warn('test dispatch: ', loginUser);
@@ -46,6 +49,12 @@ const LoginScreen: React.FC = () => {
           pictures: loginUser.pictures
         })
       );
+
+      // @ts-ignore
+      const ownerjobs = await getUserOwnJob(loginUser.uid);
+      console.log('OWner Jobs after login!!!!!!!1 ', ownerjobs);
+      // @ts-ignore
+      dispatch(setOwnerJobs(ownerjobs));
     } else {
       console.log('Error logging in');
     }

@@ -37,15 +37,14 @@ export const getUserOwnJob = async (userId: string) => {
           userId,
           ' firebase jobs: ',
           // @ts-ignore
-          // eslint-disable-next-line no-underscore-dangle
-          firebaseJobs.docs[0]._data.itemName
+          firebaseJobs.docs
         );
         return firebaseJobs.docs;
       }
       return [];
     })
     .catch((error) => {
-      console.warn('ERROR creating job: ', error);
+      console.warn('ERROR getting owner jobs: ', error);
       return 'get owner jobs failed';
     });
   return jobs;
@@ -62,14 +61,14 @@ export const getOpenJobs = async (userId: string) => {
           ' firebase jobs: ',
           // @ts-ignore
           // eslint-disable-next-line no-underscore-dangle
-          firebaseJobs.docs[0]._data.itemName
+          firebaseJobs.docs
         );
         return firebaseJobs.docs;
       }
       return [];
     })
     .catch((error) => {
-      console.warn('ERROR creating job: ', error);
+      console.warn('ERROR getting open jobs: ', error);
       return 'get open jobs failed';
     });
   return openJobs;

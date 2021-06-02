@@ -30,8 +30,9 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
   getJobs
   // setJobState
 }) => {
-  const [jobList, setJobList] = useState([]);
-
+  // const [jobList, setJobList] = useState([]);
+  const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
+  console.log(jobType, getJobs);
   // const cleanJobsFS = (
   //   jobs:
   //     | FirebaseFirestoreTypes.QueryDocumentSnapshot<FirebaseFirestoreTypes.DocumentData>[]
@@ -63,22 +64,22 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
   //   return cleanJobs;
   // };
 
-  useEffect(() => {
-    console.log('component did mount:', jobType);
-    console.log('jobs owner list, ', getJobs);
-    setJobList(getJobs);
-    // getJobs().then((jobs) => {
-    //   console.log('jobs', jobs);
-    //   const cleanJobs = cleanJobsFS(jobs);
-    //   // @ts-ignore
-    //   setJobList(cleanJobs);
-    //   // setJobState(cleanJobs);
-    //   // return jobs;
-    // });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   console.log('component did mount:', jobType);
+  //   console.log('jobs owner list, ', getJobs);
+  //   // setJobList(getJobs);
+  //   // getJobs().then((jobs) => {
+  //   //   console.log('jobs', jobs);
+  //   //   const cleanJobs = cleanJobsFS(jobs);
+  //   //   // @ts-ignore
+  //   //   setJobList(cleanJobs);
+  //   //   // setJobState(cleanJobs);
+  //   //   // return jobs;
+  //   // });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [ownerJobs]);
 
-  console.log('job list REAL TEST', jobList);
+  console.log('job list REAL TEST', ownerJobs);
   const pressItemHandler = (job: IJob) => {
     console.log('item pressed');
     NavigationService.navigate('Job', job);
@@ -86,23 +87,27 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
   return (
     <ScrollView style={{ backgroundColor: '#f3f5fa' }}>
       <View style={styles.container}>
-        {typeof jobList !== 'undefined' &&
-        typeof jobList !== 'string' &&
-        jobList.length > 0 ? (
+        {typeof ownerJobs !== 'undefined' &&
+        typeof ownerJobs !== 'string' &&
+        // @ts-ignore
+        ownerJobs.length > 0 ? (
           <View>
             <View>
-              {jobList.map((jobItem: any) => {
+              {
                 // @ts-ignore
-                // eslint-disable-next-line no-underscore-dangle
-                const job = jobItem._data;
-                return (
-                  <ItemComponent
-                    jobItem={job}
-                    onPressHandler={pressItemHandler}
-                    key={job.uid}
-                  />
-                );
-              })}
+                ownerJobs.map((jobItem: any) => {
+                  // @ts-ignore
+                  // eslint-disable-next-line no-underscore-dangle
+                  const job = jobItem._data;
+                  return (
+                    <ItemComponent
+                      jobItem={job}
+                      onPressHandler={pressItemHandler}
+                      key={job.uid}
+                    />
+                  );
+                })
+              }
             </View>
           </View>
         ) : (
