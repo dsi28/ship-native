@@ -50,6 +50,30 @@ export const getUserOwnJob = async (userId: string) => {
   return jobs;
 };
 
+export const getUserTravelerJobs = async (userId: string) => {
+  // TODO make this more efficient
+  const jobs = await jobsRef
+    .where('travelerRequests', 'array-contains', userId)
+    .get()
+    .then((firebaseJobs) => {
+      if (typeof firebaseJobs !== 'undefined') {
+        console.log(
+          userId,
+          ' firebase jobs: ',
+          // @ts-ignore
+          firebaseJobs.docs
+        );
+        return firebaseJobs.docs;
+      }
+      return [];
+    })
+    .catch((error) => {
+      console.warn('ERROR getting traveler jobs: ', error);
+      return 'get traveler jobs failed';
+    });
+  return jobs;
+};
+
 export const getOpenJobs = async (userId: string) => {
   const openJobs = await jobsRef
     .where('ownerId', '!=', userId)

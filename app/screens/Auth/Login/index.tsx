@@ -4,10 +4,10 @@ import { useDispatch } from 'react-redux';
 import NextButton from '../../../components/buttons/NextButton';
 import TextFormInput from '../../../components/FormInputs/TextI';
 import NavigationLinkComponent from '../../../components/navigationLink';
-import { setOwnerJobs } from '../../../redux/actions/job';
+import { setOwnerJobs, setTravlerJobs } from '../../../redux/actions/job';
 import { newUserAction } from '../../../redux/actions/user';
 import { loginWithEmailAndPassword } from '../../../services/auth';
-import { getUserOwnJob } from '../../../services/jobs';
+import { getUserOwnJob, getUserTravelerJobs } from '../../../services/jobs';
 import styles from './styles';
 
 // interface LoginScreenProps {
@@ -52,9 +52,12 @@ const LoginScreen: React.FC = () => {
 
       // @ts-ignore
       const ownerjobs = await getUserOwnJob(loginUser.uid);
-      console.log('OWner Jobs after login!!!!!!!1 ', ownerjobs);
+      const travelerJobs = await getUserTravelerJobs(loginUser.uid);
+      console.log('travler Jobs after login!!!!!!!1 ', travelerJobs);
       // @ts-ignore
       dispatch(setOwnerJobs(ownerjobs));
+      // @ts-ignore
+      dispatch(setTravlerJobs(travelerJobs));
     } else {
       console.log('Error logging in');
     }
