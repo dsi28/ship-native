@@ -32,18 +32,21 @@ export const getUserOwnJob = async (userId: string) => {
     .where('ownerId', '==', userId)
     .get()
     .then((firebaseJobs) => {
-      console.log(
-        userId,
-        ' firebase jobs: ',
-        // @ts-ignore
-        // eslint-disable-next-line no-underscore-dangle
-        firebaseJobs.docs[0]._data.itemName
-      );
-      return firebaseJobs.docs;
+      if (typeof firebaseJobs !== 'undefined') {
+        console.log(
+          userId,
+          ' firebase jobs: ',
+          // @ts-ignore
+          // eslint-disable-next-line no-underscore-dangle
+          firebaseJobs.docs[0]._data.itemName
+        );
+        return firebaseJobs.docs;
+      }
+      return [];
     })
     .catch((error) => {
       console.warn('ERROR creating job: ', error);
-      return 'create user failed';
+      return 'get owner jobs failed';
     });
   return jobs;
 };
