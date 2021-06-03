@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import NextButton from '../../../components/buttons/NextButton';
 import TextFormInput from '../../../components/FormInputs/TextI';
 import NavigationLinkComponent from '../../../components/navigationLink';
-import { setOwnerJobs } from '../../../redux/actions/job';
+import { setOwnerTravlerJobs } from '../../../redux/actions/job';
 import { newUserAction } from '../../../redux/actions/user';
 import { loginWithEmailAndPassword } from '../../../services/auth';
 import { getUserOwnJob, getUserTravelerJobs } from '../../../services/jobs';
@@ -54,10 +54,16 @@ const LoginScreen: React.FC = () => {
       const travelerJobs = await getUserTravelerJobs(loginUser.uid);
       console.log('travler Jobs after login!!!!!!!1 ', travelerJobs);
       console.log('*****************:', typeof ownerjobs, ' test ', ownerjobs);
-      // @ts-ignore
-      dispatch(setOwnerJobs(ownerjobs));
-      // @ts-ignore
-      dispatch(setTravlerJobs(travelerJobs));
+      // // @ts-ignore
+      // dispatch(setOwnerJobs(ownerjobs));
+      // // @ts-ignore
+      // dispatch(setTravlerJobs(travelerJobs));
+      dispatch(
+        setOwnerTravlerJobs({
+          ownerJobs: ownerjobs,
+          travelerJobs
+        })
+      );
     } else {
       console.log('Error logging in');
     }

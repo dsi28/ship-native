@@ -5,6 +5,7 @@ import {
   RESET_NEW_JOB,
   SET_NEW_JOB,
   SET_OWNER_JOB,
+  SET_OWNER_TRAVELER_JOB,
   SET_TRAVELER_JOB
 } from '../actions/job';
 
@@ -60,6 +61,11 @@ const jobReducer = (state = initialState, action: IAction) => {
       return {
         ...state,
         travelerJobs: action.data
+      };
+    case SET_OWNER_TRAVELER_JOB:
+      return {
+        ...state,
+        ...action.data
       };
     default:
       return state;

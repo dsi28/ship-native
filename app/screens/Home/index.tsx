@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ItemComponent from '../../components/home/ItemComponent';
 import { IJob } from '../../models/IJob';
 import NavigationService from '../../navigation/NavigationService';
-import { setOwnerJobs, setTravlerJobs } from '../../redux/actions/job';
+import { setOwnerTravlerJobs } from '../../redux/actions/job';
 import { AppState } from '../../redux/store/configureStore';
 import { getUserOwnJob, getUserTravelerJobs } from '../../services/jobs';
 import AcceptTravler from '../Job/AcceptRequest';
@@ -81,36 +81,42 @@ function HomeScreenTabs() {
 
   const dispatch = useDispatch();
 
-  const setOwnerJobsState = (ownerJobsList: any) => {
-    dispatch(setOwnerJobs(ownerJobsList));
-  };
-  const setTravelerJobsState = (travelerJobsList: any) => {
-    dispatch(setTravlerJobs(travelerJobsList));
-  };
+  // const setOwnerJobsState = (ownerJobsList: any) => {
+  //   dispatch(setOwnerJobs(ownerJobsList));
+  // };
+  // const setTravelerJobsState = (travelerJobsList: any) => {
+  //   dispatch(setTravlerJobs(travelerJobsList));
+  // };
   const getOwnerJobs = async () => {
     console.log(userId);
     const oJobs = await getUserOwnJob(userId);
-    // const cleanOwnerJobs = cleanFirebaseJobList(oJobs);
 
     console.log('OWner JOOOOOOOOOOOOBs ', oJobs);
+    const tJobs = await getUserTravelerJobs(userId);
 
-    setOwnerJobsState(oJobs);
+    dispatch(
+      setOwnerTravlerJobs({
+        ownerJobs: oJobs,
+        travelerJobs: tJobs
+      })
+    );
+    // setOwnerJobsState(oJobs);
     // setTravelerJobsState(tJobs);
   };
 
-  const getTravelerJobs = async () => {
-    console.log(userId);
-    const tJobs = await getUserTravelerJobs(userId);
-    // const cleanOwnerJobs = cleanFirebaseJobList(oJobs);
+  // const getTravelerJobs = async () => {
+  //   console.log(userId);
+  //   const tJobs = await getUserTravelerJobs(userId);
+  //   // const cleanOwnerJobs = cleanFirebaseJobList(oJobs);
 
-    console.log(' Travler jobs: ', tJobs);
+  //   console.log(' Travler jobs: ', tJobs);
 
-    setTravelerJobsState(tJobs);
-  };
+  //   setTravelerJobsState(tJobs);
+  // };
 
   useEffect(() => {
     getOwnerJobs();
-    getTravelerJobs();
+    // getTravelerJobs();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -141,6 +147,8 @@ function HomeScreenTabs() {
           // @ts-ignore
           <HomeScreenTab
             // jobList={jobState.ownerJobs}
+            // jobType="ownerJobs"
+            // jobsList={ownerJobs}
             jobType="travelerJobs"
             jobsList={travelerJobs}
             // setJobState={setOwnerJobsState}
