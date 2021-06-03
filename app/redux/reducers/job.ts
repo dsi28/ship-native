@@ -48,7 +48,8 @@ const jobReducer = (state = initialState, action: IAction) => {
     case LOG_OUT_JOB:
       return {
         newJob: initialState.newJob,
-        ownerJobs: initialState.ownerJobs
+        ownerJobs: initialState.ownerJobs,
+        travelerJobs: initialState.travelerJobs
       };
     case SET_OWNER_JOB:
       return {
