@@ -76,22 +76,13 @@ const Tab = createMaterialTopTabNavigator();
 function HomeScreenTabs() {
   const userId = useSelector((state: AppState) => state.user.uid);
   const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
-  // @ts-ignore
   const travelerJobs = useSelector((state: AppState) => state.job.travelerJobs);
 
   const dispatch = useDispatch();
 
-  // const setOwnerJobsState = (ownerJobsList: any) => {
-  //   dispatch(setOwnerJobs(ownerJobsList));
-  // };
-  // const setTravelerJobsState = (travelerJobsList: any) => {
-  //   dispatch(setTravlerJobs(travelerJobsList));
-  // };
-  const getOwnerJobs = async () => {
+  const getJobs = async () => {
     console.log(userId);
     const oJobs = await getUserOwnJob(userId);
-
-    console.log('OWner JOOOOOOOOOOOOBs ', oJobs);
     const tJobs = await getUserTravelerJobs(userId);
 
     dispatch(
@@ -100,27 +91,13 @@ function HomeScreenTabs() {
         travelerJobs: tJobs
       })
     );
-    // setOwnerJobsState(oJobs);
-    // setTravelerJobsState(tJobs);
   };
 
-  // const getTravelerJobs = async () => {
-  //   console.log(userId);
-  //   const tJobs = await getUserTravelerJobs(userId);
-  //   // const cleanOwnerJobs = cleanFirebaseJobList(oJobs);
-
-  //   console.log(' Travler jobs: ', tJobs);
-
-  //   setTravelerJobsState(tJobs);
-  // };
-
   useEffect(() => {
-    getOwnerJobs();
-    // getTravelerJobs();
+    getJobs();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // console.log('job state', jobState.ownerJobs, 'FULL');
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -134,25 +111,13 @@ function HomeScreenTabs() {
       <Tab.Screen name="Sender" options={{ tabBarLabel: 'Sender' }}>
         {() => (
           // @ts-ignore
-          <HomeScreenTab
-            // jobList={jobState.ownerJobs}
-            jobType="ownerJobs"
-            jobsList={ownerJobs}
-            // setJobState={setOwnerJobsState}
-          />
+          <HomeScreenTab jobType="ownerJobs" jobsList={ownerJobs} />
         )}
       </Tab.Screen>
       <Tab.Screen name="Traveler" options={{ tabBarLabel: 'Traveler' }}>
         {() => (
           // @ts-ignore
-          <HomeScreenTab
-            // jobList={jobState.ownerJobs}
-            // jobType="ownerJobs"
-            // jobsList={ownerJobs}
-            jobType="travelerJobs"
-            jobsList={travelerJobs}
-            // setJobState={setOwnerJobsState}
-          />
+          <HomeScreenTab jobType="travelerJobs" jobsList={travelerJobs} />
         )}
       </Tab.Screen>
     </Tab.Navigator>
