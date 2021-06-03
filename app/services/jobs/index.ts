@@ -1,5 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import firestore from '@react-native-firebase/firestore';
+import firestore, {
+  FirebaseFirestoreTypes
+} from '@react-native-firebase/firestore';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import { IJob } from '../../models/IJob';
@@ -27,6 +29,23 @@ export const createJobFirebase = async (newJob: IJob, user: IUser) => {
   }
 };
 
+export const cleanFirebaseJobList = (
+  jobList:
+    | string
+    | FirebaseFirestoreTypes.QueryDocumentSnapshot<FirebaseFirestoreTypes.DocumentData>[]
+) => {
+  if (typeof jobList !== 'string') {
+    const cleanJobList = jobList.map((job: any) => {
+      // eslint-disable-next-line no-underscore-dangle
+      const cleanJob = job._data;
+      console.log(cleanJob);
+      return cleanJob;
+    });
+    return cleanJobList;
+  }
+  return jobList;
+};
+
 export const getUserOwnJob = async (userId: string) => {
   const jobs = await jobsRef
     .where('ownerId', '==', userId)
@@ -39,7 +58,8 @@ export const getUserOwnJob = async (userId: string) => {
           // @ts-ignore
           firebaseJobs.docs
         );
-        return firebaseJobs.docs;
+        const cleanJobs = cleanFirebaseJobList(firebaseJobs.docs);
+        return cleanJobs;
       }
       return [];
     })
@@ -63,7 +83,8 @@ export const getUserTravelerJobs = async (userId: string) => {
           // @ts-ignore
           firebaseJobs.docs
         );
-        return firebaseJobs.docs;
+        const cleanJobs = cleanFirebaseJobList(firebaseJobs.docs);
+        return cleanJobs;
       }
       return [];
     })

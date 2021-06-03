@@ -50,18 +50,16 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
             <View>
               {
                 // @ts-ignore
-                jobsList.map((jobItem: any) => {
+                jobsList.map((job: any) => (
                   // @ts-ignore
                   // eslint-disable-next-line no-underscore-dangle
-                  const job = jobItem._data;
-                  return (
-                    <ItemComponent
-                      jobItem={job}
-                      onPressHandler={pressItemHandler}
-                      key={job.uid}
-                    />
-                  );
-                })
+                  // const job = jobItem._data;
+                  <ItemComponent
+                    jobItem={job}
+                    onPressHandler={pressItemHandler}
+                    key={job.uid}
+                  />
+                ))
               }
             </View>
           </View>
@@ -89,19 +87,30 @@ function HomeScreenTabs() {
   const setTravelerJobsState = (travelerJobsList: any) => {
     dispatch(setTravlerJobs(travelerJobsList));
   };
-  const getJobs = async () => {
+  const getOwnerJobs = async () => {
     console.log(userId);
     const oJobs = await getUserOwnJob(userId);
-    const tJobs = await getUserTravelerJobs(userId);
+    // const cleanOwnerJobs = cleanFirebaseJobList(oJobs);
 
-    console.log('OWner JOOOOOOOOOOOOBs ', oJobs, ' Travler jobs: ', tJobs);
+    console.log('OWner JOOOOOOOOOOOOBs ', oJobs);
 
     setOwnerJobsState(oJobs);
+    // setTravelerJobsState(tJobs);
+  };
+
+  const getTravelerJobs = async () => {
+    console.log(userId);
+    const tJobs = await getUserTravelerJobs(userId);
+    // const cleanOwnerJobs = cleanFirebaseJobList(oJobs);
+
+    console.log(' Travler jobs: ', tJobs);
+
     setTravelerJobsState(tJobs);
   };
 
   useEffect(() => {
-    getJobs();
+    getOwnerJobs();
+    getTravelerJobs();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -132,7 +141,7 @@ function HomeScreenTabs() {
           // @ts-ignore
           <HomeScreenTab
             // jobList={jobState.ownerJobs}
-            jobType="Traveler"
+            jobType="travelerJobs"
             jobsList={travelerJobs}
             // setJobState={setOwnerJobsState}
           />
