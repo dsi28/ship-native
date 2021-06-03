@@ -1,5 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import firestore from '@react-native-firebase/firestore';
+import firestore, {
+  FirebaseFirestoreTypes
+} from '@react-native-firebase/firestore';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import { IJob } from '../../models/IJob';
@@ -27,23 +29,68 @@ export const createJobFirebase = async (newJob: IJob, user: IUser) => {
   }
 };
 
+export const cleanFirebaseJobList = (
+  jobList:
+    | string
+    | FirebaseFirestoreTypes.QueryDocumentSnapshot<FirebaseFirestoreTypes.DocumentData>[]
+) => {
+  if (typeof jobList !== 'string') {
+    const cleanJobList = jobList.map((job: any) => {
+      // eslint-disable-next-line no-underscore-dangle
+      const cleanJob = job._data;
+      console.log(cleanJob);
+      return cleanJob;
+    });
+    return cleanJobList;
+  }
+  return jobList;
+};
+
 export const getUserOwnJob = async (userId: string) => {
   const jobs = await jobsRef
     .where('ownerId', '==', userId)
     .get()
     .then((firebaseJobs) => {
-      console.log(
-        userId,
-        ' firebase jobs: ',
-        // @ts-ignore
-        // eslint-disable-next-line no-underscore-dangle
-        firebaseJobs.docs[0]._data.itemName
-      );
-      return firebaseJobs.docs;
+      if (typeof firebaseJobs !== 'undefined') {
+        console.log(
+          userId,
+          ' firebase jobs: ',
+          // @ts-ignore
+          firebaseJobs.docs
+        );
+        const cleanJobs = cleanFirebaseJobList(firebaseJobs.docs);
+        return cleanJobs;
+      }
+      return [];
     })
     .catch((error) => {
-      console.warn('ERROR creating job: ', error);
-      return 'create user failed';
+      console.warn('ERROR getting owner jobs: ', error);
+      return 'get owner jobs failed';
+    });
+  return jobs;
+};
+
+export const getUserTravelerJobs = async (userId: string) => {
+  // TODO make this more efficient
+  const jobs = await jobsRef
+    .where('travelerRequests', 'array-contains', userId)
+    .get()
+    .then((firebaseJobs) => {
+      if (typeof firebaseJobs !== 'undefined') {
+        console.log(
+          userId,
+          ' firebase jobs travler: ',
+          // @ts-ignore
+          firebaseJobs.docs
+        );
+        const cleanJobs = cleanFirebaseJobList(firebaseJobs.docs);
+        return cleanJobs;
+      }
+      return [];
+    })
+    .catch((error) => {
+      console.warn('ERROR getting traveler jobs: ', error);
+      return 'get traveler jobs failed';
     });
   return jobs;
 };
@@ -59,14 +106,14 @@ export const getOpenJobs = async (userId: string) => {
           ' firebase jobs: ',
           // @ts-ignore
           // eslint-disable-next-line no-underscore-dangle
-          firebaseJobs.docs[0]._data.itemName
+          firebaseJobs.docs
         );
         return firebaseJobs.docs;
       }
       return [];
     })
     .catch((error) => {
-      console.warn('ERROR creating job: ', error);
+      console.warn('ERROR getting open jobs: ', error);
       return 'get open jobs failed';
     });
   return openJobs;

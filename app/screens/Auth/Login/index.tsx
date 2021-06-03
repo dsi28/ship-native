@@ -4,8 +4,10 @@ import { useDispatch } from 'react-redux';
 import NextButton from '../../../components/buttons/NextButton';
 import TextFormInput from '../../../components/FormInputs/TextI';
 import NavigationLinkComponent from '../../../components/navigationLink';
+import { setOwnerTravlerJobs } from '../../../redux/actions/job';
 import { newUserAction } from '../../../redux/actions/user';
 import { loginWithEmailAndPassword } from '../../../services/auth';
+import { getUserOwnJob, getUserTravelerJobs } from '../../../services/jobs';
 import styles from './styles';
 
 // interface LoginScreenProps {
@@ -33,9 +35,9 @@ const LoginScreen: React.FC = () => {
   const onLoginHandler = async () => {
     console.log('login btn');
     const loginUser = await loginWithEmailAndPassword(email, password);
+
     console.warn('test login', loginUser);
     if (typeof loginUser !== 'undefined' && typeof loginUser !== 'string') {
-      console.warn('test dispatch: ', loginUser);
       dispatch(
         newUserAction({
           uid: loginUser.uid,
@@ -44,6 +46,22 @@ const LoginScreen: React.FC = () => {
           phone: loginUser.phone,
           birthday: loginUser.birthday,
           pictures: loginUser.pictures
+        })
+      );
+
+      // @ts-ignore
+      const ownerjobs = await getUserOwnJob(loginUser.uid);
+      const travelerJobs = await getUserTravelerJobs(loginUser.uid);
+      console.log('travler Jobs after login!!!!!!!1 ', travelerJobs);
+      console.log('*****************:', typeof ownerjobs, ' test ', ownerjobs);
+      // // @ts-ignore
+      // dispatch(setOwnerJobs(ownerjobs));
+      // // @ts-ignore
+      // dispatch(setTravlerJobs(travelerJobs));
+      dispatch(
+        setOwnerTravlerJobs({
+          ownerJobs: ownerjobs,
+          travelerJobs
         })
       );
     } else {

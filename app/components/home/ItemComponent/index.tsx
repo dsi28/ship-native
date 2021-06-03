@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { IJob } from '../../../models/IJob';
@@ -13,7 +13,50 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
   onPressHandler,
   jobItem
 }) => {
+  const [dateTemp, setDateTemp] = useState('');
+
+  console.log(typeof jobItem.itemDeliveryDate);
   console.log('jobITEMMMMMMMM', jobItem);
+
+  const getDate = (): string => {
+    // console.log(
+    //   'TYPE OF, ',
+    //   typeof jobItem?.itemDeliveryDate,
+    //   ' end1 ',
+    //   jobItem.itemDeliveryDate,
+    //   ' end2 ',
+    //   // @ts-ignore
+    //   typeof jobItem?.itemDeliveryDate.toDate,
+    //   ' end3'
+    // );
+    if (jobItem?.itemDeliveryDate !== undefined) {
+      if (
+        typeof jobItem?.itemDeliveryDate === 'object' &&
+        // @ts-ignore
+        typeof jobItem?.itemDeliveryDate.toDate !== 'undefined'
+      ) {
+        return (
+          jobItem?.itemDeliveryDate
+            // @ts-ignore
+            .toDate()
+            .toDateString()
+            .toString()
+        );
+      }
+      return new Date(
+        // @ts-ignore
+        jobItem?.itemDeliveryDate
+      )
+        .toDateString()
+        .toString();
+    }
+    return 'No date set';
+  };
+
+  useEffect(() => {
+    setDateTemp(getDate());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Pressable onPress={() => onPressHandler(jobItem)}>
@@ -85,22 +128,7 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
                     </View>
                     <View style={styles.itemPropertyValueContainer}>
                       <Text style={styles.itemPropertyValueText}>
-                        {
-                          // TODO keep an eye on this may need to add checks back
-                          // eslint-disable-next-line no-nested-ternary
-                          typeof jobItem?.itemDeliveryDate !== undefined
-                            ? typeof jobItem?.itemDeliveryDate === 'object'
-                              ? jobItem?.itemDeliveryDate
-                                  // @ts-ignore
-                                  .toDate()
-                                  .toDateString()
-                              : // @ts-ignore
-                                new Date(
-                                  // @ts-ignore
-                                  jobItem?.itemDeliveryDate
-                                ).toDateString() // this is a mess
-                            : 'No date set'
-                        }
+                        {dateTemp}
                       </Text>
                     </View>
                   </View>
