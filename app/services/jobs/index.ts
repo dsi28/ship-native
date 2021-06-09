@@ -132,3 +132,17 @@ export const jobTravelRequest = async (job: IJob, travlerId: string) => {
     console.log('error sending traveler request: ', error);
   }
 };
+
+export const getTravelerRequests = async (travelerIds: string[]) => {
+  console.log('get traveler requests');
+  try {
+    const travelers = travelerIds.map(async (tId) => {
+      const traveler = await usersRef.where('uid', '==', tId);
+      return traveler;
+    });
+    return travelers;
+  } catch (error) {
+    console.log('error getting traveler users: ', error);
+    return [];
+  }
+};
