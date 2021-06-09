@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import TravelerRequestItemComponent from '../../../components/job/TravelerRequestItem';
 import NavigationService from '../../../navigation/NavigationService';
+import { getTravelerRequests } from '../../../services/jobs';
 import TravelerScreen from '../TravelerScreen';
 import styles from './styles';
 
@@ -12,14 +13,15 @@ interface TravelerRequestsProps {
 
 const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
   const job = route.params;
+  const [travelerList, setTravelerList] = useState<any>([]);
 
-  const getTravelers = () => {
+  const getTravelers = async () => {
     console.log('get travelers');
-    job.travelerRequests.map((traveler: any) => {
-      console.log('travelerid here, ', traveler);
-      return [];
-      // getTravelerRequests();
-    });
+    // eslint-disable-next-line no-underscore-dangle
+    const temp = await getTravelerRequests(job.travelerRequests);
+    // @ts-ignore
+    // eslint-disable-next-line no-underscore-dangle
+    setTravelerList(temp[0]._docs[0]._data);
   };
 
   useEffect(() => {
@@ -31,18 +33,14 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
     console.log('item pressed');
     NavigationService.navigate('View Traveler', TravelerScreen);
   };
+  console.log('TList, ', travelerList);
   return (
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
-        {typeof job !== 'undefined' ? (
+        {typeof travelerList !== 'undefined' ? (
           <View>
             <Text>Traveler Requests</Text>
-            <View>
-              {job.travelerRequests.map((traveler: any) => {
-                console.log('travelerid here, ', traveler);
-                return <Text>traveler :{traveler}</Text>;
-              })}
-            </View>
+            <Text>Test {travelerList[0]}</Text>
           </View>
         ) : (
           <Text>No travelers found </Text>
