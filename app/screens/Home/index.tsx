@@ -17,6 +17,7 @@ import NewJobForm from '../Job/NewJobForm';
 import ProfileReviews from '../Profile/Reviews';
 import TravelerRequests from '../Travelers/Requests';
 import TravelerScreen from '../Travelers/TravelerScreen';
+import NewTrip from '../Travelers/Trip';
 import styles from './styles';
 
 interface HomeInputProps {
@@ -142,6 +143,11 @@ const HomeStack: React.FC = () => (
       name="New Job"
       component={NewJobForm}
       options={{ headerShown: false }}
+    />
+    <Stack.Screen
+      name="Add Trip"
+      component={NewTrip}
+      options={{ headerShown: true, headerTitle: '' }}
     />
   </Stack.Navigator>
 );

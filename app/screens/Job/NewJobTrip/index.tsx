@@ -73,7 +73,14 @@ const PayScreen = () => {
               )}
             </Pressable>
             <Pressable
-              onPress={() => console.log('add trip')}
+              onPress={() => {
+                console.log('add trip');
+                setModalVisible(false);
+                NavigationService.navigate('Home', {
+                  screen: 'Add Trip'
+                  // initial: false
+                });
+              }}
               style={styles.pressableBottom}
             >
               {({ pressed }) => (
