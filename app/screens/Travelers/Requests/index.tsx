@@ -19,9 +19,9 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
     console.log('get travelers');
     // eslint-disable-next-line no-underscore-dangle
     const temp = await getTravelerRequests(job.travelerRequests);
+    console.log('temp, ', temp);
     // @ts-ignore
-    // eslint-disable-next-line no-underscore-dangle
-    setTravelerList(temp[0]._docs[0]._data);
+    setTravelerList(temp);
   };
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
         {typeof travelerList !== 'undefined' ? (
           <View>
             <Text>Traveler Requests</Text>
-            <Text>Test {travelerList[0]}</Text>
+            <Text>Test</Text>
           </View>
         ) : (
           <Text>No travelers found </Text>

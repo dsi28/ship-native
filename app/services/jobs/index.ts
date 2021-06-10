@@ -145,10 +145,10 @@ export const getTravelerRequests = async (travelerIds: string[]) => {
     const list = await Promise.all(travelers);
     console.log('LIIIIIIIIIST: ', list);
     const temp = list[0].docs.map((travler) => {
-      console.log(travler);
+      console.log('list 2, ', travler);
       // @ts-ignore
       // eslint-disable-next-line no-underscore-dangle
-      return travler[0]._data;
+      return travler._data;
     });
     return temp;
   } catch (error) {
