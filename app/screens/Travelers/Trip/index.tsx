@@ -8,7 +8,6 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import RenderContent from '../../../components/bottomSheet/renderContent';
 import RenderHeader from '../../../components/bottomSheet/renderHeader';
 import WideButton from '../../../components/buttons/WideButton';
-import DropDownFormInput from '../../../components/FormInputs/DropDown';
 import TextFormInput from '../../../components/FormInputs/TextI';
 import TextFormInputWithIcon from '../../../components/FormInputs/TextIWithIcon';
 import PictureUploadComponent from '../../../components/pictureUpload';
@@ -56,17 +55,6 @@ const NewTrip: React.FC = () => {
     setNewJob({ ...newJob, itemImages: image });
   };
 
-  const handleCategoryChange = (
-    newCategory:
-      | 'category 1'
-      | 'category 2'
-      | 'category 3'
-      | 'category 4'
-      | 'category 5'
-  ) => {
-    setNewJob({ ...newJob, itemCategory: newCategory });
-  };
-
   const onChangeDate = (event: any, selectedDate: Date | undefined) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
@@ -96,40 +84,12 @@ const NewTrip: React.FC = () => {
 
           <View>
             <View style={styles.screenInputContainer}>
-              <DropDownFormInput
-                labelText="Item Category"
-                placeholderText="Select a category"
-                onChangeHandler={handleCategoryChange}
-                itemList={[
-                  {
-                    label: 'Category 1',
-                    value: 'category 1'
-                  },
-                  {
-                    label: 'Category 2',
-                    value: 'category 2'
-                  },
-                  {
-                    label: 'Category 3',
-                    value: 'category 3'
-                  },
-                  {
-                    label: 'Category 4',
-                    value: 'category 4'
-                  },
-                  {
-                    label: 'Category 5',
-                    value: 'category 5'
-                  }
-                ]}
-                inputValue={newJob?.itemCategory ? newJob.itemCategory : null}
-              />
               <View style={styles.inputContainer}>
                 <TextFormInput
-                  labelText="Item Name"
-                  placeholderText="Enter item name"
+                  labelText="Departure City"
+                  placeholderText="Enter city"
                   onChangeHandler={textFormInputChangeHandler}
-                  propertyName="itemName"
+                  propertyName="departureCity"
                   inputValue={newJob?.itemName ? newJob.itemName : ''}
                 />
               </View>
