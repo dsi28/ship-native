@@ -2,64 +2,35 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import React, { useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import Animated from 'react-native-reanimated';
-import { useDispatch, useSelector } from 'react-redux';
-import BottomSheet from 'reanimated-bottom-sheet';
-import RenderContent from '../../../components/bottomSheet/renderContent';
-import RenderHeader from '../../../components/bottomSheet/renderHeader';
+import { useDispatch } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
 import TextFormInput from '../../../components/FormInputs/TextI';
 import TextFormInputWithIcon from '../../../components/FormInputs/TextIWithIcon';
-import PictureUploadComponent from '../../../components/pictureUpload';
-import { INewJob } from '../../../models/IJob';
+import { ITraveler, travelerPlaceHolder } from '../../../models/ITraveler';
 import NavigationService from '../../../navigation/NavigationService';
-import {
-  resetNewJob,
-  setNewJob as tempSetNewJob
-} from '../../../redux/actions/job';
-import { AppState } from '../../../redux/store/configureStore';
+import { resetNewJob } from '../../../redux/actions/job';
 import styles from './styles';
 
 const NewTrip: React.FC = () => {
-  const jobState = useSelector((state: AppState) => state.job.newJob);
-
   const dispatch = useDispatch();
-  const [pictureInput, setPictureInput] = useState<string>('');
-  const sheetRef = React.useRef();
-  const fall = new Animated.Value(1);
 
   const [date, setDate] = useState<Date>(new Date());
   const [show, setShow] = useState(false);
   // @ts-ignore
-  const [newJob, setNewJob] = useState<INewJob>(jobState);
-
-  const handleAddImage = () => {
-    // @ts-ignore
-    sheetRef.current.snapTo(0);
-    console.log('add img');
-  };
-  const handleRemoveImage = () => {
-    setPictureInput('');
-    console.log('remove img');
-  };
+  const [newTrip, setNewTrip] = useState<ITraveler>(travelerPlaceHolder);
 
   const textFormInputChangeHandler = (
     propertyName: string,
     propertyValue: string
   ) => {
-    setNewJob({ ...newJob, [propertyName]: propertyValue });
-  };
-
-  const handleImageChange = (image: string) => {
-    setPictureInput(image);
-    setNewJob({ ...newJob, itemImages: image });
+    setNewTrip({ ...newTrip, [propertyName]: propertyValue });
   };
 
   const onChangeDate = (event: any, selectedDate: Date | undefined) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
-    setNewJob({ ...newJob, itemDeliveryDate: new Date(currentDate) });
+    setNewTrip({ ...newTrip, date: new Date(currentDate) });
   };
 
   const showDatepicker = () => {
@@ -90,24 +61,35 @@ const NewTrip: React.FC = () => {
                   placeholderText="Enter city"
                   onChangeHandler={textFormInputChangeHandler}
                   propertyName="departureCity"
-                  inputValue={newJob?.itemName ? newJob.itemName : ''}
+                  inputValue={
+                    newTrip?.departureCity ? newTrip.departureCity : ''
+                  }
+                />
+              </View>
+              <View style={styles.inputContainer}>
+                <TextFormInput
+                  labelText="Arrival City"
+                  placeholderText="Enter city"
+                  onChangeHandler={textFormInputChangeHandler}
+                  propertyName="arrivalCity"
+                  inputValue={newTrip?.arrivalCity ? newTrip.arrivalCity : ''}
                 />
               </View>
               <View style={styles.inputContainer}>
                 <Pressable onPress={showDatepicker}>
                   <TextFormInputWithIcon
-                    labelText="Delivery Date"
+                    labelText="Date"
                     placeholderText="Enter Delivery Date"
                     iconName="calendar-today"
                     onChangeHandler={handlePressCalendarInput}
                     propertyName="itemDeliveryDate"
                     inputValue={
                       // eslint-disable-next-line no-nested-ternary
-                      typeof newJob?.itemDeliveryDate !== undefined
-                        ? typeof newJob?.itemDeliveryDate === 'object'
-                          ? newJob?.itemDeliveryDate.toDateString() // newJob.itemDeliveryDate?.toDateString()
+                      typeof newTrip?.date !== undefined
+                        ? typeof newTrip?.date === 'object'
+                          ? newTrip?.date.toDateString() // newJob.itemDeliveryDate?.toDateString()
                           : // @ts-ignore
-                            new Date(newJob?.itemDeliveryDate).toDateString() // this is a mess
+                            new Date(newTrip?.date).toDateString() // this is a mess
                         : date.toDateString() // 'set date'
                     }
                     inputDisabled={false}
@@ -128,99 +110,48 @@ const NewTrip: React.FC = () => {
                 </View>
               </View>
               <View style={styles.inputContainer}>
-                <TextFormInputWithIcon
-                  labelText="Delivery Location"
-                  placeholderText="Enter Location"
-                  iconName="location-pin"
+                <TextFormInput
+                  labelText="Flight Number"
+                  placeholderText="Enter flight number"
                   onChangeHandler={textFormInputChangeHandler}
-                  propertyName="itemDeliveryLocation"
-                  inputValue={
-                    newJob?.itemDeliveryLocation
-                      ? newJob.itemDeliveryLocation
-                      : ''
-                  }
-                  inputDisabled
+                  propertyName="flightNumber"
+                  inputValue={newTrip?.flightNumber ? newTrip.flightNumber : ''}
                 />
-              </View>
-              <TextFormInput
-                labelText="Item Value"
-                placeholderText="Enter item value"
-                onChangeHandler={textFormInputChangeHandler}
-                propertyName="itemValue"
-                inputValue={newJob?.itemValue ? newJob.itemValue : ''}
-              />
-              {/* TODO replace this with an i icon  */}
-              <View style={styles.inputSubTextContainer}>
-                <Text style={styles.inputSubText}>
-                  This value is for insurance purposes so try to be as accurate
-                  as possible
-                </Text>
               </View>
             </View>
           </View>
-        </View>
-        <View style={styles.addItemContainer}>
-          <View style={styles.AddItemTitleContainer}>
-            <Text style={styles.subTitle}>Add Item Image</Text>
-          </View>
-          <View style={styles.imageInputContainer}>
-            {newJob.itemImages && newJob.itemImages.length > 1 ? (
-              <PictureUploadComponent
-                handleImageChange={handleRemoveImage}
-                imageShown={newJob.itemImages}
+
+          <View style={styles.buttonsContainer}>
+            <View style={styles.buttonContainer}>
+              <WideButton
+                buttonText="Next"
+                onPressHandler={() => {
+                  // dispatch(tempSetNewJob({ ...jobState, ...newJob }));
+                  NavigationService.navigate('Step 2');
+                }}
+                isSelected
+                btnBackgoundColor="mediumvioletred"
+                btnBorderColor="mediumvioletred"
+                btnTextColor="white"
               />
-            ) : (
-              <PictureUploadComponent handleImageChange={handleAddImage} />
-            )}
-          </View>
-        </View>
-        <View style={styles.buttonsContainer}>
-          <View style={styles.buttonContainer}>
-            <WideButton
-              buttonText="Next"
-              onPressHandler={() => {
-                dispatch(tempSetNewJob({ ...jobState, ...newJob }));
-                NavigationService.navigate('Step 2');
-              }}
-              isSelected
-              btnBackgoundColor="mediumvioletred"
-              btnBorderColor="mediumvioletred"
-              btnTextColor="white"
-            />
-          </View>
-          <View>
-            <WideButton
-              buttonText="Cancel"
-              onPressHandler={() => {
-                NavigationService.navigate('HomeScreen');
-                console.log('cancel job');
-                dispatch(resetNewJob());
-              }}
-              isSelected
-              btnBackgoundColor="white"
-              btnBorderColor="mediumvioletred"
-              btnTextColor="mediumvioletred"
-            />
+            </View>
+            <View>
+              <WideButton
+                buttonText="Cancel"
+                onPressHandler={() => {
+                  NavigationService.navigate('HomeScreen');
+                  console.log('cancel job');
+                  dispatch(resetNewJob());
+                }}
+                isSelected
+                btnBackgoundColor="white"
+                btnBorderColor="mediumvioletred"
+                btnTextColor="mediumvioletred"
+              />
+            </View>
           </View>
         </View>
       </View>
-      <BottomSheet
-        // @ts-ignore
-        ref={sheetRef}
-        snapPoints={[450, 300, 0]}
-        initialSnap={2}
-        borderRadius={10}
-        callbackNode={fall}
-        enabledGestureInteraction
-        renderContent={() => (
-          <RenderContent
-            setPictureInput={handleImageChange}
-            pictureInput={pictureInput}
-            sheetRef={sheetRef}
-          />
-        )}
-        renderHeader={RenderHeader}
-      />
     </ScrollView>
   );
 };

@@ -3,7 +3,16 @@ export interface ITraveler {
   userId: string;
   departureCity: string;
   arrivalCity: string;
-  date: Date;
+  date?: Date;
   flightNumber: string;
   note: string;
 }
+
+export const travelerPlaceHolder = {
+  uid: '',
+  userId: '',
+  departureCity: '',
+  arrivalCity: '',
+  flightNumber: '',
+  note: ''
+};

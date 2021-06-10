@@ -14,6 +14,7 @@ interface TextFormInputProps {
     | 'email'
     | 'password'
     | 'departureCity'
+    | 'flightNumber'
     | 'arrivalCity';
   inputValue: string | number; // had undefined here too
 }
