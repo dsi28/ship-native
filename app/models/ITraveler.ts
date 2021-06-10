@@ -1,4 +1,4 @@
-export interface ITraveler {
+export interface ITrip {
   uid: string;
   userId: string;
   departureCity: string;

@@ -2,22 +2,25 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import React, { useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
 import TextFormInput from '../../../components/FormInputs/TextI';
 import TextFormInputWithIcon from '../../../components/FormInputs/TextIWithIcon';
-import { ITraveler, travelerPlaceHolder } from '../../../models/ITraveler';
+import { ITrip, travelerPlaceHolder } from '../../../models/ITraveler';
 import NavigationService from '../../../navigation/NavigationService';
 import { resetNewJob } from '../../../redux/actions/job';
+import { AppState } from '../../../redux/store/configureStore';
+import { addTripFirebase } from '../../../services/trip';
 import styles from './styles';
 
 const NewTrip: React.FC = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state: AppState) => state.user);
 
   const [date, setDate] = useState<Date>(new Date());
   const [show, setShow] = useState(false);
   // @ts-ignore
-  const [newTrip, setNewTrip] = useState<ITraveler>(travelerPlaceHolder);
+  const [newTrip, setNewTrip] = useState<ITrip>(travelerPlaceHolder);
 
   const textFormInputChangeHandler = (
     propertyName: string,
@@ -124,10 +127,11 @@ const NewTrip: React.FC = () => {
           <View style={styles.buttonsContainer}>
             <View style={styles.buttonContainer}>
               <WideButton
-                buttonText="Next"
+                buttonText="Add Trip"
                 onPressHandler={() => {
                   // dispatch(tempSetNewJob({ ...jobState, ...newJob }));
-                  NavigationService.navigate('Step 2');
+                  addTripFirebase(user, newTrip);
+                  NavigationService.navigate('HomeScreen');
                 }}
                 isSelected
                 btnBackgoundColor="mediumvioletred"
