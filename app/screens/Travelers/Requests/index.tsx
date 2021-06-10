@@ -39,15 +39,20 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
       <View style={styles.scrollContainer}>
         {typeof travelerList !== 'undefined' ? (
           <View>
-            <Text>Traveler Requests</Text>
-            <Text>Test</Text>
+            {/* eslint-disable-next-line @typescript-eslint/no-shadow */}
+            {travelerList.map((job: any) => {
+              console.log('job here, ', job);
+              return (
+                <TravelerRequestItemComponent
+                  onPressHandler={pressItemHandler}
+                  key={job.uid}
+                />
+              );
+            })}
           </View>
         ) : (
           <Text>No travelers found </Text>
         )}
-
-        <TravelerRequestItemComponent onPressHandler={pressItemHandler} />
-        <TravelerRequestItemComponent onPressHandler={pressItemHandler} />
       </View>
     </ScrollView>
   );
