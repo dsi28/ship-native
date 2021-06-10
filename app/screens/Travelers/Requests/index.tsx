@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import TravelerRequestItemComponent from '../../../components/job/TravelerRequestItem';
+import { IUser } from '../../../models/IUserProfile';
 import NavigationService from '../../../navigation/NavigationService';
 import { getTravelerRequests } from '../../../services/jobs';
-import TravelerScreen from '../TravelerScreen';
 import styles from './styles';
 
 interface TravelerRequestsProps {
@@ -29,9 +29,9 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const pressItemHandler = () => {
+  const pressItemHandler = (traveler: IUser) => {
     console.log('item pressed');
-    NavigationService.navigate('View Traveler', TravelerScreen);
+    NavigationService.navigate('View Traveler', traveler);
   };
   console.log('TList, ', travelerList);
   return (
@@ -40,11 +40,12 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
         {typeof travelerList !== 'undefined' ? (
           <View>
             {/* eslint-disable-next-line @typescript-eslint/no-shadow */}
-            {travelerList.map((job: any) => {
-              console.log('job here, ', job);
+            {travelerList.map((traveler: any) => {
+              console.log('job here, ', traveler);
               return (
                 <TravelerRequestItemComponent
                   onPressHandler={pressItemHandler}
+                  traveler={traveler}
                   key={job.uid}
                 />
               );
