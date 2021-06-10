@@ -12,7 +12,7 @@ import { AppState } from '../../redux/store/configureStore';
 import { getUserOwnJob, getUserTravelerJobs } from '../../services/jobs';
 import AcceptTravler from '../Job/AcceptRequest';
 import DeclineTravler from '../Job/DeclineRequest';
-import JobItem from '../Job/JobItem';
+import JobItemScreenTabs from '../Job/JobItem';
 import NewJobForm from '../Job/NewJobForm';
 import ProfileReviews from '../Profile/Reviews';
 import TravelerRequests from '../Travelers/Requests';
@@ -133,7 +133,7 @@ const HomeStack: React.FC = () => (
       options={{ headerShown: false }}
       component={HomeScreenTabs}
     />
-    <Stack.Screen name="Job" component={JobItem} />
+    <Stack.Screen name="Job" component={JobItemScreenTabs} />
     <Stack.Screen name="Traveler Requests" component={TravelerRequests} />
     <Stack.Screen name="View Traveler" component={TravelerScreen} />
     <Stack.Screen name="Traveler Reviews" component={ProfileReviews} />
