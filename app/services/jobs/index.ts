@@ -132,3 +132,27 @@ export const jobTravelRequest = async (job: IJob, travlerId: string) => {
     console.log('error sending traveler request: ', error);
   }
 };
+
+export const getTravelerRequests = async (travelerIds: string[]) => {
+  console.log('get traveler requests');
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const travelers = travelerIds.map(async (tId) => {
+      const traveler = await usersRef.where('uid', '==', tId).get();
+      return traveler;
+    });
+
+    const list = await Promise.all(travelers);
+    console.log('LIIIIIIIIIST: ', list);
+    const temp = list[0].docs.map((travler) => {
+      console.log('list 2, ', travler);
+      // @ts-ignore
+      // eslint-disable-next-line no-underscore-dangle
+      return travler._data;
+    });
+    return temp;
+  } catch (error) {
+    console.log('error getting traveler users: ', error);
+    return [];
+  }
+};

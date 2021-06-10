@@ -4,7 +4,6 @@ import { ScrollView } from 'react-native-gesture-handler';
 import WideButton from '../../../components/buttons/WideButton';
 import JobDetails from '../../../components/job/Details';
 import NavigationService from '../../../navigation/NavigationService';
-import TravelerRequests from '../../Travelers/Requests';
 import styles from './styles';
 
 interface JobItemProps {
@@ -23,10 +22,7 @@ const JobItem: React.FC<JobItemProps> = ({ route }) => {
               buttonText="View Traveler Requests"
               onPressHandler={() => {
                 console.log('view traveler reqeuests');
-                NavigationService.navigate(
-                  'Traveler Requests',
-                  TravelerRequests
-                );
+                NavigationService.navigate('Traveler Requests', job);
               }}
               isSelected
               btnBackgoundColor="mediumvioletred"
