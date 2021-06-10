@@ -1,6 +1,6 @@
 import DateTimePicker from '@react-native-community/datetimepicker';
 import React, { useState } from 'react';
-import { Platform, Pressable, Text, View } from 'react-native';
+import { Platform, Pressable, Text, TextInput, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
@@ -27,6 +27,11 @@ const NewTrip: React.FC = () => {
     propertyValue: string
   ) => {
     setNewTrip({ ...newTrip, [propertyName]: propertyValue });
+  };
+
+  const setNoteHandler = (value: string) => {
+    console.log(value);
+    setNewTrip({ ...newTrip, note: value });
   };
 
   const onChangeDate = (event: any, selectedDate: Date | undefined) => {
@@ -120,6 +125,32 @@ const NewTrip: React.FC = () => {
                   propertyName="flightNumber"
                   inputValue={newTrip?.flightNumber ? newTrip.flightNumber : ''}
                 />
+              </View>
+              <View>
+                <View style={styles.screenInputContainer}>
+                  <View
+                    style={{
+                      ...styles.inputContainer,
+                      ...{ marginBottom: 40 }
+                    }}
+                  >
+                    <View style={styles.noteLabelContainer}>
+                      <View>
+                        <Text style={styles.noteLabelText}>Add Note</Text>
+                      </View>
+                    </View>
+                    <TextInput
+                      style={styles.noteInputText}
+                      editable
+                      multiline
+                      placeholder="Write here"
+                      maxLength={120}
+                      numberOfLines={4}
+                      value={newTrip.note}
+                      onChangeText={setNoteHandler}
+                    />
+                  </View>
+                </View>
               </View>
             </View>
           </View>

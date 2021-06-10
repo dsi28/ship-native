@@ -62,6 +62,15 @@ const styles = StyleSheet.create({
     // left: 0,
     // position: 'absolute'
   },
+  noteLabelContainer: { marginBottom: 10 },
+  noteLabelText: { fontSize: 20, color: 'gray' },
+  noteInputText: {
+    borderColor: 'gray',
+    borderWidth: 2,
+    textAlignVertical: 'top',
+    fontSize: 20,
+    color: 'gray'
+  },
   buttonContainer: { marginBottom: 20 }
 });
 export default styles;
