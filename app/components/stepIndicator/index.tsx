@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function VerticalStepIndicator() {
+const VerticalStepIndicator = () => {
   const [currentPage, setCurrentPage] = React.useState<number>(0);
   const viewabilityConfig = React.useRef({ itemVisiblePercentThreshold: 40 })
     .current;
@@ -130,4 +130,6 @@ export default function VerticalStepIndicator() {
       />
     </View>
   );
-}
+};
+
+export default VerticalStepIndicator;

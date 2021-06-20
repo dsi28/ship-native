@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import WideButton from '../../../components/buttons/WideButton';
 import JobDetails from '../../../components/job/Details';
+import VerticalStepIndicator from '../../../components/stepIndicator/index';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
 import styles from './styles';
@@ -127,6 +128,8 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
         </View>
         <View>
           <Text>Test</Text>
+          <VerticalStepIndicator />
+          <Text>Test2</Text>
         </View>
       </View>
     </ScrollView>
