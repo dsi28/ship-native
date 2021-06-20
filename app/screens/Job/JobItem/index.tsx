@@ -1,6 +1,6 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import React from 'react';
-import { View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import WideButton from '../../../components/buttons/WideButton';
 import JobDetails from '../../../components/job/Details';
@@ -56,6 +56,83 @@ const JobItem: React.FC<JobItemProps> = ({ job }) => (
     </View>
   </ScrollView>
 );
+
+/// /new 2
+
+interface TrackJobProps {
+  // route: any;
+  job: IJob;
+}
+
+const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
+  const [date, setDate] = useState('');
+  const getDate = (): string => {
+    console.log(
+      'TYPE OF, ',
+      typeof job?.itemDeliveryDate,
+      ' end1 ',
+      job.itemDeliveryDate,
+      ' end2 ',
+      // @ts-ignore
+      typeof job?.itemDeliveryDate.toDate,
+      ' end3'
+    );
+    if (job?.itemDeliveryDate !== undefined) {
+      if (
+        typeof job?.itemDeliveryDate === 'object' &&
+        // @ts-ignore
+        typeof job?.itemDeliveryDate.toDate !== 'undefined'
+      ) {
+        return (
+          job?.itemDeliveryDate
+            // @ts-ignore
+            .toDate()
+            .toDateString()
+            .toString()
+        );
+      }
+      return new Date(
+        // @ts-ignore
+        job?.itemDeliveryDate
+      )
+        .toDateString()
+        .toString();
+    }
+    return 'No date set';
+  };
+
+  useEffect(() => {
+    setDate(getDate());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    // const job = route.params;
+    <ScrollView style={styles.container}>
+      <View style={styles.scrollContainer}>
+        <View
+          style={{
+            alignContent: 'center',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: 20
+          }}
+        >
+          <View style={{ marginBottom: 10 }}>
+            <Text style={{ fontSize: 17 }}>Expected item delivery date</Text>
+          </View>
+          <View>
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{date}</Text>
+          </View>
+        </View>
+        <View>
+          <Text>Test</Text>
+        </View>
+      </View>
+    </ScrollView>
+  );
+};
+
 /// /////new
 
 const Tab = createMaterialTopTabNavigator();
@@ -82,7 +159,7 @@ function JobItemScreenTabs({ route }: any) {
       <Tab.Screen name="Traveler" options={{ tabBarLabel: 'Track Item' }}>
         {() => (
           // @ts-ignore
-          <JobItem job={job} />
+          <TrackJob job={job} />
         )}
       </Tab.Screen>
     </Tab.Navigator>
