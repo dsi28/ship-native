@@ -128,7 +128,7 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
         </View>
         <View>
           <Text>Test</Text>
-          <VerticalStepIndicator />
+          <VerticalStepIndicator currentStep={0} />
           <Text>Test2</Text>
         </View>
       </View>

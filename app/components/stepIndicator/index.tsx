@@ -84,8 +84,16 @@ const styles = StyleSheet.create({
   }
 });
 
-const VerticalStepIndicator = () => {
-  const [currentPage, setCurrentPage] = React.useState<number>(0);
+interface StepIndicatorProps {
+  // route: any;
+  currentStep: number;
+}
+
+const VerticalStepIndicator: React.FC<StepIndicatorProps> = ({
+  currentStep
+}) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [currentPage, setCurrentPage] = React.useState<number>(currentStep);
   const viewabilityConfig = React.useRef({ itemVisiblePercentThreshold: 40 })
     .current;
 
@@ -94,12 +102,12 @@ const VerticalStepIndicator = () => {
     // const { item } = rowData;
     <View style={styles.rowItem} />
   );
-  const onViewableItemsChanged = React.useCallback(({ viewableItems }) => {
-    const visibleItemsCount = viewableItems.length;
-    if (visibleItemsCount !== 0) {
-      setCurrentPage(viewableItems[visibleItemsCount - 1].index);
-    }
-  }, []);
+  //   const onViewableItemsChanged = React.useCallback(({ viewableItems }) => {
+  //     const visibleItemsCount = viewableItems.length;
+  //     if (visibleItemsCount !== 0) {
+  //       setCurrentPage(viewableItems[visibleItemsCount - 1].index);
+  //     }
+  //   }, []);
 
   return (
     <View style={styles.container}>
@@ -116,7 +124,7 @@ const VerticalStepIndicator = () => {
         style={{ flexGrow: 1 }}
         data={dummyData.data}
         renderItem={renderPage}
-        onViewableItemsChanged={onViewableItemsChanged}
+        onViewableItemsChanged={null}
         viewabilityConfig={viewabilityConfig}
       />
     </View>
