@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import StepIndicator from 'react-native-step-indicator';
 
 const stepIndicatorStyles = {
@@ -20,7 +20,8 @@ const stepIndicatorStyles = {
   stepIndicatorLabelUnFinishedColor: 'rgba(255,255,255,0.5)',
   labelColor: '#666666',
   labelSize: 15,
-  currentStepLabelColor: '#fe7013'
+  currentStepLabelColor: '#fe7013',
+  marginBottom: 50
 };
 
 const dummyData = {
@@ -70,7 +71,8 @@ const styles = StyleSheet.create({
   },
   rowItem: {
     flex: 3,
-    paddingVertical: 20
+    paddingVertical: 20,
+    marginBottom: 30
   },
   title: {
     flex: 1,
@@ -93,16 +95,11 @@ const VerticalStepIndicator = () => {
   const viewabilityConfig = React.useRef({ itemVisiblePercentThreshold: 40 })
     .current;
 
-  const renderPage = (rowData: any) => {
-    const { item } = rowData;
-    return (
-      <View style={styles.rowItem}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.body}>{item.body}</Text>
-      </View>
-    );
-  };
-
+  const renderPage = () => (
+    // rowData: any
+    // const { item } = rowData;
+    <View style={styles.rowItem} />
+  );
   const onViewableItemsChanged = React.useCallback(({ viewableItems }) => {
     const visibleItemsCount = viewableItems.length;
     if (visibleItemsCount !== 0) {
