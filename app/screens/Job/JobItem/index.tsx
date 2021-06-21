@@ -2,9 +2,9 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import MaterialCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import WideButton from '../../../components/buttons/WideButton';
 import JobDetails from '../../../components/job/Details';
+import JobStatusComponent from '../../../components/job/status/index';
 import VerticalStepIndicator from '../../../components/stepIndicator/index';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
@@ -160,27 +160,7 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
           <VerticalStepIndicator currentStep={0} stepNames={stepNames} />
         </View>
         <View style={{ marginVertical: 30, marginHorizontal: 20 }}>
-          <View style={{ marginBottom: 15 }}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-              Current Status
-            </Text>
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            <View
-              style={{
-                marginRight: 10,
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <MaterialCIcon name="truck" size={25} color="#e91e63" />
-            </View>
-            <View>
-              <Text style={{ fontSize: 20, color: '#e91e63' }}>
-                {stepNames.data[0].title}
-              </Text>
-            </View>
-          </View>
+          <JobStatusComponent stepNames={stepNames} job={job} currentStep={0} />
         </View>
       </View>
     </ScrollView>
