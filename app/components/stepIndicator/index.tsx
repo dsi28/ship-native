@@ -7,10 +7,10 @@ const stepIndicatorStyles = {
   currentStepIndicatorSize: 30,
   separatorStrokeWidth: 3,
   currentStepStrokeWidth: 3,
-  stepStrokeCurrentColor: '#fe7013',
-  separatorFinishedColor: '#fe7013',
+  stepStrokeCurrentColor: '#e91e63',
+  separatorFinishedColor: '#e91e63',
   separatorUnFinishedColor: '#aaaaaa',
-  stepIndicatorFinishedColor: '#fe7013',
+  stepIndicatorFinishedColor: '#e91e63',
   stepIndicatorUnFinishedColor: '#aaaaaa',
   stepIndicatorCurrentColor: '#ffffff',
   stepIndicatorLabelFontSize: 0,
@@ -20,37 +20,37 @@ const stepIndicatorStyles = {
   stepIndicatorLabelUnFinishedColor: 'rgba(255,255,255,0.5)',
   labelColor: '#666666',
   labelSize: 15,
-  currentStepLabelColor: '#fe7013'
+  currentStepLabelColor: '#e91e63'
 };
 
-const stepNames = {
-  data: [
-    {
-      title: 'Searching for traveler'
-    },
-    {
-      title: 'Item shipped to traveler'
-    },
-    {
-      title: 'Item confirmed by traveler'
-    },
-    {
-      title: 'Traveler is on the way to the destination'
-    },
-    {
-      title: 'Traveler delivered the item'
-    },
-    {
-      title: 'Receiver collected the item'
-    },
-    {
-      title: 'Item confirmed by receiver'
-    },
-    {
-      title: 'Payment is made'
-    }
-  ]
-};
+// const stepNames = {
+//   data: [
+//     {
+//       title: 'Searching for traveler'
+//     },
+//     {
+//       title: 'Item shipped to traveler'
+//     },
+//     {
+//       title: 'Item confirmed by traveler'
+//     },
+//     {
+//       title: 'Traveler is on the way to the destination'
+//     },
+//     {
+//       title: 'Traveler delivered the item'
+//     },
+//     {
+//       title: 'Receiver collected the item'
+//     },
+//     {
+//       title: 'Item confirmed by receiver'
+//     },
+//     {
+//       title: 'Payment is made'
+//     }
+//   ]
+// };
 
 const styles = StyleSheet.create({
   container: {
@@ -75,10 +75,16 @@ const styles = StyleSheet.create({
 interface StepIndicatorProps {
   // route: any;
   currentStep: number;
+  stepNames: {
+    data: {
+      title: string;
+    }[];
+  };
 }
 
 const VerticalStepIndicator: React.FC<StepIndicatorProps> = ({
-  currentStep
+  currentStep,
+  stepNames
 }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentPage, setCurrentPage] = React.useState<number>(currentStep);
