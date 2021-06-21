@@ -56,11 +56,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#ffffff'
+    // backgroundColor: '#ffffff'
+    backgroundColor: '#f3f5fa'
   },
   stepIndicator: {
-    marginVertical: 50,
-    paddingHorizontal: 20
+    marginVertical: 20,
+    paddingHorizontal: 20,
+    // backgroundColor: '#f3f5fa',
+    width: '100%'
   },
   rowItem: {
     flex: 3,

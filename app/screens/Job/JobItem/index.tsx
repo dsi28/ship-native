@@ -116,7 +116,7 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
             alignContent: 'center',
             justifyContent: 'center',
             alignItems: 'center',
-            marginBottom: 20
+            marginBottom: 30
           }}
         >
           <View style={{ marginBottom: 10 }}>
@@ -127,9 +127,7 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
           </View>
         </View>
         <View>
-          <Text>Test</Text>
           <VerticalStepIndicator currentStep={0} />
-          <Text>Test2</Text>
         </View>
       </View>
     </ScrollView>
