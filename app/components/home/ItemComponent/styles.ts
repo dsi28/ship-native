@@ -101,6 +101,13 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%'
   },
+  jobNCostName: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  costView: {
+    marginRight: 0
+  },
 
   // reusable styles:
   flexDirectionRow: { flexDirection: 'row' },
