@@ -4,27 +4,26 @@ import StepIndicator from 'react-native-step-indicator';
 
 const stepIndicatorStyles = {
   stepIndicatorSize: 30,
-  currentStepIndicatorSize: 40,
+  currentStepIndicatorSize: 30,
   separatorStrokeWidth: 3,
-  currentStepStrokeWidth: 5,
+  currentStepStrokeWidth: 3,
   stepStrokeCurrentColor: '#fe7013',
   separatorFinishedColor: '#fe7013',
   separatorUnFinishedColor: '#aaaaaa',
   stepIndicatorFinishedColor: '#fe7013',
   stepIndicatorUnFinishedColor: '#aaaaaa',
   stepIndicatorCurrentColor: '#ffffff',
-  stepIndicatorLabelFontSize: 15,
-  currentStepIndicatorLabelFontSize: 15,
+  stepIndicatorLabelFontSize: 0,
+  currentStepIndicatorLabelFontSize: 0,
   stepIndicatorLabelCurrentColor: '#000000',
   stepIndicatorLabelFinishedColor: '#ffffff',
   stepIndicatorLabelUnFinishedColor: 'rgba(255,255,255,0.5)',
   labelColor: '#666666',
   labelSize: 15,
-  currentStepLabelColor: '#fe7013',
-  marginBottom: 50
+  currentStepLabelColor: '#fe7013'
 };
 
-const dummyData = {
+const stepNames = {
   data: [
     {
       title: 'Searching for traveler'
@@ -67,20 +66,6 @@ const styles = StyleSheet.create({
     flex: 3,
     paddingVertical: 20,
     marginBottom: 30
-  },
-  title: {
-    flex: 1,
-    fontSize: 20,
-    color: '#333333',
-    paddingVertical: 16,
-    fontWeight: '600'
-  },
-  body: {
-    flex: 1,
-    fontSize: 15,
-    color: '#606060',
-    lineHeight: 24,
-    marginRight: 8
   }
 });
 
@@ -114,15 +99,15 @@ const VerticalStepIndicator: React.FC<StepIndicatorProps> = ({
       <View style={styles.stepIndicator}>
         <StepIndicator
           customStyles={stepIndicatorStyles}
-          stepCount={6}
+          stepCount={8}
           direction="vertical"
           currentPosition={currentPage}
-          labels={dummyData.data.map((item: any) => item.title)}
+          labels={stepNames.data.map((item: any) => item.title)}
         />
       </View>
       <FlatList
         style={{ flexGrow: 1 }}
-        data={dummyData.data}
+        data={stepNames.data}
         renderItem={renderPage}
         onViewableItemsChanged={null}
         viewabilityConfig={viewabilityConfig}
