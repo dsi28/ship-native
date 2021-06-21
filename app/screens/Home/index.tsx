@@ -41,7 +41,7 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
     NavigationService.navigate('Job', job);
   };
   return (
-    <ScrollView style={{ backgroundColor: '#f3f5fa' }}>
+    <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         {typeof jobsList !== 'undefined' &&
         typeof jobsList !== 'string' &&
