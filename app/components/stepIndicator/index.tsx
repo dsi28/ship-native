@@ -103,6 +103,13 @@ const VerticalStepIndicator: React.FC<StepIndicatorProps> = ({
   //     }
   //   }, []);
 
+  // useEffect(() => {
+  //   console.log('test');
+  //   setCurrentPage(currentStep);
+  //   console.log('end test test');
+
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   return (
     <View style={styles.container}>
       <View style={styles.stepIndicator}>
@@ -110,7 +117,7 @@ const VerticalStepIndicator: React.FC<StepIndicatorProps> = ({
           customStyles={stepIndicatorStyles}
           stepCount={8}
           direction="vertical"
-          currentPosition={currentPage}
+          currentPosition={currentStep}
           labels={stepNames.data.map((item: any) => item.title)}
         />
       </View>

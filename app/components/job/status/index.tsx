@@ -51,15 +51,10 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
   // }
 
   const getStepDetails = () => {
-    switch (currentStep) {
-      case 0:
-        setShowNote(true);
-        break;
-      case 1:
-        setShowNote(false);
-        break;
-      default:
-        break;
+    if (currentStep === 0) {
+      setShowNote(true);
+    } else if (currentStep === 1) {
+      setShowNote(false);
     }
   };
 
@@ -91,22 +86,24 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
         </View>
       </View>
       <View>
-        <View>
+        {currentStep === 0 && (
           <View>
-            <JobPropertyComponent
-              title="Deliver item to traveler by"
-              // @ts-ignore
-              value={date}
-            />
+            <View>
+              <JobPropertyComponent
+                title="Deliver item to traveler by"
+                // @ts-ignore
+                value={date}
+              />
+            </View>
+            <View>
+              <JobPropertyComponent
+                title="Address"
+                // @ts-ignore
+                value={job.itemDeliveryLocation}
+              />
+            </View>
           </View>
-          <View>
-            <JobPropertyComponent
-              title="Address"
-              // @ts-ignore
-              value={job.itemDeliveryLocation}
-            />
-          </View>
-        </View>
+        )}
 
         {showNote && (
           <View>

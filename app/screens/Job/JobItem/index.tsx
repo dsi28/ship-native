@@ -1,6 +1,6 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import WideButton from '../../../components/buttons/WideButton';
 import JobDetails from '../../../components/job/Details';
@@ -96,6 +96,7 @@ interface TrackJobProps {
 }
 
 const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
+  const [currentStep, setCurrentStep] = useState(0);
   const [date, setDate] = useState('');
   const getDate = (): string => {
     console.log(
@@ -157,10 +158,28 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
           </View>
         </View>
         <View>
-          <VerticalStepIndicator currentStep={0} stepNames={stepNames} />
+          <VerticalStepIndicator
+            currentStep={currentStep}
+            stepNames={stepNames}
+          />
         </View>
         <View style={{ marginVertical: 30, marginHorizontal: 20 }}>
-          <JobStatusComponent stepNames={stepNames} job={job} currentStep={0} />
+          <JobStatusComponent
+            stepNames={stepNames}
+            job={job}
+            currentStep={currentStep}
+          />
+        </View>
+        <View>
+          <Pressable
+            style={{ width: '100%' }}
+            onPress={() => {
+              setCurrentStep(currentStep + 1);
+              console.log('pressss');
+            }}
+          >
+            <Text style={{ color: 'orange' }}>press</Text>
+          </Pressable>
         </View>
       </View>
     </ScrollView>
