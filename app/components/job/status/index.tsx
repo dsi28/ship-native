@@ -20,7 +20,6 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
   currentStep
 }) => {
   const [date, setDate] = useState('');
-  const [showNote, setShowNote] = useState(false);
   const getDate = (): string => {
     if (job?.itemDeliveryDate !== undefined) {
       if (
@@ -50,17 +49,8 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
   //   return
   // }
 
-  const getStepDetails = () => {
-    if (currentStep === 0) {
-      setShowNote(true);
-    } else if (currentStep === 1) {
-      setShowNote(false);
-    }
-  };
-
   useEffect(() => {
     setDate(getDate());
-    getStepDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -69,22 +59,56 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
       <View style={{ marginBottom: 10 }}>
         <Text style={{ fontSize: 30, fontWeight: 'bold' }}>Current Status</Text>
       </View>
-      <View style={{ flexDirection: 'row', marginBottom: 30 }}>
-        <View
-          style={{
-            marginRight: 10,
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <MaterialCIcon name="truck" size={25} color="#e91e63" />
-        </View>
-        <View>
-          <Text style={{ fontSize: 20, color: '#e91e63' }}>
-            {stepNames.data[0].title}
-          </Text>
+      <View>
+        <View style={{ flexDirection: 'row', marginBottom: 30 }}>
+          <View
+            style={{
+              marginRight: 10,
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            {currentStep === 0 && (
+              <MaterialCIcon name="account-search" size={25} color="#e91e63" />
+            )}
+            {currentStep === 1 && (
+              <MaterialCIcon name="truck" size={25} color="#e91e63" />
+            )}
+            {currentStep === 2 && (
+              <MaterialCIcon name="account-check" size={25} color="#e91e63" />
+            )}
+            {currentStep === 3 && (
+              <MaterialCIcon
+                name="airplane-takeoff"
+                size={25}
+                color="#e91e63"
+              />
+            )}
+            {currentStep === 4 && (
+              <MaterialCIcon name="check" size={25} color="#e91e63" />
+            )}
+            {currentStep === 5 && (
+              <MaterialCIcon name="check-all" size={25} color="#e91e63" />
+            )}
+            {currentStep === 6 && (
+              <MaterialCIcon name="clipboard-check" size={25} color="#e91e63" />
+            )}
+            {currentStep === 7 && (
+              <MaterialCIcon
+                name="currency-usd-circle"
+                size={25}
+                color="#e91e63"
+              />
+            )}
+          </View>
+          <View>
+            <Text style={{ fontSize: 20, color: '#e91e63' }}>
+              {stepNames.data[currentStep].title}
+            </Text>
+          </View>
         </View>
       </View>
+
       <View>
         {currentStep === 0 && (
           <View>
@@ -104,8 +128,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
             </View>
           </View>
         )}
-
-        {showNote && (
+        {currentStep === 0 && (
           <View>
             <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
               Deliver the package to the traveler 1 day before the flight date

@@ -96,20 +96,7 @@ const VerticalStepIndicator: React.FC<StepIndicatorProps> = ({
     // const { item } = rowData;
     <View style={styles.rowItem} />
   );
-  //   const onViewableItemsChanged = React.useCallback(({ viewableItems }) => {
-  //     const visibleItemsCount = viewableItems.length;
-  //     if (visibleItemsCount !== 0) {
-  //       setCurrentPage(viewableItems[visibleItemsCount - 1].index);
-  //     }
-  //   }, []);
 
-  // useEffect(() => {
-  //   console.log('test');
-  //   setCurrentPage(currentStep);
-  //   console.log('end test test');
-
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
   return (
     <View style={styles.container}>
       <View style={styles.stepIndicator}>

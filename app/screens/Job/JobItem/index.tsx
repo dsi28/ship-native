@@ -22,7 +22,7 @@ const stepNames = {
       title: 'Item confirmed by traveler'
     },
     {
-      title: 'Traveler is on the way to the destination'
+      title: 'Traveler is on their way'
     },
     {
       title: 'Traveler delivered the item'
