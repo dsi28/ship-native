@@ -108,7 +108,9 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
           </View>
           <View>
             <Text style={{ fontSize: 20, color: '#e91e63' }}>
-              {stepNames.data[currentStep].title}
+              {currentStep <= 7
+                ? stepNames.data[currentStep].title
+                : 'complete'}
             </Text>
           </View>
         </View>
