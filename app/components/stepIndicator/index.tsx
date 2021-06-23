@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import StepIndicator from 'react-native-step-indicator';
 
@@ -22,35 +23,6 @@ const stepIndicatorStyles = {
   labelSize: 15,
   currentStepLabelColor: '#e91e63'
 };
-
-// const stepNames = {
-//   data: [
-//     {
-//       title: 'Searching for traveler'
-//     },
-//     {
-//       title: 'Item shipped to traveler'
-//     },
-//     {
-//       title: 'Item confirmed by traveler'
-//     },
-//     {
-//       title: 'Traveler is on the way to the destination'
-//     },
-//     {
-//       title: 'Traveler delivered the item'
-//     },
-//     {
-//       title: 'Receiver collected the item'
-//     },
-//     {
-//       title: 'Item confirmed by receiver'
-//     },
-//     {
-//       title: 'Payment is made'
-//     }
-//   ]
-// };
 
 const styles = StyleSheet.create({
   container: {
@@ -87,6 +59,8 @@ const VerticalStepIndicator: React.FC<StepIndicatorProps> = ({
   stepNames
 }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [stepsDone, setStepsDone] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentPage, setCurrentPage] = React.useState<number>(currentStep);
   const viewabilityConfig = React.useRef({ itemVisiblePercentThreshold: 40 })
     .current;
@@ -97,6 +71,13 @@ const VerticalStepIndicator: React.FC<StepIndicatorProps> = ({
     <View style={styles.rowItem} />
   );
 
+  useEffect(() => {
+    if (currentStep === 8) {
+      setStepsDone(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.stepIndicator}>
@@ -104,7 +85,7 @@ const VerticalStepIndicator: React.FC<StepIndicatorProps> = ({
           customStyles={stepIndicatorStyles}
           stepCount={8}
           direction="vertical"
-          currentPosition={currentStep}
+          currentPosition={currentStep !== 8 ? currentStep : 7}
           labels={stepNames.data.map((item: any) => item.title)}
         />
       </View>

@@ -19,6 +19,8 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
   job,
   currentStep
 }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [stepsDone, setStepsDone] = useState(false);
   const [date, setDate] = useState('');
   const getDate = (): string => {
     if (job?.itemDeliveryDate !== undefined) {
@@ -51,6 +53,9 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
 
   useEffect(() => {
     setDate(getDate());
+    if (currentStep === 8) {
+      setStepsDone(true);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
