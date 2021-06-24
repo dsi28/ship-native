@@ -76,14 +76,17 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
             </View>
           </View>
           <View style={styles.receiveContainer}>
-            <View style={styles.receiveTitleContainer}>
+            <View style={{ marginTop: 30 }}>
               <Text style={styles.receiveTitle}>
-                What trip are you taking to {job.itemDeliveryLocation}
+                What trip are you taking to
+              </Text>
+              <Text style={styles.receiveTitle}>
+                {job.itemDeliveryLocation}
               </Text>
             </View>
-            <View style={styles.receiveTogglerContainer}>
+            <View style={{ borderRadius: 10 }}>
               <DropDownFormInput
-                labelText="Item Category"
+                labelText=""
                 placeholderText="select your trip"
                 onChangeHandler={handleTripChange}
                 itemList={
