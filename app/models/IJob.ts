@@ -81,5 +81,6 @@ export interface IItemCategory {
 
 export interface ITravelerRequest {
   travelerId: string;
+  tripId: string;
   status: 'accepted' | 'denied' | 'pending';
 }

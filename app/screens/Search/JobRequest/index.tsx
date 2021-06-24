@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
+import DropDownFormInput from '../../../components/FormInputs/DropDown';
 import JobPropertyComponent from '../../../components/job/property';
 import NumberToggler from '../../../components/numberToggler';
 import { IJob } from '../../../models/IJob';
@@ -53,6 +54,43 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
             </View>
             <View style={styles.receiveTogglerContainer}>
               <NumberToggler count={daysBefore} setCount={setDaysBefore} />
+            </View>
+          </View>
+          <View style={styles.receiveContainer}>
+            <View style={styles.receiveTitleContainer}>
+              <Text style={styles.receiveTitle}>
+                What trip are you taking to {job.itemDeliveryLocation}
+              </Text>
+            </View>
+            <View style={styles.receiveTogglerContainer}>
+              <DropDownFormInput
+                labelText="Item Category"
+                placeholderText="select your trip"
+                onChangeHandler={() => console.log('change drop')}
+                itemList={[
+                  {
+                    label: 'Category 1',
+                    value: 'category 1'
+                  },
+                  {
+                    label: 'Category 2',
+                    value: 'category 2'
+                  },
+                  {
+                    label: 'Category 3',
+                    value: 'category 3'
+                  },
+                  {
+                    label: 'Category 4',
+                    value: 'category 4'
+                  },
+                  {
+                    label: 'Category 5',
+                    value: 'category 5'
+                  }
+                ]}
+                inputValue={null}
+              />
             </View>
           </View>
           <View style={styles.paymentContainer}>
