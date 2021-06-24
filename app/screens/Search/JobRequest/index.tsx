@@ -23,7 +23,10 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
 
   const [daysBefore, setDaysBefore] = useState(1);
   const [travelerTrips, setTravelerTrips] = useState([]);
-  console.log('job in search', job);
+  const [selectedTrip, setSelectedTrip] = useState<string>('');
+  const handleTripChange = (tripId: string) => {
+    setSelectedTrip(tripId);
+  };
 
   const getUserTrips = async () => {
     console.log(userId);
@@ -82,7 +85,7 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               <DropDownFormInput
                 labelText="Item Category"
                 placeholderText="select your trip"
-                onChangeHandler={() => console.log('change drop')}
+                onChangeHandler={handleTripChange}
                 itemList={
                   travelerTrips.length === 0
                     ? []
@@ -95,29 +98,6 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
                         };
                       })
                 }
-                // itemList={[]}
-                // itemList={[
-                //   {
-                //     label: 'Category 1',
-                //     value: 'category 1'
-                //   },
-                //   {
-                //     label: 'Category 2',
-                //     value: 'category 2'
-                //   },
-                //   {
-                //     label: 'Category 3',
-                //     value: 'category 3'
-                //   },
-                //   {
-                //     label: 'Category 4',
-                //     value: 'category 4'
-                //   },
-                //   {
-                //     label: 'Category 5',
-                //     value: 'category 5'
-                //   }
-                // ]}
                 inputValue={null}
               />
             </View>
@@ -136,8 +116,9 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
             <WideButton
               buttonText="Request to Carry This Package"
               onPressHandler={() => {
-                jobTravelRequest(job, userId);
+                jobTravelRequest(job, userId, selectedTrip);
                 console.log('send request to carry package');
+                console.log('selected trip', selectedTrip);
                 NavigationService.navigate('SearchScreen');
               }}
               isSelected
