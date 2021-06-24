@@ -24,10 +24,10 @@ export const addTripFirebase = async (user: IUser, newTrip: ITrip) => {
   }
 };
 
-export const getTripsFirebase = async (traveler: IUser) => {
+export const getTripsFirebase = async (travelerId: string) => {
   try {
     const firebaseTrips = await usersRef
-      .doc(traveler.uid)
+      .doc(travelerId)
       .collection('trips')
       .get();
     return firebaseTrips.docs;

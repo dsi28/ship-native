@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
@@ -10,6 +10,7 @@ import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
 import { AppState } from '../../../redux/store/configureStore';
 import { jobTravelRequest } from '../../../services/jobs';
+import { getTripsFirebase } from '../../../services/trip';
 import styles from './styles';
 
 interface SearchJobScreenProps {
@@ -21,7 +22,22 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
   const userId = useSelector((state: AppState) => state.user.uid);
 
   const [daysBefore, setDaysBefore] = useState(1);
+  const [travelerTrips, setTravelerTrips] = useState([]);
   console.log('job in search', job);
+
+  const getUserTrips = async () => {
+    console.log(userId);
+    const tripsList = await getTripsFirebase(userId);
+    console.log('JOOOOOOOOOOOOBs ', tripsList);
+    // @ts-ignore
+    setTravelerTrips(tripsList);
+  };
+
+  useEffect(() => {
+    getUserTrips();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log('**************Traveler trips', travelerTrips);
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -67,28 +83,41 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
                 labelText="Item Category"
                 placeholderText="select your trip"
                 onChangeHandler={() => console.log('change drop')}
-                itemList={[
-                  {
-                    label: 'Category 1',
-                    value: 'category 1'
-                  },
-                  {
-                    label: 'Category 2',
-                    value: 'category 2'
-                  },
-                  {
-                    label: 'Category 3',
-                    value: 'category 3'
-                  },
-                  {
-                    label: 'Category 4',
-                    value: 'category 4'
-                  },
-                  {
-                    label: 'Category 5',
-                    value: 'category 5'
-                  }
-                ]}
+                itemList={
+                  travelerTrips.length === 0
+                    ? []
+                    : travelerTrips.map((tripFb: any) => {
+                        // eslint-disable-next-line no-underscore-dangle
+                        const trip = tripFb._data;
+                        return {
+                          label: trip.arrivalCity,
+                          value: trip.uid
+                        };
+                      })
+                }
+                // itemList={[]}
+                // itemList={[
+                //   {
+                //     label: 'Category 1',
+                //     value: 'category 1'
+                //   },
+                //   {
+                //     label: 'Category 2',
+                //     value: 'category 2'
+                //   },
+                //   {
+                //     label: 'Category 3',
+                //     value: 'category 3'
+                //   },
+                //   {
+                //     label: 'Category 4',
+                //     value: 'category 4'
+                //   },
+                //   {
+                //     label: 'Category 5',
+                //     value: 'category 5'
+                //   }
+                // ]}
                 inputValue={null}
               />
             </View>
