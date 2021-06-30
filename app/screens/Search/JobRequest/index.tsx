@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
@@ -83,6 +83,28 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               <Text style={styles.receiveTitle}>
                 {job.itemDeliveryLocation}
               </Text>
+            </View>
+            <View>
+              <Pressable
+                style={{ alignSelf: 'center' }}
+                onPress={() => {
+                  console.log('new trip');
+                  NavigationService.navigate('Home', {
+                    screen: 'Add Trip'
+                  });
+                }}
+              >
+                <Text
+                  style={{
+                    color: '#e91e63',
+                    fontSize: 17,
+                    fontWeight: 'bold',
+                    alignSelf: 'center'
+                  }}
+                >
+                  Add Trip
+                </Text>
+              </Pressable>
             </View>
             <View style={{ borderRadius: 10 }}>
               <DropDownFormInput
