@@ -23,3 +23,40 @@ export const addTripFirebase = async (user: IUser, newTrip: ITrip) => {
     return 'add trip failed';
   }
 };
+
+export const getTripsFirebase = async (travelerId: string) => {
+  try {
+    const firebaseTrips = await usersRef
+      .doc(travelerId)
+      .collection('trips')
+      .get();
+    return firebaseTrips.docs;
+  } catch (error) {
+    console.warn('ERROR adding trip: ', error);
+    return 'add trip failed';
+  }
+};
+
+// export const getOpenJobs = async (userId: string) => {
+//   const openJobs = await jobsRef
+//     .where('ownerId', '!=', userId)
+//     .get()
+//     .then((firebaseJobs) => {
+//       if (typeof firebaseJobs !== 'undefined') {
+//         console.log(
+//           userId,
+//           ' firebase jobs: ',
+//           // @ts-ignore
+//           // eslint-disable-next-line no-underscore-dangle
+//           firebaseJobs.docs
+//         );
+//         return firebaseJobs.docs;
+//       }
+//       return [];
+//     })
+//     .catch((error) => {
+//       console.warn('ERROR getting open jobs: ', error);
+//       return 'get open jobs failed';
+//     });
+//   return openJobs;
+// };

@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
+import DropDownFormInput from '../../../components/FormInputs/DropDown';
 import JobPropertyComponent from '../../../components/job/property';
 import NumberToggler from '../../../components/numberToggler';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
 import { AppState } from '../../../redux/store/configureStore';
 import { jobTravelRequest } from '../../../services/jobs';
+import { getTripsFirebase } from '../../../services/trip';
 import styles from './styles';
 
 interface SearchJobScreenProps {
@@ -20,7 +22,25 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
   const userId = useSelector((state: AppState) => state.user.uid);
 
   const [daysBefore, setDaysBefore] = useState(1);
-  console.log('job in search', job);
+  const [travelerTrips, setTravelerTrips] = useState([]);
+  const [selectedTrip, setSelectedTrip] = useState<string>('');
+  const handleTripChange = (tripId: string) => {
+    setSelectedTrip(tripId);
+  };
+
+  const getUserTrips = async () => {
+    console.log(userId);
+    const tripsList = await getTripsFirebase(userId);
+    console.log('JOOOOOOOOOOOOBs ', tripsList);
+    // @ts-ignore
+    setTravelerTrips(tripsList);
+  };
+
+  useEffect(() => {
+    getUserTrips();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log('**************Traveler trips', travelerTrips);
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -55,6 +75,58 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               <NumberToggler count={daysBefore} setCount={setDaysBefore} />
             </View>
           </View>
+          <View style={styles.receiveContainer}>
+            <View style={{ marginTop: 30 }}>
+              <Text style={styles.receiveTitle}>
+                What trip are you taking to
+              </Text>
+              <Text style={styles.receiveTitle}>
+                {job.itemDeliveryLocation}
+              </Text>
+            </View>
+            <View>
+              <Pressable
+                style={{ alignSelf: 'center' }}
+                onPress={() => {
+                  console.log('new trip');
+                  NavigationService.navigate('Home', {
+                    screen: 'Add Trip'
+                  });
+                }}
+              >
+                <Text
+                  style={{
+                    color: '#e91e63',
+                    fontSize: 17,
+                    fontWeight: 'bold',
+                    alignSelf: 'center'
+                  }}
+                >
+                  Add Trip
+                </Text>
+              </Pressable>
+            </View>
+            <View style={{ borderRadius: 10 }}>
+              <DropDownFormInput
+                labelText=""
+                placeholderText="select your trip"
+                onChangeHandler={handleTripChange}
+                itemList={
+                  travelerTrips.length === 0
+                    ? []
+                    : travelerTrips.map((tripFb: any) => {
+                        // eslint-disable-next-line no-underscore-dangle
+                        const trip = tripFb._data;
+                        return {
+                          label: trip.arrivalCity,
+                          value: trip.uid
+                        };
+                      })
+                }
+                inputValue={null}
+              />
+            </View>
+          </View>
           <View style={styles.paymentContainer}>
             <Text style={styles.paymentTitleText}>
               Traveler will be paid on delivery
@@ -69,8 +141,9 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
             <WideButton
               buttonText="Request to Carry This Package"
               onPressHandler={() => {
-                jobTravelRequest(job, userId);
+                jobTravelRequest(job, userId, selectedTrip);
                 console.log('send request to carry package');
+                console.log('selected trip', selectedTrip);
                 NavigationService.navigate('SearchScreen');
               }}
               isSelected
