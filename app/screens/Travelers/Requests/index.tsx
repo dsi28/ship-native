@@ -37,7 +37,7 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
-        {typeof travelerList !== 'undefined' ? (
+        {typeof travelerList !== 'undefined' && travelerList.length > 0 ? (
           <View>
             {/* eslint-disable-next-line @typescript-eslint/no-shadow */}
             {travelerList.map((traveler: any) => {
