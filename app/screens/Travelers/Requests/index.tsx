@@ -16,7 +16,7 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
   const [travelerList, setTravelerList] = useState<any>([]);
 
   const getTravelers = async () => {
-    console.log('get travelers');
+    console.log('get travelers', job.travelerRequests, ' end');
     // eslint-disable-next-line no-underscore-dangle
     const temp = await getTravelerRequests(job.travelerRequests);
     console.log('temp, ', temp);
@@ -37,7 +37,7 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
-        {typeof travelerList !== 'undefined' ? (
+        {typeof travelerList !== 'undefined' && travelerList.length > 0 ? (
           <View>
             {/* eslint-disable-next-line @typescript-eslint/no-shadow */}
             {travelerList.map((traveler: any) => {
