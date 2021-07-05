@@ -16,7 +16,7 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
   const [travelerList, setTravelerList] = useState<any>([]);
 
   const getTravelers = async () => {
-    console.log('get travelers');
+    console.log('get travelers', job.travelerRequests, ' end');
     // eslint-disable-next-line no-underscore-dangle
     const temp = await getTravelerRequests(job.travelerRequests);
     console.log('temp, ', temp);

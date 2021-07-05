@@ -147,8 +147,8 @@ export const getTravelerRequests = async (travelerIds: string[]) => {
   console.log('get traveler requests');
   try {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const travelers = travelerIds.map(async (tId) => {
-      const traveler = await usersRef.where('uid', '==', tId).get();
+    const travelers = travelerIds.map(async (trav: any) => {
+      const traveler = await usersRef.where('uid', '==', trav.travelerId).get();
       return traveler;
     });
 
