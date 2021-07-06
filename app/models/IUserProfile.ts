@@ -1,3 +1,5 @@
+import { ITravelerRequest } from './IJob';
+
 // modal for create user
 export interface IUserProfile {
   uid: string;
@@ -19,7 +21,7 @@ export interface IUser {
   name?: string;
   phone?: string;
   pictures?: string;
-  travelerRequests?: string[];
+  travelerRequests?: ITravelerRequest[];
   ownerJobs?: string[];
 }
 
