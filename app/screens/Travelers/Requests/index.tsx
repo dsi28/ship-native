@@ -31,7 +31,7 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
 
   const pressItemHandler = (traveler: IUser) => {
     console.log('item pressed');
-    NavigationService.navigate('View Traveler', traveler);
+    NavigationService.navigate('View Traveler', { traveler, job });
   };
   console.log('TList, ', travelerList);
   return (

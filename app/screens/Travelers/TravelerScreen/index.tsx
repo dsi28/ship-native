@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
@@ -8,20 +8,54 @@ import TravelerCDComponent from '../../../components/Traveler/ChatDistance';
 import DarkBackgroundPropertyComponent from '../../../components/Traveler/DarkBackGroundProperty';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
 import NavigationService from '../../../navigation/NavigationService';
+import { getTripFirebase } from '../../../services/trip';
 import AcceptTravler from '../../Job/AcceptRequest';
 import DeclineTravler from '../../Job/DeclineRequest';
 import styles from './styles';
 
-const TravelerScreen: React.FC = () => {
+interface TravelerScreenProps {
+  route: any;
+}
+const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
+  const traveler = route.params;
+  const job = route.params;
+  const [trip, setTrip] = useState({});
+  console.log('travler uyoooo', traveler, ' job', job);
   // @ts-ignore default does exsist not sure why this show up
   const userProfile = useSelector((state: AppState) => state.default);
   console.log(userProfile);
   const [showDeclineModal, setShowDeclineModal] = useState(false);
 
+  // get the trip using the traveler.travelerRequests.tripId
+  const getTravelerTrip = async () => {
+    console.log('get travelers', traveler.travelerRequests.tripId, ' end');
+    // eslint-disable-next-line no-underscore-dangle
+    const temp = await getTripFirebase(
+      traveler.uid,
+      traveler.travelerRequests.tripId
+    );
+    console.log('temp, ', temp);
+    // @ts-ignore
+    setTrip(temp);
+  };
+
+  useEffect(() => {
+    getTravelerTrip();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
         <TravelerHeaderComponent />
+        {typeof trip !== 'undefined' ? (
+          <View>
+            {/* @ts-ignore */}
+            <Text>{trip.arrivalCity}</Text>
+          </View>
+        ) : (
+          <Text>No trip found </Text>
+        )}
         <TravelerCDComponent />
         <View style={styles.travelerContainer}>
           <JobPropertyComponent title="Flying on" value="January 12, 2021" />

@@ -129,13 +129,13 @@ export const jobTravelRequest = async (
       travelerRequests: [
         // @ts-ignore
         ...job.travelerRequests,
-        { travelerId, tripId, status: 'pending' }
+        { travelerId, tripId, status: 'pending', jobId: job.uid }
       ]
     });
     await usersRef.doc(travelerId).update({
       travelerRequests: [
         ...job.travelerRequests,
-        { travelerId, tripId, status: 'pending' }
+        { travelerId, tripId, status: 'pending', jobId: job.uid }
       ]
     });
   } catch (error) {

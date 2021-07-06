@@ -37,6 +37,20 @@ export const getTripsFirebase = async (travelerId: string) => {
   }
 };
 
+export const getTripFirebase = async (travelerId: string, tripId: string) => {
+  try {
+    const firebaseTrips = await usersRef
+      .doc(travelerId)
+      .collection('trips')
+      .where('tripId', '==', tripId)
+      .get();
+    return firebaseTrips.docs;
+  } catch (error) {
+    console.warn('ERROR adding trip: ', error);
+    return 'add trip failed';
+  }
+};
+
 // export const getOpenJobs = async (userId: string) => {
 //   const openJobs = await jobsRef
 //     .where('ownerId', '!=', userId)
