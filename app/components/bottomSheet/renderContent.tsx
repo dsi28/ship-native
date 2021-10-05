@@ -19,7 +19,7 @@ const RenderContent: React.FC<RenderContentProps> = ({
       <WideButton
         buttonText="Select From Gallery"
         onPressHandler={() => {
-          console.log('gallery');
+          console.log('FOTO1 gallery');
           ImagePicker.openPicker({
             width: 300,
             height: 400,

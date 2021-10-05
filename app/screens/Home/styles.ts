@@ -80,6 +80,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flex: 1
   },
+  scrollView: {
+    backgroundColor: '#f3f5fa'
+  },
 
   // reusable styles:
   flexDirectionRow: { flexDirection: 'row' },
