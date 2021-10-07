@@ -11,6 +11,7 @@ import NavigationService from '../../../navigation/NavigationService';
 import { AppState } from '../../../redux/store/configureStore';
 import { jobTravelRequest } from '../../../services/jobs';
 import { getTripsFirebase } from '../../../services/trip';
+import TravelerPaymentComponent from '../../../components/Traveler/TravelerPayment';
 import styles from './styles';
 
 interface SearchJobScreenProps {
@@ -127,14 +128,9 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               />
             </View>
           </View>
-          <View style={styles.paymentContainer}>
-            <Text style={styles.paymentTitleText}>
-              Traveler will be paid on delivery
-            </Text>
-            <Text style={styles.paymentValueText}>
-              {job.shipmentCost || 'cost not set'}
-            </Text>
-          </View>
+          <TravelerPaymentComponent
+            value={job.shipmentCost?.toString() || 'cost not set'}
+          />
         </View>
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
