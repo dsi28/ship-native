@@ -76,16 +76,18 @@ const Tab = createMaterialTopTabNavigator();
 
 function HomeScreenTabs() {
   const userId = useSelector((state: AppState) => state.user.uid);
+  const userTest = useSelector((state: AppState) => state.user);
   const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
   const travelerJobs = useSelector((state: AppState) => state.job.travelerJobs);
 
   const dispatch = useDispatch();
 
   const getJobs = async () => {
-    console.log(userId);
+    console.log(userId, ' traveler requests', userTest);
     const oJobs = await getUserOwnJob(userId);
     const tJobs = await getUserTravelerJobs(userId);
-
+    console.log('**********************TJObs ', tJobs);
+    console.log('**********************oObs ', oJobs);
     dispatch(
       setOwnerTravlerJobs({
         ownerJobs: oJobs,

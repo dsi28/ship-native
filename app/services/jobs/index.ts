@@ -72,19 +72,43 @@ export const getUserOwnJob = async (userId: string) => {
 
 export const getUserTravelerJobs = async (userId: string) => {
   // TODO make this more efficient
-  const jobs = await jobsRef
-    .where('travelerRequests', 'array-contains', userId)
+  const user = await usersRef
+    // const jobs = await jobsRef
+    .where('uid', '==', userId)
     .get()
-    .then((firebaseJobs) => {
-      if (typeof firebaseJobs !== 'undefined') {
+    .then(async (firebaseUser) => {
+      if (typeof firebaseUser !== 'undefined') {
+        // use this to get jobs from jobs? firebaseJobs.docs[0]._data.travelerRequests
         console.log(
-          userId,
-          ' firebase jobs travler: ',
+          ' XXXXXXXXXXXXfirebase jobs travler: ',
           // @ts-ignore
-          firebaseJobs.docs
+          // eslint-disable-next-line no-underscore-dangle
+          firebaseUser.docs[0]._data.travelerRequests
         );
-        const cleanJobs = cleanFirebaseJobList(firebaseJobs.docs);
-        return cleanJobs;
+        // @ts-ignore
+        // eslint-disable-next-line no-underscore-dangle
+        const tempTravelerReqs = firebaseUser.docs[0]._data.travelerRequests.map(
+          (tReq: any) => tReq.jobId
+        );
+        ///
+
+        const jobs = await jobsRef
+          .where('uid', 'in', tempTravelerReqs)
+          .get()
+          .then((firebaseJobs) => {
+            if (typeof firebaseJobs !== 'undefined') {
+              const cleanJobs = cleanFirebaseJobList(firebaseJobs.docs);
+              console.log(' YYYYYYYYYYYYYYYY: ', cleanJobs);
+              return cleanJobs;
+            }
+            return [];
+          })
+          .catch((error) => {
+            console.warn('ERROR getting traveler jobs: ', error);
+            return 'get traveler jobs failed';
+          });
+
+        return jobs;
       }
       return [];
     })
@@ -92,7 +116,7 @@ export const getUserTravelerJobs = async (userId: string) => {
       console.warn('ERROR getting traveler jobs: ', error);
       return 'get traveler jobs failed';
     });
-  return jobs;
+  return user;
 };
 
 export const getOpenJobs = async (userId: string) => {
