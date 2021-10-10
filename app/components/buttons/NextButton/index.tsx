@@ -15,7 +15,6 @@ const NextButton: React.FC<NextButtonProps> = ({
 }) => (
   <Pressable
     onPress={() => {
-      console.log('next button press');
       onPressHandler();
     }}
     style={{

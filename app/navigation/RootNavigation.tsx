@@ -34,7 +34,6 @@ const RootNavigator: React.FC<RootNavigatorProps> = ({ theme }) => {
   }, []);
 
   if (initializing) {
-    console.log('test', user);
     return null;
   }
   return (

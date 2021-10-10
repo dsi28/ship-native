@@ -56,7 +56,6 @@ const DropDownFormInput: React.FC<DropDownFormInputProps> = ({
             | 'category 4'
             | 'category 5';
         }) => {
-          console.log('input item change: ', item);
           onChangeHandler(item.value);
         }}
         placeholder={placeholderText}

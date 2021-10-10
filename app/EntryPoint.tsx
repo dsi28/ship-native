@@ -29,7 +29,6 @@ const CustomDefaultTheme = {
 
 const RootNavigation: React.FC = () => {
   const combinedTheme = CustomDefaultTheme;
-  // console.log(CustomDefaultTheme);
 
   return (
     <PaperProvider theme={combinedTheme}>

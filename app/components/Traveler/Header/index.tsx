@@ -28,7 +28,6 @@ const TravelerHeaderComponent: React.FC<TravelerHeaderComponentProps> = () => (
       <View style={styles.reviewTextContainer}>
         <Pressable
           onPress={() => {
-            console.log('reviews');
             NavigationService.navigate('Traveler Reviews', ProfileReviews);
           }}
         >
