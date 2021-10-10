@@ -6,12 +6,12 @@ import WideButton from '../../../components/buttons/WideButton';
 import DropDownFormInput from '../../../components/FormInputs/DropDown';
 import JobPropertyComponent from '../../../components/job/property';
 import NumberToggler from '../../../components/numberToggler';
+import TravelerPaymentComponent from '../../../components/Traveler/TravelerPayment';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
 import { AppState } from '../../../redux/store/configureStore';
 import { jobTravelRequest } from '../../../services/jobs';
 import { getTripsFirebase } from '../../../services/trip';
-import TravelerPaymentComponent from '../../../components/Traveler/TravelerPayment';
 import styles from './styles';
 
 interface SearchJobScreenProps {
@@ -129,7 +129,7 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
             </View>
           </View>
           <TravelerPaymentComponent
-            value={job.shipmentCost?.toString() || 'cost not set'}
+            value={job.shipmentCost || 'cost not set'}
           />
         </View>
         <View style={styles.buttonsContainer}>
