@@ -42,51 +42,56 @@ const stepNames = {
 interface JobItemProps {
   // route: any;
   job: IJob;
+  isOwner: boolean;
 }
 
-const JobItem: React.FC<JobItemProps> = ({ job }) => (
-  // const job = route.params;
-  <ScrollView style={styles.container}>
-    <View style={styles.scrollContainer}>
-      <JobDetails job={job} />
-      <View style={styles.buttonsContainer}>
-        <View style={styles.buttonContainer}>
-          <WideButton
-            buttonText="View Traveler Requests"
-            onPressHandler={() => {
-              console.log('view traveler reqeuests');
-              NavigationService.navigate('Traveler Requests', job);
-            }}
-            isSelected
-            btnBackgoundColor="mediumvioletred"
-            btnTextColor="white"
-            btnBorderColor="mediumvioletred"
-          />
-        </View>
-        <View style={styles.buttonContainer}>
-          <WideButton
-            buttonText="Edit Job"
-            onPressHandler={() => console.log('edit job')}
-            isSelected
-            btnBackgoundColor="white"
-            btnTextColor="mediumvioletred"
-            btnBorderColor="mediumvioletred"
-          />
-        </View>
-        <View>
-          <WideButton
-            buttonText="Close Job"
-            onPressHandler={() => console.log('close job')}
-            isSelected
-            btnBackgoundColor="white"
-            btnTextColor="mediumvioletred"
-            btnBorderColor="mediumvioletred"
-          />
+const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
+  console.log('test!!!!!!!!!!!!!!!!!', isOwner);
+  return (
+    // const job = route.params;
+    <ScrollView style={styles.container}>
+      <View style={styles.scrollContainer}>
+        <Text>TEST !@#</Text>
+        <JobDetails job={job} />
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <WideButton
+              buttonText="View Traveler Requests"
+              onPressHandler={() => {
+                console.log('view traveler reqeuests');
+                NavigationService.navigate('Traveler Requests', job);
+              }}
+              isSelected
+              btnBackgoundColor="mediumvioletred"
+              btnTextColor="white"
+              btnBorderColor="mediumvioletred"
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <WideButton
+              buttonText="Edit Job"
+              onPressHandler={() => console.log('edit job')}
+              isSelected
+              btnBackgoundColor="white"
+              btnTextColor="mediumvioletred"
+              btnBorderColor="mediumvioletred"
+            />
+          </View>
+          <View>
+            <WideButton
+              buttonText="Close Job"
+              onPressHandler={() => console.log('close job')}
+              isSelected
+              btnBackgoundColor="white"
+              btnTextColor="mediumvioletred"
+              btnBorderColor="mediumvioletred"
+            />
+          </View>
         </View>
       </View>
-    </View>
-  </ScrollView>
-);
+    </ScrollView>
+  );
+};
 
 /// /new 2
 
@@ -191,8 +196,9 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
 const Tab = createMaterialTopTabNavigator();
 
 function JobItemScreenTabs({ route }: any) {
-  const job = route.params;
-
+  const { job } = route.params;
+  const { isOwner } = route.params;
+  console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTT', job);
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -203,13 +209,10 @@ function JobItemScreenTabs({ route }: any) {
         style: { backgroundColor: 'white' }
       }}
     >
-      <Tab.Screen name="Sender" options={{ tabBarLabel: 'Item Details' }}>
-        {() => (
-          // @ts-ignore
-          <JobItem job={job} />
-        )}
+      <Tab.Screen name="Details" options={{ tabBarLabel: 'Item Details' }}>
+        {() => <JobItem job={job} isOwner={isOwner} />}
       </Tab.Screen>
-      <Tab.Screen name="Traveler" options={{ tabBarLabel: 'Track Item' }}>
+      <Tab.Screen name="Track" options={{ tabBarLabel: 'Track Item' }}>
         {() => (
           // @ts-ignore
           <TrackJob job={job} />
