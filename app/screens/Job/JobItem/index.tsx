@@ -57,39 +57,58 @@ const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
         {!isOwner && <JobTravelerDetails job={job} />}
 
         <View style={styles.buttonsContainer}>
-          <View style={styles.buttonContainer}>
-            <WideButton
-              buttonText="View Traveler Requests"
-              onPressHandler={() => {
-                console.log('view traveler reqeuests');
-                NavigationService.navigate('Traveler Requests', job);
-              }}
-              isSelected
-              btnBackgoundColor="mediumvioletred"
-              btnTextColor="white"
-              btnBorderColor="mediumvioletred"
-            />
-          </View>
-          <View style={styles.buttonContainer}>
-            <WideButton
-              buttonText="Edit Job"
-              onPressHandler={() => console.log('edit job')}
-              isSelected
-              btnBackgoundColor="white"
-              btnTextColor="mediumvioletred"
-              btnBorderColor="mediumvioletred"
-            />
-          </View>
-          <View>
-            <WideButton
-              buttonText="Close Job"
-              onPressHandler={() => console.log('close job')}
-              isSelected
-              btnBackgoundColor="white"
-              btnTextColor="mediumvioletred"
-              btnBorderColor="mediumvioletred"
-            />
-          </View>
+          {isOwner && (
+            <View>
+              <View style={styles.buttonContainer}>
+                <WideButton
+                  buttonText="View Traveler Requests"
+                  onPressHandler={() => {
+                    console.log('view traveler reqeuests');
+                    NavigationService.navigate('Traveler Requests', job);
+                  }}
+                  isSelected
+                  btnBackgoundColor="mediumvioletred"
+                  btnTextColor="white"
+                  btnBorderColor="mediumvioletred"
+                />
+              </View>
+              <View style={styles.buttonContainer}>
+                <WideButton
+                  buttonText="Edit Job"
+                  onPressHandler={() => console.log('edit job')}
+                  isSelected
+                  btnBackgoundColor="white"
+                  btnTextColor="mediumvioletred"
+                  btnBorderColor="mediumvioletred"
+                />
+              </View>
+              <View>
+                <WideButton
+                  buttonText="Close Job"
+                  onPressHandler={() => console.log('close job')}
+                  isSelected
+                  btnBackgoundColor="white"
+                  btnTextColor="mediumvioletred"
+                  btnBorderColor="mediumvioletred"
+                />
+              </View>
+            </View>
+          )}
+          {!isOwner && (
+            <View style={styles.buttonContainer}>
+              <WideButton
+                buttonText="Cancel Traveler Requests"
+                onPressHandler={() => {
+                  console.log('cancel traveler reqeuests');
+                  // NavigationService.navigate('Traveler Requests', job);
+                }}
+                isSelected
+                btnBackgoundColor="mediumvioletred"
+                btnTextColor="white"
+                btnBorderColor="mediumvioletred"
+              />
+            </View>
+          )}
         </View>
       </View>
     </ScrollView>
