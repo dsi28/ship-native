@@ -5,6 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import WideButton from '../../../components/buttons/WideButton';
 import JobDetails from '../../../components/job/Details';
 import JobStatusComponent from '../../../components/job/status/index';
+import JobTravelerDetails from '../../../components/job/TravelerDetails';
 import VerticalStepIndicator from '../../../components/stepIndicator/index';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
@@ -52,7 +53,9 @@ const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
         <Text>TEST !@#</Text>
-        <JobDetails job={job} />
+        {isOwner && <JobDetails job={job} />}
+        {!isOwner && <JobTravelerDetails job={job} />}
+
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <WideButton
