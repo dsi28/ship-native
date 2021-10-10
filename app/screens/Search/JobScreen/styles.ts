@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     marginTop: 20,
     marginBottom: 15
-  }
+  },
+  paymentCompContainer: { marginBottom: 25 }
 });
 export default styles;

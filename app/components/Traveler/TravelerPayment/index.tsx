@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import styles from './styles';
 
 interface TravelerPaymentComponentProps {
-  value: string;
+  value: string | number;
 }
 
 const TravelerPaymentComponent: React.FC<TravelerPaymentComponentProps> = ({

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { INewJob } from '../../../models/IJob';
+import TravelerPaymentComponent from '../../Traveler/TravelerPayment';
 import ImagePropertyComponent from '../imageProperty';
 import JobPropertyComponent from '../property';
-import TravelerPaymentComponent from '../../Traveler/TravelerPayment';
 import styles from './styles';
 
 interface JobDetailsProps {
@@ -103,9 +103,7 @@ const JobDetails: React.FC<JobDetailsProps> = ({ job }) => {
           value={job.itemReceiver?.email || 'receiver email not set'}
         />
       </View>
-      <TravelerPaymentComponent
-        value={job.shipmentCost?.toString() || 'cost not set'}
-      />
+      <TravelerPaymentComponent value={job.shipmentCost || 'cost not set'} />
     </View>
   );
 };
