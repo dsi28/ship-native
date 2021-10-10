@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { INewJob } from '../../../models/IJob';
 import ImagePropertyComponent from '../imageProperty';
 import JobPropertyComponent from '../property';
+import TravelerPaymentComponent from '../../Traveler/TravelerPayment';
 import styles from './styles';
 
 interface JobDetailsProps {
@@ -102,14 +103,9 @@ const JobDetails: React.FC<JobDetailsProps> = ({ job }) => {
           value={job.itemReceiver?.email || 'receiver email not set'}
         />
       </View>
-      <View style={styles.paymentContainer}>
-        <Text style={styles.paymentText}>
-          Traveler will be paid on delivery
-        </Text>
-        <Text style={styles.paymentAmount}>
-          {job.shipmentCost || 'cost not set'}
-        </Text>
-      </View>
+      <TravelerPaymentComponent
+        value={job.shipmentCost?.toString() || 'cost not set'}
+      />
     </View>
   );
 };

@@ -8,6 +8,7 @@ import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
+import TravelerPaymentComponent from '../../../components/Traveler/TravelerPayment';
 import styles from './styles';
 
 interface SearchJobScreenProps {
@@ -56,14 +57,9 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
               </View>
             </View>
           </View>
-          <View style={styles.paymentContainer}>
-            <Text style={styles.paymentTitle}>
-              Traveler will be paid on delivery
-            </Text>
-            <Text style={styles.paymentValue}>
-              {job.shipmentCost || 'cost not set'}
-            </Text>
-          </View>
+          <TravelerPaymentComponent
+            value={job.shipmentCost?.toString() || 'cost not set'}
+          />
           <View style={styles.detailsIconsContainer}>
             <View style={styles.detailsIconContainer}>
               <View style={styles.iconContainer}>
