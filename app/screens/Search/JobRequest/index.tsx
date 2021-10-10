@@ -6,6 +6,7 @@ import WideButton from '../../../components/buttons/WideButton';
 import DropDownFormInput from '../../../components/FormInputs/DropDown';
 import JobPropertyComponent from '../../../components/job/property';
 import NumberToggler from '../../../components/numberToggler';
+import TravelerPaymentComponent from '../../../components/Traveler/TravelerPayment';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
 import { AppState } from '../../../redux/store/configureStore';
@@ -127,14 +128,9 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               />
             </View>
           </View>
-          <View style={styles.paymentContainer}>
-            <Text style={styles.paymentTitleText}>
-              Traveler will be paid on delivery
-            </Text>
-            <Text style={styles.paymentValueText}>
-              {job.shipmentCost || 'cost not set'}
-            </Text>
-          </View>
+          <TravelerPaymentComponent
+            value={job.shipmentCost || 'cost not set'}
+          />
         </View>
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
