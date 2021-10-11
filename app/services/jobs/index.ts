@@ -219,6 +219,29 @@ export const cancelTravelerRequests = async (
       });
 
     /// /
+
+    // get job
+    const job = await (await jobsRef.doc(jobId).get()).data();
+    // @ts-ignore
+    console.log('UUUUuuuuuuuuuUUU2', job.travelerRequests);
+    // @ts-ignore
+    const newJobRequests = traveler.travelerRequests.map((jReq) => {
+      if (jReq.travelerId === travelerId) {
+        return { ...jReq, status: 'canceled' };
+      }
+      return jReq;
+    });
+
+    await jobsRef
+      .doc(jobId)
+      .update({
+        travelerRequests: newJobRequests
+      })
+      .then(() => {
+        console.log('job updated!');
+      });
+
+    /// /
     return [];
   } catch (error) {
     console.log('error getting traveler users: ', error);
