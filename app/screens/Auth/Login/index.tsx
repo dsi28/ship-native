@@ -29,11 +29,9 @@ const LoginScreen: React.FC = () => {
     } else if (propertyName === 'password') {
       setPassword(propertyValue);
     }
-    console.log(email, password);
   };
 
   const onLoginHandler = async () => {
-    console.log('login btn');
     const loginUser = await loginWithEmailAndPassword(email, password);
 
     console.warn('test login', loginUser);
@@ -52,8 +50,6 @@ const LoginScreen: React.FC = () => {
       // @ts-ignore
       const ownerjobs = await getUserOwnJob(loginUser.uid);
       const travelerJobs = await getUserTravelerJobs(loginUser.uid);
-      console.log('travler Jobs after login!!!!!!!1 ', travelerJobs);
-      console.log('*****************:', typeof ownerjobs, ' test ', ownerjobs);
       // // @ts-ignore
       // dispatch(setOwnerJobs(ownerjobs));
       // // @ts-ignore

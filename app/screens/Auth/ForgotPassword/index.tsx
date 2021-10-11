@@ -15,7 +15,6 @@ const ForgotPasswordScreen: React.FC = () => {
     if (propertyName === 'email') {
       setEmail(propertyValue);
     }
-    console.log(email);
   };
   return (
     <View style={styles.container}>
@@ -53,7 +52,6 @@ const ForgotPasswordScreen: React.FC = () => {
           <NextButton
             buttonText="Reset Password"
             onPressHandler={() => {
-              console.log('password reset');
               // TODO  firebase password reset code
             }}
             isDisabled={false}

@@ -17,7 +17,6 @@ interface SearchJobScreenProps {
 
 const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
   const job: IJob = route.params;
-  console.log('job in search', job);
   return (
     <ScrollView>
       <View style={styles.container}>

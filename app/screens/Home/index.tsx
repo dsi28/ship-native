@@ -37,7 +37,6 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
 
   console.log(jobType, 'job list REAL TEST', jobsList);
   const pressItemHandler = (job: IJob) => {
-    console.log('item pressed');
     NavigationService.navigate('Job', job);
   };
   return (

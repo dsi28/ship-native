@@ -19,16 +19,11 @@ const EmailInput: React.FC = () => {
   const [isValidated, setIsValidated] = useState(reg.test(emailInput));
 
   const validateEmail = (text: string) => {
-    console.log(text);
-    console.log(typeof text);
-
     if (reg.test(text) === false) {
-      console.log('Email is Not Correct');
       setEmailInput(text);
       setIsValidated(false);
     } else {
       setEmailInput(text);
-      console.log('Email is Correct');
       setIsValidated(true);
     }
   };
@@ -47,7 +42,6 @@ const EmailInput: React.FC = () => {
                 placeholder="email.."
                 value={emailInput.toString()}
                 onChangeText={(text: string) => {
-                  console.log(text);
                   validateEmail(text);
                 }}
               />

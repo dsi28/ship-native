@@ -37,11 +37,9 @@ const NewJobS1: React.FC = () => {
   const handleAddImage = () => {
     // @ts-ignore
     sheetRef.current.snapTo(0);
-    console.log('add img');
   };
   const handleRemoveImage = () => {
     setPictureInput('');
-    console.log('remove img');
   };
 
   const textFormInputChangeHandler = (
@@ -235,7 +233,6 @@ const NewJobS1: React.FC = () => {
               buttonText="Cancel"
               onPressHandler={() => {
                 NavigationService.navigate('HomeScreen');
-                console.log('cancel job');
                 dispatch(resetNewJob());
               }}
               isSelected

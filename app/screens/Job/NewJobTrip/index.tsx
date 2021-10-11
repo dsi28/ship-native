@@ -38,7 +38,6 @@ const PayScreen = () => {
             </View>
             <Pressable
               onPress={() => {
-                console.log('shipp');
                 setModalVisible(false);
                 NavigationService.navigate('Home', {
                   screen: 'New Job'
@@ -74,7 +73,6 @@ const PayScreen = () => {
             </Pressable>
             <Pressable
               onPress={() => {
-                console.log('add trip');
                 setModalVisible(false);
                 NavigationService.navigate('Home', {
                   screen: 'Add Trip'

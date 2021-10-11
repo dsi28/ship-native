@@ -54,7 +54,6 @@ const JobItem: React.FC<JobItemProps> = ({ job }) => (
           <WideButton
             buttonText="View Traveler Requests"
             onPressHandler={() => {
-              console.log('view traveler reqeuests');
               NavigationService.navigate('Traveler Requests', job);
             }}
             isSelected
@@ -99,16 +98,6 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [date, setDate] = useState('');
   const getDate = (): string => {
-    console.log(
-      'TYPE OF, ',
-      typeof job?.itemDeliveryDate,
-      ' end1 ',
-      job.itemDeliveryDate,
-      ' end2 ',
-      // @ts-ignore
-      typeof job?.itemDeliveryDate.toDate,
-      ' end3'
-    );
     if (job?.itemDeliveryDate !== undefined) {
       if (
         typeof job?.itemDeliveryDate === 'object' &&
@@ -175,7 +164,6 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
             style={{ width: '100%' }}
             onPress={() => {
               setCurrentStep(currentStep + 1);
-              console.log('pressss');
             }}
           >
             <Text style={{ color: 'orange' }}>press</Text>
