@@ -56,7 +56,6 @@ const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
     // const job = route.params;
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
-        <Text>TEST !@#</Text>
         {isOwner && <JobDetails job={job} />}
         {!isOwner && <JobTravelerDetails job={job} />}
 

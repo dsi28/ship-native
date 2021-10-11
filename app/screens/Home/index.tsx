@@ -117,12 +117,12 @@ function HomeScreenTabs() {
         style: { backgroundColor: 'white' }
       }}
     >
-      <Tab.Screen name="Sender" options={{ tabBarLabel: 'Sender1' }}>
+      <Tab.Screen name="Sender" options={{ tabBarLabel: 'Sender' }}>
         {() => (
           <HomeScreenTab jobType="ownerJobs" jobsList={ownerJobs} isOwner />
         )}
       </Tab.Screen>
-      <Tab.Screen name="Traveler" options={{ tabBarLabel: 'Traveler2' }}>
+      <Tab.Screen name="Traveler" options={{ tabBarLabel: 'Traveler' }}>
         {() => (
           <HomeScreenTab
             jobType="travelerJobs"

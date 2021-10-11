@@ -68,7 +68,6 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
         <View style={styles.cardItemSubContainer}>
           <View style={styles.cardItemSection}>
             <View style={styles.avatarView}>
-              <Text>Item component@@@@@@@@</Text>
               <Image
                 style={styles.cardItemImage}
                 resizeMode="cover"
