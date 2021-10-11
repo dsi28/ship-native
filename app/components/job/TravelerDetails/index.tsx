@@ -10,7 +10,7 @@ interface JobDetailsProps {
   job: INewJob;
 }
 
-const JobDetails: React.FC<JobDetailsProps> = ({ job }) => {
+const JobTravelerDetails: React.FC<JobDetailsProps> = ({ job }) => {
   const [dateTemp, setDateTemp] = useState('');
   const getDate = (): string => {
     console.log(
@@ -90,19 +90,6 @@ const JobDetails: React.FC<JobDetailsProps> = ({ job }) => {
         />
         <ImagePropertyComponent title="Item Images" value={job.itemImages} />
       </View>
-      <View style={styles.receiverContainer}>
-        <View style={styles.receiverHeaderContainer}>
-          <Text style={styles.receiverHeader}>Receiver Details</Text>
-        </View>
-        <JobPropertyComponent
-          title="Name"
-          value={job.itemReceiver?.name || 'receiver name not set'}
-        />
-        <JobPropertyComponent
-          title="Email"
-          value={job.itemReceiver?.email || 'receiver email not set'}
-        />
-      </View>
       <TravelerPaymentComponent
         value={job.shipmentCost || 'cost not set'}
         text="Traveler will be paid on delivery"
@@ -110,4 +97,4 @@ const JobDetails: React.FC<JobDetailsProps> = ({ job }) => {
     </View>
   );
 };
-export default JobDetails;
+export default JobTravelerDetails;

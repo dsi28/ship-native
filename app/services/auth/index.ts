@@ -67,9 +67,11 @@ export const createUserEmailPassword = async (
     console.log('user added to firebase');
     return userData;
   } catch (error) {
+    // @ts-ignore
     if (error.code === 'auth/email-already-in-use') {
       console.log('That email address is already in use!');
     }
+    // @ts-ignore
     if (error.code === 'auth/invalid-email') {
       console.log('That email address is invalid!');
     }

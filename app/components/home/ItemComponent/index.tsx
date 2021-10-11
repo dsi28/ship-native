@@ -7,11 +7,13 @@ import styles from './styles';
 interface ItemComponentProps {
   onPressHandler: (job: IJob) => void;
   jobItem: IJob;
+  isOwner: boolean;
 }
 
 const ItemComponent: React.FC<ItemComponentProps> = ({
   onPressHandler,
-  jobItem
+  jobItem,
+  isOwner
 }) => {
   const [dateTemp, setDateTemp] = useState('');
 
@@ -57,6 +59,8 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
     setDateTemp(getDate());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  console.log('isOwner', isOwner);
 
   return (
     <Pressable onPress={() => onPressHandler(jobItem)}>

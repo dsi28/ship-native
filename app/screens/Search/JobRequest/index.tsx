@@ -130,6 +130,7 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
           </View>
           <TravelerPaymentComponent
             value={job.shipmentCost || 'cost not set'}
+            text="Traveler will be paid on delivery"
           />
         </View>
         <View style={styles.buttonsContainer}>
