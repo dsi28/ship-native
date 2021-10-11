@@ -2,6 +2,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
 import JobDetails from '../../../components/job/Details';
 import JobStatusComponent from '../../../components/job/status/index';
@@ -9,6 +10,8 @@ import JobTravelerDetails from '../../../components/job/TravelerDetails';
 import VerticalStepIndicator from '../../../components/stepIndicator/index';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
+import { AppState } from '../../../redux/store/configureStore';
+import { cancelTravelerRequests } from '../../../services/jobs';
 import styles from './styles';
 
 const stepNames = {
@@ -47,6 +50,7 @@ interface JobItemProps {
 }
 
 const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
+  const user = useSelector((state: AppState) => state.user);
   console.log('test!!!!!!!!!!!!!!!!!', isOwner);
   return (
     // const job = route.params;
@@ -101,6 +105,7 @@ const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
                 onPressHandler={() => {
                   console.log('cancel traveler reqeuests');
                   // NavigationService.navigate('Traveler Requests', job);
+                  cancelTravelerRequests(user.uid, job.uid);
                 }}
                 isSelected
                 btnBackgoundColor="mediumvioletred"

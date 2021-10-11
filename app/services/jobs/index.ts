@@ -190,3 +190,38 @@ export const getTravelerRequests = async (travelerIds: string[]) => {
     return [];
   }
 };
+
+export const cancelTravelerRequests = async (
+  travelerId: string,
+  jobId: string
+) => {
+  console.log('cancel traveler request ', travelerId, ' - ', jobId);
+  try {
+    // get traveler
+    const traveler = await (await usersRef.doc(travelerId).get()).data();
+    // @ts-ignore
+    console.log('UUUUuuuuuuuuuUUU', traveler.travelerRequests);
+    // @ts-ignore
+    const newTravelerRequests = traveler.travelerRequests.map((tReq) => {
+      if (tReq.jobId === jobId) {
+        return { ...tReq, status: 'canceled' };
+      }
+      return tReq;
+    });
+
+    await usersRef
+      .doc(travelerId)
+      .update({
+        travelerRequests: newTravelerRequests
+      })
+      .then(() => {
+        console.log('User updated!');
+      });
+
+    /// /
+    return [];
+  } catch (error) {
+    console.log('error getting traveler users: ', error);
+    return [];
+  }
+};
