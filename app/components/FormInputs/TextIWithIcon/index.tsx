@@ -9,7 +9,10 @@ interface TextFormInputWithIconProps {
   placeholderText: string;
   iconName: string;
   onChangeHandler: (propertyName: string, propertyValue: string) => void;
-  propertyName: 'itemDeliveryLocation' | 'itemDeliveryDate';
+  propertyName:
+    | 'itemDeliveryLocation'
+    | 'itemDeliveryDate'
+    | 'itemPickupLocation';
   inputValue: string;
   inputDisabled: boolean;
 }

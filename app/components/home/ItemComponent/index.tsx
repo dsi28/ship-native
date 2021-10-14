@@ -79,7 +79,9 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
                 <MaterialIcon name="location-pin" size={20} color="#e91e63" />
               </View>
               <View>
-                <Text style={styles.fontSize15}>100 Miles</Text>
+                <Text style={styles.fontSize15}>
+                  {jobItem.itemDeliveryLocation}
+                </Text>
               </View>
             </View>
           </View>
