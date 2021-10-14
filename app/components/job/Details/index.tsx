@@ -74,7 +74,7 @@ const JobDetails: React.FC<JobDetailsProps> = ({ job }) => {
         />
         <JobPropertyComponent
           title="Pickup Location"
-          value={job.itemDeliveryLocation || 'item pickup location not set'}
+          value={job.itemPickupLocation || 'item pickup location not set'}
         />
         <JobPropertyComponent
           title="Delivery Location"
