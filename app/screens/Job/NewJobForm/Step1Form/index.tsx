@@ -184,6 +184,19 @@ const NewJobS1: React.FC = () => {
                   inputDisabled
                 />
               </View>
+              <View style={styles.inputContainer}>
+                <TextFormInputWithIcon
+                  labelText="Pickup Location"
+                  placeholderText="Enter Location"
+                  iconName="location-pin"
+                  onChangeHandler={textFormInputChangeHandler}
+                  propertyName="itemPickupLocation"
+                  inputValue={
+                    newJob?.itemPickupLocation ? newJob.itemPickupLocation : ''
+                  }
+                  inputDisabled
+                />
+              </View>
               <TextFormInput
                 labelText="Item Value"
                 placeholderText="Enter item value"
