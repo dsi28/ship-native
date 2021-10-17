@@ -47,15 +47,6 @@ function SearchScreen() {
             <View style={styles.iconView}>
               <Pressable
                 onPress={() => {
-                  console.log('press map icon');
-                }}
-              >
-                <MComIcon name="map" size={30} color="black" />
-              </Pressable>
-            </View>
-            <View style={styles.iconView}>
-              <Pressable
-                onPress={() => {
                   console.log('press filter icon');
                 }}
               >
