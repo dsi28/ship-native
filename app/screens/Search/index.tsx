@@ -4,6 +4,7 @@ import { Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import MComIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSelector } from 'react-redux';
+import FilterModal from '../../components/FormInputs/FilterModal';
 import ItemComponent from '../../components/home/ItemComponent';
 import { IJob } from '../../models/IJob';
 import NavigationService from '../../navigation/NavigationService';
@@ -16,6 +17,7 @@ import styles from './styles';
 function SearchScreen() {
   const userId = useSelector((state: AppState) => state.user.uid);
   const [jobList, setJobList] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
   // const dispatch = useDispatch();
 
   const getJobs = async () => {
@@ -39,6 +41,10 @@ function SearchScreen() {
   return (
     <ScrollView style={styles.scrollViewContainer}>
       <View style={styles.container}>
+        <FilterModal
+          setModalVisible={setModalVisible}
+          modalVisible={modalVisible}
+        />
         <View style={styles.contentContainer}>
           <View>
             <Text style={styles.filterTitle}>Near Me</Text>
@@ -48,6 +54,7 @@ function SearchScreen() {
               <Pressable
                 onPress={() => {
                   console.log('press filter icon');
+                  setModalVisible(!modalVisible);
                 }}
               >
                 <MComIcon name="filter" size={30} color="black" />
