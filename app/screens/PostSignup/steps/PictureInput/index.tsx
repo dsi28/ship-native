@@ -26,15 +26,12 @@ const PictureInput: React.FC = () => {
   const handleAddImage = () => {
     // @ts-ignore
     sheetRef.current.snapTo(0);
-    console.log('add img');
   };
   const handleRemoveImage = () => {
     setPictureInput('');
-    console.log('remove img');
   };
 
   const handleCreateUser = async () => {
-    console.log('end of profile flow');
     setProfileUser({ ...userPostProfile, pictures: pictureInput });
     const createdUser = await createUserEmailPassword(
       userPostProfile,
@@ -43,8 +40,6 @@ const PictureInput: React.FC = () => {
     if (typeof createdUser !== 'undefined' && typeof createdUser !== 'string') {
       // // update user state
       dispatch(newUserAction(createdUser));
-    } else {
-      console.log('Error creating user');
     }
   };
 

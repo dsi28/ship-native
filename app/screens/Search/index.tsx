@@ -19,9 +19,7 @@ function SearchScreen() {
   // const dispatch = useDispatch();
 
   const getJobs = async () => {
-    console.log(userId);
     const jobs = await getOpenJobs(userId);
-    console.log('JOOOOOOOOOOOOBs ', jobs);
     // @ts-ignore
     setJobList(jobs);
   };
@@ -32,7 +30,6 @@ function SearchScreen() {
   }, []);
 
   const pressItemHandler = (job: IJob) => {
-    console.log('item pressed');
     NavigationService.navigate('SearchJobScreen', job);
   };
   // console.log('job state', jobState.ownerJobs, 'FULL');
@@ -72,7 +69,6 @@ function SearchScreen() {
             <View>
               {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
               {jobList.map((fbJob: any) => {
-                console.log('job here, ', fbJob);
                 // @ts-ignore
                 // eslint-disable-next-line no-underscore-dangle
                 const job = fbJob._data;

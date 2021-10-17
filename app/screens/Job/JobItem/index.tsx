@@ -51,7 +51,6 @@ interface JobItemProps {
 
 const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
   const user = useSelector((state: AppState) => state.user);
-  console.log('test!!!!!!!!!!!!!!!!!', isOwner);
   return (
     // const job = route.params;
     <ScrollView style={styles.container}>
@@ -130,16 +129,6 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [date, setDate] = useState('');
   const getDate = (): string => {
-    console.log(
-      'TYPE OF, ',
-      typeof job?.itemDeliveryDate,
-      ' end1 ',
-      job.itemDeliveryDate,
-      ' end2 ',
-      // @ts-ignore
-      typeof job?.itemDeliveryDate.toDate,
-      ' end3'
-    );
     if (job?.itemDeliveryDate !== undefined) {
       if (
         typeof job?.itemDeliveryDate === 'object' &&
@@ -206,7 +195,6 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
             style={{ width: '100%' }}
             onPress={() => {
               setCurrentStep(currentStep + 1);
-              console.log('pressss');
             }}
           >
             <Text style={{ color: 'orange' }}>press</Text>

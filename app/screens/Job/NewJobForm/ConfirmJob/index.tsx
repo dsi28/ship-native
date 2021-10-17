@@ -53,7 +53,6 @@ const NewJobConfirm: React.FC = () => {
               buttonText="Cancel"
               onPressHandler={() => {
                 NavigationService.navigate('HomeScreen');
-                console.log('cancel job');
                 dispatch(resetNewJob());
               }}
               isSelected

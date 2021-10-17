@@ -42,7 +42,6 @@ const TextFormInputWithIcon: React.FC<TextFormInputWithIconProps> = ({
         placeholder={placeholderText}
         value={inputValue}
         onChangeText={(e) => {
-          console.log('input with icon change: ', e);
           onChangeHandler(propertyName, e);
         }}
       />

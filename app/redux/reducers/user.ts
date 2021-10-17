@@ -20,7 +20,6 @@ interface IAction {
 }
 
 const userReducer = (state = initialState, action: IAction) => {
-  console.log('ACTION NOW', action);
   switch (action.type) {
     case SET_USER:
       return {

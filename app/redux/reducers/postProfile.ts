@@ -22,7 +22,6 @@ interface IAction {
 }
 
 const userProfile = (state = initialState, action: IAction) => {
-  console.log('ACTION NOW', action);
   switch (action.type) {
     case SET_PROFILE_USER:
       return {

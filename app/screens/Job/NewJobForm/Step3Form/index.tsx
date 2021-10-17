@@ -114,7 +114,6 @@ const NewJobS3: React.FC = () => {
             <WideButton
               buttonText="Next"
               onPressHandler={() => {
-                console.log('next');
                 dispatch(
                   setNewJob({
                     ...jobState,
@@ -134,7 +133,6 @@ const NewJobS3: React.FC = () => {
               buttonText="Cancel"
               onPressHandler={() => {
                 NavigationService.navigate('HomeScreen');
-                console.log('cancel job');
                 dispatch(resetNewJob());
               }}
               isSelected

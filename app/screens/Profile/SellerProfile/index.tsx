@@ -17,8 +17,6 @@ const SellerProfile: React.FC = () => {
   const userState = useSelector((state: AppState) => state.user);
   const dispatch = useDispatch();
 
-  console.log('test state before: ', userState);
-
   const handleLogout = async () => {
     await logoutUser();
     // clear redux

@@ -17,20 +17,7 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
 }) => {
   const [dateTemp, setDateTemp] = useState('');
 
-  console.log(typeof jobItem.itemDeliveryDate);
-  console.log('jobITEMMMMMMMM', jobItem);
-
   const getDate = (): string => {
-    // console.log(
-    //   'TYPE OF, ',
-    //   typeof jobItem?.itemDeliveryDate,
-    //   ' end1 ',
-    //   jobItem.itemDeliveryDate,
-    //   ' end2 ',
-    //   // @ts-ignore
-    //   typeof jobItem?.itemDeliveryDate.toDate,
-    //   ' end3'
-    // );
     if (jobItem?.itemDeliveryDate !== undefined) {
       if (
         typeof jobItem?.itemDeliveryDate === 'object' &&

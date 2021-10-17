@@ -13,7 +13,6 @@ import styles from './styles';
 const UserProfile: React.FC = () => {
   // @ts-ignore default does exsist not sure why this show up
   const userProfile = useSelector((state: AppState) => state.default);
-  console.log(userProfile);
   return (
     <ScrollView>
       <View style={styles.container}>

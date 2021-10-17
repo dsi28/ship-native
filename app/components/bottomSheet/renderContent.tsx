@@ -19,13 +19,11 @@ const RenderContent: React.FC<RenderContentProps> = ({
       <WideButton
         buttonText="Select From Gallery"
         onPressHandler={() => {
-          console.log('FOTO1 gallery');
           ImagePicker.openPicker({
             width: 300,
             height: 400,
             cropping: true
           }).then((image) => {
-            console.log(image);
             setPictureInput(image.path);
             // @ts-ignore
             sheetRef.current.snapTo(2);
@@ -46,7 +44,6 @@ const RenderContent: React.FC<RenderContentProps> = ({
             height: 400,
             cropping: true
           }).then((image) => {
-            console.log(image);
             setPictureInput(image.path);
             // @ts-ignore
             sheetRef.current.snapTo(2);

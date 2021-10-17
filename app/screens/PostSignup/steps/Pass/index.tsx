@@ -27,18 +27,11 @@ const PassInput: React.FC = () => {
   );
 
   const validatePass = (text: string) => {
-    console.log(text);
-    console.log(typeof text);
-    console.log('match', isMatch, '  valdi', isValidated);
     if (reg.test(text) === false) {
-      console.log(
-        'Input Password and Submit [8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character'
-      );
       setPassInput(text);
       setIsValidated(false);
     } else {
       setPassInput(text);
-      console.log('Pass works');
       setIsValidated(true);
     }
   };
@@ -69,7 +62,6 @@ const PassInput: React.FC = () => {
                 placeholder="enter password"
                 value={passInput.toString()}
                 onChangeText={(text: string) => {
-                  console.log(text);
                   validatePass(text);
                   passMatchCheck(text, false);
                 }}
@@ -85,7 +77,6 @@ const PassInput: React.FC = () => {
                   placeholder="confirm password"
                   value={confirmInput.toString()}
                   onChangeText={(text: string) => {
-                    console.log(text);
                     setConfirmInput(text);
                     passMatchCheck(text, true);
                   }}

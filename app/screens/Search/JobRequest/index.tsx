@@ -30,9 +30,7 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
   };
 
   const getUserTrips = async () => {
-    console.log(userId);
     const tripsList = await getTripsFirebase(userId);
-    console.log('JOOOOOOOOOOOOBs ', tripsList);
     // @ts-ignore
     setTravelerTrips(tripsList);
   };
@@ -41,7 +39,6 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
     getUserTrips();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log('**************Traveler trips', travelerTrips);
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -139,8 +136,6 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               buttonText="Request to Carry This Package"
               onPressHandler={() => {
                 jobTravelRequest(job, userId, selectedTrip);
-                console.log('send request to carry package');
-                console.log('selected trip', selectedTrip);
                 NavigationService.navigate('SearchScreen');
               }}
               isSelected

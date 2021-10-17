@@ -35,7 +35,6 @@ const TextFormInput: React.FC<TextFormInputProps> = ({
         style={styles.inputText}
         placeholder={placeholderText}
         onChangeText={(e) => {
-          console.log('change text form input: ', e);
           onChangeHandler(propertyName, e);
         }}
         // @ts-ignore

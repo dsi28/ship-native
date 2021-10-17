@@ -57,7 +57,6 @@ const ReviewSection: React.FC<ReviewSectionProps> = () => (
             <WideButton
               buttonText="View all reviews"
               onPressHandler={() => {
-                console.log('open reivews screen');
                 NavigationService.navigate('Reviews');
               }}
               isSelected={false}

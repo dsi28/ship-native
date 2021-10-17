@@ -19,7 +19,6 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ data }) => {
   if (data && data.length) {
     return <CarouselItem item={data} />;
   }
-  console.log('Please provide Images');
   return null;
 };
 
