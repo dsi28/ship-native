@@ -5,22 +5,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 22
+    marginTop: 22,
+    backgroundColor: 'green' // '#f3f5fa',
+    // shadowOpacity: 0.8
+    // opacity: 0.5
   },
   modalView: {
+    width: '100%',
+    height: '100%',
     margin: 20,
     backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
+    paddingHorizontal: 20,
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
+    shadowColor: '#000'
   },
   button: {
     borderRadius: 20,
