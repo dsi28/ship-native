@@ -16,10 +16,8 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
   const [travelerList, setTravelerList] = useState<any>([]);
 
   const getTravelers = async () => {
-    console.log('get travelers', job.travelerRequests, ' end');
     // eslint-disable-next-line no-underscore-dangle
     const temp = await getTravelerRequests(job.travelerRequests);
-    console.log('temp, ', temp);
     // @ts-ignore
     setTravelerList(temp);
   };
@@ -30,10 +28,8 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
   }, []);
 
   const pressItemHandler = (traveler: IUser) => {
-    console.log('item pressed');
     NavigationService.navigate('View Traveler', { traveler, job });
   };
-  console.log('TList, ', travelerList);
   return (
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
