@@ -30,7 +30,6 @@ const NewTrip: React.FC = () => {
   };
 
   const setNoteHandler = (value: string) => {
-    console.log(value);
     setNewTrip({ ...newTrip, note: value });
   };
 
@@ -110,7 +109,7 @@ const NewTrip: React.FC = () => {
                       value={date}
                       is24Hour
                       display="default"
-                      onChange={(e, pickedDate) => {
+                      onChange={(e: any, pickedDate: any) => {
                         onChangeDate(e, pickedDate);
                       }}
                     />

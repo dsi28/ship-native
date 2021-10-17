@@ -28,6 +28,7 @@ interface HomeInputProps {
 }
 
 const HomeScreenTab: React.FC<HomeInputProps> = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   jobType,
   jobsList,
   isOwner
@@ -35,9 +36,6 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
 }) => {
   // const [jobList, setJobList] = useState([]);
   // const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
-  console.log(jobType, jobsList);
-
-  console.log(jobType, 'job list REAL TEST', jobsList);
   const pressItemHandler = (job: IJob) => {
     const temp = { job, isOwner };
     NavigationService.navigate('Job', temp);
@@ -79,18 +77,15 @@ const Tab = createMaterialTopTabNavigator();
 
 function HomeScreenTabs() {
   const userId = useSelector((state: AppState) => state.user.uid);
-  const userTest = useSelector((state: AppState) => state.user);
+  // const userTest = useSelector((state: AppState) => state.user);
   const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
   const travelerJobs = useSelector((state: AppState) => state.job.travelerJobs);
 
   const dispatch = useDispatch();
 
   const getJobs = async () => {
-    console.log(userId, ' traveler requests', userTest);
     const oJobs = await getUserOwnJob(userId);
     const tJobs = await getUserTravelerJobs(userId);
-    console.log('**********************TJObs ', tJobs);
-    console.log('**********************oObs ', oJobs);
     dispatch(
       setOwnerTravlerJobs({
         ownerJobs: oJobs,

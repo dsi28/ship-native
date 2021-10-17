@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
 import TravelerCDComponent from '../../../components/Traveler/ChatDistance';
@@ -18,23 +17,19 @@ interface TravelerScreenProps {
 }
 const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
   const traveler = route.params;
-  const job = route.params;
+  // const job = route.params;
   const [trip, setTrip] = useState({});
-  console.log('travler uyoooo', traveler, ' job', job);
   // @ts-ignore default does exsist not sure why this show up
-  const userProfile = useSelector((state: AppState) => state.default);
-  console.log(userProfile);
+  // const userProfile = useSelector((state: AppState) => state.default);
   const [showDeclineModal, setShowDeclineModal] = useState(false);
 
   // get the trip using the traveler.travelerRequests.tripId
   const getTravelerTrip = async () => {
-    console.log('get travelers', traveler.travelerRequests.tripId, ' end');
     // eslint-disable-next-line no-underscore-dangle
     const temp = await getTripFirebase(
       traveler.uid,
       traveler.travelerRequests.tripId
     );
-    console.log('temp, ', temp);
     // @ts-ignore
     setTrip(temp);
   };
