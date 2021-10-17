@@ -1,6 +1,7 @@
 import React from 'react';
 import { Alert, Modal, Pressable, Text, TextInput, View } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import NextButton from '../../buttons/NextButton';
 import styles from './styles';
 
 interface FilterModalProps {
@@ -62,7 +63,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
               <MaterialIcon name="close" size={35} color="white" />
             </View>
           </View>
-          <View style={{ width: '100%' }}>
+          <View style={{ width: '100%', marginBottom: 20 }}>
             <View style={{ marginBottom: 15 }}>
               <Text style={{ fontSize: 17, fontWeight: 'bold' }}>
                 Delivery Location
@@ -78,7 +79,9 @@ const FilterModal: React.FC<FilterModalProps> = ({
                   borderColor: 'lightgray',
                   width: '50%'
                 }}
-                placeholder="123"
+                placeholder={
+                  deliveryLocation === '' ? 'Enter city' : deliveryLocation
+                }
                 onChangeText={(e) => {
                   console.log('change text form input: ', e);
                   setDeliveryLocation(e);
@@ -87,13 +90,13 @@ const FilterModal: React.FC<FilterModalProps> = ({
               />
             </View>
           </View>
-
-          {/* <Pressable
-            style={[styles.button, styles.buttonClose]}
-            onPress={() => setModalVisible(!modalVisible)}
-          >
-            <Text style={styles.textStyle}>Hide Modal</Text>
-          </Pressable> */}
+          <NextButton
+            buttonText="update filter"
+            onPressHandler={() => {
+              setModalVisible(!modalVisible);
+            }}
+            isDisabled={false}
+          />
         </View>
       </View>
     </Modal>
