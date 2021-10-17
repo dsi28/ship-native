@@ -1,16 +1,20 @@
 import React from 'react';
-import { Alert, Modal, Pressable, Text, View } from 'react-native';
+import { Alert, Modal, Pressable, Text, TextInput, View } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 
 interface FilterModalProps {
   modalVisible: boolean;
-  setModalVisible: any; // @TODO change this
+  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  deliveryLocation: string;
+  setDeliveryLocation: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const FilterModal: React.FC<FilterModalProps> = ({
   modalVisible,
-  setModalVisible
+  setModalVisible,
+  deliveryLocation,
+  setDeliveryLocation
 }) => (
   <View>
     <Modal
@@ -58,13 +62,38 @@ const FilterModal: React.FC<FilterModalProps> = ({
               <MaterialIcon name="close" size={35} color="white" />
             </View>
           </View>
-          <Text style={styles.modalText}>Hello World!</Text>
-          <Pressable
+          <View style={{ width: '100%' }}>
+            <View style={{ marginBottom: 15 }}>
+              <Text style={{ fontSize: 17, fontWeight: 'bold' }}>
+                Delivery Location
+              </Text>
+            </View>
+
+            <View>
+              <TextInput
+                style={{
+                  fontSize: 17,
+                  // marginBottom: 20,
+                  borderWidth: 2,
+                  borderColor: 'lightgray',
+                  width: '50%'
+                }}
+                placeholder="123"
+                onChangeText={(e) => {
+                  console.log('change text form input: ', e);
+                  setDeliveryLocation(e);
+                }}
+                value={deliveryLocation}
+              />
+            </View>
+          </View>
+
+          {/* <Pressable
             style={[styles.button, styles.buttonClose]}
             onPress={() => setModalVisible(!modalVisible)}
           >
             <Text style={styles.textStyle}>Hide Modal</Text>
-          </Pressable>
+          </Pressable> */}
         </View>
       </View>
     </Modal>

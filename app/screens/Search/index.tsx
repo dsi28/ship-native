@@ -18,6 +18,7 @@ function SearchScreen() {
   const userId = useSelector((state: AppState) => state.user.uid);
   const [jobList, setJobList] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [deliveryLocation, setDeliveryLocation] = useState('');
   // const dispatch = useDispatch();
 
   const getJobs = async () => {
@@ -44,6 +45,8 @@ function SearchScreen() {
         <FilterModal
           setModalVisible={setModalVisible}
           modalVisible={modalVisible}
+          deliveryLocation={deliveryLocation}
+          setDeliveryLocation={setDeliveryLocation}
         />
         <View style={styles.contentContainer}>
           <View>

@@ -34,10 +34,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center'
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center'
   }
 });
 export default styles;
