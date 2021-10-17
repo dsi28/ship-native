@@ -23,12 +23,14 @@ import styles from './styles';
 interface HomeInputProps {
   jobType: string;
   jobsList: any;
+  isOwner: boolean;
   // setJobState: (ownerJobs: any) => void;
 }
 
 const HomeScreenTab: React.FC<HomeInputProps> = ({
   jobType,
-  jobsList
+  jobsList,
+  isOwner
   // setJobState
 }) => {
   // const [jobList, setJobList] = useState([]);
@@ -37,7 +39,8 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
 
   console.log(jobType, 'job list REAL TEST', jobsList);
   const pressItemHandler = (job: IJob) => {
-    NavigationService.navigate('Job', job);
+    const temp = { job, isOwner };
+    NavigationService.navigate('Job', temp);
   };
   return (
     <ScrollView style={styles.scrollView}>
@@ -58,6 +61,7 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
                     jobItem={job}
                     onPressHandler={pressItemHandler}
                     key={job.uid}
+                    isOwner={isOwner}
                   />
                 ))
               }
@@ -112,14 +116,17 @@ function HomeScreenTabs() {
     >
       <Tab.Screen name="Sender" options={{ tabBarLabel: 'Sender' }}>
         {() => (
-          // @ts-ignore
-          <HomeScreenTab jobType="ownerJobs" jobsList={ownerJobs} />
+          <HomeScreenTab jobType="ownerJobs" jobsList={ownerJobs} isOwner />
         )}
       </Tab.Screen>
       <Tab.Screen name="Traveler" options={{ tabBarLabel: 'Traveler' }}>
         {() => (
-          // @ts-ignore
-          <HomeScreenTab jobType="travelerJobs" jobsList={travelerJobs} />
+          <HomeScreenTab
+            jobType="travelerJobs"
+            jobsList={travelerJobs}
+            isOwner={false}
+          />
+          // add new component here
         )}
       </Tab.Screen>
     </Tab.Navigator>

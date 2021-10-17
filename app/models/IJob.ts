@@ -42,6 +42,7 @@ export interface INewJob {
     | 'category 5';
   itemDeliveryDate?: Date; // TODO figure out if string is the best way
   itemDeliveryLocation?: string;
+  itemPickupLocation?: string;
   itemValue?: number;
   itemImages?: string; // TODO only one image for now will add more images and make this a string array later.
   itemSize?: 'small' | 'medium' | 'large' | 'extra large';

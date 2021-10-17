@@ -79,6 +79,7 @@ function SearchScreen() {
                     onPressHandler={pressItemHandler}
                     // eslint-disable-next-line no-underscore-dangle
                     key={job.itemName + job.owner}
+                    isOwner={false}
                   />
                 );
               })}

@@ -7,11 +7,13 @@ import styles from './styles';
 interface ItemComponentProps {
   onPressHandler: (job: IJob) => void;
   jobItem: IJob;
+  isOwner: boolean;
 }
 
 const ItemComponent: React.FC<ItemComponentProps> = ({
   onPressHandler,
-  jobItem
+  jobItem,
+  isOwner
 }) => {
   const [dateTemp, setDateTemp] = useState('');
 
@@ -45,6 +47,8 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log('isOwner', isOwner);
+
   return (
     <Pressable onPress={() => onPressHandler(jobItem)}>
       <View style={styles.cardItemContainer}>
@@ -62,7 +66,9 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
                 <MaterialIcon name="location-pin" size={20} color="#e91e63" />
               </View>
               <View>
-                <Text style={styles.fontSize15}>100 Miles</Text>
+                <Text style={styles.fontSize15}>
+                  {jobItem.itemDeliveryLocation}
+                </Text>
               </View>
             </View>
           </View>
