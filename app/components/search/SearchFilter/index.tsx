@@ -32,6 +32,7 @@ const SearchFilter: React.FC<SearchFilterProps> = ({
         onChangeText={(e) => {
           console.log('change text form input: ', e);
           setFilter(e);
+          // update
         }}
         value={filter}
       />

@@ -19,6 +19,7 @@ function SearchScreen() {
   const [jobList, setJobList] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [deliveryLocationFilter, setDeliveryLocationFilter] = useState('');
+  const [originLocationFilter, setOriginLocationFilter] = useState('');
   // const dispatch = useDispatch();
 
   const getJobs = async () => {
@@ -27,6 +28,32 @@ function SearchScreen() {
     console.log('JOOOOOOOOOOOOBs ', jobs);
     // @ts-ignore
     setJobList(jobs);
+  };
+
+  const updateFilterJobs = async () => {
+    if (originLocationFilter !== '' || deliveryLocationFilter !== '') {
+      const filterJobs = jobList.map((job: IJob) => {
+        if (originLocationFilter !== '' && deliveryLocationFilter !== '') {
+          console.log('test both');
+          return (
+            job.itemPickupLocation === originLocationFilter &&
+            job.itemDeliveryLocation === deliveryLocationFilter
+          );
+        }
+        if (originLocationFilter !== '' && deliveryLocationFilter === '') {
+          console.log('origin only');
+          return job.itemPickupLocation === originLocationFilter;
+        }
+        if (originLocationFilter === '' && deliveryLocationFilter !== '') {
+          console.log('deliver only');
+          return job.itemDeliveryLocation === deliveryLocationFilter;
+        }
+        return job;
+      });
+      console.log('filter jobs: ', filterJobs);
+      // @ts-ignore
+      setJobList(filterJobs);
+    }
   };
 
   useEffect(() => {
@@ -47,6 +74,9 @@ function SearchScreen() {
           modalVisible={modalVisible}
           deliveryLocationFilter={deliveryLocationFilter}
           setDeliveryLocationFilter={setDeliveryLocationFilter}
+          originLocationFilter={originLocationFilter}
+          setOriginLocationFilter={setOriginLocationFilter}
+          updateFilterJobs={updateFilterJobs}
         />
         <View style={styles.contentContainer}>
           <View>

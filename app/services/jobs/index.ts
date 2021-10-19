@@ -143,6 +143,31 @@ export const getOpenJobs = async (userId: string) => {
   return openJobs;
 };
 
+export const getFilterJobs = async (userId: string) => {
+  const openJobs = await jobsRef
+    .where('ownerId', '!=', userId)
+    .where('itemSize', '==', 'medium')
+    .get()
+    .then((firebaseJobs) => {
+      if (typeof firebaseJobs !== 'undefined') {
+        console.log(
+          userId,
+          ' firebase jobs: ',
+          // @ts-ignore
+          // eslint-disable-next-line no-underscore-dangle
+          firebaseJobs.docs
+        );
+        return firebaseJobs.docs;
+      }
+      return [];
+    })
+    .catch((error) => {
+      console.warn('ERROR getting open jobs: ', error);
+      return 'get open jobs failed';
+    });
+  return openJobs;
+};
+
 export const jobTravelRequest = async (
   job: IJob,
   travelerId: string,

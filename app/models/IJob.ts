@@ -16,6 +16,7 @@ export interface IJob {
     | 'category 5';
   itemDeliveryDate?: Date;
   itemDeliveryLocation?: string;
+  itemPickupLocation?: string;
   itemValue?: number;
   itemImages?: string; // TODO only one image for now will add more images and make this a string array later.
   itemSize?: 'small' | 'medium' | 'large' | 'extra large';

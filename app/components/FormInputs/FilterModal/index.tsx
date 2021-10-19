@@ -10,13 +10,19 @@ interface FilterModalProps {
   setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   deliveryLocationFilter: string;
   setDeliveryLocationFilter: React.Dispatch<React.SetStateAction<string>>;
+  originLocationFilter: string;
+  setOriginLocationFilter: React.Dispatch<React.SetStateAction<string>>;
+  updateFilterJobs: () => Promise<void>;
 }
 
 const FilterModal: React.FC<FilterModalProps> = ({
   modalVisible,
   setModalVisible,
   deliveryLocationFilter,
-  setDeliveryLocationFilter
+  setDeliveryLocationFilter,
+  originLocationFilter,
+  setOriginLocationFilter,
+  updateFilterJobs
 }) => (
   <View>
     <Modal
@@ -67,7 +73,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
           <View
             style={{
               width: '100%',
-              marginBottom: 20
+              marginBottom: 35
             }}
           >
             <SearchFilter
@@ -77,9 +83,23 @@ const FilterModal: React.FC<FilterModalProps> = ({
               filterPlaceholder="Enter city"
             />
           </View>
+          <View
+            style={{
+              width: '100%',
+              marginBottom: 35
+            }}
+          >
+            <SearchFilter
+              filter={originLocationFilter}
+              setFilter={setOriginLocationFilter}
+              filterName="Origin Location"
+              filterPlaceholder="Enter city"
+            />
+          </View>
           <NextButton
             buttonText="update filter"
             onPressHandler={() => {
+              updateFilterJobs();
               setModalVisible(!modalVisible);
             }}
             isDisabled={false}
