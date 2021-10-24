@@ -39,7 +39,6 @@ function SearchScreen() {
             cleanJob.itemPickupLocation === originLocationFilter &&
             cleanJob.itemDeliveryLocation === deliveryLocationFilter
           ) {
-            console.log('match 1');
             return cleanJob;
           }
         } else if (
@@ -47,7 +46,6 @@ function SearchScreen() {
           deliveryLocationFilter === ''
         ) {
           if (cleanJob.itemPickupLocation === originLocationFilter) {
-            console.log('match 2');
             return cleanJob;
           }
         } else if (
@@ -55,12 +53,10 @@ function SearchScreen() {
           deliveryLocationFilter !== ''
         ) {
           if (cleanJob.itemDeliveryLocation === deliveryLocationFilter) {
-            console.log('match 3');
             return cleanJob;
           }
         }
       });
-      console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxfilter jobs: ', filterJobs);
       // @ts-ignore
       setJobList(filterJobs);
     } else {
