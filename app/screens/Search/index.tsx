@@ -4,6 +4,7 @@ import { Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import MComIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSelector } from 'react-redux';
+import FilterModal from '../../components/FormInputs/FilterModal';
 import ItemComponent from '../../components/home/ItemComponent';
 import { IJob } from '../../models/IJob';
 import NavigationService from '../../navigation/NavigationService';
@@ -16,12 +17,55 @@ import styles from './styles';
 function SearchScreen() {
   const userId = useSelector((state: AppState) => state.user.uid);
   const [jobList, setJobList] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [deliveryLocationFilter, setDeliveryLocationFilter] = useState('');
+  const [originLocationFilter, setOriginLocationFilter] = useState('');
   // const dispatch = useDispatch();
 
   const getJobs = async () => {
     const jobs = await getOpenJobs(userId);
     // @ts-ignore
     setJobList(jobs);
+  };
+
+  const updateFilterJobs = async () => {
+    if (originLocationFilter !== '' || deliveryLocationFilter !== '') {
+      // eslint-disable-next-line array-callback-return, consistent-return
+      const filterJobs = jobList.filter((job: any) => {
+        // eslint-disable-next-line no-underscore-dangle
+        const cleanJob: IJob = job._data;
+        if (originLocationFilter !== '' && deliveryLocationFilter !== '') {
+          if (
+            cleanJob.itemPickupLocation === originLocationFilter &&
+            cleanJob.itemDeliveryLocation === deliveryLocationFilter
+          ) {
+            console.log('match 1');
+            return cleanJob;
+          }
+        } else if (
+          originLocationFilter !== '' &&
+          deliveryLocationFilter === ''
+        ) {
+          if (cleanJob.itemPickupLocation === originLocationFilter) {
+            console.log('match 2');
+            return cleanJob;
+          }
+        } else if (
+          originLocationFilter === '' &&
+          deliveryLocationFilter !== ''
+        ) {
+          if (cleanJob.itemDeliveryLocation === deliveryLocationFilter) {
+            console.log('match 3');
+            return cleanJob;
+          }
+        }
+      });
+      console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxfilter jobs: ', filterJobs);
+      // @ts-ignore
+      setJobList(filterJobs);
+    } else {
+      getJobs();
+    }
   };
 
   useEffect(() => {
@@ -36,6 +80,15 @@ function SearchScreen() {
   return (
     <ScrollView style={styles.scrollViewContainer}>
       <View style={styles.container}>
+        <FilterModal
+          setModalVisible={setModalVisible}
+          modalVisible={modalVisible}
+          deliveryLocationFilter={deliveryLocationFilter}
+          setDeliveryLocationFilter={setDeliveryLocationFilter}
+          originLocationFilter={originLocationFilter}
+          setOriginLocationFilter={setOriginLocationFilter}
+          updateFilterJobs={updateFilterJobs}
+        />
         <View style={styles.contentContainer}>
           <View>
             <Text style={styles.filterTitle}>Near Me</Text>
@@ -44,16 +97,8 @@ function SearchScreen() {
             <View style={styles.iconView}>
               <Pressable
                 onPress={() => {
-                  console.log('press map icon');
-                }}
-              >
-                <MComIcon name="map" size={30} color="black" />
-              </Pressable>
-            </View>
-            <View style={styles.iconView}>
-              <Pressable
-                onPress={() => {
                   console.log('press filter icon');
+                  setModalVisible(!modalVisible);
                 }}
               >
                 <MComIcon name="filter" size={30} color="black" />

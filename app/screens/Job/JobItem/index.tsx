@@ -212,7 +212,7 @@ const Tab = createMaterialTopTabNavigator();
 function JobItemScreenTabs({ route }: any) {
   const { job } = route.params;
   const { isOwner } = route.params;
-  console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTT', job);
+  // console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTT', job);
   return (
     <Tab.Navigator
       tabBarOptions={{

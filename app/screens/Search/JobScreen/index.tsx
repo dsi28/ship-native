@@ -39,8 +39,13 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
                 // @ts-ignore
                 value={job.itemDeliveryLocation}
               />
+              <JobPropertyComponent
+                title="Pickup location"
+                // @ts-ignore
+                value={job.itemPickupLocation || 'pick up location not set'}
+              />
             </View>
-            <View style={styles.distanceContainer}>
+            {/* <View style={styles.distanceContainer}>
               <View style={styles.distancePinContainer}>
                 <View style={styles.distancePinIconContainer}>
                   <MaterialIcon name="location-pin" size={30} color="#87CEEB" />
@@ -54,7 +59,7 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
                   <Text style={styles.distanceMapLinkText}>View in Map</Text>
                 </Pressable>
               </View>
-            </View>
+            </View> */}
           </View>
           <View style={styles.paymentCompContainer}>
             <TravelerPaymentComponent
