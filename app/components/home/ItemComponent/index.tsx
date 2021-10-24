@@ -13,6 +13,7 @@ interface ItemComponentProps {
 const ItemComponent: React.FC<ItemComponentProps> = ({
   onPressHandler,
   jobItem,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   isOwner
 }) => {
   const [dateTemp, setDateTemp] = useState('');
@@ -46,8 +47,6 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
     setDateTemp(getDate());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log('isOwner', isOwner);
 
   return (
     <Pressable onPress={() => onPressHandler(jobItem)}>

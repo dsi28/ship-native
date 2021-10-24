@@ -52,12 +52,12 @@ export const getUserOwnJob = async (userId: string) => {
     .get()
     .then((firebaseJobs) => {
       if (typeof firebaseJobs !== 'undefined') {
-        console.log(
-          userId,
-          ' firebase jobs: ',
-          // @ts-ignore
-          firebaseJobs.docs
-        );
+        // console.log(
+        //   userId,
+        //   ' firebase jobs: ',
+        //   // @ts-ignore
+        //   firebaseJobs.docs
+        // );
         const cleanJobs = cleanFirebaseJobList(firebaseJobs.docs);
         return cleanJobs;
       }
@@ -79,12 +79,12 @@ export const getUserTravelerJobs = async (userId: string) => {
     .then(async (firebaseUser) => {
       if (typeof firebaseUser !== 'undefined') {
         // use this to get jobs from jobs? firebaseJobs.docs[0]._data.travelerRequests
-        console.log(
-          ' XXXXXXXXXXXXfirebase jobs travler: ',
-          // @ts-ignore
-          // eslint-disable-next-line no-underscore-dangle
-          firebaseUser.docs[0]._data.travelerRequests
-        );
+        // console.log(
+        //   ' XXXXXXXXXXXXfirebase jobs travler: ',
+        //   // @ts-ignore
+        //   // eslint-disable-next-line no-underscore-dangle
+        //   firebaseUser.docs[0]._data.travelerRequests
+        // );
         // @ts-ignore
         // eslint-disable-next-line no-underscore-dangle
         const tempTravelerReqs = firebaseUser.docs[0]._data.travelerRequests.map(
