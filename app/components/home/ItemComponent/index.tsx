@@ -80,7 +80,7 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
               </View>
               <View>
                 <Text style={styles.fontSize15}>
-                  {jobItem.itemDeliveryLocation}
+                  {jobItem.itemPickupLocation}
                 </Text>
               </View>
             </View>
