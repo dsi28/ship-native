@@ -32,27 +32,41 @@ function SearchScreen() {
 
   const updateFilterJobs = async () => {
     if (originLocationFilter !== '' || deliveryLocationFilter !== '') {
-      const filterJobs = jobList.map((job: IJob) => {
+      // eslint-disable-next-line array-callback-return, consistent-return
+      const filterJobs = jobList.filter((job: any) => {
+        // eslint-disable-next-line no-underscore-dangle
+        const cleanJob: IJob = job._data;
         if (originLocationFilter !== '' && deliveryLocationFilter !== '') {
-          console.log('test both');
-          return (
-            job.itemPickupLocation === originLocationFilter &&
-            job.itemDeliveryLocation === deliveryLocationFilter
-          );
+          if (
+            cleanJob.itemPickupLocation === originLocationFilter &&
+            cleanJob.itemDeliveryLocation === deliveryLocationFilter
+          ) {
+            console.log('match 1');
+            return cleanJob;
+          }
+        } else if (
+          originLocationFilter !== '' &&
+          deliveryLocationFilter === ''
+        ) {
+          if (cleanJob.itemPickupLocation === originLocationFilter) {
+            console.log('match 2');
+            return cleanJob;
+          }
+        } else if (
+          originLocationFilter === '' &&
+          deliveryLocationFilter !== ''
+        ) {
+          if (cleanJob.itemDeliveryLocation === deliveryLocationFilter) {
+            console.log('match 3');
+            return cleanJob;
+          }
         }
-        if (originLocationFilter !== '' && deliveryLocationFilter === '') {
-          console.log('origin only');
-          return job.itemPickupLocation === originLocationFilter;
-        }
-        if (originLocationFilter === '' && deliveryLocationFilter !== '') {
-          console.log('deliver only');
-          return job.itemDeliveryLocation === deliveryLocationFilter;
-        }
-        return job;
       });
-      console.log('filter jobs: ', filterJobs);
+      console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxfilter jobs: ', filterJobs);
       // @ts-ignore
       setJobList(filterJobs);
+    } else {
+      getJobs();
     }
   };
 
