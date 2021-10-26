@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, TextInput, View } from 'react-native';
+import styles from './styles';
 
 interface SearchFilterProps {
   filter: string;
@@ -15,19 +16,13 @@ const SearchFilter: React.FC<SearchFilterProps> = ({
   filterPlaceholder
 }) => (
   <View>
-    <View style={{ marginBottom: 15 }}>
-      <Text style={{ fontSize: 17, fontWeight: 'bold' }}>{filterName}</Text>
+    <View style={styles.searchContainer}>
+      <Text style={styles.filterName}>{filterName}</Text>
     </View>
 
     <View>
       <TextInput
-        style={{
-          fontSize: 17,
-          // marginBottom: 20,
-          borderWidth: 2,
-          borderColor: 'lightgray',
-          width: '50%'
-        }}
+        style={styles.inputContainer}
         placeholder={filter === '' ? filterPlaceholder : filter}
         onChangeText={(e) => {
           setFilter(e);

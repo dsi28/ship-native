@@ -34,6 +34,22 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center'
+  },
+  filterContainer: {
+    marginTop: 20,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 20
+  },
+  titleText: {
+    textAlign: 'center',
+    fontSize: 23,
+    fontWeight: 'bold'
+  },
+  locationFilterContainer: {
+    width: '100%',
+    marginBottom: 35
   }
 });
 export default styles;

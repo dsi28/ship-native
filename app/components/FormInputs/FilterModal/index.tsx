@@ -36,46 +36,21 @@ const FilterModal: React.FC<FilterModalProps> = ({
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <View
-            style={{
-              marginTop: 20,
-              width: '100%',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginVertical: 20
-            }}
-          >
+          <View style={styles.filterContainer}>
             <View>
               <Pressable onPress={() => setModalVisible(!modalVisible)}>
                 <MaterialIcon name="close" size={35} color="#e91e63" />
               </Pressable>
             </View>
-            <View
-              style={{
-                alignSelf: 'center'
-              }}
-            >
-              <Text
-                style={{
-                  textAlign: 'center',
-                  fontSize: 23,
-                  fontWeight: 'bold'
-                }}
-              >
-                Location
-              </Text>
+            <View>
+              <Text style={styles.titleText}>Location</Text>
             </View>
             <View>
               {/* this is a place holder so that flex row can be used for left icon and center text */}
               <MaterialIcon name="close" size={35} color="white" />
             </View>
           </View>
-          <View
-            style={{
-              width: '100%',
-              marginBottom: 35
-            }}
-          >
+          <View style={styles.locationFilterContainer}>
             <SearchFilter
               filter={deliveryLocationFilter}
               setFilter={setDeliveryLocationFilter}
@@ -83,12 +58,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
               filterPlaceholder="Enter city"
             />
           </View>
-          <View
-            style={{
-              width: '100%',
-              marginBottom: 35
-            }}
-          >
+          <View style={styles.locationFilterContainer}>
             <SearchFilter
               filter={originLocationFilter}
               setFilter={setOriginLocationFilter}
@@ -97,7 +67,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
             />
           </View>
           <NextButton
-            buttonText="update filter"
+            buttonText="Update Filter"
             onPressHandler={() => {
               updateFilterJobs();
               setModalVisible(!modalVisible);
