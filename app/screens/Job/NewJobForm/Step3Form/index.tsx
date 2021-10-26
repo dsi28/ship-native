@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../../components/buttons/WideButton';
 import TextFormInput from '../../../../components/FormInputs/TextI';
-import NumberToggler from '../../../../components/numberToggler';
+import NumberComponent from '../../../../components/numberComponent';
 import { IItemReciever } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
 import { resetNewJob, setNewJob } from '../../../../redux/actions/job';
@@ -101,7 +101,7 @@ const NewJobS3: React.FC = () => {
           <View>
             <View style={styles.screenInputContainer}>
               <View style={styles.inputContainer}>
-                <NumberToggler
+                <NumberComponent
                   count={shipmentCost}
                   setCount={setShipmentCost}
                 />

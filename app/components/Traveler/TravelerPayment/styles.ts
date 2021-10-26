@@ -17,6 +17,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'white'
+  },
+  paymentAlignment: {
+    flexDirection: 'row',
+    alignSelf: 'center'
   }
 });
 

@@ -93,6 +93,7 @@ const JobTravelerDetails: React.FC<JobDetailsProps> = ({ job }) => {
       <TravelerPaymentComponent
         value={job.shipmentCost || 'cost not set'}
         text="Traveler will be paid on delivery"
+        includeDollar
       />
     </View>
   );
