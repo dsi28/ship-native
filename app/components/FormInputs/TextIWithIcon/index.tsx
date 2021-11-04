@@ -13,7 +13,7 @@ interface TextFormInputWithIconProps {
     | 'itemDeliveryLocation'
     | 'itemDeliveryDate'
     | 'itemPickupLocation';
-  inputValue: string;
+  inputValue: string | any;
   inputDisabled: boolean;
 }
 
