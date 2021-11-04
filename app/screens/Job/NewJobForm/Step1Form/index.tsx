@@ -1,4 +1,5 @@
 import DateTimePicker from '@react-native-community/datetimepicker';
+import dayjs from 'dayjs';
 import React, { useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -142,13 +143,10 @@ const NewJobS1: React.FC = () => {
                     onChangeHandler={handlePressCalendarInput}
                     propertyName="itemDeliveryDate"
                     inputValue={
-                      // eslint-disable-next-line no-nested-ternary
-                      typeof newJob?.itemDeliveryDate !== undefined
-                        ? typeof newJob?.itemDeliveryDate === 'object'
-                          ? newJob?.itemDeliveryDate.toDateString() // newJob.itemDeliveryDate?.toDateString()
-                          : // @ts-ignore
-                            new Date(newJob?.itemDeliveryDate).toDateString() // this is a mess
-                        : date.toDateString() // 'set date'
+                      // @ts-ignore
+                      newJob?.itemDeliveryDate
+                        ? newJob?.itemDeliveryDate.toDateString()
+                        : dayjs(new Date())
                     }
                     inputDisabled={false}
                   />
