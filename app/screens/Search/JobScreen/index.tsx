@@ -154,7 +154,7 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
             <View>
               <View>
                 <Text style={styles.oSenderInfoNoteTitle}>
-                  Note by Juan Cuadrado
+                  Note by {job.ownerName}
                 </Text>
               </View>
               <View>
