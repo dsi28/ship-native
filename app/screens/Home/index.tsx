@@ -51,14 +51,14 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
             <View>
               {
                 // @ts-ignore
-                jobsList.map((job: any) => (
+                jobsList.map((job: any, i: number) => (
                   // @ts-ignore
                   // eslint-disable-next-line no-underscore-dangle
                   // const job = jobItem._data;
                   <ItemComponent
                     jobItem={job}
                     onPressHandler={pressItemHandler}
-                    key={job.uid}
+                    key={i.toString() + job.uid}
                     isOwner={isOwner}
                   />
                 ))
