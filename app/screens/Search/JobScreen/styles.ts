@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     // flex: 1,
     width, // 30(marginHorizontal=15 from sellerprofile file) + 20(marginhorizontal= 10 from this file)
     height: height / 3,
-    backgroundColor: 'orange',
     // marginHorizontal: 10,
     // borderRadius: 10,
     shadowColor: '#000',
