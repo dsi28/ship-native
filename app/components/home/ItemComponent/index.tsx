@@ -84,10 +84,19 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
                   </View>
                   <View style={styles.itemPropertyValueContainer}>
                     <Text style={styles.itemPropertyValueText}>
-                      {dayjs
+                      {
                         // @ts-ignore
-                        .unix(jobItem.itemDeliveryDate.seconds)
-                        .format('MMM DD YYYY')}
+                        // eslint-disable-next-line eqeqeq
+                        typeof jobItem.itemDeliveryDate.seconds == 'number'
+                          ? dayjs
+                              // @ts-ignore
+                              .unix(jobItem.itemDeliveryDate.seconds)
+                              .format('MMM DD YYYY')
+                          : dayjs(
+                              // @ts-ignore
+                              jobItem.itemDeliveryDate
+                            ).format('MMM DD YYYY')
+                      }
                     </Text>
                   </View>
                 </View>

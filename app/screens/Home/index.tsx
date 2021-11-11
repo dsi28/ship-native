@@ -40,6 +40,7 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
     const temp = { job, isOwner };
     NavigationService.navigate('Job', temp);
   };
+
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>

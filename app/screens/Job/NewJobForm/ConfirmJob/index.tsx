@@ -36,6 +36,7 @@ const NewJobConfirm: React.FC = () => {
                     ownerName: user.name
                   }
                 };
+
                 // @ts-ignore
                 dispatch(addJob(newJob));
                 // update firebase job
