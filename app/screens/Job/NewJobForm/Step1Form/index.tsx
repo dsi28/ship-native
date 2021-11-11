@@ -68,7 +68,6 @@ const NewJobS1: React.FC = () => {
 
   const onChangeDate = (event: any, selectedDate: Date | undefined) => {
     const currentDate = selectedDate || date;
-    console.log('DDDDDDATE', currentDate, '  selected:', typeof selectedDate);
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
     setNewJob({ ...newJob, itemDeliveryDate: new Date(currentDate) });
