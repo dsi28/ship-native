@@ -15,7 +15,14 @@ const NewJobConfirm: React.FC = () => {
   const user = useSelector((state: AppState) => state.user);
 
   const dispatch = useDispatch();
-
+  console.log(
+    '*******************',
+    // @ts-ignore
+    jobState.itemDeliveryDate,
+    'type:',
+    // @ts-ignore
+    typeof jobState.itemDeliveryDate
+  );
   return (
     <ScrollView style={styles.container}>
       <View style={styles.subContainer}>
@@ -36,6 +43,7 @@ const NewJobConfirm: React.FC = () => {
                     ownerName: user.name
                   }
                 };
+
                 // @ts-ignore
                 dispatch(addJob(newJob));
                 // update firebase job
