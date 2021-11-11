@@ -1,7 +1,13 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import {
+  Pressable,
+  RefreshControl,
+  ScrollView,
+  Text,
+  View
+} from 'react-native';
+import {} from 'react-native-gesture-handler';
 import MComIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSelector } from 'react-redux';
 import FilterModal from '../../components/FormInputs/FilterModal';
@@ -20,6 +26,7 @@ function SearchScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const [deliveryLocationFilter, setDeliveryLocationFilter] = useState('');
   const [originLocationFilter, setOriginLocationFilter] = useState('');
+  const [refreshing, setRefreshing] = React.useState(false);
   // const dispatch = useDispatch();
 
   const getJobs = async () => {
@@ -65,7 +72,9 @@ function SearchScreen() {
   };
 
   useEffect(() => {
-    getJobs();
+    setRefreshing(true);
+    // getJobs();
+    getJobs().then(() => setRefreshing(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -73,8 +82,20 @@ function SearchScreen() {
     NavigationService.navigate('SearchJobScreen', job);
   };
   // console.log('job state', jobState.ownerJobs, 'FULL');
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    getJobs().then(() => setRefreshing(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <ScrollView style={styles.scrollViewContainer}>
+    <ScrollView
+      style={styles.scrollViewContainer}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <View style={styles.container}>
         <FilterModal
           setModalVisible={setModalVisible}
