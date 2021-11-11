@@ -2,8 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   scrollViewContainer: {
-    // backgroundColor: '#f3f5fa'
-    backgroundColor: 'green'
+    backgroundColor: '#f3f5fa'
   },
   container: {
     marginTop: 10,
