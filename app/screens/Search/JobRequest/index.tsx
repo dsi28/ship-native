@@ -22,7 +22,6 @@ interface SearchJobScreenProps {
 const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
   const job: IJob = route.params;
   const userId = useSelector((state: AppState) => state.user.uid);
-  // const user = useSelector((state: AppState) => state.user);
   const dispatch = useDispatch();
   const [daysBefore, setDaysBefore] = useState(1);
   const [travelerTrips, setTravelerTrips] = useState([]);
@@ -139,7 +138,6 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               buttonText="Request to Carry This Package"
               onPressHandler={() => {
                 jobTravelRequest(job, userId, selectedTrip);
-
                 dispatch(addTravelerJob(job));
                 NavigationService.navigate('SearchScreen');
               }}

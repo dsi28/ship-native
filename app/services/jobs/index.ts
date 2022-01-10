@@ -148,14 +148,10 @@ export const jobTravelRequest = async (
   job: IJob,
   travelerId: string,
   tripId: string
-  // user: IUser
 ) => {
   try {
-    console.log('jjjj', job.travelerRequests);
-    console.log('jjjj', job);
-
     const traveler = await (await usersRef.doc(travelerId).get()).data();
-    console.log('j', traveler);
+
     await jobsRef.doc(job.uid).update({
       travelerRequests: [
         // @ts-ignore
