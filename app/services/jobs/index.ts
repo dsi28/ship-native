@@ -91,11 +91,12 @@ export const getUserTravelerJobs = async (userId: string) => {
           (tReq: any) => tReq.jobId
         );
         ///
-
+        console.log('yyyy ', tempTravelerReqs.length, '  ', tempTravelerReqs);
         const jobs = await jobsRef
           .where('uid', 'in', tempTravelerReqs)
           .get()
           .then((firebaseJobs) => {
+            console.log('yyyyy');
             if (typeof firebaseJobs !== 'undefined') {
               const cleanJobs = cleanFirebaseJobList(firebaseJobs.docs);
               console.log(' YYYYYYYYYYYYYYYY: ', cleanJobs);
@@ -147,8 +148,14 @@ export const jobTravelRequest = async (
   job: IJob,
   travelerId: string,
   tripId: string
+  // user: IUser
 ) => {
   try {
+    console.log('jjjj', job.travelerRequests);
+    console.log('jjjj', job);
+
+    const traveler = await (await usersRef.doc(travelerId).get()).data();
+    console.log('j', traveler);
     await jobsRef.doc(job.uid).update({
       travelerRequests: [
         // @ts-ignore
@@ -158,7 +165,8 @@ export const jobTravelRequest = async (
     });
     await usersRef.doc(travelerId).update({
       travelerRequests: [
-        ...job.travelerRequests,
+        // @ts-ignore
+        ...traveler.travelerRequests,
         { travelerId, tripId, status: 'pending', jobId: job.uid }
       ]
     });
