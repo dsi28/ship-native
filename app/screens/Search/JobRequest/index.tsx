@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
 import DropDownFormInput from '../../../components/FormInputs/DropDown';
 import JobPropertyComponent from '../../../components/job/property';
@@ -9,6 +9,7 @@ import NumberToggler from '../../../components/numberToggler';
 import TravelerPaymentComponent from '../../../components/Traveler/TravelerPayment';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
+import { addTravelerJob } from '../../../redux/actions/job';
 import { AppState } from '../../../redux/store/configureStore';
 import { jobTravelRequest } from '../../../services/jobs';
 import { getTripsFirebase } from '../../../services/trip';
@@ -21,7 +22,7 @@ interface SearchJobScreenProps {
 const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
   const job: IJob = route.params;
   const userId = useSelector((state: AppState) => state.user.uid);
-
+  const dispatch = useDispatch();
   const [daysBefore, setDaysBefore] = useState(1);
   const [travelerTrips, setTravelerTrips] = useState([]);
   const [selectedTrip, setSelectedTrip] = useState<string>('');
@@ -137,8 +138,8 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               buttonText="Request to Carry This Package"
               onPressHandler={() => {
                 jobTravelRequest(job, userId, selectedTrip);
-                // @ts-ignore
-                // dispatch(addJob(newJob));
+
+                dispatch(addTravelerJob(job));
                 NavigationService.navigate('SearchScreen');
               }}
               isSelected
