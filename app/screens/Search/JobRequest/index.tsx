@@ -137,6 +137,8 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               buttonText="Request to Carry This Package"
               onPressHandler={() => {
                 jobTravelRequest(job, userId, selectedTrip);
+                // @ts-ignore
+                // dispatch(addJob(newJob));
                 NavigationService.navigate('SearchScreen');
               }}
               isSelected
