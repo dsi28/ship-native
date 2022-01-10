@@ -1,6 +1,7 @@
 import { IJobState } from '../../models/IJob';
 import {
   ADD_JOB,
+  ADD_TRAVELER_JOB,
   LOG_OUT_JOB,
   RESET_NEW_JOB,
   SET_NEW_JOB,
@@ -65,6 +66,11 @@ const jobReducer = (state = initialState, action: IAction) => {
       return {
         ...state,
         ...action.data
+      };
+    case ADD_TRAVELER_JOB:
+      return {
+        ...state,
+        travelerJobs: [...state.travelerJobs, action.data]
       };
     default:
       return state;

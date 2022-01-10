@@ -7,6 +7,7 @@ export const LOG_OUT_JOB = 'LOG_OUT_JOB';
 export const SET_OWNER_JOB = 'SET_OWNER_JOB';
 export const SET_TRAVELER_JOB = 'SET_OWNER_JOB';
 export const SET_OWNER_TRAVELER_JOB = 'SET_OWNER_TRAVELER_JOB';
+export const ADD_TRAVELER_JOB = 'ADD_TRAVELER_JOB';
 
 export const setNewJob = (data: INewJob) => ({
   type: SET_NEW_JOB,
@@ -29,6 +30,11 @@ export const setOwnerJobs = (data: INewJob[]) => ({
 
 export const setTravlerJobs = (data: INewJob[]) => ({
   type: SET_TRAVELER_JOB,
+  data
+});
+
+export const addTravelerJob = (data: INewJob) => ({
+  type: ADD_TRAVELER_JOB,
   data
 });
 
