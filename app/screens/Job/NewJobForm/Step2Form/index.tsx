@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import FontA5 from 'react-native-vector-icons/FontAwesome5';
 import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../../components/buttons/WideButton';
-import CheckBoxItem from '../../../../components/FormInputs/checkbox';
 import SimpleCheckBoxItem from '../../../../components/FormInputs/simpleCheckBox';
 import { IItemWeight } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
@@ -14,24 +14,24 @@ import styles from './styles';
 const NewJobS2: React.FC = () => {
   const jobState = useSelector((state: AppState) => state.job.newJob);
   const dispatch = useDispatch();
-  const [itemSize, setItemSize] = useState<
-    'small' | 'medium' | 'large' | 'extra large' | undefined
-    // @ts-ignore
-  >(jobState.itemSize);
+  // const [itemSize, setItemSize] = useState<
+  //   'small' | 'medium' | 'large' | 'extra large' | undefined
+  //   // @ts-ignore
+  // >(jobState.itemSize);
   const [itemWeight, setItemWeight] = useState<IItemWeight | undefined>(
     // @ts-ignore
     jobState.itemWeight
   );
 
-  const checkBoxOnChange = (
-    newValue: 'small' | 'medium' | 'large' | 'extra large'
-  ) => {
-    if (newValue !== itemSize) {
-      setItemSize(newValue);
-    } else {
-      setItemSize(undefined);
-    }
-  };
+  // const checkBoxOnChange = (
+  //   newValue: 'small' | 'medium' | 'large' | 'extra large'
+  // ) => {
+  //   if (newValue !== itemSize) {
+  //     setItemSize(newValue);
+  //   } else {
+  //     setItemSize(undefined);
+  //   }
+  // };
 
   const simpleCheckBoxOnChange = (newValue: IItemWeight) => {
     if (newValue.weight.max !== itemWeight?.weight.max) {
@@ -48,45 +48,51 @@ const NewJobS2: React.FC = () => {
             <Text style={styles.screenTitle}>Step 2</Text>
           </View>
           <View style={styles.subTitleContainer}>
-            <Text style={styles.subTitle}>Select Item Size</Text>
+            <Text style={styles.subTitle}>Input Item Dimensions</Text>
           </View>
           <View>
             <View style={styles.screenInputContainer}>
-              <View style={styles.subTitleContainer}>
-                <CheckBoxItem
-                  headerText="Small"
-                  subHeaderText="Fits in a small backpack or carry-on bag"
-                  valueName="small"
-                  isSelected={itemSize === 'small'}
-                  onChange={checkBoxOnChange}
-                />
-              </View>
-              <View style={styles.subTitleContainer}>
-                <CheckBoxItem
-                  headerText="Medium"
-                  subHeaderText="Fits in a large duffel bag or carry-on suitcase"
-                  valueName="medium"
-                  isSelected={itemSize === 'medium'}
-                  onChange={checkBoxOnChange}
-                />
-              </View>
-              <View style={styles.subTitleContainer}>
-                <CheckBoxItem
-                  headerText="Large"
-                  subHeaderText="Fits in a large suitcase"
-                  valueName="large"
-                  isSelected={itemSize === 'large'}
-                  onChange={checkBoxOnChange}
-                />
-              </View>
-              <View style={styles.subTitleContainer}>
-                <CheckBoxItem
-                  headerText="Extra Large"
-                  subHeaderText="Needs to be shipped in cargo area"
-                  valueName="extra large"
-                  isSelected={itemSize === 'extra large'}
-                  onChange={checkBoxOnChange}
-                />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  width: '100%',
+                  backgroundColor: 'yellow',
+                  justifyContent: 'space-evenly'
+                }}
+              >
+                <View style={{ flex: 1 }}>
+                  <TextInput style={{ borderWidth: 5, borderColor: 'green' }} />
+                </View>
+                <View
+                  style={{
+                    backgroundColor: 'purple',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <FontA5 name="times" size={50} color="black" />
+                </View>
+                <View style={{ flex: 1 }}>
+                  <TextInput style={{ borderWidth: 5, borderColor: 'green' }} />
+                </View>
+                <View
+                  style={{
+                    backgroundColor: 'purple',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <FontA5 name="times" size={50} color="black" />
+                </View>
+                <View style={{ flex: 1 }}>
+                  <TextInput style={{ borderWidth: 5, borderColor: 'green' }} />
+                </View>
+                <View
+                  style={{
+                    backgroundColor: 'purple',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <Text style={{ fontSize: 30 }}>in</Text>
+                </View>
               </View>
             </View>
           </View>
@@ -146,7 +152,10 @@ const NewJobS2: React.FC = () => {
                 dispatch(
                   setNewJob({
                     ...jobState,
-                    ...{ itemSize, itemWeight }
+                    ...{
+                      // itemSize,
+                      itemWeight
+                    }
                   })
                 );
 
