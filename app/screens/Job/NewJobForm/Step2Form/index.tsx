@@ -56,42 +56,70 @@ const NewJobS2: React.FC = () => {
                 style={{
                   flexDirection: 'row',
                   width: '100%',
-                  backgroundColor: 'yellow',
-                  justifyContent: 'space-evenly'
+                  backgroundColor: '#f3f5fa',
+                  justifyContent: 'space-evenly',
+                  marginBottom: 20,
+                  paddingRight: 20,
+                  height: 80
                 }}
               >
-                <View style={{ flex: 1 }}>
-                  <TextInput style={{ borderWidth: 5, borderColor: 'green' }} />
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}
+                >
+                  <TextInput
+                    style={{ fontSize: 20, fontWeight: 'bold' }}
+                    maxLength={4}
+                  />
                 </View>
                 <View
                   style={{
-                    backgroundColor: 'purple',
                     justifyContent: 'center'
                   }}
                 >
-                  <FontA5 name="times" size={50} color="black" />
-                </View>
-                <View style={{ flex: 1 }}>
-                  <TextInput style={{ borderWidth: 5, borderColor: 'green' }} />
+                  <FontA5 name="times" size={30} color="gray" />
                 </View>
                 <View
                   style={{
-                    backgroundColor: 'purple',
-                    justifyContent: 'center'
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center'
                   }}
                 >
-                  <FontA5 name="times" size={50} color="black" />
-                </View>
-                <View style={{ flex: 1 }}>
-                  <TextInput style={{ borderWidth: 5, borderColor: 'green' }} />
+                  <TextInput
+                    style={{ fontSize: 20, fontWeight: 'bold' }}
+                    maxLength={4}
+                  />
                 </View>
                 <View
                   style={{
-                    backgroundColor: 'purple',
                     justifyContent: 'center'
                   }}
                 >
-                  <Text style={{ fontSize: 30 }}>in</Text>
+                  <FontA5 name="times" size={30} color="gray" />
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}
+                >
+                  <TextInput
+                    style={{ fontSize: 20, fontWeight: 'bold' }}
+                    maxLength={4}
+                  />
+                </View>
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}
+                >
+                  <Text style={{ fontSize: 25, color: 'gray' }}>in</Text>
                 </View>
               </View>
             </View>
