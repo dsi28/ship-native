@@ -48,10 +48,89 @@ const NewJobS2: React.FC = () => {
             <Text style={styles.screenTitle}>Step 2</Text>
           </View>
           <View style={styles.subTitleContainer}>
-            <Text style={styles.subTitle}>Input Item Dimensions</Text>
+            <Text style={styles.subTitle}>Dimensions</Text>
           </View>
           <View>
             <View style={styles.screenInputContainer}>
+              <View
+                style={{
+                  flexDirection: 'column',
+                  width: '100%',
+                  backgroundColor: 'lightgray',
+                  // justifyContent: 'space-evenly',
+                  paddingHorizontal: 20,
+                  // alignItems: 'center',
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  borderColor: '#f3f5fa'
+                }}
+              >
+                <View style={{ marginTop: 15 }}>
+                  <Text
+                    style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}
+                  >
+                    DIMENSIONS PER ITEM
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    marginTop: 5,
+                    marginBottom: 15,
+                    flexDirection: 'row'
+                  }}
+                >
+                  <View>
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        fontWeight: 'bold',
+                        color: 'gray'
+                      }}
+                    >
+                      L
+                    </Text>
+                  </View>
+
+                  <View
+                    style={{
+                      justifyContent: 'center',
+                      marginHorizontal: 5
+                    }}
+                  >
+                    <FontA5 name="times" size={10} color="gray" />
+                  </View>
+                  <View>
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        fontWeight: 'bold',
+                        color: 'gray'
+                      }}
+                    >
+                      W
+                    </Text>
+                  </View>
+                  <View
+                    style={{
+                      justifyContent: 'center',
+                      marginHorizontal: 5
+                    }}
+                  >
+                    <FontA5 name="times" size={10} color="gray" />
+                  </View>
+                  <View>
+                    <Text
+                      style={{
+                        fontSize: 15,
+                        fontWeight: 'bold',
+                        color: 'gray'
+                      }}
+                    >
+                      H
+                    </Text>
+                  </View>
+                </View>
+              </View>
               <View
                 style={{
                   flexDirection: 'row',
@@ -60,7 +139,11 @@ const NewJobS2: React.FC = () => {
                   justifyContent: 'space-evenly',
                   marginBottom: 20,
                   paddingRight: 20,
-                  height: 80
+                  height: 80,
+                  alignItems: 'center',
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  borderColor: '#f3f5fa'
                 }}
               >
                 <View

@@ -35,9 +35,7 @@ const styles = StyleSheet.create({
     // width: '70%',
     marginRight: 150
   },
-  screenInputContainer: {
-    borderRadius: 10
-  },
+  screenInputContainer: {},
   inputContainer: { marginBottom: 10 },
   inputSubTextContainer: { marginBottom: 50 },
   inputSubText: { fontSize: 20, color: 'gray' },
