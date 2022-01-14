@@ -52,7 +52,7 @@ export interface INewJob {
   itemLength?: number;
   itemWidth?: number;
   itemHeight?: number;
-  itemWeight?: IItemWeight;
+  itemWeight?: number;
   note?: string;
   itemReceiver?: IItemReciever;
   shipmentCost?: number;
