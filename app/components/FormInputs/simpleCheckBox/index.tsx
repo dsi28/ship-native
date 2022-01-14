@@ -1,14 +1,13 @@
 import CheckBox from '@react-native-community/checkbox';
 import React from 'react';
 import { Text, View } from 'react-native';
-import { IItemWeight } from '../../../models/IJob';
 import styles from './styles';
 
 interface SimpleCheckBoxItemProps {
   headerText: string;
-  valueName: IItemWeight;
+  valueName: number;
   isSelected: boolean;
-  onChange: (newValue: IItemWeight) => void;
+  onChange: (newValue: number) => void;
 }
 
 const SimpleCheckBoxItem: React.FC<SimpleCheckBoxItemProps> = ({

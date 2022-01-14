@@ -20,7 +20,10 @@ export interface IJob {
   itemValue?: number;
   itemImages?: string; // TODO only one image for now will add more images and make this a string array later.
   itemSize?: 'small' | 'medium' | 'large' | 'extra large';
-  itemWeight?: IItemWeight;
+  itemLength?: number;
+  itemWidth?: number;
+  itemHeight?: number;
+  itemWeight?: number;
   note?: string;
   itemReceiver?: IItemReciever;
   shipmentCost?: number;
@@ -46,19 +49,13 @@ export interface INewJob {
   itemPickupLocation?: string;
   itemValue?: number;
   itemImages?: string; // TODO only one image for now will add more images and make this a string array later.
-  itemSize?: 'small' | 'medium' | 'large' | 'extra large';
-  itemWeight?: IItemWeight;
+  itemLength?: number;
+  itemWidth?: number;
+  itemHeight?: number;
+  itemWeight?: number;
   note?: string;
   itemReceiver?: IItemReciever;
   shipmentCost?: number;
-}
-export interface IItemWeight {
-  weight:
-    | { max: 2; text: 'Around 2 lbs' }
-    | { max: 5; text: 'Around 2-5 lbs' }
-    | { max: 20; text: 'Around 5-20 lbs' }
-    | { max: 50; text: 'Around 20-50 lbs' }
-    | { max: 1000; text: 'Over 50 lbs' };
 }
 
 export interface IItemReciever {

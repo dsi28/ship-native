@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   subTitleContainer: {
     // marginTop: 20,
-    marginBottom: 20
+    marginBottom: 10
   },
   subTitle: {
     fontSize: 25,
@@ -35,19 +35,17 @@ const styles = StyleSheet.create({
     // width: '70%',
     marginRight: 150
   },
-  screenInputContainer: {
-    borderRadius: 10
-  },
+  screenInputContainer: {},
   inputContainer: { marginBottom: 10 },
   inputSubTextContainer: { marginBottom: 50 },
   inputSubText: { fontSize: 20, color: 'gray' },
   addItemContainer: {
-    marginBottom: 50,
-    backgroundColor: '#f3f5fa',
-    paddingVertical: 50,
+    marginBottom: 20,
+    // backgroundColor: '#f3f5fa',
+    paddingVertical: 20,
     paddingHorizontal: 20
   },
-  AddItemTitleContainer: { marginBottom: 30 },
+  AddItemTitleContainer: { marginBottom: 10 },
   imageInputContainer: {
     marginHorizontal: 20,
     height: 100,
