@@ -23,7 +23,7 @@ export interface IJob {
   itemLength?: number;
   itemWidth?: number;
   itemHeight?: number;
-  itemWeight?: IItemWeight;
+  itemWeight?: number;
   note?: string;
   itemReceiver?: IItemReciever;
   shipmentCost?: number;
@@ -56,14 +56,6 @@ export interface INewJob {
   note?: string;
   itemReceiver?: IItemReciever;
   shipmentCost?: number;
-}
-export interface IItemWeight {
-  weight:
-    | { max: 2; text: 'Around 2 lbs' }
-    | { max: 5; text: 'Around 2-5 lbs' }
-    | { max: 20; text: 'Around 5-20 lbs' }
-    | { max: 50; text: 'Around 20-50 lbs' }
-    | { max: 1000; text: 'Over 50 lbs' };
 }
 
 export interface IItemReciever {

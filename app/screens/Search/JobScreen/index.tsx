@@ -89,9 +89,7 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
                 <MaterialIcon name="comment" size={30} color="#87CEEB" />
               </View>
               <View>
-                <Text style={styles.iconText}>
-                  {job.itemWeight?.weight.text}
-                </Text>
+                <Text style={styles.iconText}>{job.itemWeight}</Text>
               </View>
             </View>
             <View style={styles.detailsIconContainer}>

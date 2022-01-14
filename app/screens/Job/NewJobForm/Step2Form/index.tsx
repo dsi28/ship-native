@@ -34,23 +34,6 @@ const NewJobS2: React.FC = () => {
     jobState.itemHeight || 0
   );
 
-  // const checkBoxOnChange = (
-  //   newValue: 'small' | 'medium' | 'large' | 'extra large'
-  // ) => {
-  //   if (newValue !== itemSize) {
-  //     setItemSize(newValue);
-  //   } else {
-  //     setItemSize(undefined);
-  //   }
-  // };
-
-  // const simpleCheckBoxOnChange = (newValue: IItemWeight) => {
-  //   if (newValue.weight.max !== itemWeight?.weight.max) {
-  //     setItemWeight(newValue);
-  //   } else {
-  //     setItemWeight(undefined);
-  //   }
-  // };
   return (
     <ScrollView style={styles.container}>
       <View style={styles.subContainer}>

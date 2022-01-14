@@ -72,7 +72,7 @@ const JobDetails: React.FC<JobDetailsProps> = ({ job }) => {
         />
         <JobPropertyComponent
           title="Item Weight"
-          value={job.itemWeight?.weight.text || 'item weight not set'}
+          value={job.itemWeight?.toString() || 'item weight not set'}
         />
         <JobPropertyComponent
           title="Item Dimensions"
