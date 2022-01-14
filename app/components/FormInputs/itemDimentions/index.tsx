@@ -11,10 +11,18 @@ interface ItemDimsProps {
   setHeight: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const ItemDims: React.FC<ItemDimsProps> = ({ length, width, height }) => {
+const ItemDims: React.FC<ItemDimsProps> = ({
+  length,
+  width,
+  height,
+  setLength,
+  setWidth,
+  setHeight
+}) => {
   const tempLength: string = length.toString();
   const tempWidth: string = width.toString();
   const tempHeight: string = height.toString();
+
   return (
     <View>
       <View
@@ -121,6 +129,9 @@ const ItemDims: React.FC<ItemDimsProps> = ({ length, width, height }) => {
             maxLength={4}
             value={tempLength}
             keyboardType="numeric"
+            onChangeText={(newDim) => {
+              setLength(parseInt(newDim.replace(/[^0-9]/g, ''), 10));
+            }}
           />
         </View>
         <View
@@ -142,6 +153,9 @@ const ItemDims: React.FC<ItemDimsProps> = ({ length, width, height }) => {
             maxLength={4}
             value={tempWidth}
             keyboardType="numeric"
+            onChangeText={(newDim) => {
+              setWidth(parseInt(newDim.replace(/[^0-9]/g, ''), 10));
+            }}
           />
         </View>
         <View
@@ -163,6 +177,9 @@ const ItemDims: React.FC<ItemDimsProps> = ({ length, width, height }) => {
             maxLength={4}
             value={tempHeight}
             keyboardType="numeric"
+            onChangeText={(newDim) => {
+              setHeight(parseInt(newDim.replace(/[^0-9]/g, ''), 10));
+            }}
           />
         </View>
         <View
