@@ -69,7 +69,7 @@ const NewJobS2: React.FC = () => {
                   <Text
                     style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}
                   >
-                    DIMENSIONS PER ITEM
+                    ITEM DIMENSIONS
                   </Text>
                 </View>
                 <View
