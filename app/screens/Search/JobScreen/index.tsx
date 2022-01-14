@@ -79,7 +79,9 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
                 />
               </View>
               <View>
-                <Text style={styles.iconText}>{job.itemSize}</Text>
+                <Text
+                  style={styles.iconText}
+                >{`${job.itemLength} x ${job.itemWidth} x ${job.itemHeight} in`}</Text>
               </View>
             </View>
             <View style={styles.detailsIconContainer}>

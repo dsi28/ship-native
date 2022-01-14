@@ -75,8 +75,11 @@ const JobDetails: React.FC<JobDetailsProps> = ({ job }) => {
           value={job.itemWeight?.weight.text || 'item weight not set'}
         />
         <JobPropertyComponent
-          title="Item Size"
-          value={job.itemSize || 'item size not set'}
+          title="Item Dimensions"
+          value={
+            `${job.itemLength} x ${job.itemWidth} x ${job.itemHeight} in` ||
+            'item dimensions not set'
+          }
         />
         <JobPropertyComponent
           title="Notes from Owner"

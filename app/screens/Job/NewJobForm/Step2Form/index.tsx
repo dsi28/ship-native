@@ -130,7 +130,10 @@ const NewJobS2: React.FC = () => {
                     ...jobState,
                     ...{
                       // itemSize,
-                      itemWeight
+                      itemWeight,
+                      itemLength,
+                      itemWidth,
+                      itemHeight
                     }
                   })
                 );

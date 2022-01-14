@@ -20,6 +20,9 @@ export interface IJob {
   itemValue?: number;
   itemImages?: string; // TODO only one image for now will add more images and make this a string array later.
   itemSize?: 'small' | 'medium' | 'large' | 'extra large';
+  itemLength?: number;
+  itemWidth?: number;
+  itemHeight?: number;
   itemWeight?: IItemWeight;
   note?: string;
   itemReceiver?: IItemReciever;
@@ -46,7 +49,6 @@ export interface INewJob {
   itemPickupLocation?: string;
   itemValue?: number;
   itemImages?: string; // TODO only one image for now will add more images and make this a string array later.
-  itemSize?: 'small' | 'medium' | 'large' | 'extra large';
   itemLength?: number;
   itemWidth?: number;
   itemHeight?: number;

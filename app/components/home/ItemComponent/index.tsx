@@ -72,7 +72,8 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
                   </View>
                   <View style={styles.itemPropertyValueContainer}>
                     <Text style={styles.itemPropertyValueText}>
-                      {jobItem.itemSize}
+                      {jobItem.itemLength}x{jobItem.itemWidth}x
+                      {jobItem.itemHeight}in
                     </Text>
                   </View>
                 </View>
