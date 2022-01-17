@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import dayjs from 'dayjs';
+import React, { useEffect, useState } from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import { ITrip } from '../../../models/ITraveler';
 import { IUser } from '../../../models/IUserProfile';
+import { getTripFirebase } from '../../../services/trip';
 import styles from './styles';
 
 interface TravelerRequestItemComponentProps {
@@ -15,12 +17,24 @@ const TravelerRequestItemComponent: React.FC<TravelerRequestItemComponentProps> 
   traveler,
   job
 }) => {
+  const [trip, setTrip] = useState<ITrip>();
+
   console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX', traveler);
   console.log('yyyyyyyyyyyyyy', job);
-  console.log('I LOVE YOU', traveler.tripId);
+
+  const getTravelerTrip = async () => {
+    console.log('I LOVE YOU', traveler.tripId, ' ', traveler.uid);
+    const temp: any = await getTripFirebase(traveler.uid, traveler.tripId);
+    console.log('delete logging', temp);
+    setTrip(temp);
+  };
+
   useEffect(() => {
+    console.log('test');
     // get the trip
-    // getTripFirebase(traveler.uid);
+    getTravelerTrip();
+    console.log('Trip', trip);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -35,19 +49,6 @@ const TravelerRequestItemComponent: React.FC<TravelerRequestItemComponentProps> 
                 // eslint-disable-next-line global-require, import/no-dynamic-require
                 source={require('../../../assets/images/mango.jpg')}
               />
-            </View>
-            <View style={styles.flexDirectionRow}>
-              <View
-                style={{
-                  ...styles.iconView,
-                  ...{ marginRight: 0 }
-                }}
-              >
-                <MaterialIcon name="location-pin" size={20} color="#87CEEB" />
-              </View>
-              <View>
-                <Text style={styles.fontSize15}>100 Miles</Text>
-              </View>
             </View>
           </View>
           <View style={styles.detailsContainer}>
@@ -65,7 +66,7 @@ const TravelerRequestItemComponent: React.FC<TravelerRequestItemComponentProps> 
                     </View>
                     <View style={styles.detailValueContainer}>
                       <Text style={styles.detailValueText}>
-                        California, USA
+                        {trip?.arrivalCity}
                       </Text>
                     </View>
                   </View>
@@ -75,7 +76,20 @@ const TravelerRequestItemComponent: React.FC<TravelerRequestItemComponentProps> 
                       <Text style={styles.detailTitle}>Flying On:</Text>
                     </View>
                     <View style={styles.detailValueContainer}>
-                      <Text style={styles.detailValueText}>Jul 22, 2019</Text>
+                      <Text style={styles.detailValueText}>
+                        {
+                          // @ts-ignore
+                          typeof trip?.date.seconds === 'number'
+                            ? dayjs
+                                // @ts-ignore
+                                .unix(trip?.date.seconds)
+                                .format('MMM DD YYYY')
+                            : dayjs(
+                                // @ts-ignore
+                                trip?.date
+                              ).format('MMM DD YYYY')
+                        }
+                      </Text>
                     </View>
                   </View>
                 </View>
