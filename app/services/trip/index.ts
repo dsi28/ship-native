@@ -44,9 +44,7 @@ export const getTripFirebase = async (travelerId: string, tripId: string) => {
       .collection('trips')
       .doc(tripId)
       .get();
-    // @ts-ignore
-    // eslint-disable-next-line no-underscore-dangle
-    console.log('XXXXXxxx', firebaseTrips._data);
+
     // @ts-ignore
     // eslint-disable-next-line no-underscore-dangle
     return firebaseTrips._data;

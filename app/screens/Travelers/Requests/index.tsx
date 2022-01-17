@@ -20,17 +20,13 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
       let tripId = '';
       // eslint-disable-next-line consistent-return
       rList.forEach((request: any) => {
-        console.log('rrrrr', request);
         if (traveler.uid === request.travelerId) {
-          console.log('here', traveler.uid, ' ', request.travelerId);
-          console.log(request.tripId);
           tripId = request.tripId;
         }
       });
-      console.log(tripId);
+
       return { ...traveler, tripId };
     });
-    console.log('NEWeeeeeeeeeeee', newTList);
     return newTList;
     // traveler.currentRequest.tripId = trav.tripId;
     // @ts-ignore

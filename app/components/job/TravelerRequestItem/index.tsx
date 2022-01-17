@@ -14,26 +14,18 @@ interface TravelerRequestItemComponentProps {
 
 const TravelerRequestItemComponent: React.FC<TravelerRequestItemComponentProps> = ({
   onPressHandler,
-  traveler,
-  job
+  traveler
 }) => {
   const [trip, setTrip] = useState<ITrip>();
 
-  console.log('XXXXXXXXXXXXXXXXXXXXXXXXXX', traveler);
-  console.log('yyyyyyyyyyyyyy', job);
-
   const getTravelerTrip = async () => {
-    console.log('I LOVE YOU', traveler.tripId, ' ', traveler.uid);
     const temp: any = await getTripFirebase(traveler.uid, traveler.tripId);
-    console.log('delete logging', temp);
     setTrip(temp);
   };
 
   useEffect(() => {
-    console.log('test');
     // get the trip
     getTravelerTrip();
-    console.log('Trip', trip);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
