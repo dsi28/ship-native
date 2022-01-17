@@ -30,6 +30,9 @@ const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
       traveler.uid,
       traveler.travelerRequests.tripId
     );
+    console.error(
+      'test this get traveler trip was called in appscreensTravelersTravelerScreenindex.tsx'
+    );
     // @ts-ignore
     setTrip(temp);
   };

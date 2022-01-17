@@ -181,13 +181,13 @@ export const getTravelerRequests = async (travelerIds: string[]) => {
     });
 
     const list = await Promise.all(travelers);
-    console.log('LIIIIIIIIIST: ', list);
-    const temp = list[0].docs.map((travler) => {
-      console.log('list 2, ', travler);
-      // @ts-ignore
-      // eslint-disable-next-line no-underscore-dangle
-      return travler._data;
-    });
+    const temp = list[0].docs.map(
+      (travler) =>
+        // console.log('list 2, ', travler);
+        // @ts-ignore
+        // eslint-disable-next-line no-underscore-dangle
+        travler._data
+    );
     return temp;
   } catch (error) {
     console.log('error getting traveler users: ', error);

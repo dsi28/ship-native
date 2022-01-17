@@ -15,11 +15,29 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
   const job = route.params;
   const [travelerList, setTravelerList] = useState<any>([]);
 
+  const travlerAddTripJob = (tList: any, rList: any) => {
+    const newTList = tList.map((traveler: any) => {
+      let tripId = '';
+      // eslint-disable-next-line consistent-return
+      rList.forEach((request: any) => {
+        if (traveler.uid === request.travelerId) {
+          tripId = request.tripId;
+        }
+      });
+
+      return { ...traveler, tripId };
+    });
+    return newTList;
+    // traveler.currentRequest.tripId = trav.tripId;
+    // @ts-ignore
+    // traveler.currentRequest.jobId = trav.jobId;
+  };
+
   const getTravelers = async () => {
     // eslint-disable-next-line no-underscore-dangle
     const temp = await getTravelerRequests(job.travelerRequests);
     // @ts-ignore
-    setTravelerList(temp);
+    setTravelerList(travlerAddTripJob(temp, job.travelerRequests));
   };
 
   useEffect(() => {
@@ -43,6 +61,7 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
                   onPressHandler={pressItemHandler}
                   traveler={traveler}
                   key={job.uid}
+                  job={job}
                 />
               );
             })}

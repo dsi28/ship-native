@@ -42,9 +42,12 @@ export const getTripFirebase = async (travelerId: string, tripId: string) => {
     const firebaseTrips = await usersRef
       .doc(travelerId)
       .collection('trips')
-      .where('tripId', '==', tripId)
+      .doc(tripId)
       .get();
-    return firebaseTrips.docs;
+
+    // @ts-ignore
+    // eslint-disable-next-line no-underscore-dangle
+    return firebaseTrips._data;
   } catch (error) {
     console.warn('ERROR adding trip: ', error);
     return 'add trip failed';
