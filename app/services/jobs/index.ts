@@ -181,7 +181,6 @@ export const getTravelerRequests = async (travelerIds: string[]) => {
     });
 
     const list = await Promise.all(travelers);
-    // console.log('LIIIIIIIIIST: ', list);
     const temp = list[0].docs.map(
       (travler) =>
         // console.log('list 2, ', travler);
