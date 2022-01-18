@@ -147,7 +147,8 @@ export const getOpenJobs = async (userId: string) => {
 export const jobTravelRequest = async (
   job: IJob,
   travelerId: string,
-  tripId: string
+  tripId: string,
+  receiveDate: number
 ) => {
   try {
     const traveler = await (await usersRef.doc(travelerId).get()).data();
@@ -156,14 +157,20 @@ export const jobTravelRequest = async (
       travelerRequests: [
         // @ts-ignore
         ...job.travelerRequests,
-        { travelerId, tripId, status: 'pending', jobId: job.uid }
+        {
+          travelerId,
+          tripId,
+          status: 'pending',
+          jobId: job.uid,
+          receiveDate
+        }
       ]
     });
     await usersRef.doc(travelerId).update({
       travelerRequests: [
         // @ts-ignore
         ...traveler.travelerRequests,
-        { travelerId, tripId, status: 'pending', jobId: job.uid }
+        { travelerId, tripId, status: 'pending', jobId: job.uid, receiveDate }
       ]
     });
   } catch (error) {

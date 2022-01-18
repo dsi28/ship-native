@@ -7,7 +7,6 @@ import TravelerCDComponent from '../../../components/Traveler/ChatDistance';
 import DarkBackgroundPropertyComponent from '../../../components/Traveler/DarkBackGroundProperty';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
 import NavigationService from '../../../navigation/NavigationService';
-import { getTripFirebase } from '../../../services/trip';
 import AcceptTravler from '../../Job/AcceptRequest';
 import DeclineTravler from '../../Job/DeclineRequest';
 import styles from './styles';
@@ -16,29 +15,27 @@ interface TravelerScreenProps {
   route: any;
 }
 const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
-  const traveler = route.params;
-  // const job = route.params;
-  const [trip, setTrip] = useState({});
+  const { trip } = route.params;
+
   // @ts-ignore default does exsist not sure why this show up
   // const userProfile = useSelector((state: AppState) => state.default);
   const [showDeclineModal, setShowDeclineModal] = useState(false);
 
-  // get the trip using the traveler.travelerRequests.tripId
-  const getTravelerTrip = async () => {
-    // eslint-disable-next-line no-underscore-dangle
-    const temp = await getTripFirebase(
-      traveler.uid,
-      traveler.travelerRequests.tripId
-    );
-    console.error(
-      'test this get traveler trip was called in appscreensTravelersTravelerScreenindex.tsx'
-    );
-    // @ts-ignore
-    setTrip(temp);
-  };
+  // // get the trip using the traveler.travelerRequests.tripId
+  // const getTravelerTrip = async () => {
+  //   // eslint-disable-next-line no-underscore-dangle
+  //   const temp = await getTripFirebase(
+  //     traveler.uid,
+  //     traveler.travelerRequests.tripId
+  //   );
+  //   console.error(
+  //     'test this get traveler trip was called in appscreensTravelersTravelerScreenindex.tsx'
+  //   );
+  //   // @ts-ignore
+  //   setTrip(temp);
+  // };
 
   useEffect(() => {
-    getTravelerTrip();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -59,12 +56,12 @@ const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
           <JobPropertyComponent title="Flying on" value="January 12, 2021" />
           <JobPropertyComponent title="Flying to" value="Florida, USA" />
           <JobPropertyComponent
-            title="Address"
-            value="167 NW 23rd St, Miami, FL 33127"
+            title="Flying From"
+            value={trip?.departureCity}
           />
           <JobPropertyComponent
             title="Receive the item from the sender prior"
-            value="1 day before traveling"
+            value={trip.note}
           />
         </View>
         <DarkBackgroundPropertyComponent />
