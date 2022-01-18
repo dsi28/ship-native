@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     marginTop: 30,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'flex-end'
   },
   cdContainer: { flexDirection: 'row' },
   cdIconContainer: {

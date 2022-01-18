@@ -34,7 +34,7 @@ const DeclineTravler: React.FC<DeclineTravlerProps> = ({
               <Text style={styles.titleText}>Decline Request</Text>
             </View>
             <View style={styles.headerContainer}>
-              <TravelerHeaderComponent />
+              <TravelerHeaderComponent name="Static Value" image="" review="" />
             </View>
             <View style={styles.loctionsContainer}>
               <JobPropertyComponent

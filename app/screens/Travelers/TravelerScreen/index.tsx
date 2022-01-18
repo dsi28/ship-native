@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import WideButton from '../../../components/buttons/WideButton';
@@ -17,71 +17,56 @@ interface TravelerScreenProps {
 }
 const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
   const { trip, traveler } = route.params;
-  console.log(trip);
-  // @ts-ignore default does exsist not sure why this show up
-  // const userProfile = useSelector((state: AppState) => state.default);
   const [showDeclineModal, setShowDeclineModal] = useState(false);
-
-  // // get the trip using the traveler.travelerRequests.tripId
-  // const getTravelerTrip = async () => {
-  //   // eslint-disable-next-line no-underscore-dangle
-  //   const temp = await getTripFirebase(
-  //     traveler.uid,
-  //     traveler.travelerRequests.tripId
-  //   );
-  //   console.error(
-  //     'test this get traveler trip was called in appscreensTravelersTravelerScreenindex.tsx'
-  //   );
-  //   // @ts-ignore
-  //   setTrip(temp);
-  // };
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
-        <TravelerHeaderComponent />
+        <TravelerHeaderComponent
+          name={traveler.name}
+          review="4.5 (4)"
+          image={traveler?.pictures}
+        />
+        <TravelerCDComponent />
         {typeof trip !== 'undefined' ? (
           <View>
-            {/* @ts-ignore */}
-            <Text>{trip.arrivalCity}</Text>
+            <View style={styles.travelerContainer}>
+              <JobPropertyComponent
+                title="Flying on"
+                value={
+                  // @ts-ignore
+                  // eslint-disable-next-line eqeqeq
+                  typeof trip.date.seconds == 'number'
+                    ? dayjs
+                        // @ts-ignore
+                        .unix(trip.date.seconds)
+                        .format('MMMM DD, YYYY')
+                    : dayjs(
+                        // @ts-ignore
+                        trip.date
+                      ).format('MMMM DD, YYYY')
+                }
+              />
+              <JobPropertyComponent
+                title="Flying to"
+                value={trip.arrivalCity}
+              />
+              <JobPropertyComponent
+                title="Flying From"
+                value={trip?.departureCity}
+              />
+              <JobPropertyComponent
+                title="Receive the item from the sender"
+                value={`${traveler.receiveDate} days before the trip`}
+              />
+            </View>
           </View>
         ) : (
           <Text>No trip found </Text>
         )}
-        <TravelerCDComponent />
-        <View style={styles.travelerContainer}>
-          <JobPropertyComponent
-            title="Flying on"
-            value={
-              // @ts-ignore
-              // eslint-disable-next-line eqeqeq
-              typeof trip.date.seconds == 'number'
-                ? dayjs
-                    // @ts-ignore
-                    .unix(trip.date.seconds)
-                    .format('MMMM DD, YYYY')
-                : dayjs(
-                    // @ts-ignore
-                    trip.date
-                  ).format('MMMM DD, YYYY')
-            }
-          />
-          <JobPropertyComponent title="Flying to" value={trip.arrivalCity} />
-          <JobPropertyComponent
-            title="Flying From"
-            value={trip?.departureCity}
-          />
-          <JobPropertyComponent
-            title="Receive the item from the sender"
-            value={`${traveler.receiveDate} days before the trip`}
-          />
-        </View>
+
         <DarkBackgroundPropertyComponent
-          title="About Travler"
+          title="Note from Traveler"
           value={trip.note}
         />
         <View style={styles.travelerContainer}>

@@ -9,14 +9,6 @@ const TravelerCDComponent: React.FC<TravelerCDComponentProps> = () => (
   <View style={styles.container}>
     <View style={styles.cdContainer}>
       <View style={styles.cdIconContainer}>
-        <MaterialIcon name="location-pin" size={30} color="#87CEEB" />
-      </View>
-      <View style={styles.cdTextContainer}>
-        <Text style={styles.cdText}>100 Miles Away</Text>
-      </View>
-    </View>
-    <View style={styles.cdContainer}>
-      <View style={styles.cdIconContainer}>
         <MaterialIcon name="chat" size={30} color="mediumvioletred" />
       </View>
       <View style={styles.cdTextContainer}>

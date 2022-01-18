@@ -5,21 +5,24 @@ import NavigationService from '../../../navigation/NavigationService';
 import ProfileReviews from '../../../screens/Profile/Reviews';
 import styles from './styles';
 
-interface TravelerHeaderComponentProps {}
+interface TravelerHeaderComponentProps {
+  name: string;
+  image: any;
+  review: string;
+}
 
-const TravelerHeaderComponent: React.FC<TravelerHeaderComponentProps> = () => (
+const TravelerHeaderComponent: React.FC<TravelerHeaderComponentProps> = ({
+  name,
+  image,
+  review
+}) => (
   <View style={styles.container}>
     <View style={styles.avatarView}>
       {/* TODO get seller profile pic or initial */}
-      <Image
-        style={styles.travelerImage}
-        resizeMode="cover"
-        // eslint-disable-next-line global-require, import/no-dynamic-require
-        source={require('../../../assets/images/mango.jpg')}
-      />
+      <Image style={styles.travelerImage} resizeMode="cover" source={image} />
     </View>
     <View style={styles.titleContainer}>
-      <Text style={styles.titleText}>James Rodriguez</Text>
+      <Text style={styles.titleText}>{name}</Text>
     </View>
     <View style={styles.reviewContainer}>
       <View style={styles.reviewIconContainer}>
@@ -33,7 +36,7 @@ const TravelerHeaderComponent: React.FC<TravelerHeaderComponentProps> = () => (
         >
           {/* TODO ask Joe how to display reviews without stars - like how to get the user to click */}
           {/* TODO get review average + number of reviews */}
-          <Text style={styles.reviewText}>4.5 (4)</Text>
+          <Text style={styles.reviewText}>{review}</Text>
         </Pressable>
       </View>
     </View>
