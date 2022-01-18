@@ -38,8 +38,7 @@ const TravelerRequestItemComponent: React.FC<TravelerRequestItemComponentProps> 
               <Image
                 style={styles.travelerImage}
                 resizeMode="cover"
-                // eslint-disable-next-line global-require, import/no-dynamic-require
-                source={require('../../../assets/images/mango.jpg')}
+                source={traveler?.pictures}
               />
             </View>
           </View>
