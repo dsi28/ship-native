@@ -8,7 +8,6 @@ import TravelerCDComponent from '../../../components/Traveler/ChatDistance';
 import DarkBackgroundPropertyComponent from '../../../components/Traveler/DarkBackGroundProperty';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
 import NavigationService from '../../../navigation/NavigationService';
-import AcceptTravler from '../../Job/AcceptRequest';
 import DeclineTravler from '../../Job/DeclineRequest';
 import styles from './styles';
 
@@ -16,7 +15,7 @@ interface TravelerScreenProps {
   route: any;
 }
 const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
-  const { trip, traveler } = route.params;
+  const { trip, traveler, job } = route.params;
   const [showDeclineModal, setShowDeclineModal] = useState(false);
 
   return (
@@ -75,7 +74,12 @@ const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
               buttonText="Accept Request"
               onPressHandler={() => {
                 console.log('Accept Request');
-                NavigationService.navigate('Accept Traveler', AcceptTravler);
+                // NavigationService.navigate('Accept Traveler', AcceptTravler);
+                NavigationService.navigate('Accept Traveler', {
+                  traveler,
+                  job,
+                  trip
+                });
               }}
               isSelected
               btnBackgoundColor="mediumvioletred"
