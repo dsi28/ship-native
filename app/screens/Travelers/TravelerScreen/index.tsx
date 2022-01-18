@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -15,8 +16,8 @@ interface TravelerScreenProps {
   route: any;
 }
 const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
-  const { trip } = route.params;
-
+  const { trip, traveler } = route.params;
+  console.log(trip);
   // @ts-ignore default does exsist not sure why this show up
   // const userProfile = useSelector((state: AppState) => state.default);
   const [showDeclineModal, setShowDeclineModal] = useState(false);
@@ -53,18 +54,36 @@ const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
         )}
         <TravelerCDComponent />
         <View style={styles.travelerContainer}>
-          <JobPropertyComponent title="Flying on" value="January 12, 2021" />
-          <JobPropertyComponent title="Flying to" value="Florida, USA" />
+          <JobPropertyComponent
+            title="Flying on"
+            value={
+              // @ts-ignore
+              // eslint-disable-next-line eqeqeq
+              typeof trip.date.seconds == 'number'
+                ? dayjs
+                    // @ts-ignore
+                    .unix(trip.date.seconds)
+                    .format('MMMM DD, YYYY')
+                : dayjs(
+                    // @ts-ignore
+                    trip.date
+                  ).format('MMMM DD, YYYY')
+            }
+          />
+          <JobPropertyComponent title="Flying to" value={trip.arrivalCity} />
           <JobPropertyComponent
             title="Flying From"
             value={trip?.departureCity}
           />
           <JobPropertyComponent
-            title="Receive the item from the sender prior"
-            value={trip.note}
+            title="Receive the item from the sender"
+            value={`${traveler.receiveDate} days before the trip`}
           />
         </View>
-        <DarkBackgroundPropertyComponent />
+        <DarkBackgroundPropertyComponent
+          title="About Travler"
+          value={trip.note}
+        />
         <View style={styles.travelerContainer}>
           <View style={styles.buttonContainer}>
             <WideButton

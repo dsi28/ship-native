@@ -19,14 +19,16 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
   const travlerAddTripJob = (tList: any, rList: any) => {
     const newTList = tList.map((traveler: any) => {
       let tripId = '';
+      let receiveDate = 1;
       // eslint-disable-next-line consistent-return
       rList.forEach((request: any) => {
         if (traveler.uid === request.travelerId) {
           tripId = request.tripId;
+          receiveDate = request.receiveDate;
         }
       });
 
-      return { ...traveler, tripId };
+      return { ...traveler, tripId, receiveDate };
     });
     return newTList;
     // traveler.currentRequest.tripId = trav.tripId;
