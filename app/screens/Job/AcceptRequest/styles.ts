@@ -21,31 +21,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingHorizontal: 15
   },
-  headerSubContainer: { flexDirection: 'row', marginBottom: 5 },
-  imageContainer: { flexDirection: 'row', marginBottom: 5 },
-  image: { height: '100%', width: '100%', borderRadius: 40 },
-  contentContainer: {
-    flexDirection: 'column',
-    marginHorizontal: 10,
-    // alignItems: 'center'
-    justifyContent: 'flex-end'
-  },
-  nameContainer: { marginBottom: 5 },
-  nameText: { fontSize: 23, fontWeight: 'bold' },
-  contentSubContainer: {
-    flexDirection: 'row',
-    marginBottom: 40
-  },
-  pressableContainer: {
-    marginRight: 10,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  pressableSimpleContainer: { alignItems: 'center', justifyContent: 'center' },
-  pressableText: {
-    fontSize: 17,
-    fontWeight: 'bold'
-  },
+  travlerContainer: { marginBottom: 20 },
   locationContainer: { flexDirection: 'row', marginBottom: 25 },
   locationIconContainer: {
     alignItems: 'flex-start',
