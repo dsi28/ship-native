@@ -74,7 +74,6 @@ const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
               buttonText="Accept Request"
               onPressHandler={() => {
                 console.log('Accept Request');
-                // NavigationService.navigate('Accept Traveler', AcceptTravler);
                 NavigationService.navigate('Accept Traveler', {
                   traveler,
                   job,
@@ -107,6 +106,7 @@ const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
         showModal={showDeclineModal}
         setShowModal={setShowDeclineModal}
         traveler={traveler}
+        jobId={job.uid}
       />
     </ScrollView>
   );
