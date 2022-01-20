@@ -3,7 +3,7 @@ import { Modal, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
-import TravelerHeaderComponent from '../../../components/Traveler/Header';
+import TravelerRowHeaderComponent from '../../../components/Traveler/RowHeader';
 import styles from './styles';
 
 interface DeclineTravlerProps {
@@ -36,7 +36,7 @@ const DeclineTravler: React.FC<DeclineTravlerProps> = ({
               <Text style={styles.titleText}>Decline Request</Text>
             </View>
             <View style={styles.headerContainer}>
-              <TravelerHeaderComponent
+              <TravelerRowHeaderComponent
                 name={traveler.name}
                 image={traveler.pictures}
                 review="4.5 (4)"
