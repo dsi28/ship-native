@@ -3,14 +3,17 @@ import { View } from 'react-native';
 import JobPropertyComponent from '../../job/property';
 import styles from './styles';
 
-interface DarkBackgroundPropertyComponentProps {}
+interface DarkBackgroundPropertyComponentProps {
+  title: string;
+  value: string;
+}
 
-const DarkBackgroundPropertyComponent: React.FC<DarkBackgroundPropertyComponentProps> = () => (
+const DarkBackgroundPropertyComponent: React.FC<DarkBackgroundPropertyComponentProps> = ({
+  title,
+  value
+}) => (
   <View style={styles.container}>
-    <JobPropertyComponent
-      title="About Travler"
-      value="This is what the travler is about. The traveler is about this. Blah, blah, blah."
-    />
+    <JobPropertyComponent title={title} value={value} />
   </View>
 );
 export default DarkBackgroundPropertyComponent;

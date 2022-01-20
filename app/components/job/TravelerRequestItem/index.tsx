@@ -7,7 +7,7 @@ import { getTripFirebase } from '../../../services/trip';
 import styles from './styles';
 
 interface TravelerRequestItemComponentProps {
-  onPressHandler: (traveler: IUser) => void;
+  onPressHandler: (traveler: IUser, trip: ITrip | undefined) => void;
   traveler: any;
   job: any;
 }
@@ -30,7 +30,7 @@ const TravelerRequestItemComponent: React.FC<TravelerRequestItemComponentProps> 
   }, []);
 
   return (
-    <Pressable onPress={() => onPressHandler(traveler)}>
+    <Pressable onPress={() => onPressHandler(traveler, trip)}>
       <View style={styles.cardItemContainer}>
         <View style={styles.subContainer}>
           <View style={styles.marginRight30}>
@@ -38,8 +38,7 @@ const TravelerRequestItemComponent: React.FC<TravelerRequestItemComponentProps> 
               <Image
                 style={styles.travelerImage}
                 resizeMode="cover"
-                // eslint-disable-next-line global-require, import/no-dynamic-require
-                source={require('../../../assets/images/mango.jpg')}
+                source={traveler?.pictures}
               />
             </View>
           </View>

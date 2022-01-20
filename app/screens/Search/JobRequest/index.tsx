@@ -137,7 +137,7 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
             <WideButton
               buttonText="Request to Carry This Package"
               onPressHandler={() => {
-                jobTravelRequest(job, userId, selectedTrip);
+                jobTravelRequest(job, userId, selectedTrip, daysBefore);
                 dispatch(addTravelerJob(job));
                 NavigationService.navigate('SearchScreen');
               }}

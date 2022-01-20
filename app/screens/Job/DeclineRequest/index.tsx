@@ -3,17 +3,23 @@ import { Modal, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import WideButton from '../../../components/buttons/WideButton';
 import JobPropertyComponent from '../../../components/job/property';
-import TravelerHeaderComponent from '../../../components/Traveler/Header';
+import TravelerRowHeaderComponent from '../../../components/Traveler/RowHeader';
+import NavigationService from '../../../navigation/NavigationService';
+import { cancelTravelerRequests } from '../../../services/jobs';
 import styles from './styles';
 
 interface DeclineTravlerProps {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  traveler: any;
+  jobId: string;
 }
 
 const DeclineTravler: React.FC<DeclineTravlerProps> = ({
   showModal,
-  setShowModal
+  setShowModal,
+  traveler,
+  jobId
 }) => (
   // @ts-ignore default does exsist not sure why this show up
   // const userProfile = useSelector((state: AppState) => state.default);
@@ -34,7 +40,11 @@ const DeclineTravler: React.FC<DeclineTravlerProps> = ({
               <Text style={styles.titleText}>Decline Request</Text>
             </View>
             <View style={styles.headerContainer}>
-              <TravelerHeaderComponent />
+              <TravelerRowHeaderComponent
+                name={traveler.name}
+                image={traveler.pictures}
+                review="4.5 (4)"
+              />
             </View>
             <View style={styles.loctionsContainer}>
               <JobPropertyComponent
@@ -49,6 +59,9 @@ const DeclineTravler: React.FC<DeclineTravlerProps> = ({
                   buttonText="Decline"
                   onPressHandler={() => {
                     setShowModal(false);
+                    NavigationService.navigate('Job');
+                    // services call to update traveler request status
+                    cancelTravelerRequests(traveler.uid, jobId);
                     console.log('decline traveler');
                   }}
                   isSelected

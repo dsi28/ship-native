@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import dayjs from 'dayjs';
+import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import WideButton from '../../../components/buttons/WideButton';
@@ -7,8 +8,6 @@ import TravelerCDComponent from '../../../components/Traveler/ChatDistance';
 import DarkBackgroundPropertyComponent from '../../../components/Traveler/DarkBackGroundProperty';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
 import NavigationService from '../../../navigation/NavigationService';
-import { getTripFirebase } from '../../../services/trip';
-import AcceptTravler from '../../Job/AcceptRequest';
 import DeclineTravler from '../../Job/DeclineRequest';
 import styles from './styles';
 
@@ -16,65 +15,70 @@ interface TravelerScreenProps {
   route: any;
 }
 const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
-  const traveler = route.params;
-  // const job = route.params;
-  const [trip, setTrip] = useState({});
-  // @ts-ignore default does exsist not sure why this show up
-  // const userProfile = useSelector((state: AppState) => state.default);
+  const { trip, traveler, job } = route.params;
   const [showDeclineModal, setShowDeclineModal] = useState(false);
-
-  // get the trip using the traveler.travelerRequests.tripId
-  const getTravelerTrip = async () => {
-    // eslint-disable-next-line no-underscore-dangle
-    const temp = await getTripFirebase(
-      traveler.uid,
-      traveler.travelerRequests.tripId
-    );
-    console.error(
-      'test this get traveler trip was called in appscreensTravelersTravelerScreenindex.tsx'
-    );
-    // @ts-ignore
-    setTrip(temp);
-  };
-
-  useEffect(() => {
-    getTravelerTrip();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.scrollContainer}>
-        <TravelerHeaderComponent />
+        <TravelerHeaderComponent
+          name={traveler.name}
+          review="4.5 (4)"
+          image={traveler?.pictures}
+        />
+        <TravelerCDComponent />
         {typeof trip !== 'undefined' ? (
           <View>
-            {/* @ts-ignore */}
-            <Text>{trip.arrivalCity}</Text>
+            <View style={styles.travelerContainer}>
+              <JobPropertyComponent
+                title="Flying on"
+                value={
+                  // @ts-ignore
+                  // eslint-disable-next-line eqeqeq
+                  typeof trip.date.seconds == 'number'
+                    ? dayjs
+                        // @ts-ignore
+                        .unix(trip.date.seconds)
+                        .format('MMMM DD, YYYY')
+                    : dayjs(
+                        // @ts-ignore
+                        trip.date
+                      ).format('MMMM DD, YYYY')
+                }
+              />
+              <JobPropertyComponent
+                title="Flying to"
+                value={trip.arrivalCity}
+              />
+              <JobPropertyComponent
+                title="Flying From"
+                value={trip?.departureCity}
+              />
+              <JobPropertyComponent
+                title="Receive the item from the sender"
+                value={`${traveler.receiveDate} days before the trip`}
+              />
+            </View>
           </View>
         ) : (
           <Text>No trip found </Text>
         )}
-        <TravelerCDComponent />
-        <View style={styles.travelerContainer}>
-          <JobPropertyComponent title="Flying on" value="January 12, 2021" />
-          <JobPropertyComponent title="Flying to" value="Florida, USA" />
-          <JobPropertyComponent
-            title="Address"
-            value="167 NW 23rd St, Miami, FL 33127"
-          />
-          <JobPropertyComponent
-            title="Receive the item from the sender prior"
-            value="1 day before traveling"
-          />
-        </View>
-        <DarkBackgroundPropertyComponent />
+
+        <DarkBackgroundPropertyComponent
+          title="Note from Traveler"
+          value={trip.note}
+        />
         <View style={styles.travelerContainer}>
           <View style={styles.buttonContainer}>
             <WideButton
               buttonText="Accept Request"
               onPressHandler={() => {
                 console.log('Accept Request');
-                NavigationService.navigate('Accept Traveler', AcceptTravler);
+                NavigationService.navigate('Accept Traveler', {
+                  traveler,
+                  job,
+                  trip
+                });
               }}
               isSelected
               btnBackgoundColor="mediumvioletred"
@@ -101,6 +105,8 @@ const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
       <DeclineTravler
         showModal={showDeclineModal}
         setShowModal={setShowDeclineModal}
+        traveler={traveler}
+        jobId={job.uid}
       />
     </ScrollView>
   );

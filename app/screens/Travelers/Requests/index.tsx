@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import TravelerRequestItemComponent from '../../../components/job/TravelerRequestItem';
+import { ITrip } from '../../../models/ITraveler';
 import { IUser } from '../../../models/IUserProfile';
 import NavigationService from '../../../navigation/NavigationService';
 import { getTravelerRequests } from '../../../services/jobs';
@@ -18,14 +19,16 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
   const travlerAddTripJob = (tList: any, rList: any) => {
     const newTList = tList.map((traveler: any) => {
       let tripId = '';
+      let receiveDate = 1;
       // eslint-disable-next-line consistent-return
       rList.forEach((request: any) => {
         if (traveler.uid === request.travelerId) {
           tripId = request.tripId;
+          receiveDate = request.receiveDate;
         }
       });
 
-      return { ...traveler, tripId };
+      return { ...traveler, tripId, receiveDate };
     });
     return newTList;
     // traveler.currentRequest.tripId = trav.tripId;
@@ -45,8 +48,8 @@ const TravelerRequests: React.FC<TravelerRequestsProps> = ({ route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const pressItemHandler = (traveler: IUser) => {
-    NavigationService.navigate('View Traveler', { traveler, job });
+  const pressItemHandler = (traveler: IUser, trip: ITrip | undefined) => {
+    NavigationService.navigate('View Traveler', { traveler, job, trip });
   };
   return (
     <ScrollView style={styles.container}>

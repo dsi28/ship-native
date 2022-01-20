@@ -51,6 +51,7 @@ interface JobItemProps {
 
 const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
   const user = useSelector((state: AppState) => state.user);
+  console.log('XXXXXXX', isOwner);
   return (
     // const job = route.params;
     <ScrollView style={styles.container}>
