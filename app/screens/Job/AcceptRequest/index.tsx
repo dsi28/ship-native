@@ -6,7 +6,10 @@ import WideButton from '../../../components/buttons/WideButton';
 import JobDetails from '../../../components/job/Details';
 import JobPropertyComponent from '../../../components/job/property';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
+import NavigationService from '../../../navigation/NavigationService';
 import styles from './styles';
+
+NavigationService.navigate('Traveler Requests');
 
 interface AcceptTravelerProps {
   route: any;
@@ -56,10 +59,9 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
               buttonText="Payment"
               onPressHandler={() => {
                 console.log('Payment');
-                // NavigationService.navigate(
-                //   'Traveler Requests',
-                //   TravelerRequests
-                // );
+                // add stripe services call
+
+                NavigationService.navigate('Job');
               }}
               isSelected
               btnBackgoundColor="mediumvioletred"
@@ -70,7 +72,10 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
           <View>
             <WideButton
               buttonText="Cancel"
-              onPressHandler={() => console.log('cancel')}
+              onPressHandler={() => {
+                console.log('cancel');
+                NavigationService.navigate('Traveler Requests');
+              }}
               isSelected
               btnBackgoundColor="white"
               btnTextColor="mediumvioletred"

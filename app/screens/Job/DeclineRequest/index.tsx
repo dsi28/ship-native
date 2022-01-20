@@ -9,11 +9,13 @@ import styles from './styles';
 interface DeclineTravlerProps {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  traveler: any;
 }
 
 const DeclineTravler: React.FC<DeclineTravlerProps> = ({
   showModal,
-  setShowModal
+  setShowModal,
+  traveler
 }) => (
   // @ts-ignore default does exsist not sure why this show up
   // const userProfile = useSelector((state: AppState) => state.default);
@@ -34,7 +36,11 @@ const DeclineTravler: React.FC<DeclineTravlerProps> = ({
               <Text style={styles.titleText}>Decline Request</Text>
             </View>
             <View style={styles.headerContainer}>
-              <TravelerHeaderComponent name="Static Value" image="" review="" />
+              <TravelerHeaderComponent
+                name={traveler.name}
+                image={traveler.pictures}
+                review="4.5 (4)"
+              />
             </View>
             <View style={styles.loctionsContainer}>
               <JobPropertyComponent

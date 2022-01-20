@@ -106,6 +106,7 @@ const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
       <DeclineTravler
         showModal={showDeclineModal}
         setShowModal={setShowDeclineModal}
+        traveler={traveler}
       />
     </ScrollView>
   );
