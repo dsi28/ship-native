@@ -5,10 +5,12 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import BasicInfoSection from '../../../components/profile/BasicInfoSection';
 import MainProfileItem from '../../../components/profile/MainProfileItem';
+import NavigationService from '../../../navigation/NavigationService';
 import { logOutJob } from '../../../redux/actions/job';
 import { logOutProfileUser } from '../../../redux/actions/postProfile';
 import { logOffUserAction } from '../../../redux/actions/user';
 import { logoutUser } from '../../../services/auth';
+import ProfilePayment from '../Payment';
 import ProfileReviews from '../Reviews';
 import styles from './styles';
 
@@ -43,6 +45,15 @@ const SellerProfile: React.FC = () => {
               itemName="Notifications"
               iconName="notifications"
               onPressHandler={() => console.log('Notifications')}
+            />
+
+            <MainProfileItem
+              itemName="Payment"
+              iconName="payment"
+              onPressHandler={() => {
+                console.log('Payment');
+                NavigationService.navigate('Payment');
+              }}
             />
 
             <MainProfileItem
@@ -82,6 +93,7 @@ const SellerProfileStack: React.FC = () => (
   <Stack.Navigator>
     <Stack.Screen name="Profile" component={SellerProfile} />
     <Stack.Screen name="Reviews" component={ProfileReviews} />
+    <Stack.Screen name="Payment" component={ProfilePayment} />
   </Stack.Navigator>
 );
 
