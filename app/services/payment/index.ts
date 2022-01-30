@@ -1,78 +1,32 @@
 /* eslint-disable import/prefer-default-export */
 
-export const paymentSheetAPI = async () => ({
-  paymentIntent: {
-    id: 'pi_1DpfJM2eZvKYlo2CB6daTAxA',
-    object: 'payment_intent',
-    amount: 1099,
-    amount_capturable: 0,
-    amount_received: 0,
-    application: null,
-    application_fee_amount: null,
-    automatic_payment_methods: null,
-    canceled_at: null,
-    cancellation_reason: null,
-    capture_method: 'automatic',
-    charges: {
-      object: 'list',
-      data: [],
-      has_more: false,
-      url: '/v1/charges?payment_intent=pi_1DpfJM2eZvKYlo2CB6daTAxA'
-    },
-    client_secret:
-      'pi_1DpfJM2eZvKYlo2CB6daTAxA_secret_BuRzRawgBXxhc7fktNXxMiUw0',
-    confirmation_method: 'automatic',
-    created: 1546795280,
-    currency: 'eur',
-    customer: null,
-    description: null,
-    invoice: null,
-    last_payment_error: null,
-    livemode: false,
-    metadata: {},
-    next_action: null,
-    on_behalf_of: null,
-    payment_method: null,
-    payment_method_options: {},
-    payment_method_types: ['card'],
-    processing: null,
-    receipt_email: null,
-    review: null,
-    setup_future_usage: null,
-    shipping: null,
-    statement_descriptor: null,
-    statement_descriptor_suffix: null,
-    status: 'requires_payment_method',
-    transfer_data: null,
-    transfer_group: null
-  },
-  ephemeralKey: '',
-  customer: {
-    id: 'cus_L1kbwUXqv02ugJ',
-    object: 'customer',
-    address: null,
-    balance: 0,
-    created: 1643086665,
-    currency: 'usd',
-    default_source: null,
-    delinquent: false,
-    description: null,
-    discount: null,
-    email: null,
-    invoice_prefix: '0A08F43',
-    invoice_settings: {
-      custom_fields: null,
-      default_payment_method: null,
-      footer: null
-    },
-    livemode: false,
-    metadata: {},
-    name: null,
-    next_invoice_sequence: 1,
-    phone: null,
-    preferred_locales: [],
-    shipping: null,
-    tax_exempt: 'none'
-  },
-  publishableKey: ''
-});
+const API_URL = 'http://localhost:3000';
+
+export const paymentSheetAPI = async () => {
+  try {
+    const response = await fetch(`${API_URL}/checkout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    console.log('4a1');
+    const { paymentIntent, ephemeralKey, customer } = await response.json();
+
+    console.log('4a');
+    return {
+      paymentIntent,
+      ephemeralKey,
+      customer
+    };
+  } catch (error) {
+    console.log('4b');
+
+    console.log(error);
+    return {
+      paymentIntent: '',
+      ephemeralKey: '',
+      customer: ''
+    };
+  }
+};

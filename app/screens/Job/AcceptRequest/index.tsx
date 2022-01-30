@@ -12,12 +12,11 @@ import JobDetails from '../../../components/job/Details';
 import JobPropertyComponent from '../../../components/job/property';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
 import NavigationService from '../../../navigation/NavigationService';
+import { paymentSheetAPI } from '../../../services/payment';
 import styles from './styles';
 
 const STRIPE_PK =
   'pk_test_51KKpsMKP4EEBArik9ZSTK7asxDDTyju3EtlxR33ohAYzzrWUUawBQ0xACnsdp5ZqTcTWasVth0pJuEu5jEmHaajM00ert56ba7';
-
-const API_URL = 'http://localhost:3000';
 
 NavigationService.navigate('Traveler Requests');
 
@@ -35,37 +34,11 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
   // stripe functions start
 
   const fetchPaymentSheetParams = async () => {
-    console.log(4);
-    try {
-      const response = await fetch(`${API_URL}/checkout`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      console.log('4a1');
-      const { paymentIntent, ephemeralKey, customer } = await response.json();
-
-      console.log('4a');
-      return {
-        paymentIntent,
-        ephemeralKey,
-        customer
-      };
-    } catch (error) {
-      console.log('4b');
-
-      console.log(error);
-      return {
-        paymentIntent: '',
-        ephemeralKey: '',
-        customer: ''
-      };
-    }
+    const paymentSheetDetails = await paymentSheetAPI();
+    return paymentSheetDetails;
   };
 
   const initializePaymentSheet = async () => {
-    console.log(3);
     const {
       paymentIntent,
       ephemeralKey,
@@ -89,9 +62,7 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
   };
 
   useEffect(() => {
-    console.log('2');
     initializePaymentSheet();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
