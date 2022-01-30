@@ -9,6 +9,7 @@ interface WideButtonProps {
   btnBackgoundColor: string;
   btnTextColor: string;
   btnBorderColor: string;
+  disabled?: boolean;
 }
 
 const WideButton: React.FC<WideButtonProps> = ({
@@ -17,12 +18,15 @@ const WideButton: React.FC<WideButtonProps> = ({
   isSelected,
   btnBackgoundColor,
   btnTextColor,
-  btnBorderColor
+  btnBorderColor,
+  disabled = false
 }) => (
+  // const temp = false;
   <Pressable
     onPress={() => {
       onPressHandler();
     }}
+    disabled={disabled}
     style={{
       ...styles.pressableNext,
       ...{
@@ -46,5 +50,4 @@ const WideButton: React.FC<WideButtonProps> = ({
     )}
   </Pressable>
 );
-
 export default WideButton;
