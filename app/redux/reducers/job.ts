@@ -17,7 +17,13 @@ const initialState: IJobState = {
     itemValue: 0,
     itemImages: '',
     note: '',
-    shipmentCost: 0
+    shipmentCost: 0,
+    currentStatus: 0,
+    itemLength: 0,
+    itemWidth: 0,
+    itemHeight: 0,
+    itemWeight: 0,
+    status: 'Searching for traveler'
   },
   ownerJobs: [],
   travelerJobs: []
