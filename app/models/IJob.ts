@@ -30,7 +30,7 @@ export interface IJob {
   traveler?: string;
   ownerId?: string; // uid
   ownerName?: string;
-  status?: 'needs traveler' | 'in progress' | 'complete' | 'canceled';
+  status?: IJobStatus[];
   travelerRequests?: ITravelerRequest[];
   uid: string;
 }
@@ -53,6 +53,7 @@ export interface INewJob {
   itemWidth?: number;
   itemHeight?: number;
   itemWeight?: number;
+  status?: IJobStatus[];
   note?: string;
   itemReceiver?: IItemReciever;
   shipmentCost?: number;
@@ -83,4 +84,18 @@ export interface ITravelerRequest {
   tripId: string;
   status: 'accepted' | 'denied' | 'pending';
   jobId: string;
+}
+
+export interface IJobStatus {
+  title:
+    | 'Searching for traveler'
+    | 'Item shipped to traveler'
+    | 'Item confirmed by traveler'
+    | 'Traveler is on their way'
+    | 'Traveler delivered the item'
+    | 'Receiver collected the item'
+    | 'Item confirmed by receiver'
+    | 'Payment is sent';
+  done: boolean;
+  current: boolean;
 }
