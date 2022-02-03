@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import styles from './styles';
 
-interface TextFormInputProps {
+interface ReceiverInputProps {
   labelText: string;
   placeholderText: string;
   onChangeHandler: (propertyName: string, propertyValue: string) => void;
@@ -16,10 +16,10 @@ interface TextFormInputProps {
     | 'departureCity'
     | 'flightNumber'
     | 'arrivalCity';
-  inputValue: string | number | boolean; // had undefined here too
+  inputValue: boolean; // had undefined here too
 }
 
-const TextFormInput: React.FC<TextFormInputProps> = ({
+const TextFormInput: React.FC<ReceiverInputProps> = ({
   labelText,
   placeholderText,
   onChangeHandler,

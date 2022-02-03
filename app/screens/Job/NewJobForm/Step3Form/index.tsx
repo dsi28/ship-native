@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
+import validator from 'validator';
 import WideButton from '../../../../components/buttons/WideButton';
 import TextFormInput from '../../../../components/FormInputs/TextI';
 import NumberComponent from '../../../../components/numberComponent';
@@ -85,10 +86,11 @@ const NewJobS3: React.FC = () => {
               <TextFormInput
                 labelText="Email Address"
                 placeholderText="Email Address"
-                inputValue={itemReceiver.email}
+                inputValue={validator.isEmail(itemReceiver.email)}
                 propertyName="email"
                 onChangeHandler={textFormInputChangeHandler}
               />
+              <Text>Please enter valid email</Text>
             </View>
           </View>
         </View>
