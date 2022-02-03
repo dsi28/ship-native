@@ -86,7 +86,7 @@ const NewJobS3: React.FC = () => {
               <TextFormInput
                 labelText="Email Address"
                 placeholderText="Email Address"
-                inputValue={validator.isEmail(itemReceiver.email)}
+                inputValue={itemReceiver.email}
                 propertyName="email"
                 onChangeHandler={textFormInputChangeHandler}
               />
