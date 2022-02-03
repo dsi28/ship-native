@@ -12,6 +12,7 @@ import WideButton from '../../../../components/buttons/WideButton';
 import DropDownFormInput from '../../../../components/FormInputs/DropDown';
 import TextFormInput from '../../../../components/FormInputs/TextI';
 import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIcon';
+import ItemValueInput from '../../../../components/FormInputs/ItemValueInput';
 import PictureUploadComponent from '../../../../components/pictureUpload';
 import { INewJob } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
@@ -47,7 +48,13 @@ const NewJobS1: React.FC = () => {
     propertyName: string,
     propertyValue: string
   ) => {
+    // itemValue?: number;
     setNewJob({ ...newJob, [propertyName]: propertyValue });
+  };
+
+  const handleItemValue = (itemValue: number) => {
+    // itemValue?: number;
+    setNewJob({ ...newJob, itemValue });
   };
 
   const handleImageChange = (image: string) => {
@@ -193,12 +200,11 @@ const NewJobS1: React.FC = () => {
                   inputDisabled
                 />
               </View>
-              <TextFormInput
+              <ItemValueInput
                 labelText="Item Value"
                 placeholderText="Enter item value"
-                onChangeHandler={textFormInputChangeHandler}
-                propertyName="itemValue"
-                inputValue={newJob?.itemValue ? newJob.itemValue : ''}
+                count={newJob?.itemValue ? newJob.itemValue : 0}
+                setCount={handleItemValue}
               />
               {/* TODO replace this with an i icon  */}
               <View style={styles.inputSubTextContainer}>

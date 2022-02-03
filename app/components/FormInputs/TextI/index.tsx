@@ -16,7 +16,7 @@ interface TextFormInputProps {
     | 'departureCity'
     | 'flightNumber'
     | 'arrivalCity';
-  inputValue: string | number; // had undefined here too
+  inputValue: string | number | boolean; // had undefined here too
 }
 
 const TextFormInput: React.FC<TextFormInputProps> = ({

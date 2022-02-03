@@ -4,7 +4,9 @@ import styles from './styles';
 
 interface NumberComponentProps {
   count: number;
-  setCount: React.Dispatch<React.SetStateAction<number>>;
+  setCount:
+    | React.Dispatch<React.SetStateAction<number>>
+    | ((itemValue: number) => void);
 }
 
 const NumberComponent: React.FC<NumberComponentProps> = ({
