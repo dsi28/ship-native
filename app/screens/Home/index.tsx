@@ -37,7 +37,7 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
   // const [jobList, setJobList] = useState([]);
   // const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
   const pressItemHandler = (job: IJob) => {
-    const temp = { job, isOwner };
+    const temp = { job, isOwner, jobsList };
     NavigationService.navigate('Job', temp);
   };
 

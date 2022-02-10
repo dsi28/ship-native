@@ -1,4 +1,4 @@
-import { INewJob } from '../../models/IJob';
+import { IJob, INewJob } from '../../models/IJob';
 
 export const SET_NEW_JOB = 'SET_NEW_JOB';
 export const ADD_JOB = 'CREATE_NEW_JOB';
@@ -42,5 +42,27 @@ export const setOwnerTravlerJobs = (data: any) => ({
   type: SET_OWNER_TRAVELER_JOB,
   data
 });
+
+export const setCurStepJobs = (data: {
+  jobId: string; // job uid
+  currentStatus: number; // new status
+  isOwner: boolean;
+  jobs: IJob[]; // either travelerjobs state or owner jobs state
+}) => {
+  const index = data.jobs.findIndex((tJob: IJob) => tJob.uid !== data.jobId);
+  const tempJobs: IJob[] = [...data.jobs];
+  tempJobs[index].currentStatus = data.currentStatus;
+  console.log('What ', tempJobs[index], 'the  ', data.currentStatus);
+  if (data.isOwner) {
+    return {
+      type: SET_OWNER_JOB,
+      travelerJobs: tempJobs
+    };
+  }
+  return {
+    type: SET_TRAVELER_JOB,
+    travelerJobs: tempJobs
+  };
+};
 
 export const logOutJob = () => ({ type: LOG_OUT_JOB });

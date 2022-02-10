@@ -10,6 +10,7 @@ import JobTravelerDetails from '../../../components/job/TravelerDetails';
 import VerticalStepIndicator from '../../../components/stepIndicator/index';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
+import { setCurStepJobs } from '../../../redux/actions/job';
 import { AppState } from '../../../redux/store/configureStore';
 import { cancelTravelerRequests } from '../../../services/jobs';
 import styles from './styles';
@@ -51,7 +52,7 @@ interface JobItemProps {
 
 const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
   const user = useSelector((state: AppState) => state.user);
-  console.log('XXXXXXX', isOwner);
+  console.log('XXXXXXX', isOwner, ' vvvv: ', job);
   return (
     // const job = route.params;
     <ScrollView style={styles.container}>
@@ -124,10 +125,13 @@ const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
 interface TrackJobProps {
   // route: any;
   job: IJob;
+  jobs: IJob[];
+  isOwner: boolean;
 }
 
-const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
-  const [currentStep, setCurrentStep] = useState(0);
+const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
+  console.log('v2: ', job);
+  const [currentStep, setCurrentStep] = useState(job.currentStatus || 0);
   const [date, setDate] = useState('');
   const getDate = (): string => {
     if (job?.itemDeliveryDate !== undefined) {
@@ -195,7 +199,20 @@ const TrackJob: React.FC<TrackJobProps> = ({ job }) => {
           <Pressable
             style={{ width: '100%' }}
             onPress={() => {
+              const temp = currentStep.valueOf();
+              // console.log('XYXYxyxy: ', {
+              //   jobId: job.uid,
+              //   currentStatus: job.currentStatus || 0 + 1,
+              //   isOwner,
+              //   jobs
+              // });
               setCurrentStep(currentStep + 1);
+              setCurStepJobs({
+                jobId: job.uid,
+                currentStatus: temp + 1,
+                isOwner,
+                jobs
+              });
             }}
           >
             <Text style={{ color: 'orange' }}>press</Text>
@@ -213,6 +230,7 @@ const Tab = createMaterialTopTabNavigator();
 function JobItemScreenTabs({ route }: any) {
   const { job } = route.params;
   const { isOwner } = route.params;
+  const { jobsList } = route.params;
   // console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTT', job);
   return (
     <Tab.Navigator
@@ -228,10 +246,7 @@ function JobItemScreenTabs({ route }: any) {
         {() => <JobItem job={job} isOwner={isOwner} />}
       </Tab.Screen>
       <Tab.Screen name="Track" options={{ tabBarLabel: 'Track Item' }}>
-        {() => (
-          // @ts-ignore
-          <TrackJob job={job} />
-        )}
+        {() => <TrackJob job={job} jobs={jobsList} isOwner={isOwner} />}
       </Tab.Screen>
     </Tab.Navigator>
   );
