@@ -12,7 +12,10 @@ import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
 import { setCurStepJobs } from '../../../redux/actions/job';
 import { AppState } from '../../../redux/store/configureStore';
-import { cancelTravelerRequests } from '../../../services/jobs';
+import {
+  cancelTravelerRequests,
+  updateJobStatus
+} from '../../../services/jobs';
 import styles from './styles';
 
 const stepNames = {
@@ -219,7 +222,7 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
                   jobs
                 })
               );
-              // updateJobStatus(job, temp + 1);
+              updateJobStatus(job, temp + 1);
             }}
           >
             <Text style={{ color: 'orange' }}>press</Text>

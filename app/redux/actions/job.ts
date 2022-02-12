@@ -54,7 +54,7 @@ export const setCurStepJobs = (data: {
   tempJobs[index].currentStatus = data.currentStatus;
   // @ts-ignore
   tempJobs[index].status = POSSIBLE_STATUS[data.currentStatus];
-  console.log('What ', tempJobs[index], 'the  ', data.currentStatus);
+  // console.log('What ', tempJobs[index], 'the  ', data.currentStatus);
 
   if (data.isOwner) {
     console.log('is owner set cur job');

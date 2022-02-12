@@ -35,7 +35,6 @@ interface IAction {
 }
 
 const jobReducer = (state = initialState, action: IAction) => {
-  console.log('YYYYYYYYSSSSSSSSSSS reducer test');
   switch (action.type) {
     case SET_NEW_JOB:
       return {
@@ -60,7 +59,6 @@ const jobReducer = (state = initialState, action: IAction) => {
         travelerJobs: initialState.travelerJobs
       };
     case SET_OWNER_JOB:
-      console.log('set owner job here: ', action.data);
       return {
         ...state,
         ownerJobs: action.data
