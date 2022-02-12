@@ -41,6 +41,11 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
     NavigationService.navigate('Job', temp);
   };
 
+  useEffect(() => {
+    console.log('XXXXXXXXXXXXXXXXXXXXxxxxx HomeScreenTab');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
@@ -97,6 +102,8 @@ function HomeScreenTabs() {
 
   useEffect(() => {
     getJobs();
+    console.log('XXXXXXXXXXXXXXXXXXXXxxxxx HomeScreenTabs');
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

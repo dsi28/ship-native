@@ -4,7 +4,7 @@ import firestore, {
 } from '@react-native-firebase/firestore';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
-import { IJob } from '../../models/IJob';
+import { IJob, POSSIBLE_STATUS } from '../../models/IJob';
 import { IUser } from '../../models/IUserProfile';
 
 const jobsRef = firestore().collection('Jobs');
@@ -257,5 +257,18 @@ export const cancelTravelerRequests = async (
   } catch (error) {
     console.log('error getting traveler users: ', error);
     return [];
+  }
+};
+
+export const updateJobStatus = async (job: IJob, currentStatus: number) => {
+  try {
+    // const traveler = await (await usersRef.doc(travelerId).get()).data();
+
+    await jobsRef.doc(job.uid).update({
+      currentStatus,
+      status: POSSIBLE_STATUS[currentStatus]
+    });
+  } catch (error) {
+    console.log('error sending traveler request: ', error);
   }
 };

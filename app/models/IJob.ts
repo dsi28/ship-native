@@ -116,3 +116,14 @@ export interface IJobStatus {
     | 'Payment is sent';
   done: boolean;
 }
+
+export const POSSIBLE_STATUS = [
+  'Searching for traveler',
+  'Item shipped to traveler',
+  'Item confirmed by traveler',
+  'Traveler is on their way',
+  'Traveler delivered the item',
+  'Receiver collected the item',
+  'Item confirmed by receiver',
+  'Payment is sent'
+];

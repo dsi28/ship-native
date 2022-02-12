@@ -2,7 +2,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
 import JobDetails from '../../../components/job/Details';
 import JobStatusComponent from '../../../components/job/status/index';
@@ -133,6 +133,9 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
   console.log('v2: ', job);
   const [currentStep, setCurrentStep] = useState(job.currentStatus || 0);
   const [date, setDate] = useState('');
+
+  const dispatch = useDispatch();
+
   const getDate = (): string => {
     if (job?.itemDeliveryDate !== undefined) {
       if (
@@ -160,6 +163,7 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
 
   useEffect(() => {
     setDate(getDate());
+    console.log('XXXXXXXXXXXXXXXXXXXXxxxxx');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -206,13 +210,16 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
               //   isOwner,
               //   jobs
               // });
-              setCurrentStep(currentStep + 1);
-              setCurStepJobs({
-                jobId: job.uid,
-                currentStatus: temp + 1,
-                isOwner,
-                jobs
-              });
+              setCurrentStep(temp + 1);
+              dispatch(
+                setCurStepJobs({
+                  jobId: job.uid,
+                  currentStatus: temp + 1,
+                  isOwner,
+                  jobs
+                })
+              );
+              // updateJobStatus(job, temp + 1);
             }}
           >
             <Text style={{ color: 'orange' }}>press</Text>
@@ -232,6 +239,12 @@ function JobItemScreenTabs({ route }: any) {
   const { isOwner } = route.params;
   const { jobsList } = route.params;
   // console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTT', job);
+
+  useEffect(() => {
+    console.log('XXXXXXXXXXXXXXXXXXXXxxxxx JobItemScreenTabs');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Tab.Navigator
       tabBarOptions={{
