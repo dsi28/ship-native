@@ -38,7 +38,8 @@ export interface IJob {
     | 'Traveler delivered the item'
     | 'Receiver collected the item'
     | 'Item confirmed by receiver'
-    | 'Payment is sent';
+    | 'Payment is sent'
+    | 'Job complete';
   currentStatus?: number;
   travelerRequests?: ITravelerRequest[];
   uid: string;
@@ -70,7 +71,8 @@ export interface INewJob {
     | 'Traveler delivered the item'
     | 'Receiver collected the item'
     | 'Item confirmed by receiver'
-    | 'Payment is sent';
+    | 'Payment is sent'
+    | 'Job complete';
   currentStatus?: number;
   note?: string;
   itemReceiver?: IItemReciever;
@@ -113,7 +115,8 @@ export interface IJobStatus {
     | 'Traveler delivered the item'
     | 'Receiver collected the item'
     | 'Item confirmed by receiver'
-    | 'Payment is sent';
+    | 'Payment is sent'
+    | 'Job complete';
   done: boolean;
 }
 
@@ -125,5 +128,6 @@ export const POSSIBLE_STATUS = [
   'Traveler delivered the item',
   'Receiver collected the item',
   'Item confirmed by receiver',
-  'Payment is sent'
+  'Payment is sent',
+  'Job complete'
 ];

@@ -265,8 +265,8 @@ export const updateJobStatus = async (job: IJob, currentStatus: number) => {
     // const traveler = await (await usersRef.doc(travelerId).get()).data();
 
     await jobsRef.doc(job.uid).update({
-      currentStatus,
-      status: POSSIBLE_STATUS[currentStatus]
+      currentStatus: currentStatus <= 8 ? currentStatus : 8,
+      status: POSSIBLE_STATUS[currentStatus <= 8 ? currentStatus : 8]
     });
   } catch (error) {
     console.log('error sending traveler request: ', error);

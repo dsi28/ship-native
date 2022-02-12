@@ -206,23 +206,24 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
           <Pressable
             style={{ width: '100%' }}
             onPress={() => {
-              const temp = currentStep.valueOf();
+              const temp =
+                currentStep.valueOf() + 1 <= 8 ? currentStep.valueOf() + 1 : 8;
               // console.log('XYXYxyxy: ', {
               //   jobId: job.uid,
               //   currentStatus: job.currentStatus || 0 + 1,
               //   isOwner,
               //   jobs
               // });
-              setCurrentStep(temp + 1);
+              setCurrentStep(temp);
               dispatch(
                 setCurStepJobs({
                   jobId: job.uid,
-                  currentStatus: temp + 1,
+                  currentStatus: temp,
                   isOwner,
                   jobs
                 })
               );
-              updateJobStatus(job, temp + 1);
+              updateJobStatus(job, temp);
             }}
           >
             <Text style={{ color: 'orange' }}>press</Text>

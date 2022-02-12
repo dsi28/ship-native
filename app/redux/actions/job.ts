@@ -51,9 +51,14 @@ export const setCurStepJobs = (data: {
 }) => {
   const index = data.jobs.findIndex((tJob: IJob) => tJob.uid === data.jobId);
   const tempJobs: IJob[] = [...data.jobs];
-  tempJobs[index].currentStatus = data.currentStatus;
+
+  console.log('XXXXXxx: ', data.currentStatus <= 8 ? data.currentStatus : 8);
+
+  tempJobs[index].currentStatus =
+    data.currentStatus <= 8 ? data.currentStatus : 8;
   // @ts-ignore
-  tempJobs[index].status = POSSIBLE_STATUS[data.currentStatus];
+  tempJobs[index].status =
+    POSSIBLE_STATUS[data.currentStatus <= 8 ? data.currentStatus : 8];
   // console.log('What ', tempJobs[index], 'the  ', data.currentStatus);
 
   if (data.isOwner) {
