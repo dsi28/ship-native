@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import MaterialCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { IJob } from '../../../models/IJob';
+import NavigationService from '../../../navigation/NavigationService';
+import WideButton from '../../buttons/WideButton';
 import JobPropertyComponent from '../property';
+import styles from './styles';
 
 interface JobStatusComponentProps {
   stepNames: {
@@ -47,9 +50,70 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
     return 'No date set';
   };
 
-  // const showDeliveryProperties = () =>{
-  //   return
-  // }
+  const stepSwitch = () => {
+    switch (true) {
+      case currentStep === 0:
+        return (
+          <View>
+            <View style={styles.buttonContainer}>
+              <WideButton
+                buttonText="View Traveler Requests"
+                onPressHandler={() => {
+                  console.log('view traveler reqeuests');
+                  NavigationService.navigate('Traveler Requests', job);
+                }}
+                isSelected
+                btnBackgoundColor="mediumvioletred"
+                btnTextColor="white"
+                btnBorderColor="mediumvioletred"
+              />
+            </View>
+          </View>
+        );
+      case currentStep === 1:
+        return (
+          <View>
+            <View>
+              <View>
+                <JobPropertyComponent
+                  title="Deliver item to traveler by"
+                  // @ts-ignore
+                  value={date}
+                />
+              </View>
+              <View>
+                <JobPropertyComponent
+                  title="Address"
+                  // @ts-ignore
+                  value={job.itemDeliveryLocation}
+                />
+              </View>
+            </View>
+            <View>
+              <Text
+                style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}
+              >
+                Deliver the package to the traveler 1 day before the flight date
+              </Text>
+            </View>
+          </View>
+        );
+      case currentStep === 2:
+        return <Text>swtich 2</Text>;
+      case currentStep === 3:
+        return <Text>swtich 3</Text>;
+      case currentStep === 4:
+        return <Text>swtich 4</Text>;
+      case currentStep === 5:
+        return <Text>swtich 5</Text>;
+      case currentStep === 6:
+        return <Text>swtich 6</Text>;
+      case currentStep === 7:
+        return <Text>swtich 7</Text>;
+      default:
+        return <Text style={{ fontSize: 20, color: '#e91e63' }}>complete</Text>;
+    }
+  };
 
   useEffect(() => {
     setDate(getDate());
@@ -115,34 +179,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
           </View>
         </View>
       </View>
-
-      <View>
-        {currentStep === 0 && (
-          <View>
-            <View>
-              <JobPropertyComponent
-                title="Deliver item to traveler by"
-                // @ts-ignore
-                value={date}
-              />
-            </View>
-            <View>
-              <JobPropertyComponent
-                title="Address"
-                // @ts-ignore
-                value={job.itemDeliveryLocation}
-              />
-            </View>
-          </View>
-        )}
-        {currentStep === 0 && (
-          <View>
-            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
-              Deliver the package to the traveler 1 day before the flight date
-            </Text>
-          </View>
-        )}
-      </View>
+      <View>{stepSwitch()}</View>
     </View>
   );
 };
