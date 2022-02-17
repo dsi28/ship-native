@@ -12,6 +12,10 @@ import JobDetails from '../../../components/job/Details';
 import JobPropertyComponent from '../../../components/job/property';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
 import NavigationService from '../../../navigation/NavigationService';
+import {
+  acceptTravelerRequests,
+  updateJobStatus
+} from '../../../services/jobs';
 import { paymentSheetAPI } from '../../../services/payment';
 import styles from './styles';
 
@@ -72,6 +76,12 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
     if (error) {
       console.log(`Error code: ${error.code}`, error.message);
     } else {
+      // update traveler request status when payment is successful
+      acceptTravelerRequests(traveler.uid, job.uid);
+
+      // update job status - sets job currentStatus
+      updateJobStatus(job, 1);
+
       console.log('Success', 'Your order is confirmed!');
     }
   };
@@ -130,8 +140,6 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
                   console.log('Payment');
                   // add stripe services call
                   openPaymentSheet();
-
-                  //
 
                   NavigationService.navigate('Job');
                 }}

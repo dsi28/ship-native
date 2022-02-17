@@ -260,6 +260,67 @@ export const cancelTravelerRequests = async (
   }
 };
 
+/// //////
+// update job traveler request and user traveler request from pending to
+/// //////
+export const acceptTravelerRequests = async (
+  travelerId: string,
+  jobId: string
+) => {
+  console.log('cancel traveler request ', travelerId, ' - ', jobId);
+  try {
+    // get traveler
+    const traveler = await (await usersRef.doc(travelerId).get()).data();
+    // @ts-ignore
+    console.log('UUUUuuuuuuuuuUUU', traveler.travelerRequests);
+    // @ts-ignore
+    const newTravelerRequests = traveler.travelerRequests.map((tReq) => {
+      if (tReq.jobId === jobId) {
+        return { ...tReq, status: 'accepted' };
+      }
+      return tReq;
+    });
+
+    await usersRef
+      .doc(travelerId)
+      .update({
+        travelerRequests: newTravelerRequests
+      })
+      .then(() => {
+        console.log('User updated!');
+      });
+
+    /// /
+
+    // get job
+    const job = await (await jobsRef.doc(jobId).get()).data();
+    // @ts-ignore
+    console.log('UUUUuuuuuuuuuUUU2', job.travelerRequests);
+    // @ts-ignore
+    const newJobRequests = traveler.travelerRequests.map((jReq) => {
+      if (jReq.travelerId === travelerId) {
+        return { ...jReq, status: 'accepted' };
+      }
+      return jReq;
+    });
+
+    await jobsRef
+      .doc(jobId)
+      .update({
+        travelerRequests: newJobRequests
+      })
+      .then(() => {
+        console.log('job updated!');
+      });
+
+    /// /
+    return [];
+  } catch (error) {
+    console.log('error getting traveler users: ', error);
+    return [];
+  }
+};
+
 export const updateJobStatus = async (job: IJob, currentStatus: number) => {
   try {
     // const traveler = await (await usersRef.doc(travelerId).get()).data();
