@@ -7,11 +7,14 @@ import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
 import JobDetails from '../../../components/job/Details';
 import JobPropertyComponent from '../../../components/job/property';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
 import NavigationService from '../../../navigation/NavigationService';
+import { setCurStepJobs } from '../../../redux/actions/job';
+import { AppState } from '../../../redux/store/configureStore';
 import {
   acceptTravelerRequests,
   updateJobStatus
@@ -32,8 +35,11 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
   const StripeProvider = _StripeProvider as React.FC<StripeProviderProps>;
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
   const [loading, setLoading] = useState(false);
+  const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
 
   const { job, traveler, trip } = route.params;
+
+  const dispatch = useDispatch();
 
   // stripe functions start
 
@@ -81,6 +87,17 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
 
       // update job status - sets job currentStatus
       updateJobStatus(job, 1);
+
+      // update job state - curStatus, status, travelerRequests[].status
+      dispatch(
+        setCurStepJobs({
+          jobId: job.uid,
+          currentStatus: 1,
+          isOwner: true,
+          // @ts-ignore
+          jobs: ownerJobs
+        })
+      );
 
       console.log('Success', 'Your order is confirmed!');
     }
