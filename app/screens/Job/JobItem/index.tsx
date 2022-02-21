@@ -1,4 +1,5 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { useIsFocused } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -133,11 +134,12 @@ interface TrackJobProps {
 }
 
 const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
-  console.log('v2: ', job);
-  const [currentStep, setCurrentStep] = useState(job.currentStatus || 0);
+  console.log('v22222222222: ', job.currentStatus);
+  const [currentStep, setCurrentStep] = useState(job.currentStatus);
   const [date, setDate] = useState('');
 
   const dispatch = useDispatch();
+  const isFocused = useIsFocused();
 
   const getDate = (): string => {
     if (job?.itemDeliveryDate !== undefined) {
@@ -165,8 +167,16 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
   };
 
   useEffect(() => {
+    if (isFocused) {
+      console.log('called');
+      setCurrentStep(job.currentStatus);
+    }
+  }, [isFocused, job.currentStatus]);
+
+  useEffect(() => {
+    console.log('2XXXXXXXXXXXXXXXXXXXXxxxxx');
     setDate(getDate());
-    console.log('XXXXXXXXXXXXXXXXXXXXxxxxx');
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -191,6 +201,7 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
         </View>
         <View>
           <VerticalStepIndicator
+            // @ts-ignore
             currentStep={currentStep}
             stepNames={stepNames}
           />
@@ -199,6 +210,7 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
           <JobStatusComponent
             stepNames={stepNames}
             job={job}
+            // @ts-ignore
             currentStep={currentStep}
           />
         </View>
@@ -207,6 +219,7 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
             style={{ width: '100%' }}
             onPress={() => {
               const temp =
+                // @ts-ignore
                 currentStep.valueOf() + 1 <= 8 ? currentStep.valueOf() + 1 : 8;
               // console.log('XYXYxyxy: ', {
               //   jobId: job.uid,
@@ -242,7 +255,7 @@ function JobItemScreenTabs({ route }: any) {
   const { job } = route.params;
   const { isOwner } = route.params;
   const { jobsList } = route.params;
-  // console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTT', job);
+  console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTT', job);
 
   useEffect(() => {
     console.log('XXXXXXXXXXXXXXXXXXXXxxxxx JobItemScreenTabs');

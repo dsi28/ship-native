@@ -324,7 +324,7 @@ export const acceptTravelerRequests = async (
 export const updateJobStatus = async (job: IJob, currentStatus: number) => {
   try {
     // const traveler = await (await usersRef.doc(travelerId).get()).data();
-
+    console.log('update firebase');
     await jobsRef.doc(job.uid).update({
       currentStatus: currentStatus <= 8 ? currentStatus : 8,
       status: POSSIBLE_STATUS[currentStatus <= 8 ? currentStatus : 8]

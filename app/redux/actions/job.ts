@@ -49,6 +49,7 @@ export const setCurStepJobs = (data: {
   isOwner: boolean;
   jobs: IJob[]; // either travelerjobs state or owner jobs state
 }) => {
+  console.log('TESTvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv');
   const index = data.jobs.findIndex((tJob: IJob) => tJob.uid === data.jobId);
   const tempJobs: IJob[] = [...data.jobs];
 
