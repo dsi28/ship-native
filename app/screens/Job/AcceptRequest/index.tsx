@@ -44,13 +44,11 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
   // stripe functions start
 
   const fetchPaymentSheetParams = async () => {
-    console.log('fetchPaymentSheetParams');
     const paymentSheetDetails = await paymentSheetAPI();
     return paymentSheetDetails;
   };
 
   const initializePaymentSheet = async () => {
-    console.log('initializePaymentSheet');
     const {
       paymentIntent,
       ephemeralKey,
@@ -79,19 +77,17 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
   }, []);
 
   const openPaymentSheet = async () => {
-    console.log('payment sheet');
     const { error } = await presentPaymentSheet();
-    console.log('payment sheet2');
+
     if (error) {
       console.log(`Error code: ${error.code}`, error.message);
     } else {
-      console.log('payment sheet3');
       // update traveler request status when payment is successful
       acceptTravelerRequests(traveler.uid, job.uid);
-      console.log('payment sheet4');
+
       // update job status - sets job currentStatus
       updateJobStatus(job, 1);
-      console.log('payment sheet5');
+
       // update job state - curStatus, status, travelerRequests[].status
       dispatch(
         setCurStepJobs({
@@ -105,8 +101,6 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
 
       console.log('Success', 'Your order is confirmed!', job.currentStatus);
 
-      // const temp = { job, isOwner: true, ownerJobs };
-      // NavigationService.navigate('Job', temp);
       NavigationService.navigate('Job');
     }
   };
