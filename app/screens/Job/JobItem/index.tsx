@@ -69,24 +69,11 @@ const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
             <View>
               <View style={styles.buttonContainer}>
                 <WideButton
-                  buttonText="View Traveler Requests"
-                  onPressHandler={() => {
-                    console.log('view traveler reqeuests');
-                    NavigationService.navigate('Traveler Requests', job);
-                  }}
-                  isSelected
-                  btnBackgoundColor="mediumvioletred"
-                  btnTextColor="white"
-                  btnBorderColor="mediumvioletred"
-                />
-              </View>
-              <View style={styles.buttonContainer}>
-                <WideButton
                   buttonText="Edit Job"
                   onPressHandler={() => console.log('edit job')}
                   isSelected
-                  btnBackgoundColor="white"
-                  btnTextColor="mediumvioletred"
+                  btnBackgoundColor="mediumvioletred"
+                  btnTextColor="white"
                   btnBorderColor="mediumvioletred"
                 />
               </View>
