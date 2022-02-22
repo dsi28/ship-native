@@ -37,9 +37,14 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
   // const [jobList, setJobList] = useState([]);
   // const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
   const pressItemHandler = (job: IJob) => {
-    const temp = { job, isOwner };
+    const temp = { job, isOwner, jobsList };
     NavigationService.navigate('Job', temp);
   };
+
+  useEffect(() => {
+    console.log('XXXXXXXXXXXXXXXXXXXXxxxxx HomeScreenTab');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <ScrollView style={styles.scrollView}>
@@ -97,6 +102,8 @@ function HomeScreenTabs() {
 
   useEffect(() => {
     getJobs();
+    console.log('XXXXXXXXXXXXXXXXXXXXxxxxx HomeScreenTabs');
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

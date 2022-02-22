@@ -85,7 +85,7 @@ const VerticalStepIndicator: React.FC<StepIndicatorProps> = ({
           customStyles={stepIndicatorStyles}
           stepCount={8}
           direction="vertical"
-          currentPosition={currentStep !== 8 ? currentStep : 7}
+          currentPosition={currentStep <= 7 ? currentStep : 8}
           labels={stepNames.data.map((item: any) => item.title)}
         />
       </View>

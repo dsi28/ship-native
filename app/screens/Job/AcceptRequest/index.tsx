@@ -7,11 +7,18 @@ import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
 import JobDetails from '../../../components/job/Details';
 import JobPropertyComponent from '../../../components/job/property';
 import TravelerHeaderComponent from '../../../components/Traveler/Header';
 import NavigationService from '../../../navigation/NavigationService';
+import { setCurStepJobs } from '../../../redux/actions/job';
+import { AppState } from '../../../redux/store/configureStore';
+import {
+  acceptTravelerRequests,
+  updateJobStatus
+} from '../../../services/jobs';
 import { paymentSheetAPI } from '../../../services/payment';
 import styles from './styles';
 
@@ -28,8 +35,11 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
   const StripeProvider = _StripeProvider as React.FC<StripeProviderProps>;
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
   const [loading, setLoading] = useState(false);
+  const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
 
   const { job, traveler, trip } = route.params;
+
+  const dispatch = useDispatch();
 
   // stripe functions start
 
@@ -72,7 +82,26 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
     if (error) {
       console.log(`Error code: ${error.code}`, error.message);
     } else {
-      console.log('Success', 'Your order is confirmed!');
+      // update traveler request status when payment is successful
+      acceptTravelerRequests(traveler.uid, job.uid);
+
+      // update job status - sets job currentStatus
+      updateJobStatus(job, 1);
+
+      // update job state - curStatus, status, travelerRequests[].status
+      dispatch(
+        setCurStepJobs({
+          jobId: job.uid,
+          currentStatus: 1,
+          isOwner: true,
+          // @ts-ignore
+          jobs: ownerJobs
+        })
+      );
+
+      console.log('Success', 'Your order is confirmed!', job.currentStatus);
+
+      NavigationService.navigate('Job');
     }
   };
 
@@ -130,10 +159,6 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
                   console.log('Payment');
                   // add stripe services call
                   openPaymentSheet();
-
-                  //
-
-                  NavigationService.navigate('Job');
                 }}
                 isSelected
                 btnBackgoundColor="mediumvioletred"

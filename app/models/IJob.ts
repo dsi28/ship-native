@@ -30,7 +30,17 @@ export interface IJob {
   traveler?: string;
   ownerId?: string; // uid
   ownerName?: string;
-  status?: 'needs traveler' | 'in progress' | 'complete' | 'canceled';
+  status?:
+    | 'Searching for traveler'
+    | 'Item shipped to traveler'
+    | 'Item confirmed by traveler'
+    | 'Traveler is on their way'
+    | 'Traveler delivered the item'
+    | 'Receiver collected the item'
+    | 'Item confirmed by receiver'
+    | 'Payment is sent'
+    | 'Job complete';
+  currentStatus?: number;
   travelerRequests?: ITravelerRequest[];
   uid: string;
 }
@@ -53,6 +63,17 @@ export interface INewJob {
   itemWidth?: number;
   itemHeight?: number;
   itemWeight?: number;
+  status?:
+    | 'Searching for traveler'
+    | 'Item shipped to traveler'
+    | 'Item confirmed by traveler'
+    | 'Traveler is on their way'
+    | 'Traveler delivered the item'
+    | 'Receiver collected the item'
+    | 'Item confirmed by receiver'
+    | 'Payment is sent'
+    | 'Job complete';
+  currentStatus?: number;
   note?: string;
   itemReceiver?: IItemReciever;
   shipmentCost?: number;
@@ -83,4 +104,31 @@ export interface ITravelerRequest {
   tripId: string;
   status: 'accepted' | 'denied' | 'pending';
   jobId: string;
+  receiveDate: number;
 }
+
+export interface IJobStatus {
+  title:
+    | 'Searching for traveler'
+    | 'Item shipped to traveler'
+    | 'Item confirmed by traveler'
+    | 'Traveler is on their way'
+    | 'Traveler delivered the item'
+    | 'Receiver collected the item'
+    | 'Item confirmed by receiver'
+    | 'Payment is sent'
+    | 'Job complete';
+  done: boolean;
+}
+
+export const POSSIBLE_STATUS = [
+  'Searching for traveler',
+  'Item shipped to traveler',
+  'Item confirmed by traveler',
+  'Traveler is on their way',
+  'Traveler delivered the item',
+  'Receiver collected the item',
+  'Item confirmed by receiver',
+  'Payment is sent',
+  'Job complete'
+];

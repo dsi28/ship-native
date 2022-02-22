@@ -4,7 +4,7 @@ import firestore, {
 } from '@react-native-firebase/firestore';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
-import { IJob } from '../../models/IJob';
+import { IJob, POSSIBLE_STATUS } from '../../models/IJob';
 import { IUser } from '../../models/IUserProfile';
 
 const jobsRef = firestore().collection('Jobs');
@@ -257,5 +257,79 @@ export const cancelTravelerRequests = async (
   } catch (error) {
     console.log('error getting traveler users: ', error);
     return [];
+  }
+};
+
+/// //////
+// update job traveler request and user traveler request from pending to
+/// //////
+export const acceptTravelerRequests = async (
+  travelerId: string,
+  jobId: string
+) => {
+  console.log('cancel traveler request ', travelerId, ' - ', jobId);
+  try {
+    // get traveler
+    const traveler = await (await usersRef.doc(travelerId).get()).data();
+    // @ts-ignore
+    console.log('UUUUuuuuuuuuuUUU', traveler.travelerRequests);
+    // @ts-ignore
+    const newTravelerRequests = traveler.travelerRequests.map((tReq) => {
+      if (tReq.jobId === jobId) {
+        return { ...tReq, status: 'accepted' };
+      }
+      return tReq;
+    });
+
+    await usersRef
+      .doc(travelerId)
+      .update({
+        travelerRequests: newTravelerRequests
+      })
+      .then(() => {
+        console.log('User updated!');
+      });
+
+    /// /
+
+    // get job
+    const job = await (await jobsRef.doc(jobId).get()).data();
+    // @ts-ignore
+    console.log('UUUUuuuuuuuuuUUU2', job.travelerRequests);
+    // @ts-ignore
+    const newJobRequests = traveler.travelerRequests.map((jReq) => {
+      if (jReq.travelerId === travelerId) {
+        return { ...jReq, status: 'accepted' };
+      }
+      return jReq;
+    });
+
+    await jobsRef
+      .doc(jobId)
+      .update({
+        travelerRequests: newJobRequests
+      })
+      .then(() => {
+        console.log('job updated!');
+      });
+
+    /// /
+    return [];
+  } catch (error) {
+    console.log('error getting traveler users: ', error);
+    return [];
+  }
+};
+
+export const updateJobStatus = async (job: IJob, currentStatus: number) => {
+  try {
+    // const traveler = await (await usersRef.doc(travelerId).get()).data();
+    console.log('update firebase');
+    await jobsRef.doc(job.uid).update({
+      currentStatus: currentStatus <= 8 ? currentStatus : 8,
+      status: POSSIBLE_STATUS[currentStatus <= 8 ? currentStatus : 8]
+    });
+  } catch (error) {
+    console.log('error sending traveler request: ', error);
   }
 };

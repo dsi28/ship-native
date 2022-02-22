@@ -10,18 +10,15 @@ export const paymentSheetAPI = async () => {
         'Content-Type': 'application/json'
       }
     });
-    console.log('4a1');
+
     const { paymentIntent, ephemeralKey, customer } = await response.json();
 
-    console.log('4a');
     return {
       paymentIntent,
       ephemeralKey,
       customer
     };
   } catch (error) {
-    console.log('4b');
-
     console.log(error);
     return {
       paymentIntent: '',
