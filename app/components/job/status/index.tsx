@@ -95,9 +95,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
               </View>
             </View>
             <View>
-              <Text
-                style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}
-              >
+              <Text style={styles.stepText}>
                 Deliver the package to the traveler{' '}
                 {
                   // eslint-disable-next-line array-callback-return, consistent-return
@@ -110,7 +108,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                 day before the flight date
               </Text>
             </View>
-            <View style={{ marginTop: 20 }}>
+            <View style={styles.stepButton}>
               <WideButton
                 disabled={false}
                 buttonText="Item Shipped"
@@ -129,7 +127,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
       case currentStep === 2:
         return (
           <View>
-            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+            <Text style={styles.stepText}>
               Waiting on the Traveler to confirm that they received the item
             </Text>
           </View>
@@ -137,7 +135,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
       case currentStep === 3:
         return (
           <View>
-            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+            <Text style={styles.stepText}>
               The Traveler received and confirmed the item
             </Text>
           </View>
@@ -145,7 +143,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
       case currentStep === 4:
         return (
           <View>
-            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+            <Text style={styles.stepText}>
               The Traveler is on their way to the destination and will confirm
               when they deliver the item
             </Text>
@@ -155,14 +153,12 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
         return (
           <View>
             <View>
-              <Text
-                style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}
-              >
+              <Text style={styles.stepText}>
                 The Traveler confirmed that they delivered the item. Please
                 confirm the item was received.
               </Text>
             </View>
-            <View style={{ marginTop: 20 }}>
+            <View style={styles.stepButton}>
               <WideButton
                 disabled={false}
                 buttonText="Confirm Item"
@@ -176,7 +172,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                 btnBorderColor="mediumvioletred"
               />
             </View>
-            <View style={{ marginTop: 20 }}>
+            <View style={styles.stepButton}>
               <WideButton
                 disabled={false}
                 buttonText="Contact Support"
@@ -195,13 +191,11 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
         return (
           <View>
             <View>
-              <Text
-                style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}
-              >
+              <Text style={styles.stepText}>
                 Please review the item and confirm the item
               </Text>
             </View>
-            <View style={{ marginTop: 20 }}>
+            <View style={styles.stepButton}>
               <WideButton
                 disabled={false}
                 buttonText="Confirm Item"
@@ -215,7 +209,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                 btnBorderColor="mediumvioletred"
               />
             </View>
-            <View style={{ marginTop: 20 }}>
+            <View style={styles.stepButton}>
               <WideButton
                 disabled={false}
                 buttonText="Contact Support"
@@ -233,7 +227,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
       case currentStep === 7:
         return (
           <View>
-            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+            <Text style={styles.stepText}>
               Payment has been sent to the Traveler
             </Text>
           </View>
@@ -248,7 +242,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
       case currentStep === 0:
         return (
           <View>
-            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+            <Text style={styles.stepText}>
               Your request to Travel with this item has been submitted
             </Text>
           </View>
@@ -256,7 +250,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
       case currentStep === 1:
         return (
           <View>
-            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+            <Text style={styles.stepText}>
               Your request has been accepted and the item will be shipped to you
               before your trip
             </Text>
@@ -266,15 +260,13 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
         return (
           <View>
             <View>
-              <Text
-                style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}
-              >
+              <Text style={styles.stepText}>
                 The item has been shipped to you. Please confirm you received
                 the item when it arrives
               </Text>
             </View>
 
-            <View style={{ marginTop: 20 }}>
+            <View style={styles.stepButton}>
               <WideButton
                 disabled={false}
                 buttonText="Confirm Item"
@@ -294,14 +286,12 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
         return (
           <View>
             <View>
-              <Text
-                style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}
-              >
+              <Text style={styles.stepText}>
                 Please confirm when you are on your way to your destination
               </Text>
             </View>
 
-            <View style={{ marginTop: 20 }}>
+            <View style={styles.stepButton}>
               <WideButton
                 disabled={false}
                 buttonText="On your way!"
@@ -321,14 +311,12 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
         return (
           <View>
             <View>
-              <Text
-                style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}
-              >
+              <Text style={styles.stepText}>
                 Please confirm when you have delivered the item
               </Text>
             </View>
 
-            <View style={{ marginTop: 20 }}>
+            <View style={styles.stepButton}>
               <WideButton
                 disabled={false}
                 buttonText="Item Delivered"
@@ -347,7 +335,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
       case currentStep === 5:
         return (
           <View>
-            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+            <Text style={styles.stepText}>
               Waiting on the Receiver to confirm they received the item
             </Text>
           </View>
@@ -355,7 +343,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
       case currentStep === 6:
         return (
           <View>
-            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+            <Text style={styles.stepText}>
               Waiting on the Receiver to confirm the item
             </Text>
           </View>
@@ -363,9 +351,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
       case currentStep === 7:
         return (
           <View>
-            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
-              Payment has been sent to you
-            </Text>
+            <Text style={styles.stepText}>Payment has been sent to you</Text>
           </View>
         );
       default:
