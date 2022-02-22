@@ -121,7 +121,7 @@ interface TrackJobProps {
 }
 
 const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
-  console.log('v22222222222: ', job.currentStatus);
+  console.log('v22222222222: ', job);
   const [currentStep, setCurrentStep] = useState(job.currentStatus);
   const [date, setDate] = useState('');
 

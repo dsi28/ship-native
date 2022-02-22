@@ -104,6 +104,7 @@ export interface ITravelerRequest {
   tripId: string;
   status: 'accepted' | 'denied' | 'pending';
   jobId: string;
+  receiveDate: number;
 }
 
 export interface IJobStatus {

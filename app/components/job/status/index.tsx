@@ -98,7 +98,16 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
               <Text
                 style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}
               >
-                Deliver the package to the traveler 1 day before the flight date
+                Deliver the package to the traveler{' '}
+                {
+                  // eslint-disable-next-line array-callback-return, consistent-return
+                  job.travelerRequests?.filter((tRequest) => {
+                    if (tRequest.status === 'accepted') {
+                      return tRequest;
+                    }
+                  })[0].receiveDate
+                }{' '}
+                day before the flight date
               </Text>
             </View>
             <View style={{ marginTop: 20 }}>
