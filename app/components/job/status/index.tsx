@@ -138,7 +138,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
         return (
           <View>
             <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
-              The Traveler received and confirmed the item.
+              The Traveler received and confirmed the item
             </Text>
           </View>
         );
@@ -147,7 +147,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
           <View>
             <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
               The Traveler is on their way to the destination and will confirm
-              when they deliver the item.
+              when they deliver the item
             </Text>
           </View>
         );
@@ -234,7 +234,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
         return (
           <View>
             <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
-              Payment has been sent to the Traveler.
+              Payment has been sent to the Traveler
             </Text>
           </View>
         );
@@ -246,21 +246,128 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
   const travelerStepSwitch = () => {
     switch (true) {
       case currentStep === 0:
-        return <Text>swtich not owner 0</Text>;
+        return (
+          <View>
+            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+              Your request to Travel with this item has been submitted
+            </Text>
+          </View>
+        );
       case currentStep === 1:
-        return <Text>swtich not owner 2</Text>;
+        return (
+          <View>
+            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+              Your request has been accepted and the item will be shipped to you
+              before your trip
+            </Text>
+          </View>
+        );
       case currentStep === 2:
-        return <Text>swtich 2</Text>;
+        return (
+          <View>
+            <View>
+              <Text
+                style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}
+              >
+                The item has been shipped to you. Please confirm you received
+                the item when it arrives
+              </Text>
+            </View>
+
+            <View style={{ marginTop: 20 }}>
+              <WideButton
+                disabled={false}
+                buttonText="Confirm Item"
+                onPressHandler={() => {
+                  console.log('Confirm Item');
+                  updateStep(3);
+                }}
+                isSelected
+                btnBackgoundColor="mediumvioletred"
+                btnTextColor="white"
+                btnBorderColor="mediumvioletred"
+              />
+            </View>
+          </View>
+        );
       case currentStep === 3:
-        return <Text>swtich 3</Text>;
+        return (
+          <View>
+            <View>
+              <Text
+                style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}
+              >
+                Please confirm when you are on your way to your destination
+              </Text>
+            </View>
+
+            <View style={{ marginTop: 20 }}>
+              <WideButton
+                disabled={false}
+                buttonText="On your way!"
+                onPressHandler={() => {
+                  console.log('on your way');
+                  updateStep(4);
+                }}
+                isSelected
+                btnBackgoundColor="mediumvioletred"
+                btnTextColor="white"
+                btnBorderColor="mediumvioletred"
+              />
+            </View>
+          </View>
+        );
       case currentStep === 4:
-        return <Text>swtich 4</Text>;
+        return (
+          <View>
+            <View>
+              <Text
+                style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}
+              >
+                Please confirm when you have delivered the item
+              </Text>
+            </View>
+
+            <View style={{ marginTop: 20 }}>
+              <WideButton
+                disabled={false}
+                buttonText="Item Delivered"
+                onPressHandler={() => {
+                  console.log('Confirm Item');
+                  updateStep(5);
+                }}
+                isSelected
+                btnBackgoundColor="mediumvioletred"
+                btnTextColor="white"
+                btnBorderColor="mediumvioletred"
+              />
+            </View>
+          </View>
+        );
       case currentStep === 5:
-        return <Text>swtich 5</Text>;
+        return (
+          <View>
+            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+              Waiting on the Receiver to confirm they received the item
+            </Text>
+          </View>
+        );
       case currentStep === 6:
-        return <Text>swtich 6</Text>;
+        return (
+          <View>
+            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+              Waiting on the Receiver to confirm the item
+            </Text>
+          </View>
+        );
       case currentStep === 7:
-        return <Text>swtich 7</Text>;
+        return (
+          <View>
+            <Text style={{ textAlign: 'center', fontSize: 20, color: 'gray' }}>
+              Payment has been sent to you
+            </Text>
+          </View>
+        );
       default:
         return <Text style={{ fontSize: 20, color: '#e91e63' }}>complete</Text>;
     }

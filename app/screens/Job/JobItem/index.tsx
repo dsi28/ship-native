@@ -92,7 +92,7 @@ const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
           {!isOwner && (
             <View style={styles.buttonContainer}>
               <WideButton
-                buttonText="Cancel Traveler Requests"
+                buttonText="Cancel Traveler Request"
                 onPressHandler={() => {
                   console.log('cancel traveler reqeuests');
                   // NavigationService.navigate('Traveler Requests', job);
