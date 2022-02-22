@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import MaterialCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useDispatch } from 'react-redux';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
-import { setCurStepJobs } from '../../../redux/actions/job';
-import { updateJobStatus } from '../../../services/jobs';
 import WideButton from '../../buttons/WideButton';
 import JobPropertyComponent from '../property';
 import styles from './styles';
@@ -18,23 +15,21 @@ interface JobStatusComponentProps {
   };
   job: IJob;
   currentStep: number;
-  jobs: IJob[];
   isOwner: boolean;
-  setCurrentStep: React.Dispatch<React.SetStateAction<number | undefined>>;
+  updateStep: (newStep: number) => void;
 }
 
 const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
   stepNames,
   job,
   currentStep,
-  jobs,
   isOwner,
-  setCurrentStep
+  updateStep
 }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [stepsDone, setStepsDone] = useState(false);
   const [date, setDate] = useState('');
-  const dispatch = useDispatch();
+
   const getDate = (): string => {
     if (job?.itemDeliveryDate !== undefined) {
       if (
@@ -58,28 +53,6 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
         .toString();
     }
     return 'No date set';
-  };
-
-  const updateStep = (newStep: number) => {
-    setCurrentStep(newStep);
-
-    // update job status - sets job currentStatus
-    updateJobStatus(job, newStep);
-
-    // update job state - curStatus, status, travelerRequests[].status
-    dispatch(
-      setCurStepJobs({
-        jobId: job.uid,
-        currentStatus: newStep,
-        isOwner,
-        // @ts-ignore
-        jobs
-      })
-    );
-
-    console.log('Success', 'Your order is confirmed!', job.currentStatus);
-
-    NavigationService.navigate('Job');
   };
 
   const ownerStepSwitch = () => {

@@ -180,6 +180,28 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const updateStep = (newStep: number) => {
+    setCurrentStep(newStep);
+
+    // update job status - sets job currentStatus
+    updateJobStatus(job, newStep);
+
+    // update job state - curStatus, status, travelerRequests[].status
+    dispatch(
+      setCurStepJobs({
+        jobId: job.uid,
+        currentStatus: newStep,
+        isOwner,
+        // @ts-ignore
+        jobs
+      })
+    );
+
+    console.log('Success', 'Your order is confirmed!', job.currentStatus);
+
+    NavigationService.navigate('Job');
+  };
+
   return (
     // const job = route.params;
     <ScrollView style={styles.container}>
@@ -210,11 +232,10 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
           <JobStatusComponent
             stepNames={stepNames}
             job={job}
-            jobs={jobs}
             isOwner={isOwner}
             // @ts-ignore
             currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
+            updateStep={updateStep}
           />
         </View>
         <View>
