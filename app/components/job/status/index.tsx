@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import MaterialCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDispatch } from 'react-redux';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
+import { setCurStepJobs } from '../../../redux/actions/job';
+import { updateJobStatus } from '../../../services/jobs';
 import WideButton from '../../buttons/WideButton';
 import JobPropertyComponent from '../property';
 import styles from './styles';
@@ -15,16 +18,23 @@ interface JobStatusComponentProps {
   };
   job: IJob;
   currentStep: number;
+  jobs: IJob[];
+  isOwner: boolean;
+  setCurrentStep: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
 const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
   stepNames,
   job,
-  currentStep
+  currentStep,
+  jobs,
+  isOwner,
+  setCurrentStep
 }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [stepsDone, setStepsDone] = useState(false);
   const [date, setDate] = useState('');
+  const dispatch = useDispatch();
   const getDate = (): string => {
     if (job?.itemDeliveryDate !== undefined) {
       if (
@@ -50,7 +60,29 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
     return 'No date set';
   };
 
-  const stepSwitch = () => {
+  const updateStep = (newStep: number) => {
+    setCurrentStep(newStep);
+
+    // update job status - sets job currentStatus
+    updateJobStatus(job, newStep);
+
+    // update job state - curStatus, status, travelerRequests[].status
+    dispatch(
+      setCurStepJobs({
+        jobId: job.uid,
+        currentStatus: newStep,
+        isOwner,
+        // @ts-ignore
+        jobs
+      })
+    );
+
+    console.log('Success', 'Your order is confirmed!', job.currentStatus);
+
+    NavigationService.navigate('Job');
+  };
+
+  const ownerStepSwitch = () => {
     switch (true) {
       case currentStep === 0:
         return (
@@ -96,8 +128,45 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                 Deliver the package to the traveler 1 day before the flight date
               </Text>
             </View>
+            <View style={{ marginTop: 20 }}>
+              <WideButton
+                disabled={false}
+                buttonText="Item Shipped"
+                onPressHandler={() => {
+                  console.log('shipped');
+                  updateStep(2);
+                }}
+                isSelected
+                btnBackgoundColor="mediumvioletred"
+                btnTextColor="white"
+                btnBorderColor="mediumvioletred"
+              />
+            </View>
           </View>
         );
+      case currentStep === 2:
+        return <Text>swtich 2</Text>;
+      case currentStep === 3:
+        return <Text>swtich 3</Text>;
+      case currentStep === 4:
+        return <Text>swtich 4</Text>;
+      case currentStep === 5:
+        return <Text>swtich 5</Text>;
+      case currentStep === 6:
+        return <Text>swtich 6</Text>;
+      case currentStep === 7:
+        return <Text>swtich 7</Text>;
+      default:
+        return <Text style={{ fontSize: 20, color: '#e91e63' }}>complete</Text>;
+    }
+  };
+
+  const travelerStepSwitch = () => {
+    switch (true) {
+      case currentStep === 0:
+        return <Text>swtich not owner 0</Text>;
+      case currentStep === 1:
+        return <Text>swtich not owner 2</Text>;
       case currentStep === 2:
         return <Text>swtich 2</Text>;
       case currentStep === 3:
@@ -179,7 +248,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
           </View>
         </View>
       </View>
-      <View>{stepSwitch()}</View>
+      <View>{isOwner ? ownerStepSwitch() : travelerStepSwitch()}</View>
     </View>
   );
 };

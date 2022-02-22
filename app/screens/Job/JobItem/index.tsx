@@ -210,8 +210,11 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
           <JobStatusComponent
             stepNames={stepNames}
             job={job}
+            jobs={jobs}
+            isOwner={isOwner}
             // @ts-ignore
             currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
           />
         </View>
         <View>
