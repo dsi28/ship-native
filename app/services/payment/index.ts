@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://us-central1-ship-54045.cloudfunctions.net/funcapi';
 
 export const paymentSheetAPI = async () => {
   try {
