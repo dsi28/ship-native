@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Linking, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import MaterialCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { IJob } from '../../../models/IJob';
 import NavigationService from '../../../navigation/NavigationService';
+import { supportEmail } from '../../../services/resusableActions';
 import WideButton from '../../buttons/WideButton';
 import JobPropertyComponent from '../property';
 import styles from './styles';
@@ -178,9 +179,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                 buttonText="Contact Support"
                 onPressHandler={() => {
                   console.log('Contact Support process/email');
-                  Linking.openURL(
-                    `mailto:support@juduh.com?subject=Contact Support&body=Job:${job.uid}\nOwner:${isOwner}\nStep:${currentStep}\nEnter the description here:`
-                  );
+                  supportEmail(job.uid, isOwner, currentStep);
                 }}
                 isSelected
                 btnBackgoundColor="white"
@@ -218,9 +217,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                 buttonText="Contact Support"
                 onPressHandler={() => {
                   console.log('Contact Support process/email');
-                  Linking.openURL(
-                    `mailto:support@juduh.com?subject=Contact Support&body=Job:${job.uid}\nOwner:${isOwner}\nStep:${currentStep}\nEnter the description here:`
-                  );
+                  supportEmail(job.uid, isOwner, currentStep);
                 }}
                 isSelected
                 btnBackgoundColor="white"
