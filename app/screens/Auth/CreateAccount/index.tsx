@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Linking, Pressable, Text, View } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 import NavigationLinkComponent from '../../../components/navigationLink';
 import NavigationService from '../../../navigation/NavigationService';
@@ -82,8 +82,13 @@ const CreateAccountScreen: React.FC = () => (
       </View>
       <View style={styles.subTextContainer}>
         <Text style={styles.subText}>
-          By pressing Continue or Create Account, I agree to ShipX&apos;s Terms
-          Of Service and Privacy Policy
+          By pressing Continue or Create Account, I agree to StorkU&apos;s
+          <Text
+            style={{ color: 'blue' }}
+            onPress={() => Linking.openURL('http://storku.com/')}
+          >
+            Terms Of Service and Privacy Policy
+          </Text>
         </Text>
       </View>
     </View>

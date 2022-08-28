@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   orContainer: { alignItems: 'center', marginVertical: 20 },
   orText: { color: 'gray' },
   pressableContainer: { marginBottom: 20 },
-  subTextContainer: { marginHorizontal: 20 },
+  subTextContainer: { marginHorizontal: 20, flexDirection: 'row' },
   subText: { color: 'gray', textAlign: 'center', fontSize: 15 },
   pressableNext: {
     backgroundColor: '#87CEEB',
