@@ -9,6 +9,6 @@ export const supportEmail = (
   currentStep: number
 ) => {
   Linking.openURL(
-    `mailto:support@juduh.com?subject=Contact Support&body=Job:${jobId}\nOwner:${isOwner}\nStep:${currentStep}\nEnter the description here:`
+    `mailto:shipapp225@gmail.com?subject=Contact Support&body=Job:${jobId}\nOwner:${isOwner}\nStep:${currentStep}\nEnter the description here:`
   );
 };
