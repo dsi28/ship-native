@@ -27,8 +27,8 @@ const CreateAccountScreen: React.FC = () => (
         <Text style={styles.welcomeText}>Welcome To</Text>
       </View>
       <View style={styles.shipContainer}>
-        <Text style={styles.shipText}>Ship</Text>
-        <Text style={styles.shipLetterText}>X</Text>
+        <Text style={styles.shipText}>Stork</Text>
+        <Text style={styles.shipLetterText}>U</Text>
       </View>
     </View>
     <View style={styles.contentContainer}>
