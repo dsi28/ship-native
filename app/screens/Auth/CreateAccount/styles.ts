@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     marginBottom: 50
   },
   shipText: { color: 'white', fontWeight: 'bold', fontSize: 40 },
-  shipLetterText: { color: 'orange', fontWeight: 'bold', fontSize: 40 },
+  shipLetterText: { color: '#FFC100', fontWeight: 'bold', fontSize: 40 },
   contentContainer: {
     flexDirection: 'column',
     backgroundColor: 'white',

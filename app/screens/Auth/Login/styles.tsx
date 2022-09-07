@@ -3,7 +3,8 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '100%'
+    height: '100%',
+    backgroundColor: '#f3f5fa'
   },
   subContainer: {
     marginTop: 10,
@@ -14,7 +15,8 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontWeight: 'bold',
-    fontSize: 40
+    fontSize: 40,
+    color: '#87CEEB'
   },
   headerView: { marginTop: 15 },
   createAccountView: { alignItems: 'flex-end' },
