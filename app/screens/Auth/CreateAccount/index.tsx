@@ -1,6 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
-import { SocialIcon } from 'react-native-elements';
+import { Linking, Pressable, Text, View } from 'react-native';
 import NavigationLinkComponent from '../../../components/navigationLink';
 import NavigationService from '../../../navigation/NavigationService';
 import PostSignup from '../../PostSignup';
@@ -27,32 +26,11 @@ const CreateAccountScreen: React.FC = () => (
         <Text style={styles.welcomeText}>Welcome To</Text>
       </View>
       <View style={styles.shipContainer}>
-        <Text style={styles.shipText}>Ship</Text>
-        <Text style={styles.shipLetterText}>X</Text>
+        <Text style={styles.shipText}>Stork</Text>
+        <Text style={styles.shipLetterText}>U</Text>
       </View>
     </View>
     <View style={styles.contentContainer}>
-      <View>
-        <SocialIcon
-          type="google"
-          title="Sign In With Google"
-          button
-          onPress={() => console.log('sign in with google')}
-          style={styles.iconStyle}
-        />
-      </View>
-      <View>
-        <SocialIcon
-          title="Sign In With Facebook"
-          button
-          type="facebook"
-          onPress={() => console.log('sign in with facebook')}
-          style={styles.iconStyle}
-        />
-      </View>
-      <View style={styles.orContainer}>
-        <Text style={styles.orText}>OR</Text>
-      </View>
       <View style={styles.pressableContainer}>
         <Pressable
           style={({ pressed }) => [
@@ -82,8 +60,13 @@ const CreateAccountScreen: React.FC = () => (
       </View>
       <View style={styles.subTextContainer}>
         <Text style={styles.subText}>
-          By pressing Continue or Create Account, I agree to ShipX&apos;s Terms
-          Of Service and Privacy Policy
+          By pressing Continue or Create Account, I agree to StorkU&apos;s
+          <Text
+            style={{ color: 'blue' }}
+            onPress={() => Linking.openURL('http://storku.com/')}
+          >
+            Terms Of Service and Privacy Policy
+          </Text>
         </Text>
       </View>
     </View>

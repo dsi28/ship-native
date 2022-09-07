@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import { Pressable, Text, TextInput, View } from 'react-native';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import NextButton from '../../../../components/buttons/NextButton';
 import NavigationService from '../../../../navigation/NavigationService';
@@ -25,6 +26,8 @@ const PassInput: React.FC = () => {
   const [isMatch, setIsMatch] = useState(
     passInput !== '' && passInput === confirmInput
   );
+
+  const [showRules, setShowRules] = useState(false);
 
   const validatePass = (text: string) => {
     if (reg.test(text) === false) {
@@ -54,7 +57,18 @@ const PassInput: React.FC = () => {
         <View>
           <View style={styles.screenTitleContainer}>
             <Text style={styles.screenTitle}>Password</Text>
+            <Pressable onPress={() => setShowRules(!showRules)}>
+              <MaterialIcon name="info" size={30} color="#FFC100" />
+            </Pressable>
           </View>
+          <View>
+            <Text style={styles.ruleText}>
+              {showRules
+                ? 'Password must be 8 to 15 characters long, must include one lower case letter, one capital letter, one number, and one special character.'
+                : ''}
+            </Text>
+          </View>
+
           <View>
             <View style={styles.screenInputContainer}>
               <TextInput
@@ -65,6 +79,7 @@ const PassInput: React.FC = () => {
                   validatePass(text);
                   passMatchCheck(text, false);
                 }}
+                secureTextEntry
               />
             </View>
           </View>
@@ -81,6 +96,7 @@ const PassInput: React.FC = () => {
                     passMatchCheck(text, true);
                   }}
                   editable={isValidated}
+                  secureTextEntry
                 />
               </View>
             </View>

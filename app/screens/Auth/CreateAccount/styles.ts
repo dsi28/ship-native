@@ -14,16 +14,19 @@ const styles = StyleSheet.create({
     marginBottom: 50
   },
   shipText: { color: 'white', fontWeight: 'bold', fontSize: 40 },
-  shipLetterText: { color: 'orange', fontWeight: 'bold', fontSize: 40 },
+  shipLetterText: { color: '#FFC100', fontWeight: 'bold', fontSize: 40 },
   contentContainer: {
     flexDirection: 'column',
     backgroundColor: 'white',
     flex: 1,
     borderTopEndRadius: 25,
     borderTopStartRadius: 25,
-    paddingTop: 30
+    paddingTop: 30,
+    justifyContent: 'space-between',
+    paddingBottom: 30
   },
   headerContainer: {
+    flex: 1,
     flexDirection: 'column',
     marginHorizontal: 15,
     marginTop: 10
@@ -34,7 +37,7 @@ const styles = StyleSheet.create({
   orContainer: { alignItems: 'center', marginVertical: 20 },
   orText: { color: 'gray' },
   pressableContainer: { marginBottom: 20 },
-  subTextContainer: { marginHorizontal: 20 },
+  subTextContainer: { marginHorizontal: 20, flexDirection: 'row' },
   subText: { color: 'gray', textAlign: 'center', fontSize: 15 },
   pressableNext: {
     backgroundColor: '#87CEEB',

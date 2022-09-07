@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   screenTitle: {
     fontSize: 40,
     // fontWeight: 'bold',
-    color: 'black',
+    color: '#87CEEB',
     // width: '70%',
     marginRight: 150
   },

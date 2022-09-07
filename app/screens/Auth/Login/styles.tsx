@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontWeight: 'bold',
-    fontSize: 40
+    fontSize: 40,
+    color: '#87CEEB'
   },
   headerView: { marginTop: 15 },
   createAccountView: { alignItems: 'flex-end' },

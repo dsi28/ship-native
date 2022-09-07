@@ -26,7 +26,7 @@ const ForgotPasswordScreen: React.FC = () => {
           <View style={styles.createAccountView}>
             <NavigationLinkComponent
               navigateTo="Login"
-              textColor="mediumvioletred"
+              textColor="#FFC100"
               linkText="Log In"
             />
           </View>
@@ -45,6 +45,7 @@ const ForgotPasswordScreen: React.FC = () => {
               propertyName="email"
               onChangeHandler={onChangeInputHandler}
               inputValue={email}
+              isPassword={false}
             />
           </View>
         </View>

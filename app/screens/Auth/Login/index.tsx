@@ -70,7 +70,7 @@ const LoginScreen: React.FC = () => {
         <View style={styles.createAccountView}>
           <NavigationLinkComponent
             navigateTo="CreateAccount"
-            textColor="mediumvioletred"
+            textColor="#FFC100"
             linkText="Create Account"
           />
         </View>
@@ -85,6 +85,7 @@ const LoginScreen: React.FC = () => {
               propertyName="email"
               onChangeHandler={onChangeInputHandler}
               inputValue={email}
+              isPassword={false}
             />
           </View>
           <View>
@@ -94,12 +95,13 @@ const LoginScreen: React.FC = () => {
               propertyName="password"
               onChangeHandler={onChangeInputHandler}
               inputValue={password}
+              isPassword
             />
           </View>
           <View style={styles.forgotContainer}>
             <NavigationLinkComponent
               navigateTo="Forgot Password"
-              textColor="mediumvioletred"
+              textColor="#87CEEB"
               linkText="Forgot Password"
             />
           </View>

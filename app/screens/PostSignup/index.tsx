@@ -14,7 +14,7 @@ export default function PostSignup() {
       initialRouteName="Home"
       headerMode="screen"
       screenOptions={{
-        headerTintColor: 'black',
+        headerTintColor: '#87CEEB',
         headerStyle: { backgroundColor: 'white' }
       }}
     >
