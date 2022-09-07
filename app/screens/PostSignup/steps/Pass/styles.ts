@@ -13,14 +13,20 @@ const styles = StyleSheet.create({
   },
   screenTitleContainer: {
     // marginTop: 20,
-    marginBottom: 50
+    marginBottom: 50,
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   screenTitle: {
     fontSize: 40,
     // fontWeight: 'bold',
-    color: 'black',
+    color: '#87CEEB',
     // width: '70%',
-    marginRight: 150
+    marginRight: 10
+  },
+  ruleText: {
+    color: '#FFC100',
+    fontSize: 20
   },
   secondInputContainer: { marginTop: 30 },
   screenInputContainer: {

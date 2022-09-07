@@ -17,7 +17,6 @@ const EmailInput: React.FC = () => {
   // @ts-ignore
   const [emailInput, setEmailInput] = useState(userPostProfile.email || '');
   const [isValidated, setIsValidated] = useState(reg.test(emailInput));
-
   const validateEmail = (text: string) => {
     if (reg.test(text) === false) {
       setEmailInput(text);
