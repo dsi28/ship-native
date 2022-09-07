@@ -10,9 +10,9 @@ import RenderContent from '../../../../components/bottomSheet/renderContent';
 import RenderHeader from '../../../../components/bottomSheet/renderHeader';
 import WideButton from '../../../../components/buttons/WideButton';
 import DropDownFormInput from '../../../../components/FormInputs/DropDown';
+import ItemValueInput from '../../../../components/FormInputs/ItemValueInput';
 import TextFormInput from '../../../../components/FormInputs/TextI';
 import TextFormInputWithIcon from '../../../../components/FormInputs/TextIWithIcon';
-import ItemValueInput from '../../../../components/FormInputs/ItemValueInput';
 import PictureUploadComponent from '../../../../components/pictureUpload';
 import { INewJob } from '../../../../models/IJob';
 import NavigationService from '../../../../navigation/NavigationService';
@@ -139,6 +139,7 @@ const NewJobS1: React.FC = () => {
                   onChangeHandler={textFormInputChangeHandler}
                   propertyName="itemName"
                   inputValue={newJob?.itemName ? newJob.itemName : ''}
+                  isPassword={false}
                 />
               </View>
               <View style={styles.inputContainer}>

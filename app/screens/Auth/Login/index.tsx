@@ -85,6 +85,7 @@ const LoginScreen: React.FC = () => {
               propertyName="email"
               onChangeHandler={onChangeInputHandler}
               inputValue={email}
+              isPassword={false}
             />
           </View>
           <View>
@@ -94,6 +95,7 @@ const LoginScreen: React.FC = () => {
               propertyName="password"
               onChangeHandler={onChangeInputHandler}
               inputValue={password}
+              isPassword
             />
           </View>
           <View style={styles.forgotContainer}>

@@ -71,6 +71,7 @@ const NewTrip: React.FC = () => {
                   inputValue={
                     newTrip?.departureCity ? newTrip.departureCity : ''
                   }
+                  isPassword={false}
                 />
               </View>
               <View style={styles.inputContainer}>
@@ -80,6 +81,7 @@ const NewTrip: React.FC = () => {
                   onChangeHandler={textFormInputChangeHandler}
                   propertyName="arrivalCity"
                   inputValue={newTrip?.arrivalCity ? newTrip.arrivalCity : ''}
+                  isPassword={false}
                 />
               </View>
               <View style={styles.inputContainer}>
@@ -123,6 +125,7 @@ const NewTrip: React.FC = () => {
                   onChangeHandler={textFormInputChangeHandler}
                   propertyName="flightNumber"
                   inputValue={newTrip?.flightNumber ? newTrip.flightNumber : ''}
+                  isPassword={false}
                 />
               </View>
               <View>

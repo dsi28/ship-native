@@ -45,6 +45,7 @@ const ForgotPasswordScreen: React.FC = () => {
               propertyName="email"
               onChangeHandler={onChangeInputHandler}
               inputValue={email}
+              isPassword={false}
             />
           </View>
         </View>

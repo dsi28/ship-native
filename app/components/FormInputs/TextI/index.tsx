@@ -17,6 +17,7 @@ interface TextFormInputProps {
     | 'flightNumber'
     | 'arrivalCity';
   inputValue: string | number | boolean; // had undefined here too
+  isPassword: boolean;
 }
 
 const TextFormInput: React.FC<TextFormInputProps> = ({
@@ -24,7 +25,8 @@ const TextFormInput: React.FC<TextFormInputProps> = ({
   placeholderText,
   onChangeHandler,
   propertyName,
-  inputValue
+  inputValue,
+  isPassword
 }) => (
   <View>
     <View>
@@ -37,6 +39,7 @@ const TextFormInput: React.FC<TextFormInputProps> = ({
         onChangeText={(e) => {
           onChangeHandler(propertyName, e);
         }}
+        secureTextEntry={isPassword}
         // @ts-ignore
         value={inputValue}
       />

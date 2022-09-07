@@ -80,6 +80,7 @@ const NewJobS3: React.FC = () => {
                 inputValue={itemReceiver.name}
                 propertyName="name"
                 onChangeHandler={textFormInputChangeHandler}
+                isPassword={false}
               />
             </View>
             <View>
@@ -89,6 +90,7 @@ const NewJobS3: React.FC = () => {
                 inputValue={itemReceiver.email}
                 propertyName="email"
                 onChangeHandler={textFormInputChangeHandler}
+                isPassword={false}
               />
               <Text>Please enter valid email</Text>
             </View>
