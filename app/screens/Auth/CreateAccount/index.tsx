@@ -1,6 +1,5 @@
 import React from 'react';
 import { Linking, Pressable, Text, View } from 'react-native';
-import { SocialIcon } from 'react-native-elements';
 import NavigationLinkComponent from '../../../components/navigationLink';
 import NavigationService from '../../../navigation/NavigationService';
 import PostSignup from '../../PostSignup';
@@ -32,27 +31,6 @@ const CreateAccountScreen: React.FC = () => (
       </View>
     </View>
     <View style={styles.contentContainer}>
-      <View>
-        <SocialIcon
-          type="google"
-          title="Sign In With Google"
-          button
-          onPress={() => console.log('sign in with google')}
-          style={styles.iconStyle}
-        />
-      </View>
-      <View>
-        <SocialIcon
-          title="Sign In With Facebook"
-          button
-          type="facebook"
-          onPress={() => console.log('sign in with facebook')}
-          style={styles.iconStyle}
-        />
-      </View>
-      <View style={styles.orContainer}>
-        <Text style={styles.orText}>OR</Text>
-      </View>
       <View style={styles.pressableContainer}>
         <Pressable
           style={({ pressed }) => [

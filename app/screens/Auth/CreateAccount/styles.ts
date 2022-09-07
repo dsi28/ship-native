@@ -21,9 +21,12 @@ const styles = StyleSheet.create({
     flex: 1,
     borderTopEndRadius: 25,
     borderTopStartRadius: 25,
-    paddingTop: 30
+    paddingTop: 30,
+    justifyContent: 'space-between',
+    paddingBottom: 30
   },
   headerContainer: {
+    flex: 1,
     flexDirection: 'column',
     marginHorizontal: 15,
     marginTop: 10
