@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontWeight: 'bold',
-    fontSize: 40
+    fontSize: 40,
+    color: '#87CEEB'
   },
   createAccountView: { alignItems: 'flex-end' },
 
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     position: 'absolute'
   },
   subHeaderContainer: { marginTop: 50 },
-  subHeaderText: { fontSize: 20, color: 'black', lineHeight: 30 },
+  subHeaderText: { fontSize: 20, color: '#87CEEB', lineHeight: 30 },
   contentContainer: { marginTop: 50, marginBottom: 50 }
 });
 export default styles;
