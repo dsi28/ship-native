@@ -30,8 +30,8 @@ const RenderContent: React.FC<RenderContentProps> = ({
           });
         }}
         isSelected
-        btnBackgoundColor="mediumvioletred"
-        btnBorderColor="mediumvioletred"
+        btnBackgoundColor="#FFC100"
+        btnBorderColor="#FFC100"
         btnTextColor="black"
       />
     </View>
@@ -50,8 +50,8 @@ const RenderContent: React.FC<RenderContentProps> = ({
           });
         }}
         isSelected
-        btnBackgoundColor="mediumvioletred"
-        btnBorderColor="mediumvioletred"
+        btnBackgoundColor="#FFC100"
+        btnBorderColor="#FFC100"
         btnTextColor="black"
       />
     </View>
@@ -63,8 +63,8 @@ const RenderContent: React.FC<RenderContentProps> = ({
         }}
         buttonText="Cancel"
         isSelected={false}
-        btnBackgoundColor="mediumvioletred"
-        btnBorderColor="mediumvioletred"
+        btnBackgoundColor="#FFC100"
+        btnBorderColor="#FFC100"
         btnTextColor="black"
       />
     </View>

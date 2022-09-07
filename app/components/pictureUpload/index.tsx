@@ -38,7 +38,7 @@ const PictureUploadComponent: React.FC<PictureUploadProps> = ({
       icon={imageShown ? 'minus-circle' : 'plus-circle'}
       size={30}
       style={styles.iconToggle}
-      color="#e91e63"
+      color="#FFC100"
       onPress={() => {
         handleImageChange();
       }}
