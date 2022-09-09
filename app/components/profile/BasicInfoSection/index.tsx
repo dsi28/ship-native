@@ -20,7 +20,7 @@ const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ userProfile }) => (
           {/* TODO go to profile instead of Reviews */}
           <NavigationLinkComponent
             navigateTo="Reviews"
-            textColor="mediumvioletred"
+            textColor="#87CEEB"
             linkText="View and Edit Profile"
           />
         </View>

@@ -29,7 +29,7 @@ const TravelerRowHeaderComponent: React.FC<TravelerRowHeaderComponentProps> = ({
       </View>
       <View style={styles.reviewContainer}>
         <View style={styles.reviewIconContainer}>
-          <MaterialIcon name="star" size={20} color="mediumvioletred" />
+          <MaterialIcon name="star" size={20} color="#87CEEB" />
         </View>
         <View style={styles.reviewTextContainer}>
           <Pressable

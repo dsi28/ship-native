@@ -128,10 +128,10 @@ function HomeScreenTabs() {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: '#e91e63',
+        activeTintColor: '#87CEEB',
         inactiveTintColor: 'lightgray',
         labelStyle: { fontSize: 17, fontWeight: 'bold' },
-        indicatorStyle: { backgroundColor: '#e91e63' },
+        indicatorStyle: { backgroundColor: '#87CEEB' },
         style: { backgroundColor: 'white' }
       }}
     >

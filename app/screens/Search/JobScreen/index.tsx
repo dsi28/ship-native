@@ -116,7 +116,7 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
               <Pressable onPress={() => console.log('chat')}>
                 <View style={styles.headerChatContainer}>
                   <View style={styles.headerChatIcon}>
-                    <MaterialIcon name="chat" size={30} color="#e91e63" />
+                    <MaterialIcon name="chat" size={30} color="#87CEEB" />
                   </View>
                   <View style={styles.headerChatTextContainer}>
                     <Text style={styles.headerChatText}>Chat</Text>
@@ -141,7 +141,7 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
                 </View>
                 <View style={styles.oSenderInfoReviewContainer}>
                   <View style={styles.oSenderInfoReviewIcon}>
-                    <StarIcon name="star" size={20} color="#e91e63" />
+                    <StarIcon name="star" size={20} color="#87CEEB" />
                   </View>
                   <View style={styles.oSenderInfoReviewTextContainer}>
                     <Text style={styles.oSenderInfoReviewText}>
@@ -171,9 +171,9 @@ const SearchJobScreen: React.FC<SearchJobScreenProps> = ({ route }) => {
               console.log('request to carry package');
             }}
             isSelected
-            btnBackgoundColor="#e91e63"
+            btnBackgoundColor="#87CEEB"
             btnTextColor="white"
-            btnBorderColor="#e91e63"
+            btnBorderColor="#87CEEB"
           />
         </View>
       </View>

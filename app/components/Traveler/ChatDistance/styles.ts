@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   cdText: {
     fontSize: 20,
-    color: 'mediumvioletred',
+    color: '#87CEEB',
     fontWeight: 'bold'
   }
 });

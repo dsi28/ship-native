@@ -32,7 +32,7 @@ const TextFormInputWithIcon: React.FC<TextFormInputWithIconProps> = ({
         <Text style={styles.labelText}>{labelText}</Text>
       </View>
       <View>
-        <MaterialIcon name={iconName} size={25} color="#e91e63" />
+        <MaterialIcon name={iconName} size={25} color="#87CEEB" />
       </View>
     </View>
     <View style={styles.inputTextContainer}>

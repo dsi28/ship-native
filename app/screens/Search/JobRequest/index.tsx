@@ -95,7 +95,7 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               >
                 <Text
                   style={{
-                    color: '#e91e63',
+                    color: '#87CEEB',
                     fontSize: 17,
                     fontWeight: 'bold',
                     alignSelf: 'center'
@@ -142,9 +142,9 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
                 NavigationService.navigate('SearchScreen');
               }}
               isSelected
-              btnBackgoundColor="#e91e63"
+              btnBackgoundColor="#87CEEB"
               btnTextColor="white"
-              btnBorderColor="#e91e63"
+              btnBorderColor="#87CEEB"
             />
           </View>
           <View>
@@ -156,8 +156,8 @@ const SearchJobRequest: React.FC<SearchJobScreenProps> = ({ route }) => {
               }}
               isSelected
               btnBackgoundColor="white"
-              btnTextColor="#e91e63"
-              btnBorderColor="#e91e63"
+              btnTextColor="#87CEEB"
+              btnBorderColor="#87CEEB"
             />
           </View>
         </View>

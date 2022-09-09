@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     marginRight: 0
   },
   distancePinText: { fontSize: 20 },
-  distanceMapLinkText: { fontSize: 20, color: '#e91e63' },
+  distanceMapLinkText: { fontSize: 20, color: '#87CEEB' },
   paymentContainer: {
     backgroundColor: '#87CEEB',
     width: '100%',
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     marginRight: 5
   },
   headerChatTextContainer: { alignItems: 'center', justifyContent: 'center' },
-  headerChatText: { fontSize: 20, color: '#e91e63' },
+  headerChatText: { fontSize: 20, color: '#87CEEB' },
   oSenderInfoContainer: { flexDirection: 'row', marginBottom: 5 },
   oSenderInfoImageContainer: {
     width: 50,

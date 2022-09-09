@@ -30,9 +30,9 @@ const Tab = createBottomTabNavigator();
 function BottomTabsNav() {
   return (
     <Tab.Navigator
-      initialRouteName="Feed"
+      initialRouteName="Home"
       tabBarOptions={{
-        activeTintColor: '#e91e63'
+        activeTintColor: '#87CEEB'
       }}
     >
       <Tab.Screen

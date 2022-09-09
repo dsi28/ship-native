@@ -9,7 +9,7 @@ const TravelerCDComponent: React.FC<TravelerCDComponentProps> = () => (
   <View style={styles.container}>
     <View style={styles.cdContainer}>
       <View style={styles.cdIconContainer}>
-        <MaterialIcon name="chat" size={30} color="mediumvioletred" />
+        <MaterialIcon name="chat" size={30} color="#87CEEB" />
       </View>
       <View style={styles.cdTextContainer}>
         <Text style={styles.cdText}>Chat</Text>

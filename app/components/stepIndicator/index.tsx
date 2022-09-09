@@ -8,10 +8,10 @@ const stepIndicatorStyles = {
   currentStepIndicatorSize: 30,
   separatorStrokeWidth: 3,
   currentStepStrokeWidth: 3,
-  stepStrokeCurrentColor: '#e91e63',
-  separatorFinishedColor: '#e91e63',
+  stepStrokeCurrentColor: '#87CEEB',
+  separatorFinishedColor: '#87CEEB',
   separatorUnFinishedColor: '#aaaaaa',
-  stepIndicatorFinishedColor: '#e91e63',
+  stepIndicatorFinishedColor: '#87CEEB',
   stepIndicatorUnFinishedColor: '#aaaaaa',
   stepIndicatorCurrentColor: '#ffffff',
   stepIndicatorLabelFontSize: 0,
@@ -20,8 +20,8 @@ const stepIndicatorStyles = {
   stepIndicatorLabelFinishedColor: '#ffffff',
   stepIndicatorLabelUnFinishedColor: 'rgba(255,255,255,0.5)',
   labelColor: '#666666',
-  labelSize: 15,
-  currentStepLabelColor: '#e91e63'
+  labelSize: 17,
+  currentStepLabelColor: '#87CEEB'
 };
 
 const styles = StyleSheet.create({

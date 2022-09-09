@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   locationText: {
     fontSize: 20,
-    color: 'mediumvioletred',
+    color: '#87CEEB',
     fontWeight: 'bold'
   },
   jobDetailsContainer: { marginTop: 25 },
