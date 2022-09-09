@@ -81,9 +81,9 @@ const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
                 });
               }}
               isSelected
-              btnBackgoundColor="mediumvioletred"
+              btnBackgoundColor="#87CEEB"
               btnTextColor="white"
-              btnBorderColor="mediumvioletred"
+              btnBorderColor="#87CEEB"
             />
           </View>
           <View style={styles.bottomButtonContainer}>
@@ -96,8 +96,8 @@ const TravelerScreen: React.FC<TravelerScreenProps> = ({ route }) => {
               }}
               isSelected
               btnBackgoundColor="white"
-              btnTextColor="mediumvioletred"
-              btnBorderColor="mediumvioletred"
+              btnTextColor="#87CEEB"
+              btnBorderColor="#87CEEB"
             />
           </View>
         </View>

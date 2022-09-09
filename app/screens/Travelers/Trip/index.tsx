@@ -167,8 +167,8 @@ const NewTrip: React.FC = () => {
                   NavigationService.navigate('HomeScreen');
                 }}
                 isSelected
-                btnBackgoundColor="mediumvioletred"
-                btnBorderColor="mediumvioletred"
+                btnBackgoundColor="#87CEEB"
+                btnBorderColor="#87CEEB"
                 btnTextColor="white"
               />
             </View>
@@ -182,8 +182,8 @@ const NewTrip: React.FC = () => {
                 }}
                 isSelected
                 btnBackgoundColor="white"
-                btnBorderColor="mediumvioletred"
-                btnTextColor="mediumvioletred"
+                btnBorderColor="#87CEEB"
+                btnTextColor="#87CEEB"
               />
             </View>
           </View>

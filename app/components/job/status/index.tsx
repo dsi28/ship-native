@@ -69,9 +69,9 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                   NavigationService.navigate('Traveler Requests', job);
                 }}
                 isSelected
-                btnBackgoundColor="mediumvioletred"
+                btnBackgoundColor="#87CEEB"
                 btnTextColor="white"
-                btnBorderColor="mediumvioletred"
+                btnBorderColor="#87CEEB"
               />
             </View>
           </View>
@@ -118,9 +118,9 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                   updateStep(2);
                 }}
                 isSelected
-                btnBackgoundColor="mediumvioletred"
+                btnBackgoundColor="#87CEEB"
                 btnTextColor="white"
-                btnBorderColor="mediumvioletred"
+                btnBorderColor="#87CEEB"
               />
             </View>
           </View>
@@ -168,9 +168,9 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                   updateStep(6);
                 }}
                 isSelected
-                btnBackgoundColor="mediumvioletred"
+                btnBackgoundColor="#87CEEB"
                 btnTextColor="white"
-                btnBorderColor="mediumvioletred"
+                btnBorderColor="#87CEEB"
               />
             </View>
             <View style={styles.stepButton}>
@@ -183,8 +183,8 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                 }}
                 isSelected
                 btnBackgoundColor="white"
-                btnTextColor="mediumvioletred"
-                btnBorderColor="mediumvioletred"
+                btnTextColor="#87CEEB"
+                btnBorderColor="#87CEEB"
               />
             </View>
           </View>
@@ -206,9 +206,9 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                   updateStep(7);
                 }}
                 isSelected
-                btnBackgoundColor="mediumvioletred"
+                btnBackgoundColor="#87CEEB"
                 btnTextColor="white"
-                btnBorderColor="mediumvioletred"
+                btnBorderColor="#87CEEB"
               />
             </View>
             <View style={styles.stepButton}>
@@ -221,8 +221,8 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                 }}
                 isSelected
                 btnBackgoundColor="white"
-                btnTextColor="mediumvioletred"
-                btnBorderColor="mediumvioletred"
+                btnTextColor="#87CEEB"
+                btnBorderColor="#87CEEB"
               />
             </View>
           </View>
@@ -236,7 +236,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
           </View>
         );
       default:
-        return <Text style={{ fontSize: 20, color: '#e91e63' }}>complete</Text>;
+        return <Text style={{ fontSize: 20, color: '#87CEEB' }}>complete</Text>;
     }
   };
 
@@ -278,9 +278,9 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                   updateStep(3);
                 }}
                 isSelected
-                btnBackgoundColor="mediumvioletred"
+                btnBackgoundColor="#87CEEB"
                 btnTextColor="white"
-                btnBorderColor="mediumvioletred"
+                btnBorderColor="#87CEEB"
               />
             </View>
           </View>
@@ -303,9 +303,9 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                   updateStep(4);
                 }}
                 isSelected
-                btnBackgoundColor="mediumvioletred"
+                btnBackgoundColor="#87CEEB"
                 btnTextColor="white"
-                btnBorderColor="mediumvioletred"
+                btnBorderColor="#87CEEB"
               />
             </View>
           </View>
@@ -328,9 +328,9 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
                   updateStep(5);
                 }}
                 isSelected
-                btnBackgoundColor="mediumvioletred"
+                btnBackgoundColor="#87CEEB"
                 btnTextColor="white"
-                btnBorderColor="mediumvioletred"
+                btnBorderColor="#87CEEB"
               />
             </View>
           </View>
@@ -358,7 +358,7 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
           </View>
         );
       default:
-        return <Text style={{ fontSize: 20, color: '#e91e63' }}>complete</Text>;
+        return <Text style={{ fontSize: 20, color: '#87CEEB' }}>complete</Text>;
     }
   };
 
@@ -385,40 +385,40 @@ const JobStatusComponent: React.FC<JobStatusComponentProps> = ({
             }}
           >
             {currentStep === 0 && (
-              <MaterialCIcon name="account-search" size={25} color="#e91e63" />
+              <MaterialCIcon name="account-search" size={25} color="#87CEEB" />
             )}
             {currentStep === 1 && (
-              <MaterialCIcon name="truck" size={25} color="#e91e63" />
+              <MaterialCIcon name="truck" size={25} color="#87CEEB" />
             )}
             {currentStep === 2 && (
-              <MaterialCIcon name="account-check" size={25} color="#e91e63" />
+              <MaterialCIcon name="account-check" size={25} color="#87CEEB" />
             )}
             {currentStep === 3 && (
               <MaterialCIcon
                 name="airplane-takeoff"
                 size={25}
-                color="#e91e63"
+                color="#87CEEB"
               />
             )}
             {currentStep === 4 && (
-              <MaterialCIcon name="check" size={25} color="#e91e63" />
+              <MaterialCIcon name="check" size={25} color="#87CEEB" />
             )}
             {currentStep === 5 && (
-              <MaterialCIcon name="check-all" size={25} color="#e91e63" />
+              <MaterialCIcon name="check-all" size={25} color="#87CEEB" />
             )}
             {currentStep === 6 && (
-              <MaterialCIcon name="clipboard-check" size={25} color="#e91e63" />
+              <MaterialCIcon name="clipboard-check" size={25} color="#87CEEB" />
             )}
             {currentStep === 7 && (
               <MaterialCIcon
                 name="currency-usd-circle"
                 size={25}
-                color="#e91e63"
+                color="#87CEEB"
               />
             )}
           </View>
           <View>
-            <Text style={{ fontSize: 20, color: '#e91e63' }}>
+            <Text style={{ fontSize: 20, color: '#87CEEB' }}>
               {currentStep <= 7
                 ? stepNames.data[currentStep].title
                 : 'complete'}

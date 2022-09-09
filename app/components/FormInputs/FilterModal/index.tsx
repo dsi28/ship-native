@@ -39,7 +39,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
           <View style={styles.filterContainer}>
             <View>
               <Pressable onPress={() => setModalVisible(!modalVisible)}>
-                <MaterialIcon name="close" size={35} color="#e91e63" />
+                <MaterialIcon name="close" size={35} color="#87CEEB" />
               </Pressable>
             </View>
             <View>

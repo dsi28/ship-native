@@ -33,7 +33,7 @@ const ItemComponent: React.FC<ItemComponentProps> = ({
           </View>
           <View style={styles.flexDirectionRow}>
             <View style={styles.iconView}>
-              <MaterialIcon name="location-pin" size={20} color="#e91e63" />
+              <MaterialIcon name="location-pin" size={20} color="#87CEEB" />
             </View>
             <View>
               <Text style={styles.fontSize15}>

@@ -1,7 +1,7 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useIsFocused } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import WideButton from '../../../components/buttons/WideButton';
@@ -67,26 +67,26 @@ const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
         <View style={styles.buttonsContainer}>
           {isOwner && (
             <View>
-              <View style={styles.buttonContainer}>
+              {/* <View style={styles.buttonContainer}>
                 <WideButton
                   buttonText="Edit Job"
                   onPressHandler={() => console.log('edit job')}
                   isSelected
-                  btnBackgoundColor="mediumvioletred"
+                  btnBackgoundColor="#87CEEB"
                   btnTextColor="white"
-                  btnBorderColor="mediumvioletred"
+                  btnBorderColor="#87CEEB"
                 />
-              </View>
-              <View>
+              </View> */}
+              {/* <View>
                 <WideButton
                   buttonText="Close Job"
                   onPressHandler={() => console.log('close job')}
                   isSelected
                   btnBackgoundColor="white"
-                  btnTextColor="mediumvioletred"
-                  btnBorderColor="mediumvioletred"
+                  btnTextColor="#FFC100"
+                  btnBorderColor="#FFC100"
                 />
-              </View>
+              </View> */}
             </View>
           )}
           {!isOwner && (
@@ -99,9 +99,9 @@ const JobItem: React.FC<JobItemProps> = ({ job, isOwner }) => {
                   cancelTravelerRequests(user.uid, job.uid);
                 }}
                 isSelected
-                btnBackgoundColor="mediumvioletred"
+                btnBackgoundColor="#FFC100"
                 btnTextColor="white"
-                btnBorderColor="mediumvioletred"
+                btnBorderColor="#FFC100"
               />
             </View>
           )}
@@ -225,34 +225,6 @@ const TrackJob: React.FC<TrackJobProps> = ({ job, jobs, isOwner }) => {
             updateStep={updateStep}
           />
         </View>
-        <View>
-          <Pressable
-            style={{ width: '100%' }}
-            onPress={() => {
-              const temp =
-                // @ts-ignore
-                currentStep.valueOf() + 1 <= 8 ? currentStep.valueOf() + 1 : 8;
-              // console.log('XYXYxyxy: ', {
-              //   jobId: job.uid,
-              //   currentStatus: job.currentStatus || 0 + 1,
-              //   isOwner,
-              //   jobs
-              // });
-              setCurrentStep(temp);
-              dispatch(
-                setCurStepJobs({
-                  jobId: job.uid,
-                  currentStatus: temp,
-                  isOwner,
-                  jobs
-                })
-              );
-              updateJobStatus(job, temp);
-            }}
-          >
-            <Text style={{ color: 'orange' }}>press</Text>
-          </Pressable>
-        </View>
       </View>
     </ScrollView>
   );
@@ -276,10 +248,10 @@ function JobItemScreenTabs({ route }: any) {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: '#e91e63',
+        activeTintColor: '#87CEEB',
         inactiveTintColor: 'lightgray',
         labelStyle: { fontSize: 17, fontWeight: 'bold' },
-        indicatorStyle: { backgroundColor: '#e91e63' },
+        indicatorStyle: { backgroundColor: '#87CEEB' },
         style: { backgroundColor: 'white' }
       }}
     >

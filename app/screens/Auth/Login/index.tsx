@@ -18,6 +18,9 @@ import styles from './styles';
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passEmpty, setPassEmpty] = useState(true);
+  const [userEmpty, setUserEmpty] = useState(true);
+
   const dispatch = useDispatch();
 
   const onChangeInputHandler = (
@@ -26,8 +29,18 @@ const LoginScreen: React.FC = () => {
   ) => {
     if (propertyName === 'email') {
       setEmail(propertyValue);
+      if (!propertyValue || propertyValue.length === 0) {
+        setUserEmpty(true);
+      } else {
+        setUserEmpty(false);
+      }
     } else if (propertyName === 'password') {
       setPassword(propertyValue);
+      if (!propertyValue || propertyValue.length === 0) {
+        setPassEmpty(true);
+      } else {
+        setPassEmpty(false);
+      }
     }
   };
 
@@ -110,7 +123,7 @@ const LoginScreen: React.FC = () => {
           <NextButton
             buttonText="Login"
             onPressHandler={onLoginHandler}
-            isDisabled={false}
+            isDisabled={passEmpty || userEmpty}
           />
         </View>
       </View>

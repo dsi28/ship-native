@@ -61,14 +61,14 @@ const styles = StyleSheet.create({
   },
   itemNameText: {
     fontWeight: 'bold',
-    color: '#e91e63',
+    color: '#87CEEB',
     fontSize: 17
   },
   itemPropertyContainer: { flexDirection: 'row', marginTop: 10 },
   itemPropertyLabelText: { fontSize: 15, color: 'gray' },
   itemPropertyValueContainer: { marginLeft: 5 },
   itemPropertyValueText: { fontSize: 15, color: 'black' },
-  costTextValue: { fontSize: 20, fontWeight: 'bold', color: 'black' },
+  costTextValue: { fontSize: 20, fontWeight: 'bold', color: '#FFC100' },
   buttonPresable: {
     elevation: 8,
     backgroundColor: 'white',

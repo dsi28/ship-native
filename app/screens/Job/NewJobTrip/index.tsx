@@ -20,7 +20,7 @@ const PayScreen = () => {
         icon={
           <MaterialCommunityIcons
             name="plus-circle"
-            color="#e91e63"
+            color="#87CEEB"
             size={50}
           />
         }
@@ -55,7 +55,7 @@ const PayScreen = () => {
                   }}
                 >
                   <View>
-                    <Feather name="box" color="#e91e63" size={40} />
+                    <Feather name="box" color="#87CEEB" size={40} />
                   </View>
                   <View style={styles.pressableSubContainer}>
                     <Text
@@ -90,7 +90,7 @@ const PayScreen = () => {
                   }}
                 >
                   <View>
-                    <Ionicons name="airplane" color="#e91e63" size={40} />
+                    <Ionicons name="airplane" color="#87CEEB" size={40} />
                   </View>
                   <View style={styles.pressableSubContainer}>
                     <Text

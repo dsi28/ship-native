@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     fontSize: 40
   },
   joinedTitle: {
-    color: 'mediumvioletred',
+    color: '#87CEEB',
     fontSize: 20
   },
   userImage: {

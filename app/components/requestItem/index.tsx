@@ -59,7 +59,7 @@ const RequestItemComponent: React.FC<RequestItemProps> = ({
           {/* TODO get rating */}
           <View style={styles.flexDirectionRow}>
             <View style={styles.iconView}>
-              <StarIcon name="star" size={17} color="#e91e63" />
+              <StarIcon name="star" size={17} color="#87CEEB" />
             </View>
             <View>
               <Text style={styles.fontSize17}>{itemRating}</Text>

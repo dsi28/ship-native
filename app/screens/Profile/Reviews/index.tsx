@@ -16,7 +16,7 @@ const ProfileReviews: React.FC<ProfileReviewsProps> = () => (
       <View style={styles.scrollViewContainer}>
         <View style={styles.reviewRow}>
           <View style={styles.iconView}>
-            <StarIcon name="star" size={25} color="#e91e63" />
+            <StarIcon name="star" size={25} color="#87CEEB" />
           </View>
           <View style={styles.reviewTitleView}>
             <Text style={styles.aboutSectionTitle}>4.5 (4 reviews)</Text>

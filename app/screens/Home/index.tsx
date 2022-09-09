@@ -1,8 +1,8 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { RefreshControl, ScrollView, Text, View } from 'react-native';
+import {} from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import ItemComponent from '../../components/home/ItemComponent';
 import { IJob } from '../../models/IJob';
@@ -24,6 +24,7 @@ interface HomeInputProps {
   jobType: string;
   jobsList: any;
   isOwner: boolean;
+  getJobs: () => Promise<void>;
   // setJobState: (ownerJobs: any) => void;
 }
 
@@ -31,23 +32,40 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   jobType,
   jobsList,
-  isOwner
+  isOwner,
+  getJobs
   // setJobState
 }) => {
   // const [jobList, setJobList] = useState([]);
   // const ownerJobs = useSelector((state: AppState) => state.job.ownerJobs);
+  const [refreshing, setRefreshing] = React.useState(false);
+
   const pressItemHandler = (job: IJob) => {
     const temp = { job, isOwner, jobsList };
     NavigationService.navigate('Job', temp);
   };
 
-  useEffect(() => {
-    console.log('XXXXXXXXXXXXXXXXXXXXxxxxx HomeScreenTab');
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    getJobs().then(() => setRefreshing(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // this might be needed
+  // useEffect(() => {
+  //   setRefreshing(true);
+  //   // getJobs();
+  //   getJobs().then(() => setRefreshing(false));
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
   return (
-    <ScrollView style={styles.scrollView}>
+    <ScrollView
+      style={styles.scrollView}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <View style={styles.container}>
         {typeof jobsList !== 'undefined' &&
         typeof jobsList !== 'string' &&
@@ -110,16 +128,21 @@ function HomeScreenTabs() {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: '#e91e63',
+        activeTintColor: '#87CEEB',
         inactiveTintColor: 'lightgray',
         labelStyle: { fontSize: 17, fontWeight: 'bold' },
-        indicatorStyle: { backgroundColor: '#e91e63' },
+        indicatorStyle: { backgroundColor: '#87CEEB' },
         style: { backgroundColor: 'white' }
       }}
     >
       <Tab.Screen name="Sender" options={{ tabBarLabel: 'Sender' }}>
         {() => (
-          <HomeScreenTab jobType="ownerJobs" jobsList={ownerJobs} isOwner />
+          <HomeScreenTab
+            jobType="ownerJobs"
+            jobsList={ownerJobs}
+            isOwner
+            getJobs={getJobs}
+          />
         )}
       </Tab.Screen>
       <Tab.Screen name="Traveler" options={{ tabBarLabel: 'Traveler' }}>
@@ -128,6 +151,7 @@ function HomeScreenTabs() {
             jobType="travelerJobs"
             jobsList={travelerJobs}
             isOwner={false}
+            getJobs={getJobs}
           />
           // add new component here
         )}

@@ -161,9 +161,9 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
                   openPaymentSheet();
                 }}
                 isSelected
-                btnBackgoundColor="mediumvioletred"
+                btnBackgoundColor="#87CEEB"
                 btnTextColor="white"
-                btnBorderColor="mediumvioletred"
+                btnBorderColor="#87CEEB"
               />
             </View>
             <View>
@@ -175,8 +175,8 @@ const AcceptTravler: React.FC<AcceptTravelerProps> = ({ route }) => {
                 }}
                 isSelected
                 btnBackgoundColor="white"
-                btnTextColor="mediumvioletred"
-                btnBorderColor="mediumvioletred"
+                btnTextColor="#87CEEB"
+                btnBorderColor="#87CEEB"
               />
             </View>
           </View>

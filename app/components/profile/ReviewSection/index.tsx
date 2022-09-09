@@ -14,7 +14,7 @@ const ReviewSection: React.FC<ReviewSectionProps> = () => (
   <View style={{ ...styles.sectionContatiner, ...styles.addSectionContainer }}>
     <View style={{ ...styles.reviewRow, ...styles.marginBottom40 }}>
       <View style={styles.iconView}>
-        <StarIcon name="star" size={25} color="#e91e63" />
+        <StarIcon name="star" size={25} color="#87CEEB" />
       </View>
       <View style={styles.reviewTitleView}>
         <Text style={styles.aboutSectionTitle}>5.0 (19 reviews)</Text>
@@ -60,8 +60,8 @@ const ReviewSection: React.FC<ReviewSectionProps> = () => (
                 NavigationService.navigate('Reviews');
               }}
               isSelected={false}
-              btnBackgoundColor="mediumvioletred"
-              btnBorderColor="mediumvioletred"
+              btnBackgoundColor="#87CEEB"
+              btnBorderColor="#87CEEB"
               btnTextColor="black"
             />
           </View>
