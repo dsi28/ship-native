@@ -51,10 +51,13 @@ const HomeScreenTab: React.FC<HomeInputProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    console.log('XXXXXXXXXXXXXXXXXXXXxxxxx HomeScreenTab');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // this might be needed
+  // useEffect(() => {
+  //   setRefreshing(true);
+  //   // getJobs();
+  //   getJobs().then(() => setRefreshing(false));
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <ScrollView

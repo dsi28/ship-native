@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import HomeStack from '../screens/Home';
 import PayScreen from '../screens/Job/NewJobTrip';
@@ -9,10 +9,20 @@ import SearchStack from '../screens/Search';
 
 const PayScreenComponent = () => null;
 
-const TempComponent = () => (
-  <>
-    <Text>test</Text>
-  </>
+const TempChatComponent = () => (
+  <View
+    style={{
+      alignItems: 'center',
+      width: '100%',
+      backgroundColor: '#f3f5fa',
+      height: '100%',
+      justifyContent: 'center'
+    }}
+  >
+    <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#87CEEB' }}>
+      Coming Soon..
+    </Text>
+  </View>
 );
 
 const Tab = createBottomTabNavigator();
@@ -54,7 +64,7 @@ function BottomTabsNav() {
       />
       <Tab.Screen
         name="Chat"
-        component={TempComponent}
+        component={TempChatComponent}
         options={{
           tabBarLabel: 'Updates',
           tabBarIcon: ({ color, size }) => (
