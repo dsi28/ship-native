@@ -20,6 +20,7 @@ const CreateAccountScreen: React.FC = () => (
           navigateTo="Login"
           textColor="white"
           linkText="Log In"
+          linkDisabled={false}
         />
       </View>
       <View style={styles.welcomeContainer}>

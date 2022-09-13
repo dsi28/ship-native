@@ -22,9 +22,13 @@ const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ userProfile }) => (
             navigateTo="Reviews"
             textColor="#87CEEB"
             linkText="View and Edit Profile"
+            linkDisabled
           />
         </View>
-        <Pressable onPress={() => NavigationService.navigate('Reviews')}>
+        <Pressable
+          onPress={() => NavigationService.navigate('Reviews')}
+          disabled
+        >
           <View style={styles.reviewRow}>
             <View style={styles.iconView}>
               <StarIcon name="star-o" size={30} color="black" />

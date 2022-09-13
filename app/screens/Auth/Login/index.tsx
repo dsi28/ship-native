@@ -85,6 +85,7 @@ const LoginScreen: React.FC = () => {
             navigateTo="CreateAccount"
             textColor="#FFC100"
             linkText="Create Account"
+            linkDisabled={false}
           />
         </View>
         <View style={styles.headerView}>
@@ -116,6 +117,7 @@ const LoginScreen: React.FC = () => {
               navigateTo="Forgot Password"
               textColor="#87CEEB"
               linkText="Forgot Password"
+              linkDisabled={false}
             />
           </View>
         </View>

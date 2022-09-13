@@ -6,14 +6,17 @@ interface NavigationLinkComponentProps {
   navigateTo: string;
   textColor: string;
   linkText: string;
+  linkDisabled: boolean;
 }
 
 const NavigationLinkComponent: React.FC<NavigationLinkComponentProps> = ({
   navigateTo,
   textColor = 'green',
-  linkText
+  linkText,
+  linkDisabled
 }) => (
   <Pressable
+    disabled={linkDisabled}
     onPress={() => {
       NavigationService.navigate(navigateTo);
     }}
