@@ -7,14 +7,18 @@ interface MainProfileItemProps {
   onPressHandler: () => void;
   iconName: string;
   itemName: string;
+  bluredItem: boolean;
 }
 
 const MainProfileItem: React.FC<MainProfileItemProps> = ({
   onPressHandler,
   iconName,
-  itemName
+  itemName,
+  bluredItem
 }) => (
-  <View style={styles.container}>
+  <View
+    style={bluredItem ? [styles.container, { opacity: 0.5 }] : styles.container}
+  >
     <Pressable
       onPress={() => {
         onPressHandler();

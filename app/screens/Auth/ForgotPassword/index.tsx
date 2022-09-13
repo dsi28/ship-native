@@ -28,6 +28,7 @@ const ForgotPasswordScreen: React.FC = () => {
               navigateTo="Login"
               textColor="#FFC100"
               linkText="Log In"
+              linkDisabled={false}
             />
           </View>
           <View style={styles.headerView}>

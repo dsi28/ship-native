@@ -10,6 +10,7 @@ import { logOutJob } from '../../../redux/actions/job';
 import { logOutProfileUser } from '../../../redux/actions/postProfile';
 import { logOffUserAction } from '../../../redux/actions/user';
 import { logoutUser } from '../../../services/auth';
+import { supportEmailGeneral } from '../../../services/resusableActions';
 import ProfilePayment from '../Payment';
 import ProfileReviews from '../Reviews';
 import styles from './styles';
@@ -36,17 +37,36 @@ const SellerProfile: React.FC = () => {
         <View style={styles.itemContainer}>
           <View>
             <MainProfileItem
+              itemName="Help"
+              iconName="help"
+              onPressHandler={() => supportEmailGeneral('Help')}
+              bluredItem={false}
+            />
+            <MainProfileItem
+              itemName="Give us Feedback"
+              iconName="feedback"
+              onPressHandler={() => supportEmailGeneral('Feedback')}
+              bluredItem={false}
+            />
+            <MainProfileItem
+              itemName="Logout"
+              iconName="logout"
+              onPressHandler={handleLogout}
+              bluredItem={false}
+            />
+            <MainProfileItem
               itemName="My Trips"
               iconName="airplanemode-active"
               onPressHandler={() => console.log('My Trips')}
+              bluredItem
             />
 
             <MainProfileItem
               itemName="Notifications"
               iconName="notifications"
               onPressHandler={() => console.log('Notifications')}
+              bluredItem
             />
-
             <MainProfileItem
               itemName="Payment"
               iconName="payment"
@@ -54,29 +74,13 @@ const SellerProfile: React.FC = () => {
                 console.log('Payment');
                 NavigationService.navigate('Payment');
               }}
+              bluredItem
             />
-
             <MainProfileItem
               itemName="Settings"
               iconName="settings"
               onPressHandler={() => console.log('Settings')}
-            />
-
-            <MainProfileItem
-              itemName="Help"
-              iconName="help"
-              onPressHandler={() => console.log('Help')}
-            />
-
-            <MainProfileItem
-              itemName="Give us Feedback"
-              iconName="feedback"
-              onPressHandler={() => console.log('feedback')}
-            />
-            <MainProfileItem
-              itemName="Logout"
-              iconName="logout"
-              onPressHandler={handleLogout}
+              bluredItem
             />
           </View>
         </View>
