@@ -36,17 +36,36 @@ const SellerProfile: React.FC = () => {
         <View style={styles.itemContainer}>
           <View>
             <MainProfileItem
+              itemName="Help"
+              iconName="help"
+              onPressHandler={() => console.log('Help')}
+              bluredItem={false}
+            />
+            <MainProfileItem
+              itemName="Give us Feedback"
+              iconName="feedback"
+              onPressHandler={() => console.log('feedback')}
+              bluredItem={false}
+            />
+            <MainProfileItem
+              itemName="Logout"
+              iconName="logout"
+              onPressHandler={handleLogout}
+              bluredItem={false}
+            />
+            <MainProfileItem
               itemName="My Trips"
               iconName="airplanemode-active"
               onPressHandler={() => console.log('My Trips')}
+              bluredItem
             />
 
             <MainProfileItem
               itemName="Notifications"
               iconName="notifications"
               onPressHandler={() => console.log('Notifications')}
+              bluredItem
             />
-
             <MainProfileItem
               itemName="Payment"
               iconName="payment"
@@ -54,29 +73,13 @@ const SellerProfile: React.FC = () => {
                 console.log('Payment');
                 NavigationService.navigate('Payment');
               }}
+              bluredItem
             />
-
             <MainProfileItem
               itemName="Settings"
               iconName="settings"
               onPressHandler={() => console.log('Settings')}
-            />
-
-            <MainProfileItem
-              itemName="Help"
-              iconName="help"
-              onPressHandler={() => console.log('Help')}
-            />
-
-            <MainProfileItem
-              itemName="Give us Feedback"
-              iconName="feedback"
-              onPressHandler={() => console.log('feedback')}
-            />
-            <MainProfileItem
-              itemName="Logout"
-              iconName="logout"
-              onPressHandler={handleLogout}
+              bluredItem
             />
           </View>
         </View>
