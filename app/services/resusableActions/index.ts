@@ -12,3 +12,9 @@ export const supportEmail = (
     `mailto:shipapp225@gmail.com?subject=Contact Support&body=Job:${jobId}\nOwner:${isOwner}\nStep:${currentStep}\nEnter the description here:`
   );
 };
+
+export const supportEmailGeneral = (about: string) => {
+  Linking.openURL(
+    `mailto:shipapp225@gmail.com?subject=Contact Support: ${about}&body=\nEnter the description here:`
+  );
+};

@@ -10,6 +10,7 @@ import { logOutJob } from '../../../redux/actions/job';
 import { logOutProfileUser } from '../../../redux/actions/postProfile';
 import { logOffUserAction } from '../../../redux/actions/user';
 import { logoutUser } from '../../../services/auth';
+import { supportEmailGeneral } from '../../../services/resusableActions';
 import ProfilePayment from '../Payment';
 import ProfileReviews from '../Reviews';
 import styles from './styles';
@@ -38,13 +39,13 @@ const SellerProfile: React.FC = () => {
             <MainProfileItem
               itemName="Help"
               iconName="help"
-              onPressHandler={() => console.log('Help')}
+              onPressHandler={() => supportEmailGeneral('Help')}
               bluredItem={false}
             />
             <MainProfileItem
               itemName="Give us Feedback"
               iconName="feedback"
-              onPressHandler={() => console.log('feedback')}
+              onPressHandler={() => supportEmailGeneral('Feedback')}
               bluredItem={false}
             />
             <MainProfileItem
