@@ -87,7 +87,10 @@ export const getUserTravelerJobs = async (userId: string) => {
         // );
         // @ts-ignore
         // eslint-disable-next-line no-underscore-dangle
-        const tempTravelerReqs = firebaseUser.docs[0]._data.travelerRequests.map(
+        console.log('Final test', firebaseUser._docs);
+        // @ts-ignore
+        // eslint-disable-next-line no-underscore-dangle
+        const tempTravelerReqs = firebaseUser._docs[0]._data.travelerRequests.map(
           (tReq: any) => tReq.jobId
         );
         ///
